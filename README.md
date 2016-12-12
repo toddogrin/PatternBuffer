@@ -7,7 +7,7 @@ Energizing object serialization across languages and platforms!
 The main goal of PatternBuffers is to make object serialization and deserialization as easy as this:
 
 ```
-#!c#
+#!c
 // Serialize a thing
 byte[] bytes = myPatternBuffer.Energize(thing1);
 
