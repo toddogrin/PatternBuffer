@@ -58,7 +58,7 @@ PatternBuffers are implemented across different languages and platforms. This me
 
 ## Usage ##
 
-For information on how to use PatternBuffers, see the [PatternBuffer User's Guide](https://bitbucket.org/ToddOfWar/patternbuffer/wiki/User's%20Guide) Wiki page.
+For information on how to use PatternBuffers, see the [PatternBuffer Documentation Wiki](https://github.com/toddogrin/PatternBuffer/wiki) Wiki page.
 
 ## Contributions ##
 
