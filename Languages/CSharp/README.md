@@ -8,13 +8,9 @@ For usage notes on the pbc-cs.exe command line application, see this related [RE
 
 The C# PatternBuffer implementation is comprised of several sub-projects. They are described below.
 
-### PatternBuffer
-
-The base library for C# PatternBuffers. This is a run-time dependency and can be included as-is. Generated C# code will derive from classes contained in this project.
-
 ### PatternBufferCompiler 
 
-The library containing the default C# PatternBufferCompiler class. This is NOT a command line application, but rather just a class that can compile C# PatternBuffers.
+The library containing the default C# PatternBufferCompiler class and supporting functions. This is NOT a command line application, but rather just a class that can compile C# PatternBuffers.
 
 ### PatternBufferCompilerProgram
 
@@ -22,7 +18,7 @@ This is a command line app wrapping the PatternBufferCompiler. It generates pbc-
 
 ### PatternBufferSchema
 
-This contains a parser that can read .pb files, and the domain objects describing the contents of the .pb file. Both are used by the PatternBufferCompiler to ingest .pb schemas.
+This contains a parser that can read .pb files, and the domain objects describing the contents of the .pb file. Both are used by the PatternBufferCompiler to ingest .pb schemas. If you want to make your own C# PatternBuffer compiler, this schema library saves you the trouble of parsing the .pb file yourself.
 
 ### PatternBufferTest
 Exercises the APIs defined in the other libraries. Also generates some code into...
@@ -34,9 +30,8 @@ Exercises the APIs defined in the other libraries. Also generates some code into
 
 You can see dependencies in the References node of your solution, but here they are, explicitly:
 
-* PatternBuffer - None
 * PatternBufferSchema - None
 * PatternBufferCompiler - PatternBufferSchema
 * PatternBufferCompilerProgram - PatternBufferCompiler, PatternBufferSchema
-* PatternBufferGeneratedTest - PatternBuffer
-* PatternBufferTest - PatternBuffer, PatternBufferCompiler, PatternBufferSchema
+* PatternBufferGeneratedTest - None
+* PatternBufferTest - PatternBufferCompiler, PatternBufferSchema
