@@ -122,19 +122,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.IntThingMap.Keys.Count;
-                int i_wxAEeGKPoVlb;
-                for (i_wxAEeGKPoVlb = 0; i_wxAEeGKPoVlb < 2; i_wxAEeGKPoVlb++) {
-                    if ((ulong)o.IntThingMap.Keys.Count < vuBoundaries[i_wxAEeGKPoVlb]) {
-                       byteCount = (int)(i_wxAEeGKPoVlb + 1);
-                       goto guvsgoto_dbDHzaYhh0oU;
+                int i_vwVz2lA3PPf7;
+                for (i_vwVz2lA3PPf7 = 0; i_vwVz2lA3PPf7 < 2; i_vwVz2lA3PPf7++) {
+                    if ((ulong)o.IntThingMap.Keys.Count < vuBoundaries[i_vwVz2lA3PPf7]) {
+                       byteCount = (int)(i_vwVz2lA3PPf7 + 1);
+                       goto guvsgoto_kJhm8Q4QdT6r;
                     }
                 }
-                byteCount = (int)i_wxAEeGKPoVlb + 1;
-                guvsgoto_dbDHzaYhh0oU:
-                    for (int i_aFJhfz5UaQdc = 0; i_aFJhfz5UaQdc < byteCount; i_aFJhfz5UaQdc++) {
-                        if (i_aFJhfz5UaQdc < byteCount - 1) {
+                byteCount = (int)i_vwVz2lA3PPf7 + 1;
+                guvsgoto_kJhm8Q4QdT6r:
+                    for (int i_dhBxx5GvpKw3 = 0; i_dhBxx5GvpKw3 < byteCount; i_dhBxx5GvpKw3++) {
+                        if (i_dhBxx5GvpKw3 < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_aFJhfz5UaQdc < byteCount - 1) {
+                            if (i_dhBxx5GvpKw3 < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -163,19 +163,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.IntThingMap.Values.Count;
-                int i_w3U3OhmwZBF3;
-                for (i_w3U3OhmwZBF3 = 0; i_w3U3OhmwZBF3 < 2; i_w3U3OhmwZBF3++) {
-                    if ((ulong)o.IntThingMap.Values.Count < vuBoundaries[i_w3U3OhmwZBF3]) {
-                       byteCount = (int)(i_w3U3OhmwZBF3 + 1);
-                       goto guvsgoto_qVlLiEUiMm5B;
+                int i_magc2DRTEke1;
+                for (i_magc2DRTEke1 = 0; i_magc2DRTEke1 < 2; i_magc2DRTEke1++) {
+                    if ((ulong)o.IntThingMap.Values.Count < vuBoundaries[i_magc2DRTEke1]) {
+                       byteCount = (int)(i_magc2DRTEke1 + 1);
+                       goto guvsgoto_joQfh46MPfdd;
                     }
                 }
-                byteCount = (int)i_w3U3OhmwZBF3 + 1;
-                guvsgoto_qVlLiEUiMm5B:
-                    for (int i_lQcS5DUmuy1t = 0; i_lQcS5DUmuy1t < byteCount; i_lQcS5DUmuy1t++) {
-                        if (i_lQcS5DUmuy1t < byteCount - 1) {
+                byteCount = (int)i_magc2DRTEke1 + 1;
+                guvsgoto_joQfh46MPfdd:
+                    for (int i_fHthnLcoa1dO = 0; i_fHthnLcoa1dO < byteCount; i_fHthnLcoa1dO++) {
+                        if (i_fHthnLcoa1dO < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_lQcS5DUmuy1t < byteCount - 1) {
+                            if (i_fHthnLcoa1dO < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -207,19 +207,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.ThingIntMap.Keys.Count;
-                int i_qcg2DQmlpskB;
-                for (i_qcg2DQmlpskB = 0; i_qcg2DQmlpskB < 2; i_qcg2DQmlpskB++) {
-                    if ((ulong)o.ThingIntMap.Keys.Count < vuBoundaries[i_qcg2DQmlpskB]) {
-                       byteCount = (int)(i_qcg2DQmlpskB + 1);
-                       goto guvsgoto_i8HTaczZKhpl;
+                int i_vEDW3MzlkZ1K;
+                for (i_vEDW3MzlkZ1K = 0; i_vEDW3MzlkZ1K < 2; i_vEDW3MzlkZ1K++) {
+                    if ((ulong)o.ThingIntMap.Keys.Count < vuBoundaries[i_vEDW3MzlkZ1K]) {
+                       byteCount = (int)(i_vEDW3MzlkZ1K + 1);
+                       goto guvsgoto_nvVVTCrbey3x;
                     }
                 }
-                byteCount = (int)i_qcg2DQmlpskB + 1;
-                guvsgoto_i8HTaczZKhpl:
-                    for (int i_lbniBThDcBIQ = 0; i_lbniBThDcBIQ < byteCount; i_lbniBThDcBIQ++) {
-                        if (i_lbniBThDcBIQ < byteCount - 1) {
+                byteCount = (int)i_vEDW3MzlkZ1K + 1;
+                guvsgoto_nvVVTCrbey3x:
+                    for (int i_pYzdcZcM6CGG = 0; i_pYzdcZcM6CGG < byteCount; i_pYzdcZcM6CGG++) {
+                        if (i_pYzdcZcM6CGG < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_lbniBThDcBIQ < byteCount - 1) {
+                            if (i_pYzdcZcM6CGG < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -245,19 +245,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.ThingIntMap.Values.Count;
-                int i_j1SNmPdcYfr9;
-                for (i_j1SNmPdcYfr9 = 0; i_j1SNmPdcYfr9 < 2; i_j1SNmPdcYfr9++) {
-                    if ((ulong)o.ThingIntMap.Values.Count < vuBoundaries[i_j1SNmPdcYfr9]) {
-                       byteCount = (int)(i_j1SNmPdcYfr9 + 1);
-                       goto guvsgoto_pCwWcQtuA0e3;
+                int i_dquxC1EQDlj4;
+                for (i_dquxC1EQDlj4 = 0; i_dquxC1EQDlj4 < 2; i_dquxC1EQDlj4++) {
+                    if ((ulong)o.ThingIntMap.Values.Count < vuBoundaries[i_dquxC1EQDlj4]) {
+                       byteCount = (int)(i_dquxC1EQDlj4 + 1);
+                       goto guvsgoto_s6ac2cWZN5rT;
                     }
                 }
-                byteCount = (int)i_j1SNmPdcYfr9 + 1;
-                guvsgoto_pCwWcQtuA0e3:
-                    for (int i_vqy1aWimDzsa = 0; i_vqy1aWimDzsa < byteCount; i_vqy1aWimDzsa++) {
-                        if (i_vqy1aWimDzsa < byteCount - 1) {
+                byteCount = (int)i_dquxC1EQDlj4 + 1;
+                guvsgoto_s6ac2cWZN5rT:
+                    for (int i_bo8pwqAx76e7 = 0; i_bo8pwqAx76e7 < byteCount; i_bo8pwqAx76e7++) {
+                        if (i_bo8pwqAx76e7 < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_vqy1aWimDzsa < byteCount - 1) {
+                            if (i_bo8pwqAx76e7 < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -292,19 +292,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.IntStringMap.Keys.Count;
-                int i_aDrxyF2Elw7V;
-                for (i_aDrxyF2Elw7V = 0; i_aDrxyF2Elw7V < 2; i_aDrxyF2Elw7V++) {
-                    if ((ulong)o.IntStringMap.Keys.Count < vuBoundaries[i_aDrxyF2Elw7V]) {
-                       byteCount = (int)(i_aDrxyF2Elw7V + 1);
-                       goto guvsgoto_iziJ80aL7tUJ;
+                int i_mOje80dGWf9O;
+                for (i_mOje80dGWf9O = 0; i_mOje80dGWf9O < 2; i_mOje80dGWf9O++) {
+                    if ((ulong)o.IntStringMap.Keys.Count < vuBoundaries[i_mOje80dGWf9O]) {
+                       byteCount = (int)(i_mOje80dGWf9O + 1);
+                       goto guvsgoto_qxthcc6PGQ4W;
                     }
                 }
-                byteCount = (int)i_aDrxyF2Elw7V + 1;
-                guvsgoto_iziJ80aL7tUJ:
-                    for (int i_hBuOS1z7JRtW = 0; i_hBuOS1z7JRtW < byteCount; i_hBuOS1z7JRtW++) {
-                        if (i_hBuOS1z7JRtW < byteCount - 1) {
+                byteCount = (int)i_mOje80dGWf9O + 1;
+                guvsgoto_qxthcc6PGQ4W:
+                    for (int i_bHDxE4VmmwVf = 0; i_bHDxE4VmmwVf < byteCount; i_bHDxE4VmmwVf++) {
+                        if (i_bHDxE4VmmwVf < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_hBuOS1z7JRtW < byteCount - 1) {
+                            if (i_bHDxE4VmmwVf < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -333,19 +333,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.IntStringMap.Values.Count;
-                int i_nVY8HYY7CxrH;
-                for (i_nVY8HYY7CxrH = 0; i_nVY8HYY7CxrH < 2; i_nVY8HYY7CxrH++) {
-                    if ((ulong)o.IntStringMap.Values.Count < vuBoundaries[i_nVY8HYY7CxrH]) {
-                       byteCount = (int)(i_nVY8HYY7CxrH + 1);
-                       goto guvsgoto_nEd7fPcFGY0G;
+                int i_cvzh3IlHxPdE;
+                for (i_cvzh3IlHxPdE = 0; i_cvzh3IlHxPdE < 2; i_cvzh3IlHxPdE++) {
+                    if ((ulong)o.IntStringMap.Values.Count < vuBoundaries[i_cvzh3IlHxPdE]) {
+                       byteCount = (int)(i_cvzh3IlHxPdE + 1);
+                       goto guvsgoto_owNBoDxwumUR;
                     }
                 }
-                byteCount = (int)i_nVY8HYY7CxrH + 1;
-                guvsgoto_nEd7fPcFGY0G:
-                    for (int i_nw3f4WatjE04 = 0; i_nw3f4WatjE04 < byteCount; i_nw3f4WatjE04++) {
-                        if (i_nw3f4WatjE04 < byteCount - 1) {
+                byteCount = (int)i_cvzh3IlHxPdE + 1;
+                guvsgoto_owNBoDxwumUR:
+                    for (int i_oJlM4RKi3dGL = 0; i_oJlM4RKi3dGL < byteCount; i_oJlM4RKi3dGL++) {
+                        if (i_oJlM4RKi3dGL < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_nw3f4WatjE04 < byteCount - 1) {
+                            if (i_oJlM4RKi3dGL < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -358,25 +358,25 @@ namespace Test.Map {
                     }
                 }
                 foreach (string primitive in o.IntStringMap.Values) {
-                uint stringLength_l4yGuBpDKXi6;
-                int i_u7LTYHwb44HN;
-                for (i_u7LTYHwb44HN = 0; i_u7LTYHwb44HN < 2; i_u7LTYHwb44HN++) {
-                    if ((ulong)primitive.Length < vuBoundaries[i_u7LTYHwb44HN]) {
-                       stringLength_l4yGuBpDKXi6 = (uint)(i_u7LTYHwb44HN + 1);
-                       goto guvsgoto_bAAU2vujmGBT;
+                uint stringLength_fLrsRMu0XVpi;
+                int i_hVCMMMYdZY4r;
+                for (i_hVCMMMYdZY4r = 0; i_hVCMMMYdZY4r < 2; i_hVCMMMYdZY4r++) {
+                    if ((ulong)primitive.Length < vuBoundaries[i_hVCMMMYdZY4r]) {
+                       stringLength_fLrsRMu0XVpi = (uint)(i_hVCMMMYdZY4r + 1);
+                       goto guvsgoto_mOtOloS3si2P;
                     }
                 }
-                stringLength_l4yGuBpDKXi6 = (uint)i_u7LTYHwb44HN + 1;
-                guvsgoto_bAAU2vujmGBT:
+                stringLength_fLrsRMu0XVpi = (uint)i_hVCMMMYdZY4r + 1;
+                guvsgoto_mOtOloS3si2P:
                 if (primitive.Length == 0) {
                     bytes[index++] = (byte)0;
                 }
                 else {
                     ulong value = (ulong)primitive.Length;
-                    for (int i_lsNbhX6Sn6cD = 0; i_lsNbhX6Sn6cD < stringLength_l4yGuBpDKXi6; i_lsNbhX6Sn6cD++) {
-                        if (i_lsNbhX6Sn6cD < stringLength_l4yGuBpDKXi6 - 1) {
+                    for (int i_g2ZUvnRXtchp = 0; i_g2ZUvnRXtchp < stringLength_fLrsRMu0XVpi; i_g2ZUvnRXtchp++) {
+                        if (i_g2ZUvnRXtchp < stringLength_fLrsRMu0XVpi - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_lsNbhX6Sn6cD < stringLength_l4yGuBpDKXi6 - 1) {
+                            if (i_g2ZUvnRXtchp < stringLength_fLrsRMu0XVpi - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -407,19 +407,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.ThingThingMap.Keys.Count;
-                int i_vFOdAhci3XtK;
-                for (i_vFOdAhci3XtK = 0; i_vFOdAhci3XtK < 2; i_vFOdAhci3XtK++) {
-                    if ((ulong)o.ThingThingMap.Keys.Count < vuBoundaries[i_vFOdAhci3XtK]) {
-                       byteCount = (int)(i_vFOdAhci3XtK + 1);
-                       goto guvsgoto_jqAYkRR4COTx;
+                int i_eRol7mtQUcys;
+                for (i_eRol7mtQUcys = 0; i_eRol7mtQUcys < 2; i_eRol7mtQUcys++) {
+                    if ((ulong)o.ThingThingMap.Keys.Count < vuBoundaries[i_eRol7mtQUcys]) {
+                       byteCount = (int)(i_eRol7mtQUcys + 1);
+                       goto guvsgoto_k66PvNteSMa6;
                     }
                 }
-                byteCount = (int)i_vFOdAhci3XtK + 1;
-                guvsgoto_jqAYkRR4COTx:
-                    for (int i_stbzKTG04ixI = 0; i_stbzKTG04ixI < byteCount; i_stbzKTG04ixI++) {
-                        if (i_stbzKTG04ixI < byteCount - 1) {
+                byteCount = (int)i_eRol7mtQUcys + 1;
+                guvsgoto_k66PvNteSMa6:
+                    for (int i_k7IfBfvqNmnQ = 0; i_k7IfBfvqNmnQ < byteCount; i_k7IfBfvqNmnQ++) {
+                        if (i_k7IfBfvqNmnQ < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_stbzKTG04ixI < byteCount - 1) {
+                            if (i_k7IfBfvqNmnQ < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -445,19 +445,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.ThingThingMap.Values.Count;
-                int i_d3rf34JJ60g1;
-                for (i_d3rf34JJ60g1 = 0; i_d3rf34JJ60g1 < 2; i_d3rf34JJ60g1++) {
-                    if ((ulong)o.ThingThingMap.Values.Count < vuBoundaries[i_d3rf34JJ60g1]) {
-                       byteCount = (int)(i_d3rf34JJ60g1 + 1);
-                       goto guvsgoto_dI0nnNkVIqlM;
+                int i_zGZgSBFwHNqy;
+                for (i_zGZgSBFwHNqy = 0; i_zGZgSBFwHNqy < 2; i_zGZgSBFwHNqy++) {
+                    if ((ulong)o.ThingThingMap.Values.Count < vuBoundaries[i_zGZgSBFwHNqy]) {
+                       byteCount = (int)(i_zGZgSBFwHNqy + 1);
+                       goto guvsgoto_rjRmF0IN23KN;
                     }
                 }
-                byteCount = (int)i_d3rf34JJ60g1 + 1;
-                guvsgoto_dI0nnNkVIqlM:
-                    for (int i_rrtTi3CQhg52 = 0; i_rrtTi3CQhg52 < byteCount; i_rrtTi3CQhg52++) {
-                        if (i_rrtTi3CQhg52 < byteCount - 1) {
+                byteCount = (int)i_zGZgSBFwHNqy + 1;
+                guvsgoto_rjRmF0IN23KN:
+                    for (int i_cnNMrTs8EIFY = 0; i_cnNMrTs8EIFY < byteCount; i_cnNMrTs8EIFY++) {
+                        if (i_cnNMrTs8EIFY < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_rrtTi3CQhg52 < byteCount - 1) {
+                            if (i_cnNMrTs8EIFY < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -489,19 +489,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.EnumIntMap.Keys.Count;
-                int i_lA6aIYMrC9H5;
-                for (i_lA6aIYMrC9H5 = 0; i_lA6aIYMrC9H5 < 2; i_lA6aIYMrC9H5++) {
-                    if ((ulong)o.EnumIntMap.Keys.Count < vuBoundaries[i_lA6aIYMrC9H5]) {
-                       byteCount = (int)(i_lA6aIYMrC9H5 + 1);
-                       goto guvsgoto_hZ5qMHbBhzqR;
+                int i_goHmR1ib2shr;
+                for (i_goHmR1ib2shr = 0; i_goHmR1ib2shr < 2; i_goHmR1ib2shr++) {
+                    if ((ulong)o.EnumIntMap.Keys.Count < vuBoundaries[i_goHmR1ib2shr]) {
+                       byteCount = (int)(i_goHmR1ib2shr + 1);
+                       goto guvsgoto_nhl3DVAFw5g4;
                     }
                 }
-                byteCount = (int)i_lA6aIYMrC9H5 + 1;
-                guvsgoto_hZ5qMHbBhzqR:
-                    for (int i_iBNOXEEc7zZe = 0; i_iBNOXEEc7zZe < byteCount; i_iBNOXEEc7zZe++) {
-                        if (i_iBNOXEEc7zZe < byteCount - 1) {
+                byteCount = (int)i_goHmR1ib2shr + 1;
+                guvsgoto_nhl3DVAFw5g4:
+                    for (int i_f5viLMiAabLL = 0; i_f5viLMiAabLL < byteCount; i_f5viLMiAabLL++) {
+                        if (i_f5viLMiAabLL < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_iBNOXEEc7zZe < byteCount - 1) {
+                            if (i_f5viLMiAabLL < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -528,19 +528,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.EnumIntMap.Values.Count;
-                int i_yBitEOzrs96k;
-                for (i_yBitEOzrs96k = 0; i_yBitEOzrs96k < 2; i_yBitEOzrs96k++) {
-                    if ((ulong)o.EnumIntMap.Values.Count < vuBoundaries[i_yBitEOzrs96k]) {
-                       byteCount = (int)(i_yBitEOzrs96k + 1);
-                       goto guvsgoto_zt6yYOTqbMrS;
+                int i_ffrMzE5m93QH;
+                for (i_ffrMzE5m93QH = 0; i_ffrMzE5m93QH < 2; i_ffrMzE5m93QH++) {
+                    if ((ulong)o.EnumIntMap.Values.Count < vuBoundaries[i_ffrMzE5m93QH]) {
+                       byteCount = (int)(i_ffrMzE5m93QH + 1);
+                       goto guvsgoto_gL2WnVcjgSwc;
                     }
                 }
-                byteCount = (int)i_yBitEOzrs96k + 1;
-                guvsgoto_zt6yYOTqbMrS:
-                    for (int i_xwNM4nUbL2bo = 0; i_xwNM4nUbL2bo < byteCount; i_xwNM4nUbL2bo++) {
-                        if (i_xwNM4nUbL2bo < byteCount - 1) {
+                byteCount = (int)i_ffrMzE5m93QH + 1;
+                guvsgoto_gL2WnVcjgSwc:
+                    for (int i_kr3UWQ4oM56f = 0; i_kr3UWQ4oM56f < byteCount; i_kr3UWQ4oM56f++) {
+                        if (i_kr3UWQ4oM56f < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_xwNM4nUbL2bo < byteCount - 1) {
+                            if (i_kr3UWQ4oM56f < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -575,19 +575,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.VintVlongMap.Keys.Count;
-                int i_jlIs9IV9wWEC;
-                for (i_jlIs9IV9wWEC = 0; i_jlIs9IV9wWEC < 2; i_jlIs9IV9wWEC++) {
-                    if ((ulong)o.VintVlongMap.Keys.Count < vuBoundaries[i_jlIs9IV9wWEC]) {
-                       byteCount = (int)(i_jlIs9IV9wWEC + 1);
-                       goto guvsgoto_wnCXpq3Rk5Rv;
+                int i_iFaGgzMv4vx5;
+                for (i_iFaGgzMv4vx5 = 0; i_iFaGgzMv4vx5 < 2; i_iFaGgzMv4vx5++) {
+                    if ((ulong)o.VintVlongMap.Keys.Count < vuBoundaries[i_iFaGgzMv4vx5]) {
+                       byteCount = (int)(i_iFaGgzMv4vx5 + 1);
+                       goto guvsgoto_zvYhq7kEIs5F;
                     }
                 }
-                byteCount = (int)i_jlIs9IV9wWEC + 1;
-                guvsgoto_wnCXpq3Rk5Rv:
-                    for (int i_agwX1pgfA3Bq = 0; i_agwX1pgfA3Bq < byteCount; i_agwX1pgfA3Bq++) {
-                        if (i_agwX1pgfA3Bq < byteCount - 1) {
+                byteCount = (int)i_iFaGgzMv4vx5 + 1;
+                guvsgoto_zvYhq7kEIs5F:
+                    for (int i_wrxAYiArjlOe = 0; i_wrxAYiArjlOe < byteCount; i_wrxAYiArjlOe++) {
+                        if (i_wrxAYiArjlOe < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_agwX1pgfA3Bq < byteCount - 1) {
+                            if (i_wrxAYiArjlOe < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -601,30 +601,30 @@ namespace Test.Map {
                 }
                 foreach (int primitive in o.VintVlongMap.Keys) {
     //// AppendSignedToULong(primitive)
-    long s2ultemp_eLbbfp98OsqT = primitive;
-    if (s2ultemp_eLbbfp98OsqT == long.MinValue) {
-        s2ultemp_eLbbfp98OsqT = long.MaxValue;
+    long s2ultemp_rY5cTm8gvyyq = primitive;
+    if (s2ultemp_rY5cTm8gvyyq == long.MinValue) {
+        s2ultemp_rY5cTm8gvyyq = long.MaxValue;
     }
     else {
-        if (s2ultemp_eLbbfp98OsqT > 0) {
-            s2ultemp_eLbbfp98OsqT = -s2ultemp_eLbbfp98OsqT;
+        if (s2ultemp_rY5cTm8gvyyq > 0) {
+            s2ultemp_rY5cTm8gvyyq = -s2ultemp_rY5cTm8gvyyq;
         }
-        s2ultemp_eLbbfp98OsqT -= 1;
+        s2ultemp_rY5cTm8gvyyq -= 1;
     }
-    s2ultemp_eLbbfp98OsqT = ~s2ultemp_eLbbfp98OsqT;
-    ulong s2ulresult_rBcdgc2fSaXj = (ulong)s2ultemp_eLbbfp98OsqT;
-    //// AppendGetSignVariantSize(s2ulresult_rBcdgc2fSaXj)
-    byte vr_xfZ4YM5CTrhx = 1;
-    for (int v_nU3gWGXS0MiA = 56; v_nU3gWGXS0MiA >= 0; v_nU3gWGXS0MiA -= 8) {
-        if (((255UL << v_nU3gWGXS0MiA) & s2ulresult_rBcdgc2fSaXj) > 0) {
-            vr_xfZ4YM5CTrhx = (byte)(v_nU3gWGXS0MiA / 8 + 2);
+    s2ultemp_rY5cTm8gvyyq = ~s2ultemp_rY5cTm8gvyyq;
+    ulong s2ulresult_ryintKkM72p9 = (ulong)s2ultemp_rY5cTm8gvyyq;
+    //// AppendGetSignVariantSize(s2ulresult_ryintKkM72p9)
+    byte vr_pTQA2Ovj16Zs = 1;
+    for (int v_mJMSwqJC2hVA = 56; v_mJMSwqJC2hVA >= 0; v_mJMSwqJC2hVA -= 8) {
+        if (((255UL << v_mJMSwqJC2hVA) & s2ulresult_ryintKkM72p9) > 0) {
+            vr_pTQA2Ovj16Zs = (byte)(v_mJMSwqJC2hVA / 8 + 2);
             break;
         }
     }
-    bytes[index++] = (byte)((byte)(vr_xfZ4YM5CTrhx << 1) | (byte)(primitive > 0 ? 0 : 1));
-    for (int vi_fd9ybwIlY2ha = 0; vi_fd9ybwIlY2ha < vr_xfZ4YM5CTrhx - 1; vi_fd9ybwIlY2ha++) {
-        bytes[index++] = (byte)(s2ulresult_rBcdgc2fSaXj & 255);
-        s2ulresult_rBcdgc2fSaXj = s2ulresult_rBcdgc2fSaXj >> 8;
+    bytes[index++] = (byte)((byte)(vr_pTQA2Ovj16Zs << 1) | (byte)(primitive > 0 ? 0 : 1));
+    for (int vi_am7IabgXI6C9 = 0; vi_am7IabgXI6C9 < vr_pTQA2Ovj16Zs - 1; vi_am7IabgXI6C9++) {
+        bytes[index++] = (byte)(s2ulresult_ryintKkM72p9 & 255);
+        s2ulresult_ryintKkM72p9 = s2ulresult_ryintKkM72p9 >> 8;
     }
                 }
             }
@@ -638,19 +638,19 @@ namespace Test.Map {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.VintVlongMap.Values.Count;
-                int i_dVsmnfsr7yRU;
-                for (i_dVsmnfsr7yRU = 0; i_dVsmnfsr7yRU < 2; i_dVsmnfsr7yRU++) {
-                    if ((ulong)o.VintVlongMap.Values.Count < vuBoundaries[i_dVsmnfsr7yRU]) {
-                       byteCount = (int)(i_dVsmnfsr7yRU + 1);
-                       goto guvsgoto_lfjcwX9xtOGw;
+                int i_zCqRtWgC8qzP;
+                for (i_zCqRtWgC8qzP = 0; i_zCqRtWgC8qzP < 2; i_zCqRtWgC8qzP++) {
+                    if ((ulong)o.VintVlongMap.Values.Count < vuBoundaries[i_zCqRtWgC8qzP]) {
+                       byteCount = (int)(i_zCqRtWgC8qzP + 1);
+                       goto guvsgoto_nIoRcozTI0TT;
                     }
                 }
-                byteCount = (int)i_dVsmnfsr7yRU + 1;
-                guvsgoto_lfjcwX9xtOGw:
-                    for (int i_qHBxT6JOM3QR = 0; i_qHBxT6JOM3QR < byteCount; i_qHBxT6JOM3QR++) {
-                        if (i_qHBxT6JOM3QR < byteCount - 1) {
+                byteCount = (int)i_zCqRtWgC8qzP + 1;
+                guvsgoto_nIoRcozTI0TT:
+                    for (int i_sWjZZcTHhNnX = 0; i_sWjZZcTHhNnX < byteCount; i_sWjZZcTHhNnX++) {
+                        if (i_sWjZZcTHhNnX < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_qHBxT6JOM3QR < byteCount - 1) {
+                            if (i_sWjZZcTHhNnX < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -664,30 +664,30 @@ namespace Test.Map {
                 }
                 foreach (long primitive in o.VintVlongMap.Values) {
     //// AppendSignedToULong(primitive)
-    long s2ultemp_jUvcNUgIHMpq = primitive;
-    if (s2ultemp_jUvcNUgIHMpq == long.MinValue) {
-        s2ultemp_jUvcNUgIHMpq = long.MaxValue;
+    long s2ultemp_a2zNSb2kDoKI = primitive;
+    if (s2ultemp_a2zNSb2kDoKI == long.MinValue) {
+        s2ultemp_a2zNSb2kDoKI = long.MaxValue;
     }
     else {
-        if (s2ultemp_jUvcNUgIHMpq > 0) {
-            s2ultemp_jUvcNUgIHMpq = -s2ultemp_jUvcNUgIHMpq;
+        if (s2ultemp_a2zNSb2kDoKI > 0) {
+            s2ultemp_a2zNSb2kDoKI = -s2ultemp_a2zNSb2kDoKI;
         }
-        s2ultemp_jUvcNUgIHMpq -= 1;
+        s2ultemp_a2zNSb2kDoKI -= 1;
     }
-    s2ultemp_jUvcNUgIHMpq = ~s2ultemp_jUvcNUgIHMpq;
-    ulong s2ulresult_bv7TJZdbxyzZ = (ulong)s2ultemp_jUvcNUgIHMpq;
-    //// AppendGetSignVariantSize(s2ulresult_bv7TJZdbxyzZ)
-    byte vr_jLOxf1TpeL0C = 1;
-    for (int v_sqOmsinarktx = 56; v_sqOmsinarktx >= 0; v_sqOmsinarktx -= 8) {
-        if (((255UL << v_sqOmsinarktx) & s2ulresult_bv7TJZdbxyzZ) > 0) {
-            vr_jLOxf1TpeL0C = (byte)(v_sqOmsinarktx / 8 + 2);
+    s2ultemp_a2zNSb2kDoKI = ~s2ultemp_a2zNSb2kDoKI;
+    ulong s2ulresult_tzEV09apiIaq = (ulong)s2ultemp_a2zNSb2kDoKI;
+    //// AppendGetSignVariantSize(s2ulresult_tzEV09apiIaq)
+    byte vr_cJ3FglLvoCOA = 1;
+    for (int v_jCU6yplCmKeA = 56; v_jCU6yplCmKeA >= 0; v_jCU6yplCmKeA -= 8) {
+        if (((255UL << v_jCU6yplCmKeA) & s2ulresult_tzEV09apiIaq) > 0) {
+            vr_cJ3FglLvoCOA = (byte)(v_jCU6yplCmKeA / 8 + 2);
             break;
         }
     }
-    bytes[index++] = (byte)((byte)(vr_jLOxf1TpeL0C << 1) | (byte)(primitive > 0 ? 0 : 1));
-    for (int vi_z0fW0Ot7vGPb = 0; vi_z0fW0Ot7vGPb < vr_jLOxf1TpeL0C - 1; vi_z0fW0Ot7vGPb++) {
-        bytes[index++] = (byte)(s2ulresult_bv7TJZdbxyzZ & 255);
-        s2ulresult_bv7TJZdbxyzZ = s2ulresult_bv7TJZdbxyzZ >> 8;
+    bytes[index++] = (byte)((byte)(vr_cJ3FglLvoCOA << 1) | (byte)(primitive > 0 ? 0 : 1));
+    for (int vi_o7RiM7PD2jIi = 0; vi_o7RiM7PD2jIi < vr_cJ3FglLvoCOA - 1; vi_o7RiM7PD2jIi++) {
+        bytes[index++] = (byte)(s2ulresult_tzEV09apiIaq & 255);
+        s2ulresult_tzEV09apiIaq = s2ulresult_tzEV09apiIaq >> 8;
     }
                 }
             }
@@ -724,21 +724,21 @@ namespace Test.Map {
 ///////////////////////////////////////
         public object Energize(byte[] bytes) {
             int index = 0;
-                    ulong vuread_cSDP3alCFF9s = 0;
-                    for (int i_e0TplzHlrrzo = 0; i_e0TplzHlrrzo < 9; i_e0TplzHlrrzo++) {
+                    ulong vuread_dwdsMptsUdzx = 0;
+                    for (int i_gd12xHdFEC8i = 0; i_gd12xHdFEC8i < 9; i_gd12xHdFEC8i++) {
                         byte b = bytes[index++];
-                        if (i_e0TplzHlrrzo < 8) {
-                            vuread_cSDP3alCFF9s += (((ulong)b & (ulong)127) << (7 * i_e0TplzHlrrzo));
+                        if (i_gd12xHdFEC8i < 8) {
+                            vuread_dwdsMptsUdzx += (((ulong)b & (ulong)127) << (7 * i_gd12xHdFEC8i));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_cSDP3alCFF9s += (ulong)b << (7 * i_e0TplzHlrrzo);
+                            vuread_dwdsMptsUdzx += (ulong)b << (7 * i_gd12xHdFEC8i);
                             break;
                         }
                     }
-                    ushort typeId = (ushort)vuread_cSDP3alCFF9s;
+                    ushort typeId = (ushort)vuread_dwdsMptsUdzx;
             switch (typeId) {
             case 10:
                 {
@@ -760,65 +760,65 @@ namespace Test.Map {
                 IList<int> intThingMapKeys = new List<int>();
                 IList<Thing> intThingMapValues = new List<Thing>();
             // Read list item count
-            ushort count_u6yAr2hmKMfJ;
-                    ulong vuread_rHgr901D0WL9 = 0;
-                    for (int i_xeV69DUZto36 = 0; i_xeV69DUZto36 < 9; i_xeV69DUZto36++) {
+            ushort count_mDSrXlIm3LYc;
+                    ulong vuread_e206qWPDIt3I = 0;
+                    for (int i_cWgugdNPx5Zj = 0; i_cWgugdNPx5Zj < 9; i_cWgugdNPx5Zj++) {
                         byte b = bytes[index++];
-                        if (i_xeV69DUZto36 < 8) {
-                            vuread_rHgr901D0WL9 += (((ulong)b & (ulong)127) << (7 * i_xeV69DUZto36));
+                        if (i_cWgugdNPx5Zj < 8) {
+                            vuread_e206qWPDIt3I += (((ulong)b & (ulong)127) << (7 * i_cWgugdNPx5Zj));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_rHgr901D0WL9 += (ulong)b << (7 * i_xeV69DUZto36);
+                            vuread_e206qWPDIt3I += (ulong)b << (7 * i_cWgugdNPx5Zj);
                             break;
                         }
                     }
-                    count_u6yAr2hmKMfJ = (ushort)vuread_rHgr901D0WL9;
+                    count_mDSrXlIm3LYc = (ushort)vuread_e206qWPDIt3I;
             // Read list items
-            if (count_u6yAr2hmKMfJ > 0) {
+            if (count_mDSrXlIm3LYc > 0) {
                 intThingMapKeys = new List<int>();
-                int listValue_pVlMxXSJUkKN;
-                for (int i_hpmAz6y9vzFn = 0; i_hpmAz6y9vzFn < count_u6yAr2hmKMfJ; i_hpmAz6y9vzFn++) {
+                int listValue_ncFJFmDNpZRE;
+                for (int i_rgoSXEKjJjkb = 0; i_rgoSXEKjJjkb < count_mDSrXlIm3LYc; i_rgoSXEKjJjkb++) {
                     // Read Int list item
-                listValue_pVlMxXSJUkKN =
+                listValue_ncFJFmDNpZRE =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    intThingMapKeys.Add(listValue_pVlMxXSJUkKN);
+                    intThingMapKeys.Add(listValue_ncFJFmDNpZRE);
                 }
             }
             // Read list item count
-            ushort count_clmg2qpzOkQo;
-                    ulong vuread_rofcecoUDiNU = 0;
-                    for (int i_htzx03Llq8Gl = 0; i_htzx03Llq8Gl < 9; i_htzx03Llq8Gl++) {
+            ushort count_cng07iOqdRzo;
+                    ulong vuread_hg8wZptrfLO9 = 0;
+                    for (int i_v423vPJw2DDr = 0; i_v423vPJw2DDr < 9; i_v423vPJw2DDr++) {
                         byte b = bytes[index++];
-                        if (i_htzx03Llq8Gl < 8) {
-                            vuread_rofcecoUDiNU += (((ulong)b & (ulong)127) << (7 * i_htzx03Llq8Gl));
+                        if (i_v423vPJw2DDr < 8) {
+                            vuread_hg8wZptrfLO9 += (((ulong)b & (ulong)127) << (7 * i_v423vPJw2DDr));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_rofcecoUDiNU += (ulong)b << (7 * i_htzx03Llq8Gl);
+                            vuread_hg8wZptrfLO9 += (ulong)b << (7 * i_v423vPJw2DDr);
                             break;
                         }
                     }
-                    count_clmg2qpzOkQo = (ushort)vuread_rofcecoUDiNU;
+                    count_cng07iOqdRzo = (ushort)vuread_hg8wZptrfLO9;
             // Read list items
-            if (count_clmg2qpzOkQo > 0) {
+            if (count_cng07iOqdRzo > 0) {
                 intThingMapValues = new List<Thing>();
-                for (int li_pLRD4k9iI7Vk = 0; li_pLRD4k9iI7Vk < count_clmg2qpzOkQo; li_pLRD4k9iI7Vk++) {
+                for (int li_cNPgkAA9QaBQ = 0; li_cNPgkAA9QaBQ < count_cng07iOqdRzo; li_cNPgkAA9QaBQ++) {
                     intThingMapValues.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
                 o.IntThingMap = new Dictionary<int,Thing>(intThingMapKeys.Count);
-                for (int i_vw5skUT8HCZJ = 0; i_vw5skUT8HCZJ < intThingMapKeys.Count; i_vw5skUT8HCZJ++) {
-                    o.IntThingMap[intThingMapKeys[i_vw5skUT8HCZJ]] = intThingMapValues[i_vw5skUT8HCZJ];
+                for (int i_nntu025DJhbc = 0; i_nntu025DJhbc < intThingMapKeys.Count; i_nntu025DJhbc++) {
+                    o.IntThingMap[intThingMapKeys[i_nntu025DJhbc]] = intThingMapValues[i_nntu025DJhbc];
                 }
                     return o;
                 }
@@ -829,65 +829,65 @@ namespace Test.Map {
                 IList<Thing> thingIntMapKeys = new List<Thing>();
                 IList<int> thingIntMapValues = new List<int>();
             // Read list item count
-            ushort count_w2JUIE8RS3CD;
-                    ulong vuread_iU0siFltHpGE = 0;
-                    for (int i_zsbFoHOhWiNc = 0; i_zsbFoHOhWiNc < 9; i_zsbFoHOhWiNc++) {
+            ushort count_gU5yidvXNQqm;
+                    ulong vuread_pmgPlOsYDmxh = 0;
+                    for (int i_jpGaIaR8LN1A = 0; i_jpGaIaR8LN1A < 9; i_jpGaIaR8LN1A++) {
                         byte b = bytes[index++];
-                        if (i_zsbFoHOhWiNc < 8) {
-                            vuread_iU0siFltHpGE += (((ulong)b & (ulong)127) << (7 * i_zsbFoHOhWiNc));
+                        if (i_jpGaIaR8LN1A < 8) {
+                            vuread_pmgPlOsYDmxh += (((ulong)b & (ulong)127) << (7 * i_jpGaIaR8LN1A));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_iU0siFltHpGE += (ulong)b << (7 * i_zsbFoHOhWiNc);
+                            vuread_pmgPlOsYDmxh += (ulong)b << (7 * i_jpGaIaR8LN1A);
                             break;
                         }
                     }
-                    count_w2JUIE8RS3CD = (ushort)vuread_iU0siFltHpGE;
+                    count_gU5yidvXNQqm = (ushort)vuread_pmgPlOsYDmxh;
             // Read list items
-            if (count_w2JUIE8RS3CD > 0) {
+            if (count_gU5yidvXNQqm > 0) {
                 thingIntMapKeys = new List<Thing>();
-                for (int li_ppJe9eB63B7z = 0; li_ppJe9eB63B7z < count_w2JUIE8RS3CD; li_ppJe9eB63B7z++) {
+                for (int li_mc1NOOdZ7gUO = 0; li_mc1NOOdZ7gUO < count_gU5yidvXNQqm; li_mc1NOOdZ7gUO++) {
                     thingIntMapKeys.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
             // Read list item count
-            ushort count_xAZbrFbLvfVp;
-                    ulong vuread_mCCkpuRnhXR3 = 0;
-                    for (int i_yguDXKKGvLLX = 0; i_yguDXKKGvLLX < 9; i_yguDXKKGvLLX++) {
+            ushort count_tqs4YmJdwYc2;
+                    ulong vuread_nvoM9rL6vQki = 0;
+                    for (int i_uOkYjIjpF1or = 0; i_uOkYjIjpF1or < 9; i_uOkYjIjpF1or++) {
                         byte b = bytes[index++];
-                        if (i_yguDXKKGvLLX < 8) {
-                            vuread_mCCkpuRnhXR3 += (((ulong)b & (ulong)127) << (7 * i_yguDXKKGvLLX));
+                        if (i_uOkYjIjpF1or < 8) {
+                            vuread_nvoM9rL6vQki += (((ulong)b & (ulong)127) << (7 * i_uOkYjIjpF1or));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_mCCkpuRnhXR3 += (ulong)b << (7 * i_yguDXKKGvLLX);
+                            vuread_nvoM9rL6vQki += (ulong)b << (7 * i_uOkYjIjpF1or);
                             break;
                         }
                     }
-                    count_xAZbrFbLvfVp = (ushort)vuread_mCCkpuRnhXR3;
+                    count_tqs4YmJdwYc2 = (ushort)vuread_nvoM9rL6vQki;
             // Read list items
-            if (count_xAZbrFbLvfVp > 0) {
+            if (count_tqs4YmJdwYc2 > 0) {
                 thingIntMapValues = new List<int>();
-                int listValue_sM0rgbQFDtLH;
-                for (int i_pqRJUUrgS6fk = 0; i_pqRJUUrgS6fk < count_xAZbrFbLvfVp; i_pqRJUUrgS6fk++) {
+                int listValue_sWjydXdQa8hs;
+                for (int i_kA0QEXtfgjhk = 0; i_kA0QEXtfgjhk < count_tqs4YmJdwYc2; i_kA0QEXtfgjhk++) {
                     // Read Int list item
-                listValue_sM0rgbQFDtLH =
+                listValue_sWjydXdQa8hs =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    thingIntMapValues.Add(listValue_sM0rgbQFDtLH);
+                    thingIntMapValues.Add(listValue_sWjydXdQa8hs);
                 }
             }
                 o.ThingIntMap = new Dictionary<Thing,int>(thingIntMapKeys.Count);
-                for (int i_eHXVFo411PCN = 0; i_eHXVFo411PCN < thingIntMapKeys.Count; i_eHXVFo411PCN++) {
-                    o.ThingIntMap[thingIntMapKeys[i_eHXVFo411PCN]] = thingIntMapValues[i_eHXVFo411PCN];
+                for (int i_aV4YOWxPg74m = 0; i_aV4YOWxPg74m < thingIntMapKeys.Count; i_aV4YOWxPg74m++) {
+                    o.ThingIntMap[thingIntMapKeys[i_aV4YOWxPg74m]] = thingIntMapValues[i_aV4YOWxPg74m];
                 }
                     return o;
                 }
@@ -898,84 +898,84 @@ namespace Test.Map {
                 IList<int> intStringMapKeys = new List<int>();
                 IList<string> intStringMapValues = new List<string>();
             // Read list item count
-            ushort count_mzgghmzMFX2H;
-                    ulong vuread_xaVKtEeVGPgJ = 0;
-                    for (int i_f59ozUP5Xefu = 0; i_f59ozUP5Xefu < 9; i_f59ozUP5Xefu++) {
+            ushort count_dn2HMDiYH1yS;
+                    ulong vuread_sDURIjlIP9vs = 0;
+                    for (int i_xpbnKBmCFNIr = 0; i_xpbnKBmCFNIr < 9; i_xpbnKBmCFNIr++) {
                         byte b = bytes[index++];
-                        if (i_f59ozUP5Xefu < 8) {
-                            vuread_xaVKtEeVGPgJ += (((ulong)b & (ulong)127) << (7 * i_f59ozUP5Xefu));
+                        if (i_xpbnKBmCFNIr < 8) {
+                            vuread_sDURIjlIP9vs += (((ulong)b & (ulong)127) << (7 * i_xpbnKBmCFNIr));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_xaVKtEeVGPgJ += (ulong)b << (7 * i_f59ozUP5Xefu);
+                            vuread_sDURIjlIP9vs += (ulong)b << (7 * i_xpbnKBmCFNIr);
                             break;
                         }
                     }
-                    count_mzgghmzMFX2H = (ushort)vuread_xaVKtEeVGPgJ;
+                    count_dn2HMDiYH1yS = (ushort)vuread_sDURIjlIP9vs;
             // Read list items
-            if (count_mzgghmzMFX2H > 0) {
+            if (count_dn2HMDiYH1yS > 0) {
                 intStringMapKeys = new List<int>();
-                int listValue_ql9GGDPxOq2E;
-                for (int i_mtHwKRgZtH1m = 0; i_mtHwKRgZtH1m < count_mzgghmzMFX2H; i_mtHwKRgZtH1m++) {
+                int listValue_xVCMatMkxlfl;
+                for (int i_aQg7VvGh1KOx = 0; i_aQg7VvGh1KOx < count_dn2HMDiYH1yS; i_aQg7VvGh1KOx++) {
                     // Read Int list item
-                listValue_ql9GGDPxOq2E =
+                listValue_xVCMatMkxlfl =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    intStringMapKeys.Add(listValue_ql9GGDPxOq2E);
+                    intStringMapKeys.Add(listValue_xVCMatMkxlfl);
                 }
             }
             // Read list item count
-            ushort count_flmVh6TZ5A6i;
-                    ulong vuread_nIpd9S47cFVf = 0;
-                    for (int i_fsvg7pbgtWtv = 0; i_fsvg7pbgtWtv < 9; i_fsvg7pbgtWtv++) {
+            ushort count_l5nfP5ne5DWX;
+                    ulong vuread_sIIvwl4Rj0l4 = 0;
+                    for (int i_jpRjgAzugekf = 0; i_jpRjgAzugekf < 9; i_jpRjgAzugekf++) {
                         byte b = bytes[index++];
-                        if (i_fsvg7pbgtWtv < 8) {
-                            vuread_nIpd9S47cFVf += (((ulong)b & (ulong)127) << (7 * i_fsvg7pbgtWtv));
+                        if (i_jpRjgAzugekf < 8) {
+                            vuread_sIIvwl4Rj0l4 += (((ulong)b & (ulong)127) << (7 * i_jpRjgAzugekf));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_nIpd9S47cFVf += (ulong)b << (7 * i_fsvg7pbgtWtv);
+                            vuread_sIIvwl4Rj0l4 += (ulong)b << (7 * i_jpRjgAzugekf);
                             break;
                         }
                     }
-                    count_flmVh6TZ5A6i = (ushort)vuread_nIpd9S47cFVf;
+                    count_l5nfP5ne5DWX = (ushort)vuread_sIIvwl4Rj0l4;
             // Read list items
-            if (count_flmVh6TZ5A6i > 0) {
+            if (count_l5nfP5ne5DWX > 0) {
                 intStringMapValues = new List<string>();
-                string listValue_g4qSHcIbxz1b;
-                for (int i_lcZKM3jRzhIY = 0; i_lcZKM3jRzhIY < count_flmVh6TZ5A6i; i_lcZKM3jRzhIY++) {
+                string listValue_cHFC8bpJ4tpn;
+                for (int i_ulVQP6oLTtUz = 0; i_ulVQP6oLTtUz < count_l5nfP5ne5DWX; i_ulVQP6oLTtUz++) {
                     // Read String list item
-                    ulong vuread_lmAa6TSXBtO5 = 0;
-                    for (int i_kAEzNM5ivBg4 = 0; i_kAEzNM5ivBg4 < 9; i_kAEzNM5ivBg4++) {
+                    ulong vuread_rCThKMac9Dw5 = 0;
+                    for (int i_rTPjZIvWXfo5 = 0; i_rTPjZIvWXfo5 < 9; i_rTPjZIvWXfo5++) {
                         byte b = bytes[index++];
-                        if (i_kAEzNM5ivBg4 < 8) {
-                            vuread_lmAa6TSXBtO5 += (((ulong)b & (ulong)127) << (7 * i_kAEzNM5ivBg4));
+                        if (i_rTPjZIvWXfo5 < 8) {
+                            vuread_rCThKMac9Dw5 += (((ulong)b & (ulong)127) << (7 * i_rTPjZIvWXfo5));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_lmAa6TSXBtO5 += (ulong)b << (7 * i_kAEzNM5ivBg4);
+                            vuread_rCThKMac9Dw5 += (ulong)b << (7 * i_rTPjZIvWXfo5);
                             break;
                         }
                     }
-                    ushort stringLength_pM1QzZYSo3Xf = (ushort)vuread_lmAa6TSXBtO5;
-                listValue_g4qSHcIbxz1b = Encoding.UTF8.GetString(bytes, index, stringLength_pM1QzZYSo3Xf);
-                index += stringLength_pM1QzZYSo3Xf;
-                    intStringMapValues.Add(listValue_g4qSHcIbxz1b);
+                    ushort stringLength_fd7EdBQMyCqZ = (ushort)vuread_rCThKMac9Dw5;
+                listValue_cHFC8bpJ4tpn = Encoding.UTF8.GetString(bytes, index, stringLength_fd7EdBQMyCqZ);
+                index += stringLength_fd7EdBQMyCqZ;
+                    intStringMapValues.Add(listValue_cHFC8bpJ4tpn);
                 }
             }
                 o.IntStringMap = new Dictionary<int,string>(intStringMapKeys.Count);
-                for (int i_e2MHKiXIpUiA = 0; i_e2MHKiXIpUiA < intStringMapKeys.Count; i_e2MHKiXIpUiA++) {
-                    o.IntStringMap[intStringMapKeys[i_e2MHKiXIpUiA]] = intStringMapValues[i_e2MHKiXIpUiA];
+                for (int i_bVFCMMYu45bn = 0; i_bVFCMMYu45bn < intStringMapKeys.Count; i_bVFCMMYu45bn++) {
+                    o.IntStringMap[intStringMapKeys[i_bVFCMMYu45bn]] = intStringMapValues[i_bVFCMMYu45bn];
                 }
                     return o;
                 }
@@ -986,56 +986,56 @@ namespace Test.Map {
                 IList<Thing> thingThingMapKeys = new List<Thing>();
                 IList<Thing> thingThingMapValues = new List<Thing>();
             // Read list item count
-            ushort count_mjUPzVxr76q9;
-                    ulong vuread_iyfM8OTafFYd = 0;
-                    for (int i_dkmsGgPPrd6D = 0; i_dkmsGgPPrd6D < 9; i_dkmsGgPPrd6D++) {
+            ushort count_fgbhsRAUQbZu;
+                    ulong vuread_uGX0hEcKoXeZ = 0;
+                    for (int i_cHAwPbbTSC6S = 0; i_cHAwPbbTSC6S < 9; i_cHAwPbbTSC6S++) {
                         byte b = bytes[index++];
-                        if (i_dkmsGgPPrd6D < 8) {
-                            vuread_iyfM8OTafFYd += (((ulong)b & (ulong)127) << (7 * i_dkmsGgPPrd6D));
+                        if (i_cHAwPbbTSC6S < 8) {
+                            vuread_uGX0hEcKoXeZ += (((ulong)b & (ulong)127) << (7 * i_cHAwPbbTSC6S));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_iyfM8OTafFYd += (ulong)b << (7 * i_dkmsGgPPrd6D);
+                            vuread_uGX0hEcKoXeZ += (ulong)b << (7 * i_cHAwPbbTSC6S);
                             break;
                         }
                     }
-                    count_mjUPzVxr76q9 = (ushort)vuread_iyfM8OTafFYd;
+                    count_fgbhsRAUQbZu = (ushort)vuread_uGX0hEcKoXeZ;
             // Read list items
-            if (count_mjUPzVxr76q9 > 0) {
+            if (count_fgbhsRAUQbZu > 0) {
                 thingThingMapKeys = new List<Thing>();
-                for (int li_wpTKdZ7pMNmm = 0; li_wpTKdZ7pMNmm < count_mjUPzVxr76q9; li_wpTKdZ7pMNmm++) {
+                for (int li_onDfPEob6lQf = 0; li_onDfPEob6lQf < count_fgbhsRAUQbZu; li_onDfPEob6lQf++) {
                     thingThingMapKeys.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
             // Read list item count
-            ushort count_blKLahv7uQIp;
-                    ulong vuread_ofU0qKRrBLUS = 0;
-                    for (int i_xj6pIJBD7apv = 0; i_xj6pIJBD7apv < 9; i_xj6pIJBD7apv++) {
+            ushort count_v8nA3A8zclbU;
+                    ulong vuread_hdePafMuKes3 = 0;
+                    for (int i_a64TJc341uHQ = 0; i_a64TJc341uHQ < 9; i_a64TJc341uHQ++) {
                         byte b = bytes[index++];
-                        if (i_xj6pIJBD7apv < 8) {
-                            vuread_ofU0qKRrBLUS += (((ulong)b & (ulong)127) << (7 * i_xj6pIJBD7apv));
+                        if (i_a64TJc341uHQ < 8) {
+                            vuread_hdePafMuKes3 += (((ulong)b & (ulong)127) << (7 * i_a64TJc341uHQ));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_ofU0qKRrBLUS += (ulong)b << (7 * i_xj6pIJBD7apv);
+                            vuread_hdePafMuKes3 += (ulong)b << (7 * i_a64TJc341uHQ);
                             break;
                         }
                     }
-                    count_blKLahv7uQIp = (ushort)vuread_ofU0qKRrBLUS;
+                    count_v8nA3A8zclbU = (ushort)vuread_hdePafMuKes3;
             // Read list items
-            if (count_blKLahv7uQIp > 0) {
+            if (count_v8nA3A8zclbU > 0) {
                 thingThingMapValues = new List<Thing>();
-                for (int li_neOkS9jlREc8 = 0; li_neOkS9jlREc8 < count_blKLahv7uQIp; li_neOkS9jlREc8++) {
+                for (int li_uL0rDGQvmSYL = 0; li_uL0rDGQvmSYL < count_v8nA3A8zclbU; li_uL0rDGQvmSYL++) {
                     thingThingMapValues.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
                 o.ThingThingMap = new Dictionary<Thing,Thing>(thingThingMapKeys.Count);
-                for (int i_cg8c64VBB1Q1 = 0; i_cg8c64VBB1Q1 < thingThingMapKeys.Count; i_cg8c64VBB1Q1++) {
-                    o.ThingThingMap[thingThingMapKeys[i_cg8c64VBB1Q1]] = thingThingMapValues[i_cg8c64VBB1Q1];
+                for (int i_kJb0JvEVQuz7 = 0; i_kJb0JvEVQuz7 < thingThingMapKeys.Count; i_kJb0JvEVQuz7++) {
+                    o.ThingThingMap[thingThingMapKeys[i_kJb0JvEVQuz7]] = thingThingMapValues[i_kJb0JvEVQuz7];
                 }
                     return o;
                 }
@@ -1046,65 +1046,65 @@ namespace Test.Map {
                 IList<MyEnum> enumIntMapKeys = new List<MyEnum>();
                 IList<int> enumIntMapValues = new List<int>();
             // Read list item count
-            ushort count_efyVperIZyum;
-                    ulong vuread_yGJBCIaAh7kC = 0;
-                    for (int i_pyHcpX4OyW9M = 0; i_pyHcpX4OyW9M < 9; i_pyHcpX4OyW9M++) {
+            ushort count_np0asg37Gx1z;
+                    ulong vuread_gu1ex6Qsitua = 0;
+                    for (int i_acuGZVaDl3Un = 0; i_acuGZVaDl3Un < 9; i_acuGZVaDl3Un++) {
                         byte b = bytes[index++];
-                        if (i_pyHcpX4OyW9M < 8) {
-                            vuread_yGJBCIaAh7kC += (((ulong)b & (ulong)127) << (7 * i_pyHcpX4OyW9M));
+                        if (i_acuGZVaDl3Un < 8) {
+                            vuread_gu1ex6Qsitua += (((ulong)b & (ulong)127) << (7 * i_acuGZVaDl3Un));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_yGJBCIaAh7kC += (ulong)b << (7 * i_pyHcpX4OyW9M);
+                            vuread_gu1ex6Qsitua += (ulong)b << (7 * i_acuGZVaDl3Un);
                             break;
                         }
                     }
-                    count_efyVperIZyum = (ushort)vuread_yGJBCIaAh7kC;
+                    count_np0asg37Gx1z = (ushort)vuread_gu1ex6Qsitua;
             // Read list items
-            if (count_efyVperIZyum > 0) {
+            if (count_np0asg37Gx1z > 0) {
                 enumIntMapKeys = new List<MyEnum>();
-                for (int i_px5MmDjPVVgz = 0; i_px5MmDjPVVgz < count_efyVperIZyum; i_px5MmDjPVVgz++) {
+                for (int i_rQdfZ1fbRMLo = 0; i_rQdfZ1fbRMLo < count_np0asg37Gx1z; i_rQdfZ1fbRMLo++) {
                     enumIntMapKeys.Add((MyEnum)System.Enum.Parse(typeof(MyEnum), enumIndexValueMap["MyEnum"][bytes[index++]]));
                 }
             }
             // Read list item count
-            ushort count_it921pUn46k0;
-                    ulong vuread_notcEPXjH60e = 0;
-                    for (int i_qxoNYEQZsiR5 = 0; i_qxoNYEQZsiR5 < 9; i_qxoNYEQZsiR5++) {
+            ushort count_mAyTOgZn409p;
+                    ulong vuread_uwhVwynvJNyR = 0;
+                    for (int i_wLDqnssyAfcz = 0; i_wLDqnssyAfcz < 9; i_wLDqnssyAfcz++) {
                         byte b = bytes[index++];
-                        if (i_qxoNYEQZsiR5 < 8) {
-                            vuread_notcEPXjH60e += (((ulong)b & (ulong)127) << (7 * i_qxoNYEQZsiR5));
+                        if (i_wLDqnssyAfcz < 8) {
+                            vuread_uwhVwynvJNyR += (((ulong)b & (ulong)127) << (7 * i_wLDqnssyAfcz));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_notcEPXjH60e += (ulong)b << (7 * i_qxoNYEQZsiR5);
+                            vuread_uwhVwynvJNyR += (ulong)b << (7 * i_wLDqnssyAfcz);
                             break;
                         }
                     }
-                    count_it921pUn46k0 = (ushort)vuread_notcEPXjH60e;
+                    count_mAyTOgZn409p = (ushort)vuread_uwhVwynvJNyR;
             // Read list items
-            if (count_it921pUn46k0 > 0) {
+            if (count_mAyTOgZn409p > 0) {
                 enumIntMapValues = new List<int>();
-                int listValue_vcXicVSOnef7;
-                for (int i_ehlg871yC4oD = 0; i_ehlg871yC4oD < count_it921pUn46k0; i_ehlg871yC4oD++) {
+                int listValue_jrZfdHtZRYtC;
+                for (int i_tuPtypO0cQ0c = 0; i_tuPtypO0cQ0c < count_mAyTOgZn409p; i_tuPtypO0cQ0c++) {
                     // Read Int list item
-                listValue_vcXicVSOnef7 =
+                listValue_jrZfdHtZRYtC =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    enumIntMapValues.Add(listValue_vcXicVSOnef7);
+                    enumIntMapValues.Add(listValue_jrZfdHtZRYtC);
                 }
             }
                 o.EnumIntMap = new Dictionary<MyEnum,int>(enumIntMapKeys.Count);
-                for (int i_ahyzquHzHxnB = 0; i_ahyzquHzHxnB < enumIntMapKeys.Count; i_ahyzquHzHxnB++) {
-                    o.EnumIntMap[enumIntMapKeys[i_ahyzquHzHxnB]] = enumIntMapValues[i_ahyzquHzHxnB];
+                for (int i_qI9MIKYQuRxf = 0; i_qI9MIKYQuRxf < enumIntMapKeys.Count; i_qI9MIKYQuRxf++) {
+                    o.EnumIntMap[enumIntMapKeys[i_qI9MIKYQuRxf]] = enumIntMapValues[i_qI9MIKYQuRxf];
                 }
                     return o;
                 }
@@ -1115,100 +1115,100 @@ namespace Test.Map {
                 IList<int> vintVlongMapKeys = new List<int>();
                 IList<long> vintVlongMapValues = new List<long>();
             // Read list item count
-            ushort count_wPhVom0IsqCR;
-                    ulong vuread_iK1vqtD3Xth4 = 0;
-                    for (int i_jsy3GQAW3Tns = 0; i_jsy3GQAW3Tns < 9; i_jsy3GQAW3Tns++) {
+            ushort count_oircuIaeraG3;
+                    ulong vuread_q89lAlwQAWBF = 0;
+                    for (int i_oQrg9Nhb6KUq = 0; i_oQrg9Nhb6KUq < 9; i_oQrg9Nhb6KUq++) {
                         byte b = bytes[index++];
-                        if (i_jsy3GQAW3Tns < 8) {
-                            vuread_iK1vqtD3Xth4 += (((ulong)b & (ulong)127) << (7 * i_jsy3GQAW3Tns));
+                        if (i_oQrg9Nhb6KUq < 8) {
+                            vuread_q89lAlwQAWBF += (((ulong)b & (ulong)127) << (7 * i_oQrg9Nhb6KUq));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_iK1vqtD3Xth4 += (ulong)b << (7 * i_jsy3GQAW3Tns);
+                            vuread_q89lAlwQAWBF += (ulong)b << (7 * i_oQrg9Nhb6KUq);
                             break;
                         }
                     }
-                    count_wPhVom0IsqCR = (ushort)vuread_iK1vqtD3Xth4;
+                    count_oircuIaeraG3 = (ushort)vuread_q89lAlwQAWBF;
             // Read list items
-            if (count_wPhVom0IsqCR > 0) {
+            if (count_oircuIaeraG3 > 0) {
                 vintVlongMapKeys = new List<int>();
-                int listValue_vfjqePlVOQgP;
-                for (int i_mmin4uNIHmy6 = 0; i_mmin4uNIHmy6 < count_wPhVom0IsqCR; i_mmin4uNIHmy6++) {
+                int listValue_zMGEQWVMbf9J;
+                for (int i_pNpjvROWQWDN = 0; i_pNpjvROWQWDN < count_oircuIaeraG3; i_pNpjvROWQWDN++) {
                     // Read VInt list item
-    byte rvint_b_u7cLZQYJwIFk = bytes[index++];
-    byte rvint_sign_enYhiwqQlSzu = (byte)(rvint_b_u7cLZQYJwIFk & 1);
-    byte rvint_size_om2IfOVNRmCh = (byte)(rvint_b_u7cLZQYJwIFk >> 1);
-    ulong rvint_remaining_qJ582Ht5Q7dR = 0;
-    for (int i_nFAl6RUeHRdN = 0; i_nFAl6RUeHRdN < rvint_size_om2IfOVNRmCh - 1; i_nFAl6RUeHRdN++) {
-        rvint_remaining_qJ582Ht5Q7dR = rvint_remaining_qJ582Ht5Q7dR | (((ulong)bytes[index++] << (8 * i_nFAl6RUeHRdN)));
+    byte rvint_b_h3fO3F7cnTnY = bytes[index++];
+    byte rvint_sign_r29OaYECQRGv = (byte)(rvint_b_h3fO3F7cnTnY & 1);
+    byte rvint_size_k7Qo57Jlj2nX = (byte)(rvint_b_h3fO3F7cnTnY >> 1);
+    ulong rvint_remaining_shTGi6v0ABEC = 0;
+    for (int i_saV2rb6IwTq5 = 0; i_saV2rb6IwTq5 < rvint_size_k7Qo57Jlj2nX - 1; i_saV2rb6IwTq5++) {
+        rvint_remaining_shTGi6v0ABEC = rvint_remaining_shTGi6v0ABEC | (((ulong)bytes[index++] << (8 * i_saV2rb6IwTq5)));
     }
-    int rvint_result_upDRW2D7UREJ = (int)rvint_remaining_qJ582Ht5Q7dR;
-    rvint_result_upDRW2D7UREJ = ~rvint_result_upDRW2D7UREJ;
-    if (rvint_result_upDRW2D7UREJ == int.MaxValue) {
-        rvint_result_upDRW2D7UREJ = int.MinValue;
+    int rvint_result_vShpjbOWPm73 = (int)rvint_remaining_shTGi6v0ABEC;
+    rvint_result_vShpjbOWPm73 = ~rvint_result_vShpjbOWPm73;
+    if (rvint_result_vShpjbOWPm73 == int.MaxValue) {
+        rvint_result_vShpjbOWPm73 = int.MinValue;
     }
     else {
         // Add offset
-        rvint_result_upDRW2D7UREJ += 1;
-        if (rvint_sign_enYhiwqQlSzu == 0) {
-            rvint_result_upDRW2D7UREJ = -rvint_result_upDRW2D7UREJ;
+        rvint_result_vShpjbOWPm73 += 1;
+        if (rvint_sign_r29OaYECQRGv == 0) {
+            rvint_result_vShpjbOWPm73 = -rvint_result_vShpjbOWPm73;
         }
     }
-    listValue_vfjqePlVOQgP = rvint_result_upDRW2D7UREJ;
-                    vintVlongMapKeys.Add(listValue_vfjqePlVOQgP);
+    listValue_zMGEQWVMbf9J = rvint_result_vShpjbOWPm73;
+                    vintVlongMapKeys.Add(listValue_zMGEQWVMbf9J);
                 }
             }
             // Read list item count
-            ushort count_lrYOzEOKildJ;
-                    ulong vuread_gJQ9ByJ6FslM = 0;
-                    for (int i_bLiXDg6Xb0UP = 0; i_bLiXDg6Xb0UP < 9; i_bLiXDg6Xb0UP++) {
+            ushort count_c8tUvP57DoG4;
+                    ulong vuread_fR4h5OA71YRz = 0;
+                    for (int i_vgRzWSXEd2Xs = 0; i_vgRzWSXEd2Xs < 9; i_vgRzWSXEd2Xs++) {
                         byte b = bytes[index++];
-                        if (i_bLiXDg6Xb0UP < 8) {
-                            vuread_gJQ9ByJ6FslM += (((ulong)b & (ulong)127) << (7 * i_bLiXDg6Xb0UP));
+                        if (i_vgRzWSXEd2Xs < 8) {
+                            vuread_fR4h5OA71YRz += (((ulong)b & (ulong)127) << (7 * i_vgRzWSXEd2Xs));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_gJQ9ByJ6FslM += (ulong)b << (7 * i_bLiXDg6Xb0UP);
+                            vuread_fR4h5OA71YRz += (ulong)b << (7 * i_vgRzWSXEd2Xs);
                             break;
                         }
                     }
-                    count_lrYOzEOKildJ = (ushort)vuread_gJQ9ByJ6FslM;
+                    count_c8tUvP57DoG4 = (ushort)vuread_fR4h5OA71YRz;
             // Read list items
-            if (count_lrYOzEOKildJ > 0) {
+            if (count_c8tUvP57DoG4 > 0) {
                 vintVlongMapValues = new List<long>();
-                long listValue_xgOddDELm3Dm;
-                for (int i_eEFwhHdiglKY = 0; i_eEFwhHdiglKY < count_lrYOzEOKildJ; i_eEFwhHdiglKY++) {
+                long listValue_smnRYtCJlmdC;
+                for (int i_cG0bW9crq35p = 0; i_cG0bW9crq35p < count_c8tUvP57DoG4; i_cG0bW9crq35p++) {
                     // Read VLong list item
-    byte rvlong_b_j0gbopIyZbfv = bytes[index++];
-    byte rvlong_sign_tG3cYJzkh5M9 = (byte)(rvlong_b_j0gbopIyZbfv & 1);
-    byte rvlong_size_pKQDXLIRFZQm = (byte)(rvlong_b_j0gbopIyZbfv >> 1);
-    ulong rvlong_remaining_jCw7vfxjyjML = 0;
-    for (int i_qauGVAQAohAN = 0; i_qauGVAQAohAN < rvlong_size_pKQDXLIRFZQm - 1; i_qauGVAQAohAN++) {
-        rvlong_remaining_jCw7vfxjyjML = rvlong_remaining_jCw7vfxjyjML | (((ulong)bytes[index++] << (8 * i_qauGVAQAohAN)));
+    byte rvlong_b_zGkUBc1t3LAT = bytes[index++];
+    byte rvlong_sign_lTiHvioLcorp = (byte)(rvlong_b_zGkUBc1t3LAT & 1);
+    byte rvlong_size_wVRdZGcXq7Ss = (byte)(rvlong_b_zGkUBc1t3LAT >> 1);
+    ulong rvlong_remaining_dRijvUIFggJd = 0;
+    for (int i_wE5iPtnUo52P = 0; i_wE5iPtnUo52P < rvlong_size_wVRdZGcXq7Ss - 1; i_wE5iPtnUo52P++) {
+        rvlong_remaining_dRijvUIFggJd = rvlong_remaining_dRijvUIFggJd | (((ulong)bytes[index++] << (8 * i_wE5iPtnUo52P)));
     }
-    long rvlong_result_oeKnDyZ3ZQQv = (long)rvlong_remaining_jCw7vfxjyjML;
-    rvlong_result_oeKnDyZ3ZQQv = ~rvlong_result_oeKnDyZ3ZQQv;
-    if (rvlong_result_oeKnDyZ3ZQQv == long.MaxValue) {
-        rvlong_result_oeKnDyZ3ZQQv = long.MinValue;
+    long rvlong_result_iYExIMCEa0zO = (long)rvlong_remaining_dRijvUIFggJd;
+    rvlong_result_iYExIMCEa0zO = ~rvlong_result_iYExIMCEa0zO;
+    if (rvlong_result_iYExIMCEa0zO == long.MaxValue) {
+        rvlong_result_iYExIMCEa0zO = long.MinValue;
     }
     else {
         // Add offset
-        rvlong_result_oeKnDyZ3ZQQv += 1;
-        if (rvlong_sign_tG3cYJzkh5M9 == 0) {
-            rvlong_result_oeKnDyZ3ZQQv = -rvlong_result_oeKnDyZ3ZQQv;
+        rvlong_result_iYExIMCEa0zO += 1;
+        if (rvlong_sign_lTiHvioLcorp == 0) {
+            rvlong_result_iYExIMCEa0zO = -rvlong_result_iYExIMCEa0zO;
         }
     }
-    listValue_xgOddDELm3Dm = rvlong_result_oeKnDyZ3ZQQv;
-                    vintVlongMapValues.Add(listValue_xgOddDELm3Dm);
+    listValue_smnRYtCJlmdC = rvlong_result_iYExIMCEa0zO;
+                    vintVlongMapValues.Add(listValue_smnRYtCJlmdC);
                 }
             }
                 o.VintVlongMap = new Dictionary<int,long>(vintVlongMapKeys.Count);
-                for (int i_fCYcHCKB8eZW = 0; i_fCYcHCKB8eZW < vintVlongMapKeys.Count; i_fCYcHCKB8eZW++) {
-                    o.VintVlongMap[vintVlongMapKeys[i_fCYcHCKB8eZW]] = vintVlongMapValues[i_fCYcHCKB8eZW];
+                for (int i_zeqsPWiVlOmu = 0; i_zeqsPWiVlOmu < vintVlongMapKeys.Count; i_zeqsPWiVlOmu++) {
+                    o.VintVlongMap[vintVlongMapKeys[i_zeqsPWiVlOmu]] = vintVlongMapValues[i_zeqsPWiVlOmu];
                 }
                     return o;
                 }
@@ -1217,21 +1217,21 @@ namespace Test.Map {
             }
         }
         public object Energize(byte[] bytes, ref int index) {
-                    ulong vuread_hc5ejq7ocTyq = 0;
-                    for (int i_mjQauTV7t8tt = 0; i_mjQauTV7t8tt < 9; i_mjQauTV7t8tt++) {
+                    ulong vuread_p3h7T8emZDZH = 0;
+                    for (int i_gk6DOfcafrjL = 0; i_gk6DOfcafrjL < 9; i_gk6DOfcafrjL++) {
                         byte b = bytes[index++];
-                        if (i_mjQauTV7t8tt < 8) {
-                            vuread_hc5ejq7ocTyq += (((ulong)b & (ulong)127) << (7 * i_mjQauTV7t8tt));
+                        if (i_gk6DOfcafrjL < 8) {
+                            vuread_p3h7T8emZDZH += (((ulong)b & (ulong)127) << (7 * i_gk6DOfcafrjL));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_hc5ejq7ocTyq += (ulong)b << (7 * i_mjQauTV7t8tt);
+                            vuread_p3h7T8emZDZH += (ulong)b << (7 * i_gk6DOfcafrjL);
                             break;
                         }
                     }
-                    ushort typeId = (ushort)vuread_hc5ejq7ocTyq;
+                    ushort typeId = (ushort)vuread_p3h7T8emZDZH;
             switch (typeId) {
             case 10:
                 {
@@ -1253,65 +1253,65 @@ namespace Test.Map {
                 IList<int> intThingMapKeys = new List<int>();
                 IList<Thing> intThingMapValues = new List<Thing>();
             // Read list item count
-            ushort count_pN2VH8PEoX6A;
-                    ulong vuread_lUUJTCtDeHIx = 0;
-                    for (int i_uJhps1CsSMDF = 0; i_uJhps1CsSMDF < 9; i_uJhps1CsSMDF++) {
+            ushort count_b5eBWgDPLjWP;
+                    ulong vuread_nEUcWmYGpTcE = 0;
+                    for (int i_vPhfLmptUG4X = 0; i_vPhfLmptUG4X < 9; i_vPhfLmptUG4X++) {
                         byte b = bytes[index++];
-                        if (i_uJhps1CsSMDF < 8) {
-                            vuread_lUUJTCtDeHIx += (((ulong)b & (ulong)127) << (7 * i_uJhps1CsSMDF));
+                        if (i_vPhfLmptUG4X < 8) {
+                            vuread_nEUcWmYGpTcE += (((ulong)b & (ulong)127) << (7 * i_vPhfLmptUG4X));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_lUUJTCtDeHIx += (ulong)b << (7 * i_uJhps1CsSMDF);
+                            vuread_nEUcWmYGpTcE += (ulong)b << (7 * i_vPhfLmptUG4X);
                             break;
                         }
                     }
-                    count_pN2VH8PEoX6A = (ushort)vuread_lUUJTCtDeHIx;
+                    count_b5eBWgDPLjWP = (ushort)vuread_nEUcWmYGpTcE;
             // Read list items
-            if (count_pN2VH8PEoX6A > 0) {
+            if (count_b5eBWgDPLjWP > 0) {
                 intThingMapKeys = new List<int>();
-                int listValue_jmQed3bQnpIJ;
-                for (int i_zmo1P0odfE97 = 0; i_zmo1P0odfE97 < count_pN2VH8PEoX6A; i_zmo1P0odfE97++) {
+                int listValue_xMAT9j5fyr8j;
+                for (int i_iao2CMwt3JMg = 0; i_iao2CMwt3JMg < count_b5eBWgDPLjWP; i_iao2CMwt3JMg++) {
                     // Read Int list item
-                listValue_jmQed3bQnpIJ =
+                listValue_xMAT9j5fyr8j =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    intThingMapKeys.Add(listValue_jmQed3bQnpIJ);
+                    intThingMapKeys.Add(listValue_xMAT9j5fyr8j);
                 }
             }
             // Read list item count
-            ushort count_vAlxvNSZrpmG;
-                    ulong vuread_toAkF1kGbIqg = 0;
-                    for (int i_qLM2xzz2mSoN = 0; i_qLM2xzz2mSoN < 9; i_qLM2xzz2mSoN++) {
+            ushort count_zxez3C48K6jj;
+                    ulong vuread_ufGfX6gHR8UL = 0;
+                    for (int i_zx1hkK4t9tUM = 0; i_zx1hkK4t9tUM < 9; i_zx1hkK4t9tUM++) {
                         byte b = bytes[index++];
-                        if (i_qLM2xzz2mSoN < 8) {
-                            vuread_toAkF1kGbIqg += (((ulong)b & (ulong)127) << (7 * i_qLM2xzz2mSoN));
+                        if (i_zx1hkK4t9tUM < 8) {
+                            vuread_ufGfX6gHR8UL += (((ulong)b & (ulong)127) << (7 * i_zx1hkK4t9tUM));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_toAkF1kGbIqg += (ulong)b << (7 * i_qLM2xzz2mSoN);
+                            vuread_ufGfX6gHR8UL += (ulong)b << (7 * i_zx1hkK4t9tUM);
                             break;
                         }
                     }
-                    count_vAlxvNSZrpmG = (ushort)vuread_toAkF1kGbIqg;
+                    count_zxez3C48K6jj = (ushort)vuread_ufGfX6gHR8UL;
             // Read list items
-            if (count_vAlxvNSZrpmG > 0) {
+            if (count_zxez3C48K6jj > 0) {
                 intThingMapValues = new List<Thing>();
-                for (int li_sOvKHSrTaRgB = 0; li_sOvKHSrTaRgB < count_vAlxvNSZrpmG; li_sOvKHSrTaRgB++) {
+                for (int li_cGl5x9Iy0egw = 0; li_cGl5x9Iy0egw < count_zxez3C48K6jj; li_cGl5x9Iy0egw++) {
                     intThingMapValues.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
                 o.IntThingMap = new Dictionary<int,Thing>(intThingMapKeys.Count);
-                for (int i_kdHnuD6rjeTU = 0; i_kdHnuD6rjeTU < intThingMapKeys.Count; i_kdHnuD6rjeTU++) {
-                    o.IntThingMap[intThingMapKeys[i_kdHnuD6rjeTU]] = intThingMapValues[i_kdHnuD6rjeTU];
+                for (int i_cqG6CfzaMCBG = 0; i_cqG6CfzaMCBG < intThingMapKeys.Count; i_cqG6CfzaMCBG++) {
+                    o.IntThingMap[intThingMapKeys[i_cqG6CfzaMCBG]] = intThingMapValues[i_cqG6CfzaMCBG];
                 }
                     return o;
                 }
@@ -1322,65 +1322,65 @@ namespace Test.Map {
                 IList<Thing> thingIntMapKeys = new List<Thing>();
                 IList<int> thingIntMapValues = new List<int>();
             // Read list item count
-            ushort count_aZB2ZtucaWC1;
-                    ulong vuread_nJ8sqGg5FlCt = 0;
-                    for (int i_wmHTV6DN5LJR = 0; i_wmHTV6DN5LJR < 9; i_wmHTV6DN5LJR++) {
+            ushort count_pWY9cZkCv4ar;
+                    ulong vuread_tljRzwU3rFb4 = 0;
+                    for (int i_b7143T9MePuL = 0; i_b7143T9MePuL < 9; i_b7143T9MePuL++) {
                         byte b = bytes[index++];
-                        if (i_wmHTV6DN5LJR < 8) {
-                            vuread_nJ8sqGg5FlCt += (((ulong)b & (ulong)127) << (7 * i_wmHTV6DN5LJR));
+                        if (i_b7143T9MePuL < 8) {
+                            vuread_tljRzwU3rFb4 += (((ulong)b & (ulong)127) << (7 * i_b7143T9MePuL));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_nJ8sqGg5FlCt += (ulong)b << (7 * i_wmHTV6DN5LJR);
+                            vuread_tljRzwU3rFb4 += (ulong)b << (7 * i_b7143T9MePuL);
                             break;
                         }
                     }
-                    count_aZB2ZtucaWC1 = (ushort)vuread_nJ8sqGg5FlCt;
+                    count_pWY9cZkCv4ar = (ushort)vuread_tljRzwU3rFb4;
             // Read list items
-            if (count_aZB2ZtucaWC1 > 0) {
+            if (count_pWY9cZkCv4ar > 0) {
                 thingIntMapKeys = new List<Thing>();
-                for (int li_hz4QxdAMKQQV = 0; li_hz4QxdAMKQQV < count_aZB2ZtucaWC1; li_hz4QxdAMKQQV++) {
+                for (int li_eJwb3Nbmppmr = 0; li_eJwb3Nbmppmr < count_pWY9cZkCv4ar; li_eJwb3Nbmppmr++) {
                     thingIntMapKeys.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
             // Read list item count
-            ushort count_mOaM8XoZxhaM;
-                    ulong vuread_uLqdtZ65ara1 = 0;
-                    for (int i_qAIBVZSkFWoh = 0; i_qAIBVZSkFWoh < 9; i_qAIBVZSkFWoh++) {
+            ushort count_ySKqRHpgV45e;
+                    ulong vuread_zqIL4ymf1IH0 = 0;
+                    for (int i_zT9NDYPYVK8l = 0; i_zT9NDYPYVK8l < 9; i_zT9NDYPYVK8l++) {
                         byte b = bytes[index++];
-                        if (i_qAIBVZSkFWoh < 8) {
-                            vuread_uLqdtZ65ara1 += (((ulong)b & (ulong)127) << (7 * i_qAIBVZSkFWoh));
+                        if (i_zT9NDYPYVK8l < 8) {
+                            vuread_zqIL4ymf1IH0 += (((ulong)b & (ulong)127) << (7 * i_zT9NDYPYVK8l));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_uLqdtZ65ara1 += (ulong)b << (7 * i_qAIBVZSkFWoh);
+                            vuread_zqIL4ymf1IH0 += (ulong)b << (7 * i_zT9NDYPYVK8l);
                             break;
                         }
                     }
-                    count_mOaM8XoZxhaM = (ushort)vuread_uLqdtZ65ara1;
+                    count_ySKqRHpgV45e = (ushort)vuread_zqIL4ymf1IH0;
             // Read list items
-            if (count_mOaM8XoZxhaM > 0) {
+            if (count_ySKqRHpgV45e > 0) {
                 thingIntMapValues = new List<int>();
-                int listValue_y0PhwUujzr3V;
-                for (int i_uwtVUVUnNjaH = 0; i_uwtVUVUnNjaH < count_mOaM8XoZxhaM; i_uwtVUVUnNjaH++) {
+                int listValue_dS4HAn0pNrdN;
+                for (int i_bzr0chzxlTq8 = 0; i_bzr0chzxlTq8 < count_ySKqRHpgV45e; i_bzr0chzxlTq8++) {
                     // Read Int list item
-                listValue_y0PhwUujzr3V =
+                listValue_dS4HAn0pNrdN =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    thingIntMapValues.Add(listValue_y0PhwUujzr3V);
+                    thingIntMapValues.Add(listValue_dS4HAn0pNrdN);
                 }
             }
                 o.ThingIntMap = new Dictionary<Thing,int>(thingIntMapKeys.Count);
-                for (int i_gXdHyZgawjhC = 0; i_gXdHyZgawjhC < thingIntMapKeys.Count; i_gXdHyZgawjhC++) {
-                    o.ThingIntMap[thingIntMapKeys[i_gXdHyZgawjhC]] = thingIntMapValues[i_gXdHyZgawjhC];
+                for (int i_oLM6pgsxrxCm = 0; i_oLM6pgsxrxCm < thingIntMapKeys.Count; i_oLM6pgsxrxCm++) {
+                    o.ThingIntMap[thingIntMapKeys[i_oLM6pgsxrxCm]] = thingIntMapValues[i_oLM6pgsxrxCm];
                 }
                     return o;
                 }
@@ -1391,84 +1391,84 @@ namespace Test.Map {
                 IList<int> intStringMapKeys = new List<int>();
                 IList<string> intStringMapValues = new List<string>();
             // Read list item count
-            ushort count_eYJq61CuGXPy;
-                    ulong vuread_n7AUbbDW0h2J = 0;
-                    for (int i_rXUJl3yMo0K5 = 0; i_rXUJl3yMo0K5 < 9; i_rXUJl3yMo0K5++) {
+            ushort count_mPONSrnSPvJe;
+                    ulong vuread_nYWOkKazB59Z = 0;
+                    for (int i_p3aH8PwR7fwx = 0; i_p3aH8PwR7fwx < 9; i_p3aH8PwR7fwx++) {
                         byte b = bytes[index++];
-                        if (i_rXUJl3yMo0K5 < 8) {
-                            vuread_n7AUbbDW0h2J += (((ulong)b & (ulong)127) << (7 * i_rXUJl3yMo0K5));
+                        if (i_p3aH8PwR7fwx < 8) {
+                            vuread_nYWOkKazB59Z += (((ulong)b & (ulong)127) << (7 * i_p3aH8PwR7fwx));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_n7AUbbDW0h2J += (ulong)b << (7 * i_rXUJl3yMo0K5);
+                            vuread_nYWOkKazB59Z += (ulong)b << (7 * i_p3aH8PwR7fwx);
                             break;
                         }
                     }
-                    count_eYJq61CuGXPy = (ushort)vuread_n7AUbbDW0h2J;
+                    count_mPONSrnSPvJe = (ushort)vuread_nYWOkKazB59Z;
             // Read list items
-            if (count_eYJq61CuGXPy > 0) {
+            if (count_mPONSrnSPvJe > 0) {
                 intStringMapKeys = new List<int>();
-                int listValue_fEqWQPaBhPaB;
-                for (int i_kw8vQuLc6aJj = 0; i_kw8vQuLc6aJj < count_eYJq61CuGXPy; i_kw8vQuLc6aJj++) {
+                int listValue_lVP3GIslbIzB;
+                for (int i_iNnRxdUIQZcY = 0; i_iNnRxdUIQZcY < count_mPONSrnSPvJe; i_iNnRxdUIQZcY++) {
                     // Read Int list item
-                listValue_fEqWQPaBhPaB =
+                listValue_lVP3GIslbIzB =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    intStringMapKeys.Add(listValue_fEqWQPaBhPaB);
+                    intStringMapKeys.Add(listValue_lVP3GIslbIzB);
                 }
             }
             // Read list item count
-            ushort count_d2jNycjPwEIH;
-                    ulong vuread_tQgkgABbWskY = 0;
-                    for (int i_xd64pH8m4hOY = 0; i_xd64pH8m4hOY < 9; i_xd64pH8m4hOY++) {
+            ushort count_hQTa92hBCymy;
+                    ulong vuread_yg23MXXdDJmu = 0;
+                    for (int i_mPt3vXRMT0M0 = 0; i_mPt3vXRMT0M0 < 9; i_mPt3vXRMT0M0++) {
                         byte b = bytes[index++];
-                        if (i_xd64pH8m4hOY < 8) {
-                            vuread_tQgkgABbWskY += (((ulong)b & (ulong)127) << (7 * i_xd64pH8m4hOY));
+                        if (i_mPt3vXRMT0M0 < 8) {
+                            vuread_yg23MXXdDJmu += (((ulong)b & (ulong)127) << (7 * i_mPt3vXRMT0M0));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_tQgkgABbWskY += (ulong)b << (7 * i_xd64pH8m4hOY);
+                            vuread_yg23MXXdDJmu += (ulong)b << (7 * i_mPt3vXRMT0M0);
                             break;
                         }
                     }
-                    count_d2jNycjPwEIH = (ushort)vuread_tQgkgABbWskY;
+                    count_hQTa92hBCymy = (ushort)vuread_yg23MXXdDJmu;
             // Read list items
-            if (count_d2jNycjPwEIH > 0) {
+            if (count_hQTa92hBCymy > 0) {
                 intStringMapValues = new List<string>();
-                string listValue_nxdfFve5YBK9;
-                for (int i_gB6GIIwYSuSu = 0; i_gB6GIIwYSuSu < count_d2jNycjPwEIH; i_gB6GIIwYSuSu++) {
+                string listValue_vsmjA885BYVq;
+                for (int i_e152c8uRDyHu = 0; i_e152c8uRDyHu < count_hQTa92hBCymy; i_e152c8uRDyHu++) {
                     // Read String list item
-                    ulong vuread_jvFBop9DC6PX = 0;
-                    for (int i_pCNvU0flPS8p = 0; i_pCNvU0flPS8p < 9; i_pCNvU0flPS8p++) {
+                    ulong vuread_pNMFKq3O3dSE = 0;
+                    for (int i_wYKVF5xAV1Ln = 0; i_wYKVF5xAV1Ln < 9; i_wYKVF5xAV1Ln++) {
                         byte b = bytes[index++];
-                        if (i_pCNvU0flPS8p < 8) {
-                            vuread_jvFBop9DC6PX += (((ulong)b & (ulong)127) << (7 * i_pCNvU0flPS8p));
+                        if (i_wYKVF5xAV1Ln < 8) {
+                            vuread_pNMFKq3O3dSE += (((ulong)b & (ulong)127) << (7 * i_wYKVF5xAV1Ln));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_jvFBop9DC6PX += (ulong)b << (7 * i_pCNvU0flPS8p);
+                            vuread_pNMFKq3O3dSE += (ulong)b << (7 * i_wYKVF5xAV1Ln);
                             break;
                         }
                     }
-                    ushort stringLength_cpAYFvMNbrNT = (ushort)vuread_jvFBop9DC6PX;
-                listValue_nxdfFve5YBK9 = Encoding.UTF8.GetString(bytes, index, stringLength_cpAYFvMNbrNT);
-                index += stringLength_cpAYFvMNbrNT;
-                    intStringMapValues.Add(listValue_nxdfFve5YBK9);
+                    ushort stringLength_onfORJPeDbet = (ushort)vuread_pNMFKq3O3dSE;
+                listValue_vsmjA885BYVq = Encoding.UTF8.GetString(bytes, index, stringLength_onfORJPeDbet);
+                index += stringLength_onfORJPeDbet;
+                    intStringMapValues.Add(listValue_vsmjA885BYVq);
                 }
             }
                 o.IntStringMap = new Dictionary<int,string>(intStringMapKeys.Count);
-                for (int i_xpzCY786Xmjn = 0; i_xpzCY786Xmjn < intStringMapKeys.Count; i_xpzCY786Xmjn++) {
-                    o.IntStringMap[intStringMapKeys[i_xpzCY786Xmjn]] = intStringMapValues[i_xpzCY786Xmjn];
+                for (int i_wto1jQXjWMrz = 0; i_wto1jQXjWMrz < intStringMapKeys.Count; i_wto1jQXjWMrz++) {
+                    o.IntStringMap[intStringMapKeys[i_wto1jQXjWMrz]] = intStringMapValues[i_wto1jQXjWMrz];
                 }
                     return o;
                 }
@@ -1479,56 +1479,56 @@ namespace Test.Map {
                 IList<Thing> thingThingMapKeys = new List<Thing>();
                 IList<Thing> thingThingMapValues = new List<Thing>();
             // Read list item count
-            ushort count_b5JDvo2kKMnd;
-                    ulong vuread_sq2lmCeOwqG8 = 0;
-                    for (int i_vHPF8SaysAtZ = 0; i_vHPF8SaysAtZ < 9; i_vHPF8SaysAtZ++) {
+            ushort count_jZhmE2BFELX2;
+                    ulong vuread_z3JIONITcyMq = 0;
+                    for (int i_abFmpJRpGlzQ = 0; i_abFmpJRpGlzQ < 9; i_abFmpJRpGlzQ++) {
                         byte b = bytes[index++];
-                        if (i_vHPF8SaysAtZ < 8) {
-                            vuread_sq2lmCeOwqG8 += (((ulong)b & (ulong)127) << (7 * i_vHPF8SaysAtZ));
+                        if (i_abFmpJRpGlzQ < 8) {
+                            vuread_z3JIONITcyMq += (((ulong)b & (ulong)127) << (7 * i_abFmpJRpGlzQ));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_sq2lmCeOwqG8 += (ulong)b << (7 * i_vHPF8SaysAtZ);
+                            vuread_z3JIONITcyMq += (ulong)b << (7 * i_abFmpJRpGlzQ);
                             break;
                         }
                     }
-                    count_b5JDvo2kKMnd = (ushort)vuread_sq2lmCeOwqG8;
+                    count_jZhmE2BFELX2 = (ushort)vuread_z3JIONITcyMq;
             // Read list items
-            if (count_b5JDvo2kKMnd > 0) {
+            if (count_jZhmE2BFELX2 > 0) {
                 thingThingMapKeys = new List<Thing>();
-                for (int li_gL0A0YOscwTH = 0; li_gL0A0YOscwTH < count_b5JDvo2kKMnd; li_gL0A0YOscwTH++) {
+                for (int li_uk52AgTrGw2p = 0; li_uk52AgTrGw2p < count_jZhmE2BFELX2; li_uk52AgTrGw2p++) {
                     thingThingMapKeys.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
             // Read list item count
-            ushort count_bWUviF0WyLOX;
-                    ulong vuread_owm2MYUs7c4K = 0;
-                    for (int i_pNXILo6CXhAl = 0; i_pNXILo6CXhAl < 9; i_pNXILo6CXhAl++) {
+            ushort count_doFjdIx7m1kD;
+                    ulong vuread_jop53HvYE2UD = 0;
+                    for (int i_sQs5PvTPjqfb = 0; i_sQs5PvTPjqfb < 9; i_sQs5PvTPjqfb++) {
                         byte b = bytes[index++];
-                        if (i_pNXILo6CXhAl < 8) {
-                            vuread_owm2MYUs7c4K += (((ulong)b & (ulong)127) << (7 * i_pNXILo6CXhAl));
+                        if (i_sQs5PvTPjqfb < 8) {
+                            vuread_jop53HvYE2UD += (((ulong)b & (ulong)127) << (7 * i_sQs5PvTPjqfb));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_owm2MYUs7c4K += (ulong)b << (7 * i_pNXILo6CXhAl);
+                            vuread_jop53HvYE2UD += (ulong)b << (7 * i_sQs5PvTPjqfb);
                             break;
                         }
                     }
-                    count_bWUviF0WyLOX = (ushort)vuread_owm2MYUs7c4K;
+                    count_doFjdIx7m1kD = (ushort)vuread_jop53HvYE2UD;
             // Read list items
-            if (count_bWUviF0WyLOX > 0) {
+            if (count_doFjdIx7m1kD > 0) {
                 thingThingMapValues = new List<Thing>();
-                for (int li_zPqWKGAP7d1E = 0; li_zPqWKGAP7d1E < count_bWUviF0WyLOX; li_zPqWKGAP7d1E++) {
+                for (int li_bHm8XCD69CEm = 0; li_bHm8XCD69CEm < count_doFjdIx7m1kD; li_bHm8XCD69CEm++) {
                     thingThingMapValues.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
                 o.ThingThingMap = new Dictionary<Thing,Thing>(thingThingMapKeys.Count);
-                for (int i_qWQnLBKb2jTE = 0; i_qWQnLBKb2jTE < thingThingMapKeys.Count; i_qWQnLBKb2jTE++) {
-                    o.ThingThingMap[thingThingMapKeys[i_qWQnLBKb2jTE]] = thingThingMapValues[i_qWQnLBKb2jTE];
+                for (int i_wYx8adVoDbCx = 0; i_wYx8adVoDbCx < thingThingMapKeys.Count; i_wYx8adVoDbCx++) {
+                    o.ThingThingMap[thingThingMapKeys[i_wYx8adVoDbCx]] = thingThingMapValues[i_wYx8adVoDbCx];
                 }
                     return o;
                 }
@@ -1539,65 +1539,65 @@ namespace Test.Map {
                 IList<MyEnum> enumIntMapKeys = new List<MyEnum>();
                 IList<int> enumIntMapValues = new List<int>();
             // Read list item count
-            ushort count_sskkOlaA5b36;
-                    ulong vuread_o8SAMpNIVt5Y = 0;
-                    for (int i_oS1vHzsZ5Ves = 0; i_oS1vHzsZ5Ves < 9; i_oS1vHzsZ5Ves++) {
+            ushort count_gBr1hFthio0w;
+                    ulong vuread_jxabzYDolgf1 = 0;
+                    for (int i_zUPgE1HcfZSw = 0; i_zUPgE1HcfZSw < 9; i_zUPgE1HcfZSw++) {
                         byte b = bytes[index++];
-                        if (i_oS1vHzsZ5Ves < 8) {
-                            vuread_o8SAMpNIVt5Y += (((ulong)b & (ulong)127) << (7 * i_oS1vHzsZ5Ves));
+                        if (i_zUPgE1HcfZSw < 8) {
+                            vuread_jxabzYDolgf1 += (((ulong)b & (ulong)127) << (7 * i_zUPgE1HcfZSw));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_o8SAMpNIVt5Y += (ulong)b << (7 * i_oS1vHzsZ5Ves);
+                            vuread_jxabzYDolgf1 += (ulong)b << (7 * i_zUPgE1HcfZSw);
                             break;
                         }
                     }
-                    count_sskkOlaA5b36 = (ushort)vuread_o8SAMpNIVt5Y;
+                    count_gBr1hFthio0w = (ushort)vuread_jxabzYDolgf1;
             // Read list items
-            if (count_sskkOlaA5b36 > 0) {
+            if (count_gBr1hFthio0w > 0) {
                 enumIntMapKeys = new List<MyEnum>();
-                for (int i_jqaWcAIL3TPN = 0; i_jqaWcAIL3TPN < count_sskkOlaA5b36; i_jqaWcAIL3TPN++) {
+                for (int i_eLZEjxdM7bNM = 0; i_eLZEjxdM7bNM < count_gBr1hFthio0w; i_eLZEjxdM7bNM++) {
                     enumIntMapKeys.Add((MyEnum)System.Enum.Parse(typeof(MyEnum), enumIndexValueMap["MyEnum"][bytes[index++]]));
                 }
             }
             // Read list item count
-            ushort count_tjzNFkSywwM6;
-                    ulong vuread_iO3GSeaW3Aev = 0;
-                    for (int i_g1FuUu5YcnMy = 0; i_g1FuUu5YcnMy < 9; i_g1FuUu5YcnMy++) {
+            ushort count_bTYPHnlivz4w;
+                    ulong vuread_vnMrRYqGPN0X = 0;
+                    for (int i_z9fYdD46hcdV = 0; i_z9fYdD46hcdV < 9; i_z9fYdD46hcdV++) {
                         byte b = bytes[index++];
-                        if (i_g1FuUu5YcnMy < 8) {
-                            vuread_iO3GSeaW3Aev += (((ulong)b & (ulong)127) << (7 * i_g1FuUu5YcnMy));
+                        if (i_z9fYdD46hcdV < 8) {
+                            vuread_vnMrRYqGPN0X += (((ulong)b & (ulong)127) << (7 * i_z9fYdD46hcdV));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_iO3GSeaW3Aev += (ulong)b << (7 * i_g1FuUu5YcnMy);
+                            vuread_vnMrRYqGPN0X += (ulong)b << (7 * i_z9fYdD46hcdV);
                             break;
                         }
                     }
-                    count_tjzNFkSywwM6 = (ushort)vuread_iO3GSeaW3Aev;
+                    count_bTYPHnlivz4w = (ushort)vuread_vnMrRYqGPN0X;
             // Read list items
-            if (count_tjzNFkSywwM6 > 0) {
+            if (count_bTYPHnlivz4w > 0) {
                 enumIntMapValues = new List<int>();
-                int listValue_zPtUcP59NeCy;
-                for (int i_oc2YS3TtedyO = 0; i_oc2YS3TtedyO < count_tjzNFkSywwM6; i_oc2YS3TtedyO++) {
+                int listValue_a1E1NJaVRCO5;
+                for (int i_tV5iUg7z2bQH = 0; i_tV5iUg7z2bQH < count_bTYPHnlivz4w; i_tV5iUg7z2bQH++) {
                     // Read Int list item
-                listValue_zPtUcP59NeCy =
+                listValue_a1E1NJaVRCO5 =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    enumIntMapValues.Add(listValue_zPtUcP59NeCy);
+                    enumIntMapValues.Add(listValue_a1E1NJaVRCO5);
                 }
             }
                 o.EnumIntMap = new Dictionary<MyEnum,int>(enumIntMapKeys.Count);
-                for (int i_ryOcAY3gcFGc = 0; i_ryOcAY3gcFGc < enumIntMapKeys.Count; i_ryOcAY3gcFGc++) {
-                    o.EnumIntMap[enumIntMapKeys[i_ryOcAY3gcFGc]] = enumIntMapValues[i_ryOcAY3gcFGc];
+                for (int i_dxf2F7oXk1pZ = 0; i_dxf2F7oXk1pZ < enumIntMapKeys.Count; i_dxf2F7oXk1pZ++) {
+                    o.EnumIntMap[enumIntMapKeys[i_dxf2F7oXk1pZ]] = enumIntMapValues[i_dxf2F7oXk1pZ];
                 }
                     return o;
                 }
@@ -1608,100 +1608,100 @@ namespace Test.Map {
                 IList<int> vintVlongMapKeys = new List<int>();
                 IList<long> vintVlongMapValues = new List<long>();
             // Read list item count
-            ushort count_tpToEfSkzhXR;
-                    ulong vuread_lgfjEst5rOfO = 0;
-                    for (int i_a2JYkvwcG0dC = 0; i_a2JYkvwcG0dC < 9; i_a2JYkvwcG0dC++) {
+            ushort count_iy2fNffGvjdr;
+                    ulong vuread_oVlafO2al6Tq = 0;
+                    for (int i_mhpTo0V3GfYv = 0; i_mhpTo0V3GfYv < 9; i_mhpTo0V3GfYv++) {
                         byte b = bytes[index++];
-                        if (i_a2JYkvwcG0dC < 8) {
-                            vuread_lgfjEst5rOfO += (((ulong)b & (ulong)127) << (7 * i_a2JYkvwcG0dC));
+                        if (i_mhpTo0V3GfYv < 8) {
+                            vuread_oVlafO2al6Tq += (((ulong)b & (ulong)127) << (7 * i_mhpTo0V3GfYv));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_lgfjEst5rOfO += (ulong)b << (7 * i_a2JYkvwcG0dC);
+                            vuread_oVlafO2al6Tq += (ulong)b << (7 * i_mhpTo0V3GfYv);
                             break;
                         }
                     }
-                    count_tpToEfSkzhXR = (ushort)vuread_lgfjEst5rOfO;
+                    count_iy2fNffGvjdr = (ushort)vuread_oVlafO2al6Tq;
             // Read list items
-            if (count_tpToEfSkzhXR > 0) {
+            if (count_iy2fNffGvjdr > 0) {
                 vintVlongMapKeys = new List<int>();
-                int listValue_eFY9vnpHK6Lt;
-                for (int i_tULTlKVgjemL = 0; i_tULTlKVgjemL < count_tpToEfSkzhXR; i_tULTlKVgjemL++) {
+                int listValue_f1WW5km9tYuT;
+                for (int i_uoRG8oOwPMMF = 0; i_uoRG8oOwPMMF < count_iy2fNffGvjdr; i_uoRG8oOwPMMF++) {
                     // Read VInt list item
-    byte rvint_b_n3adVUlKdM98 = bytes[index++];
-    byte rvint_sign_muKdzIdfrpfz = (byte)(rvint_b_n3adVUlKdM98 & 1);
-    byte rvint_size_tM15e6sesnDB = (byte)(rvint_b_n3adVUlKdM98 >> 1);
-    ulong rvint_remaining_flW0UapgUMp1 = 0;
-    for (int i_aRRLbhuqYKti = 0; i_aRRLbhuqYKti < rvint_size_tM15e6sesnDB - 1; i_aRRLbhuqYKti++) {
-        rvint_remaining_flW0UapgUMp1 = rvint_remaining_flW0UapgUMp1 | (((ulong)bytes[index++] << (8 * i_aRRLbhuqYKti)));
+    byte rvint_b_vvrExkVC6ZWo = bytes[index++];
+    byte rvint_sign_wgfaUT6PWF7a = (byte)(rvint_b_vvrExkVC6ZWo & 1);
+    byte rvint_size_dp4rBCPKpq6J = (byte)(rvint_b_vvrExkVC6ZWo >> 1);
+    ulong rvint_remaining_wRLjc2X6BDN2 = 0;
+    for (int i_dNM5Q6Suyrwh = 0; i_dNM5Q6Suyrwh < rvint_size_dp4rBCPKpq6J - 1; i_dNM5Q6Suyrwh++) {
+        rvint_remaining_wRLjc2X6BDN2 = rvint_remaining_wRLjc2X6BDN2 | (((ulong)bytes[index++] << (8 * i_dNM5Q6Suyrwh)));
     }
-    int rvint_result_xpGht4Qq0i0n = (int)rvint_remaining_flW0UapgUMp1;
-    rvint_result_xpGht4Qq0i0n = ~rvint_result_xpGht4Qq0i0n;
-    if (rvint_result_xpGht4Qq0i0n == int.MaxValue) {
-        rvint_result_xpGht4Qq0i0n = int.MinValue;
+    int rvint_result_gEbEkl9LjGid = (int)rvint_remaining_wRLjc2X6BDN2;
+    rvint_result_gEbEkl9LjGid = ~rvint_result_gEbEkl9LjGid;
+    if (rvint_result_gEbEkl9LjGid == int.MaxValue) {
+        rvint_result_gEbEkl9LjGid = int.MinValue;
     }
     else {
         // Add offset
-        rvint_result_xpGht4Qq0i0n += 1;
-        if (rvint_sign_muKdzIdfrpfz == 0) {
-            rvint_result_xpGht4Qq0i0n = -rvint_result_xpGht4Qq0i0n;
+        rvint_result_gEbEkl9LjGid += 1;
+        if (rvint_sign_wgfaUT6PWF7a == 0) {
+            rvint_result_gEbEkl9LjGid = -rvint_result_gEbEkl9LjGid;
         }
     }
-    listValue_eFY9vnpHK6Lt = rvint_result_xpGht4Qq0i0n;
-                    vintVlongMapKeys.Add(listValue_eFY9vnpHK6Lt);
+    listValue_f1WW5km9tYuT = rvint_result_gEbEkl9LjGid;
+                    vintVlongMapKeys.Add(listValue_f1WW5km9tYuT);
                 }
             }
             // Read list item count
-            ushort count_tnuq98Phxa5w;
-                    ulong vuread_gRdl2nNM2O7E = 0;
-                    for (int i_mhX068a21E0X = 0; i_mhX068a21E0X < 9; i_mhX068a21E0X++) {
+            ushort count_dWM4SbIPLchX;
+                    ulong vuread_vU4sILlKvE4I = 0;
+                    for (int i_wsWpDcSNFIX4 = 0; i_wsWpDcSNFIX4 < 9; i_wsWpDcSNFIX4++) {
                         byte b = bytes[index++];
-                        if (i_mhX068a21E0X < 8) {
-                            vuread_gRdl2nNM2O7E += (((ulong)b & (ulong)127) << (7 * i_mhX068a21E0X));
+                        if (i_wsWpDcSNFIX4 < 8) {
+                            vuread_vU4sILlKvE4I += (((ulong)b & (ulong)127) << (7 * i_wsWpDcSNFIX4));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_gRdl2nNM2O7E += (ulong)b << (7 * i_mhX068a21E0X);
+                            vuread_vU4sILlKvE4I += (ulong)b << (7 * i_wsWpDcSNFIX4);
                             break;
                         }
                     }
-                    count_tnuq98Phxa5w = (ushort)vuread_gRdl2nNM2O7E;
+                    count_dWM4SbIPLchX = (ushort)vuread_vU4sILlKvE4I;
             // Read list items
-            if (count_tnuq98Phxa5w > 0) {
+            if (count_dWM4SbIPLchX > 0) {
                 vintVlongMapValues = new List<long>();
-                long listValue_udqZ5mV2uj3M;
-                for (int i_wFyNEougpZW2 = 0; i_wFyNEougpZW2 < count_tnuq98Phxa5w; i_wFyNEougpZW2++) {
+                long listValue_iXMwSQFnwnOA;
+                for (int i_hQcIuHRO2edz = 0; i_hQcIuHRO2edz < count_dWM4SbIPLchX; i_hQcIuHRO2edz++) {
                     // Read VLong list item
-    byte rvlong_b_eYky9cFU0pxZ = bytes[index++];
-    byte rvlong_sign_yYRQ3ejuol9B = (byte)(rvlong_b_eYky9cFU0pxZ & 1);
-    byte rvlong_size_pxxMjTI7qyOg = (byte)(rvlong_b_eYky9cFU0pxZ >> 1);
-    ulong rvlong_remaining_aw3sNjVKhIQQ = 0;
-    for (int i_nOnlPCN9YTXM = 0; i_nOnlPCN9YTXM < rvlong_size_pxxMjTI7qyOg - 1; i_nOnlPCN9YTXM++) {
-        rvlong_remaining_aw3sNjVKhIQQ = rvlong_remaining_aw3sNjVKhIQQ | (((ulong)bytes[index++] << (8 * i_nOnlPCN9YTXM)));
+    byte rvlong_b_gtmJtEsr699V = bytes[index++];
+    byte rvlong_sign_zY2O8QmNOw7X = (byte)(rvlong_b_gtmJtEsr699V & 1);
+    byte rvlong_size_aks70jcpUnhz = (byte)(rvlong_b_gtmJtEsr699V >> 1);
+    ulong rvlong_remaining_m6415xDsRrJG = 0;
+    for (int i_rdQl2zV3wyIi = 0; i_rdQl2zV3wyIi < rvlong_size_aks70jcpUnhz - 1; i_rdQl2zV3wyIi++) {
+        rvlong_remaining_m6415xDsRrJG = rvlong_remaining_m6415xDsRrJG | (((ulong)bytes[index++] << (8 * i_rdQl2zV3wyIi)));
     }
-    long rvlong_result_r2KgRzIIjKOG = (long)rvlong_remaining_aw3sNjVKhIQQ;
-    rvlong_result_r2KgRzIIjKOG = ~rvlong_result_r2KgRzIIjKOG;
-    if (rvlong_result_r2KgRzIIjKOG == long.MaxValue) {
-        rvlong_result_r2KgRzIIjKOG = long.MinValue;
+    long rvlong_result_fuAW7UaVRCkb = (long)rvlong_remaining_m6415xDsRrJG;
+    rvlong_result_fuAW7UaVRCkb = ~rvlong_result_fuAW7UaVRCkb;
+    if (rvlong_result_fuAW7UaVRCkb == long.MaxValue) {
+        rvlong_result_fuAW7UaVRCkb = long.MinValue;
     }
     else {
         // Add offset
-        rvlong_result_r2KgRzIIjKOG += 1;
-        if (rvlong_sign_yYRQ3ejuol9B == 0) {
-            rvlong_result_r2KgRzIIjKOG = -rvlong_result_r2KgRzIIjKOG;
+        rvlong_result_fuAW7UaVRCkb += 1;
+        if (rvlong_sign_zY2O8QmNOw7X == 0) {
+            rvlong_result_fuAW7UaVRCkb = -rvlong_result_fuAW7UaVRCkb;
         }
     }
-    listValue_udqZ5mV2uj3M = rvlong_result_r2KgRzIIjKOG;
-                    vintVlongMapValues.Add(listValue_udqZ5mV2uj3M);
+    listValue_iXMwSQFnwnOA = rvlong_result_fuAW7UaVRCkb;
+                    vintVlongMapValues.Add(listValue_iXMwSQFnwnOA);
                 }
             }
                 o.VintVlongMap = new Dictionary<int,long>(vintVlongMapKeys.Count);
-                for (int i_e1QfzztcQRfF = 0; i_e1QfzztcQRfF < vintVlongMapKeys.Count; i_e1QfzztcQRfF++) {
-                    o.VintVlongMap[vintVlongMapKeys[i_e1QfzztcQRfF]] = vintVlongMapValues[i_e1QfzztcQRfF];
+                for (int i_uuSr2PfSLWsX = 0; i_uuSr2PfSLWsX < vintVlongMapKeys.Count; i_uuSr2PfSLWsX++) {
+                    o.VintVlongMap[vintVlongMapKeys[i_uuSr2PfSLWsX]] = vintVlongMapValues[i_uuSr2PfSLWsX];
                 }
                     return o;
                 }
@@ -1731,65 +1731,65 @@ namespace Test.Map {
                 IList<int> intThingMapKeys = new List<int>();
                 IList<Thing> intThingMapValues = new List<Thing>();
             // Read list item count
-            ushort count_nxsXUOssJrNU;
-                    ulong vuread_oP2R9hG79QaX = 0;
-                    for (int i_uHKzzV57XfJu = 0; i_uHKzzV57XfJu < 9; i_uHKzzV57XfJu++) {
+            ushort count_m0wvBndfyVPK;
+                    ulong vuread_yQu6qXYm2PyH = 0;
+                    for (int i_rEbQsZHzcMtg = 0; i_rEbQsZHzcMtg < 9; i_rEbQsZHzcMtg++) {
                         byte b = bytes[index++];
-                        if (i_uHKzzV57XfJu < 8) {
-                            vuread_oP2R9hG79QaX += (((ulong)b & (ulong)127) << (7 * i_uHKzzV57XfJu));
+                        if (i_rEbQsZHzcMtg < 8) {
+                            vuread_yQu6qXYm2PyH += (((ulong)b & (ulong)127) << (7 * i_rEbQsZHzcMtg));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_oP2R9hG79QaX += (ulong)b << (7 * i_uHKzzV57XfJu);
+                            vuread_yQu6qXYm2PyH += (ulong)b << (7 * i_rEbQsZHzcMtg);
                             break;
                         }
                     }
-                    count_nxsXUOssJrNU = (ushort)vuread_oP2R9hG79QaX;
+                    count_m0wvBndfyVPK = (ushort)vuread_yQu6qXYm2PyH;
             // Read list items
-            if (count_nxsXUOssJrNU > 0) {
+            if (count_m0wvBndfyVPK > 0) {
                 intThingMapKeys = new List<int>();
-                int listValue_dVXFrw73o5HT;
-                for (int i_nMcJliF0xEcn = 0; i_nMcJliF0xEcn < count_nxsXUOssJrNU; i_nMcJliF0xEcn++) {
+                int listValue_jPtDzfMaOiul;
+                for (int i_ijCX8f5YBZO7 = 0; i_ijCX8f5YBZO7 < count_m0wvBndfyVPK; i_ijCX8f5YBZO7++) {
                     // Read Int list item
-                listValue_dVXFrw73o5HT =
+                listValue_jPtDzfMaOiul =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    intThingMapKeys.Add(listValue_dVXFrw73o5HT);
+                    intThingMapKeys.Add(listValue_jPtDzfMaOiul);
                 }
             }
             // Read list item count
-            ushort count_b32YwP7CfIKo;
-                    ulong vuread_ibPMTgJ0a13X = 0;
-                    for (int i_swWOJT7MTKBy = 0; i_swWOJT7MTKBy < 9; i_swWOJT7MTKBy++) {
+            ushort count_fwWIoqIuxoJL;
+                    ulong vuread_muWXcy3IkZwj = 0;
+                    for (int i_jUB6QEOIavrd = 0; i_jUB6QEOIavrd < 9; i_jUB6QEOIavrd++) {
                         byte b = bytes[index++];
-                        if (i_swWOJT7MTKBy < 8) {
-                            vuread_ibPMTgJ0a13X += (((ulong)b & (ulong)127) << (7 * i_swWOJT7MTKBy));
+                        if (i_jUB6QEOIavrd < 8) {
+                            vuread_muWXcy3IkZwj += (((ulong)b & (ulong)127) << (7 * i_jUB6QEOIavrd));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_ibPMTgJ0a13X += (ulong)b << (7 * i_swWOJT7MTKBy);
+                            vuread_muWXcy3IkZwj += (ulong)b << (7 * i_jUB6QEOIavrd);
                             break;
                         }
                     }
-                    count_b32YwP7CfIKo = (ushort)vuread_ibPMTgJ0a13X;
+                    count_fwWIoqIuxoJL = (ushort)vuread_muWXcy3IkZwj;
             // Read list items
-            if (count_b32YwP7CfIKo > 0) {
+            if (count_fwWIoqIuxoJL > 0) {
                 intThingMapValues = new List<Thing>();
-                for (int li_miHI8eO7bXoj = 0; li_miHI8eO7bXoj < count_b32YwP7CfIKo; li_miHI8eO7bXoj++) {
+                for (int li_heWxJ9XfJ0sN = 0; li_heWxJ9XfJ0sN < count_fwWIoqIuxoJL; li_heWxJ9XfJ0sN++) {
                     intThingMapValues.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
                 o.IntThingMap = new Dictionary<int,Thing>(intThingMapKeys.Count);
-                for (int i_m2gq5lmmaffa = 0; i_m2gq5lmmaffa < intThingMapKeys.Count; i_m2gq5lmmaffa++) {
-                    o.IntThingMap[intThingMapKeys[i_m2gq5lmmaffa]] = intThingMapValues[i_m2gq5lmmaffa];
+                for (int i_hiWd5gXx9MkD = 0; i_hiWd5gXx9MkD < intThingMapKeys.Count; i_hiWd5gXx9MkD++) {
+                    o.IntThingMap[intThingMapKeys[i_hiWd5gXx9MkD]] = intThingMapValues[i_hiWd5gXx9MkD];
                 }
                     return o;
                 }
@@ -1800,65 +1800,65 @@ namespace Test.Map {
                 IList<Thing> thingIntMapKeys = new List<Thing>();
                 IList<int> thingIntMapValues = new List<int>();
             // Read list item count
-            ushort count_xs2vL7FTJqjK;
-                    ulong vuread_oa25m5V4hMlR = 0;
-                    for (int i_qQRHxoyydHOP = 0; i_qQRHxoyydHOP < 9; i_qQRHxoyydHOP++) {
+            ushort count_vMN2KaKidTE8;
+                    ulong vuread_pF8kbqJHBXNI = 0;
+                    for (int i_sKM4I4dQ3sI7 = 0; i_sKM4I4dQ3sI7 < 9; i_sKM4I4dQ3sI7++) {
                         byte b = bytes[index++];
-                        if (i_qQRHxoyydHOP < 8) {
-                            vuread_oa25m5V4hMlR += (((ulong)b & (ulong)127) << (7 * i_qQRHxoyydHOP));
+                        if (i_sKM4I4dQ3sI7 < 8) {
+                            vuread_pF8kbqJHBXNI += (((ulong)b & (ulong)127) << (7 * i_sKM4I4dQ3sI7));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_oa25m5V4hMlR += (ulong)b << (7 * i_qQRHxoyydHOP);
+                            vuread_pF8kbqJHBXNI += (ulong)b << (7 * i_sKM4I4dQ3sI7);
                             break;
                         }
                     }
-                    count_xs2vL7FTJqjK = (ushort)vuread_oa25m5V4hMlR;
+                    count_vMN2KaKidTE8 = (ushort)vuread_pF8kbqJHBXNI;
             // Read list items
-            if (count_xs2vL7FTJqjK > 0) {
+            if (count_vMN2KaKidTE8 > 0) {
                 thingIntMapKeys = new List<Thing>();
-                for (int li_eswdsEJmTGS4 = 0; li_eswdsEJmTGS4 < count_xs2vL7FTJqjK; li_eswdsEJmTGS4++) {
+                for (int li_j4FJpkKJNYCA = 0; li_j4FJpkKJNYCA < count_vMN2KaKidTE8; li_j4FJpkKJNYCA++) {
                     thingIntMapKeys.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
             // Read list item count
-            ushort count_ir9etk2rhlS4;
-                    ulong vuread_g8wu2VHawmU4 = 0;
-                    for (int i_oSMMc97h8Xng = 0; i_oSMMc97h8Xng < 9; i_oSMMc97h8Xng++) {
+            ushort count_dNvScNcb8fk9;
+                    ulong vuread_kQKjPYes7aYh = 0;
+                    for (int i_tarrmd44imW4 = 0; i_tarrmd44imW4 < 9; i_tarrmd44imW4++) {
                         byte b = bytes[index++];
-                        if (i_oSMMc97h8Xng < 8) {
-                            vuread_g8wu2VHawmU4 += (((ulong)b & (ulong)127) << (7 * i_oSMMc97h8Xng));
+                        if (i_tarrmd44imW4 < 8) {
+                            vuread_kQKjPYes7aYh += (((ulong)b & (ulong)127) << (7 * i_tarrmd44imW4));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_g8wu2VHawmU4 += (ulong)b << (7 * i_oSMMc97h8Xng);
+                            vuread_kQKjPYes7aYh += (ulong)b << (7 * i_tarrmd44imW4);
                             break;
                         }
                     }
-                    count_ir9etk2rhlS4 = (ushort)vuread_g8wu2VHawmU4;
+                    count_dNvScNcb8fk9 = (ushort)vuread_kQKjPYes7aYh;
             // Read list items
-            if (count_ir9etk2rhlS4 > 0) {
+            if (count_dNvScNcb8fk9 > 0) {
                 thingIntMapValues = new List<int>();
-                int listValue_gte2OxIaJCXu;
-                for (int i_dou88RIhHeGL = 0; i_dou88RIhHeGL < count_ir9etk2rhlS4; i_dou88RIhHeGL++) {
+                int listValue_ouNpqG8qUFlJ;
+                for (int i_oB3ZTkCgYo7c = 0; i_oB3ZTkCgYo7c < count_dNvScNcb8fk9; i_oB3ZTkCgYo7c++) {
                     // Read Int list item
-                listValue_gte2OxIaJCXu =
+                listValue_ouNpqG8qUFlJ =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    thingIntMapValues.Add(listValue_gte2OxIaJCXu);
+                    thingIntMapValues.Add(listValue_ouNpqG8qUFlJ);
                 }
             }
                 o.ThingIntMap = new Dictionary<Thing,int>(thingIntMapKeys.Count);
-                for (int i_oqohnL6DUqfI = 0; i_oqohnL6DUqfI < thingIntMapKeys.Count; i_oqohnL6DUqfI++) {
-                    o.ThingIntMap[thingIntMapKeys[i_oqohnL6DUqfI]] = thingIntMapValues[i_oqohnL6DUqfI];
+                for (int i_jUY5kp1l4PKv = 0; i_jUY5kp1l4PKv < thingIntMapKeys.Count; i_jUY5kp1l4PKv++) {
+                    o.ThingIntMap[thingIntMapKeys[i_jUY5kp1l4PKv]] = thingIntMapValues[i_jUY5kp1l4PKv];
                 }
                     return o;
                 }
@@ -1869,84 +1869,84 @@ namespace Test.Map {
                 IList<int> intStringMapKeys = new List<int>();
                 IList<string> intStringMapValues = new List<string>();
             // Read list item count
-            ushort count_rOw8OTug4sDX;
-                    ulong vuread_r9iqpgJkXDty = 0;
-                    for (int i_dAW8FuJ1jVrt = 0; i_dAW8FuJ1jVrt < 9; i_dAW8FuJ1jVrt++) {
+            ushort count_eZbAcHwpZSRV;
+                    ulong vuread_eek7TPfuxL3G = 0;
+                    for (int i_sdgFO9P31IO4 = 0; i_sdgFO9P31IO4 < 9; i_sdgFO9P31IO4++) {
                         byte b = bytes[index++];
-                        if (i_dAW8FuJ1jVrt < 8) {
-                            vuread_r9iqpgJkXDty += (((ulong)b & (ulong)127) << (7 * i_dAW8FuJ1jVrt));
+                        if (i_sdgFO9P31IO4 < 8) {
+                            vuread_eek7TPfuxL3G += (((ulong)b & (ulong)127) << (7 * i_sdgFO9P31IO4));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_r9iqpgJkXDty += (ulong)b << (7 * i_dAW8FuJ1jVrt);
+                            vuread_eek7TPfuxL3G += (ulong)b << (7 * i_sdgFO9P31IO4);
                             break;
                         }
                     }
-                    count_rOw8OTug4sDX = (ushort)vuread_r9iqpgJkXDty;
+                    count_eZbAcHwpZSRV = (ushort)vuread_eek7TPfuxL3G;
             // Read list items
-            if (count_rOw8OTug4sDX > 0) {
+            if (count_eZbAcHwpZSRV > 0) {
                 intStringMapKeys = new List<int>();
-                int listValue_jJCXUAQqWACn;
-                for (int i_mQnOR5Vmv8Yo = 0; i_mQnOR5Vmv8Yo < count_rOw8OTug4sDX; i_mQnOR5Vmv8Yo++) {
+                int listValue_dcer1RmOcdUf;
+                for (int i_b3BoJp8J5FS8 = 0; i_b3BoJp8J5FS8 < count_eZbAcHwpZSRV; i_b3BoJp8J5FS8++) {
                     // Read Int list item
-                listValue_jJCXUAQqWACn =
+                listValue_dcer1RmOcdUf =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    intStringMapKeys.Add(listValue_jJCXUAQqWACn);
+                    intStringMapKeys.Add(listValue_dcer1RmOcdUf);
                 }
             }
             // Read list item count
-            ushort count_ywKKSMO3RY4P;
-                    ulong vuread_qVAwWcLS7IFZ = 0;
-                    for (int i_c4koae8xUoZy = 0; i_c4koae8xUoZy < 9; i_c4koae8xUoZy++) {
+            ushort count_l1LZdX4LAqZR;
+                    ulong vuread_pYDPyoDOsaAU = 0;
+                    for (int i_oAtLKe8Ntf0a = 0; i_oAtLKe8Ntf0a < 9; i_oAtLKe8Ntf0a++) {
                         byte b = bytes[index++];
-                        if (i_c4koae8xUoZy < 8) {
-                            vuread_qVAwWcLS7IFZ += (((ulong)b & (ulong)127) << (7 * i_c4koae8xUoZy));
+                        if (i_oAtLKe8Ntf0a < 8) {
+                            vuread_pYDPyoDOsaAU += (((ulong)b & (ulong)127) << (7 * i_oAtLKe8Ntf0a));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_qVAwWcLS7IFZ += (ulong)b << (7 * i_c4koae8xUoZy);
+                            vuread_pYDPyoDOsaAU += (ulong)b << (7 * i_oAtLKe8Ntf0a);
                             break;
                         }
                     }
-                    count_ywKKSMO3RY4P = (ushort)vuread_qVAwWcLS7IFZ;
+                    count_l1LZdX4LAqZR = (ushort)vuread_pYDPyoDOsaAU;
             // Read list items
-            if (count_ywKKSMO3RY4P > 0) {
+            if (count_l1LZdX4LAqZR > 0) {
                 intStringMapValues = new List<string>();
-                string listValue_vgIkWJGOVIa5;
-                for (int i_nyAswgry0UEX = 0; i_nyAswgry0UEX < count_ywKKSMO3RY4P; i_nyAswgry0UEX++) {
+                string listValue_cwLpiiPYeTNV;
+                for (int i_uslRcePAA1rM = 0; i_uslRcePAA1rM < count_l1LZdX4LAqZR; i_uslRcePAA1rM++) {
                     // Read String list item
-                    ulong vuread_mA6xc0eH4oSM = 0;
-                    for (int i_rPaO6BHfLUSw = 0; i_rPaO6BHfLUSw < 9; i_rPaO6BHfLUSw++) {
+                    ulong vuread_qoFjvMQYXIZr = 0;
+                    for (int i_xrLpzzJof9V0 = 0; i_xrLpzzJof9V0 < 9; i_xrLpzzJof9V0++) {
                         byte b = bytes[index++];
-                        if (i_rPaO6BHfLUSw < 8) {
-                            vuread_mA6xc0eH4oSM += (((ulong)b & (ulong)127) << (7 * i_rPaO6BHfLUSw));
+                        if (i_xrLpzzJof9V0 < 8) {
+                            vuread_qoFjvMQYXIZr += (((ulong)b & (ulong)127) << (7 * i_xrLpzzJof9V0));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_mA6xc0eH4oSM += (ulong)b << (7 * i_rPaO6BHfLUSw);
+                            vuread_qoFjvMQYXIZr += (ulong)b << (7 * i_xrLpzzJof9V0);
                             break;
                         }
                     }
-                    ushort stringLength_lA2MZH4z5cGQ = (ushort)vuread_mA6xc0eH4oSM;
-                listValue_vgIkWJGOVIa5 = Encoding.UTF8.GetString(bytes, index, stringLength_lA2MZH4z5cGQ);
-                index += stringLength_lA2MZH4z5cGQ;
-                    intStringMapValues.Add(listValue_vgIkWJGOVIa5);
+                    ushort stringLength_msbvrmxF8CJb = (ushort)vuread_qoFjvMQYXIZr;
+                listValue_cwLpiiPYeTNV = Encoding.UTF8.GetString(bytes, index, stringLength_msbvrmxF8CJb);
+                index += stringLength_msbvrmxF8CJb;
+                    intStringMapValues.Add(listValue_cwLpiiPYeTNV);
                 }
             }
                 o.IntStringMap = new Dictionary<int,string>(intStringMapKeys.Count);
-                for (int i_s3YoOK9D1TX5 = 0; i_s3YoOK9D1TX5 < intStringMapKeys.Count; i_s3YoOK9D1TX5++) {
-                    o.IntStringMap[intStringMapKeys[i_s3YoOK9D1TX5]] = intStringMapValues[i_s3YoOK9D1TX5];
+                for (int i_dtG2whXtTkdX = 0; i_dtG2whXtTkdX < intStringMapKeys.Count; i_dtG2whXtTkdX++) {
+                    o.IntStringMap[intStringMapKeys[i_dtG2whXtTkdX]] = intStringMapValues[i_dtG2whXtTkdX];
                 }
                     return o;
                 }
@@ -1957,56 +1957,56 @@ namespace Test.Map {
                 IList<Thing> thingThingMapKeys = new List<Thing>();
                 IList<Thing> thingThingMapValues = new List<Thing>();
             // Read list item count
-            ushort count_e3w9Q63nRq7j;
-                    ulong vuread_npDEEBeUSKQi = 0;
-                    for (int i_aZ3uopU52eFd = 0; i_aZ3uopU52eFd < 9; i_aZ3uopU52eFd++) {
+            ushort count_oGeYlCY5CUCa;
+                    ulong vuread_pifI3u5OCPcc = 0;
+                    for (int i_cYCQVGITnXQ3 = 0; i_cYCQVGITnXQ3 < 9; i_cYCQVGITnXQ3++) {
                         byte b = bytes[index++];
-                        if (i_aZ3uopU52eFd < 8) {
-                            vuread_npDEEBeUSKQi += (((ulong)b & (ulong)127) << (7 * i_aZ3uopU52eFd));
+                        if (i_cYCQVGITnXQ3 < 8) {
+                            vuread_pifI3u5OCPcc += (((ulong)b & (ulong)127) << (7 * i_cYCQVGITnXQ3));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_npDEEBeUSKQi += (ulong)b << (7 * i_aZ3uopU52eFd);
+                            vuread_pifI3u5OCPcc += (ulong)b << (7 * i_cYCQVGITnXQ3);
                             break;
                         }
                     }
-                    count_e3w9Q63nRq7j = (ushort)vuread_npDEEBeUSKQi;
+                    count_oGeYlCY5CUCa = (ushort)vuread_pifI3u5OCPcc;
             // Read list items
-            if (count_e3w9Q63nRq7j > 0) {
+            if (count_oGeYlCY5CUCa > 0) {
                 thingThingMapKeys = new List<Thing>();
-                for (int li_bHzP1FOA5OSy = 0; li_bHzP1FOA5OSy < count_e3w9Q63nRq7j; li_bHzP1FOA5OSy++) {
+                for (int li_iVdNk0xw0Grn = 0; li_iVdNk0xw0Grn < count_oGeYlCY5CUCa; li_iVdNk0xw0Grn++) {
                     thingThingMapKeys.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
             // Read list item count
-            ushort count_dF8AOdnJnn70;
-                    ulong vuread_bJ8BFcrBUzA7 = 0;
-                    for (int i_az3m5pnxhEmT = 0; i_az3m5pnxhEmT < 9; i_az3m5pnxhEmT++) {
+            ushort count_aoAyozv3DcSx;
+                    ulong vuread_aij6mTWXClni = 0;
+                    for (int i_hsDMrPlJHoOH = 0; i_hsDMrPlJHoOH < 9; i_hsDMrPlJHoOH++) {
                         byte b = bytes[index++];
-                        if (i_az3m5pnxhEmT < 8) {
-                            vuread_bJ8BFcrBUzA7 += (((ulong)b & (ulong)127) << (7 * i_az3m5pnxhEmT));
+                        if (i_hsDMrPlJHoOH < 8) {
+                            vuread_aij6mTWXClni += (((ulong)b & (ulong)127) << (7 * i_hsDMrPlJHoOH));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_bJ8BFcrBUzA7 += (ulong)b << (7 * i_az3m5pnxhEmT);
+                            vuread_aij6mTWXClni += (ulong)b << (7 * i_hsDMrPlJHoOH);
                             break;
                         }
                     }
-                    count_dF8AOdnJnn70 = (ushort)vuread_bJ8BFcrBUzA7;
+                    count_aoAyozv3DcSx = (ushort)vuread_aij6mTWXClni;
             // Read list items
-            if (count_dF8AOdnJnn70 > 0) {
+            if (count_aoAyozv3DcSx > 0) {
                 thingThingMapValues = new List<Thing>();
-                for (int li_huqZ06Z0KJMs = 0; li_huqZ06Z0KJMs < count_dF8AOdnJnn70; li_huqZ06Z0KJMs++) {
+                for (int li_cjEYBWAtcQMc = 0; li_cjEYBWAtcQMc < count_aoAyozv3DcSx; li_cjEYBWAtcQMc++) {
                     thingThingMapValues.Add((Thing)Energize(bytes, ref index, 10));
                 }
             }
                 o.ThingThingMap = new Dictionary<Thing,Thing>(thingThingMapKeys.Count);
-                for (int i_nm52xrORfbyp = 0; i_nm52xrORfbyp < thingThingMapKeys.Count; i_nm52xrORfbyp++) {
-                    o.ThingThingMap[thingThingMapKeys[i_nm52xrORfbyp]] = thingThingMapValues[i_nm52xrORfbyp];
+                for (int i_rAkhTDV0bsg6 = 0; i_rAkhTDV0bsg6 < thingThingMapKeys.Count; i_rAkhTDV0bsg6++) {
+                    o.ThingThingMap[thingThingMapKeys[i_rAkhTDV0bsg6]] = thingThingMapValues[i_rAkhTDV0bsg6];
                 }
                     return o;
                 }
@@ -2017,65 +2017,65 @@ namespace Test.Map {
                 IList<MyEnum> enumIntMapKeys = new List<MyEnum>();
                 IList<int> enumIntMapValues = new List<int>();
             // Read list item count
-            ushort count_ebN7aKSIwokk;
-                    ulong vuread_uCKYJJxCXLPS = 0;
-                    for (int i_iua00FOq6aPZ = 0; i_iua00FOq6aPZ < 9; i_iua00FOq6aPZ++) {
+            ushort count_yTLX0j0VEM0c;
+                    ulong vuread_g8vPV3fLPB50 = 0;
+                    for (int i_ne0dCXFYdI2S = 0; i_ne0dCXFYdI2S < 9; i_ne0dCXFYdI2S++) {
                         byte b = bytes[index++];
-                        if (i_iua00FOq6aPZ < 8) {
-                            vuread_uCKYJJxCXLPS += (((ulong)b & (ulong)127) << (7 * i_iua00FOq6aPZ));
+                        if (i_ne0dCXFYdI2S < 8) {
+                            vuread_g8vPV3fLPB50 += (((ulong)b & (ulong)127) << (7 * i_ne0dCXFYdI2S));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_uCKYJJxCXLPS += (ulong)b << (7 * i_iua00FOq6aPZ);
+                            vuread_g8vPV3fLPB50 += (ulong)b << (7 * i_ne0dCXFYdI2S);
                             break;
                         }
                     }
-                    count_ebN7aKSIwokk = (ushort)vuread_uCKYJJxCXLPS;
+                    count_yTLX0j0VEM0c = (ushort)vuread_g8vPV3fLPB50;
             // Read list items
-            if (count_ebN7aKSIwokk > 0) {
+            if (count_yTLX0j0VEM0c > 0) {
                 enumIntMapKeys = new List<MyEnum>();
-                for (int i_h20a0d5scUg4 = 0; i_h20a0d5scUg4 < count_ebN7aKSIwokk; i_h20a0d5scUg4++) {
+                for (int i_eMC301IdKi2V = 0; i_eMC301IdKi2V < count_yTLX0j0VEM0c; i_eMC301IdKi2V++) {
                     enumIntMapKeys.Add((MyEnum)System.Enum.Parse(typeof(MyEnum), enumIndexValueMap["MyEnum"][bytes[index++]]));
                 }
             }
             // Read list item count
-            ushort count_s0hGO6CIw4NQ;
-                    ulong vuread_p2S1K4oVXUFR = 0;
-                    for (int i_swLTPwQKofj9 = 0; i_swLTPwQKofj9 < 9; i_swLTPwQKofj9++) {
+            ushort count_dgehmFqEXVsW;
+                    ulong vuread_iWsQgc9QgMEi = 0;
+                    for (int i_lmVY21qwle6w = 0; i_lmVY21qwle6w < 9; i_lmVY21qwle6w++) {
                         byte b = bytes[index++];
-                        if (i_swLTPwQKofj9 < 8) {
-                            vuread_p2S1K4oVXUFR += (((ulong)b & (ulong)127) << (7 * i_swLTPwQKofj9));
+                        if (i_lmVY21qwle6w < 8) {
+                            vuread_iWsQgc9QgMEi += (((ulong)b & (ulong)127) << (7 * i_lmVY21qwle6w));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_p2S1K4oVXUFR += (ulong)b << (7 * i_swLTPwQKofj9);
+                            vuread_iWsQgc9QgMEi += (ulong)b << (7 * i_lmVY21qwle6w);
                             break;
                         }
                     }
-                    count_s0hGO6CIw4NQ = (ushort)vuread_p2S1K4oVXUFR;
+                    count_dgehmFqEXVsW = (ushort)vuread_iWsQgc9QgMEi;
             // Read list items
-            if (count_s0hGO6CIw4NQ > 0) {
+            if (count_dgehmFqEXVsW > 0) {
                 enumIntMapValues = new List<int>();
-                int listValue_jiL9IgCxpkA8;
-                for (int i_ieShFuh6uAXr = 0; i_ieShFuh6uAXr < count_s0hGO6CIw4NQ; i_ieShFuh6uAXr++) {
+                int listValue_syLIrx5zuQKd;
+                for (int i_o17IjmPEL6Q9 = 0; i_o17IjmPEL6Q9 < count_dgehmFqEXVsW; i_o17IjmPEL6Q9++) {
                     // Read Int list item
-                listValue_jiL9IgCxpkA8 =
+                listValue_syLIrx5zuQKd =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    enumIntMapValues.Add(listValue_jiL9IgCxpkA8);
+                    enumIntMapValues.Add(listValue_syLIrx5zuQKd);
                 }
             }
                 o.EnumIntMap = new Dictionary<MyEnum,int>(enumIntMapKeys.Count);
-                for (int i_iT3aocBESTDC = 0; i_iT3aocBESTDC < enumIntMapKeys.Count; i_iT3aocBESTDC++) {
-                    o.EnumIntMap[enumIntMapKeys[i_iT3aocBESTDC]] = enumIntMapValues[i_iT3aocBESTDC];
+                for (int i_tCL5E5Lo067S = 0; i_tCL5E5Lo067S < enumIntMapKeys.Count; i_tCL5E5Lo067S++) {
+                    o.EnumIntMap[enumIntMapKeys[i_tCL5E5Lo067S]] = enumIntMapValues[i_tCL5E5Lo067S];
                 }
                     return o;
                 }
@@ -2086,100 +2086,100 @@ namespace Test.Map {
                 IList<int> vintVlongMapKeys = new List<int>();
                 IList<long> vintVlongMapValues = new List<long>();
             // Read list item count
-            ushort count_honRriCI6NyK;
-                    ulong vuread_qJe38nO7uuPZ = 0;
-                    for (int i_fCjmS6pMKpYq = 0; i_fCjmS6pMKpYq < 9; i_fCjmS6pMKpYq++) {
+            ushort count_lBySRfYVMRpb;
+                    ulong vuread_xSn8zBUWSMYZ = 0;
+                    for (int i_u95zevnL4oiR = 0; i_u95zevnL4oiR < 9; i_u95zevnL4oiR++) {
                         byte b = bytes[index++];
-                        if (i_fCjmS6pMKpYq < 8) {
-                            vuread_qJe38nO7uuPZ += (((ulong)b & (ulong)127) << (7 * i_fCjmS6pMKpYq));
+                        if (i_u95zevnL4oiR < 8) {
+                            vuread_xSn8zBUWSMYZ += (((ulong)b & (ulong)127) << (7 * i_u95zevnL4oiR));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_qJe38nO7uuPZ += (ulong)b << (7 * i_fCjmS6pMKpYq);
+                            vuread_xSn8zBUWSMYZ += (ulong)b << (7 * i_u95zevnL4oiR);
                             break;
                         }
                     }
-                    count_honRriCI6NyK = (ushort)vuread_qJe38nO7uuPZ;
+                    count_lBySRfYVMRpb = (ushort)vuread_xSn8zBUWSMYZ;
             // Read list items
-            if (count_honRriCI6NyK > 0) {
+            if (count_lBySRfYVMRpb > 0) {
                 vintVlongMapKeys = new List<int>();
-                int listValue_czOm7ouQvsvP;
-                for (int i_zIFFeGh8JyEZ = 0; i_zIFFeGh8JyEZ < count_honRriCI6NyK; i_zIFFeGh8JyEZ++) {
+                int listValue_v6XGi5xcmKbW;
+                for (int i_sMYzlkaYMI6R = 0; i_sMYzlkaYMI6R < count_lBySRfYVMRpb; i_sMYzlkaYMI6R++) {
                     // Read VInt list item
-    byte rvint_b_zp0axVayUYWI = bytes[index++];
-    byte rvint_sign_oC9ga8D3hEoj = (byte)(rvint_b_zp0axVayUYWI & 1);
-    byte rvint_size_lUHdi0RS5ZnS = (byte)(rvint_b_zp0axVayUYWI >> 1);
-    ulong rvint_remaining_kutJs64jV76M = 0;
-    for (int i_ob7K4KRFaQKM = 0; i_ob7K4KRFaQKM < rvint_size_lUHdi0RS5ZnS - 1; i_ob7K4KRFaQKM++) {
-        rvint_remaining_kutJs64jV76M = rvint_remaining_kutJs64jV76M | (((ulong)bytes[index++] << (8 * i_ob7K4KRFaQKM)));
+    byte rvint_b_ezQqDNgQJFkC = bytes[index++];
+    byte rvint_sign_qoOWoWMl8iRC = (byte)(rvint_b_ezQqDNgQJFkC & 1);
+    byte rvint_size_nYATotfpagwS = (byte)(rvint_b_ezQqDNgQJFkC >> 1);
+    ulong rvint_remaining_ggIIEvmlCwV7 = 0;
+    for (int i_nnJ05VSbRnUP = 0; i_nnJ05VSbRnUP < rvint_size_nYATotfpagwS - 1; i_nnJ05VSbRnUP++) {
+        rvint_remaining_ggIIEvmlCwV7 = rvint_remaining_ggIIEvmlCwV7 | (((ulong)bytes[index++] << (8 * i_nnJ05VSbRnUP)));
     }
-    int rvint_result_f6q3hdNToqRQ = (int)rvint_remaining_kutJs64jV76M;
-    rvint_result_f6q3hdNToqRQ = ~rvint_result_f6q3hdNToqRQ;
-    if (rvint_result_f6q3hdNToqRQ == int.MaxValue) {
-        rvint_result_f6q3hdNToqRQ = int.MinValue;
+    int rvint_result_fwBpA4CG15Hi = (int)rvint_remaining_ggIIEvmlCwV7;
+    rvint_result_fwBpA4CG15Hi = ~rvint_result_fwBpA4CG15Hi;
+    if (rvint_result_fwBpA4CG15Hi == int.MaxValue) {
+        rvint_result_fwBpA4CG15Hi = int.MinValue;
     }
     else {
         // Add offset
-        rvint_result_f6q3hdNToqRQ += 1;
-        if (rvint_sign_oC9ga8D3hEoj == 0) {
-            rvint_result_f6q3hdNToqRQ = -rvint_result_f6q3hdNToqRQ;
+        rvint_result_fwBpA4CG15Hi += 1;
+        if (rvint_sign_qoOWoWMl8iRC == 0) {
+            rvint_result_fwBpA4CG15Hi = -rvint_result_fwBpA4CG15Hi;
         }
     }
-    listValue_czOm7ouQvsvP = rvint_result_f6q3hdNToqRQ;
-                    vintVlongMapKeys.Add(listValue_czOm7ouQvsvP);
+    listValue_v6XGi5xcmKbW = rvint_result_fwBpA4CG15Hi;
+                    vintVlongMapKeys.Add(listValue_v6XGi5xcmKbW);
                 }
             }
             // Read list item count
-            ushort count_r4LkJfxCY5Gg;
-                    ulong vuread_wgYuhSRSTQvw = 0;
-                    for (int i_rbcSumxqtr59 = 0; i_rbcSumxqtr59 < 9; i_rbcSumxqtr59++) {
+            ushort count_feRN5FakcDoa;
+                    ulong vuread_touoyubbw3vh = 0;
+                    for (int i_x6VH3pfJPAN1 = 0; i_x6VH3pfJPAN1 < 9; i_x6VH3pfJPAN1++) {
                         byte b = bytes[index++];
-                        if (i_rbcSumxqtr59 < 8) {
-                            vuread_wgYuhSRSTQvw += (((ulong)b & (ulong)127) << (7 * i_rbcSumxqtr59));
+                        if (i_x6VH3pfJPAN1 < 8) {
+                            vuread_touoyubbw3vh += (((ulong)b & (ulong)127) << (7 * i_x6VH3pfJPAN1));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_wgYuhSRSTQvw += (ulong)b << (7 * i_rbcSumxqtr59);
+                            vuread_touoyubbw3vh += (ulong)b << (7 * i_x6VH3pfJPAN1);
                             break;
                         }
                     }
-                    count_r4LkJfxCY5Gg = (ushort)vuread_wgYuhSRSTQvw;
+                    count_feRN5FakcDoa = (ushort)vuread_touoyubbw3vh;
             // Read list items
-            if (count_r4LkJfxCY5Gg > 0) {
+            if (count_feRN5FakcDoa > 0) {
                 vintVlongMapValues = new List<long>();
-                long listValue_zH55shYsAjaa;
-                for (int i_gsMGJ968IpDH = 0; i_gsMGJ968IpDH < count_r4LkJfxCY5Gg; i_gsMGJ968IpDH++) {
+                long listValue_befmnJMTiBFm;
+                for (int i_pniG4GWuTJU8 = 0; i_pniG4GWuTJU8 < count_feRN5FakcDoa; i_pniG4GWuTJU8++) {
                     // Read VLong list item
-    byte rvlong_b_bPiMIpXKlYuJ = bytes[index++];
-    byte rvlong_sign_uWzM1d5GbcCb = (byte)(rvlong_b_bPiMIpXKlYuJ & 1);
-    byte rvlong_size_o0Rtv6AUdy2M = (byte)(rvlong_b_bPiMIpXKlYuJ >> 1);
-    ulong rvlong_remaining_zmTkwzYA7cUX = 0;
-    for (int i_ptgFt7GamhcR = 0; i_ptgFt7GamhcR < rvlong_size_o0Rtv6AUdy2M - 1; i_ptgFt7GamhcR++) {
-        rvlong_remaining_zmTkwzYA7cUX = rvlong_remaining_zmTkwzYA7cUX | (((ulong)bytes[index++] << (8 * i_ptgFt7GamhcR)));
+    byte rvlong_b_tCrXyOutLCkt = bytes[index++];
+    byte rvlong_sign_gYXWqL9BBI6P = (byte)(rvlong_b_tCrXyOutLCkt & 1);
+    byte rvlong_size_cIOjOsiEuhBV = (byte)(rvlong_b_tCrXyOutLCkt >> 1);
+    ulong rvlong_remaining_hYvDhlLhdZsf = 0;
+    for (int i_s9eiKtHlFLRZ = 0; i_s9eiKtHlFLRZ < rvlong_size_cIOjOsiEuhBV - 1; i_s9eiKtHlFLRZ++) {
+        rvlong_remaining_hYvDhlLhdZsf = rvlong_remaining_hYvDhlLhdZsf | (((ulong)bytes[index++] << (8 * i_s9eiKtHlFLRZ)));
     }
-    long rvlong_result_oDpoxKGy3WOP = (long)rvlong_remaining_zmTkwzYA7cUX;
-    rvlong_result_oDpoxKGy3WOP = ~rvlong_result_oDpoxKGy3WOP;
-    if (rvlong_result_oDpoxKGy3WOP == long.MaxValue) {
-        rvlong_result_oDpoxKGy3WOP = long.MinValue;
+    long rvlong_result_zlPsuP9hxcEB = (long)rvlong_remaining_hYvDhlLhdZsf;
+    rvlong_result_zlPsuP9hxcEB = ~rvlong_result_zlPsuP9hxcEB;
+    if (rvlong_result_zlPsuP9hxcEB == long.MaxValue) {
+        rvlong_result_zlPsuP9hxcEB = long.MinValue;
     }
     else {
         // Add offset
-        rvlong_result_oDpoxKGy3WOP += 1;
-        if (rvlong_sign_uWzM1d5GbcCb == 0) {
-            rvlong_result_oDpoxKGy3WOP = -rvlong_result_oDpoxKGy3WOP;
+        rvlong_result_zlPsuP9hxcEB += 1;
+        if (rvlong_sign_gYXWqL9BBI6P == 0) {
+            rvlong_result_zlPsuP9hxcEB = -rvlong_result_zlPsuP9hxcEB;
         }
     }
-    listValue_zH55shYsAjaa = rvlong_result_oDpoxKGy3WOP;
-                    vintVlongMapValues.Add(listValue_zH55shYsAjaa);
+    listValue_befmnJMTiBFm = rvlong_result_zlPsuP9hxcEB;
+                    vintVlongMapValues.Add(listValue_befmnJMTiBFm);
                 }
             }
                 o.VintVlongMap = new Dictionary<int,long>(vintVlongMapKeys.Count);
-                for (int i_iVkLncdGg4Tb = 0; i_iVkLncdGg4Tb < vintVlongMapKeys.Count; i_iVkLncdGg4Tb++) {
-                    o.VintVlongMap[vintVlongMapKeys[i_iVkLncdGg4Tb]] = vintVlongMapValues[i_iVkLncdGg4Tb];
+                for (int i_gFuq7ZMrqIAP = 0; i_gFuq7ZMrqIAP < vintVlongMapKeys.Count; i_gFuq7ZMrqIAP++) {
+                    o.VintVlongMap[vintVlongMapKeys[i_gFuq7ZMrqIAP]] = vintVlongMapValues[i_gFuq7ZMrqIAP];
                 }
                     return o;
                 }

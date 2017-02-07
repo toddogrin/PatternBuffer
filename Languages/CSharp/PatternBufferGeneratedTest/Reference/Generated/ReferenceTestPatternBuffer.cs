@@ -164,21 +164,21 @@ namespace Test.Reference {
 ///////////////////////////////////////
         public object Energize(byte[] bytes) {
             int index = 0;
-                    ulong vuread_oDIlp1gAWDML = 0;
-                    for (int i_sKjeFqT278hN = 0; i_sKjeFqT278hN < 9; i_sKjeFqT278hN++) {
+                    ulong vuread_idunlzwLJSLx = 0;
+                    for (int i_qDLOjm1DkPXU = 0; i_qDLOjm1DkPXU < 9; i_qDLOjm1DkPXU++) {
                         byte b = bytes[index++];
-                        if (i_sKjeFqT278hN < 8) {
-                            vuread_oDIlp1gAWDML += (((ulong)b & (ulong)127) << (7 * i_sKjeFqT278hN));
+                        if (i_qDLOjm1DkPXU < 8) {
+                            vuread_idunlzwLJSLx += (((ulong)b & (ulong)127) << (7 * i_qDLOjm1DkPXU));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_oDIlp1gAWDML += (ulong)b << (7 * i_sKjeFqT278hN);
+                            vuread_idunlzwLJSLx += (ulong)b << (7 * i_qDLOjm1DkPXU);
                             break;
                         }
                     }
-                    ushort typeId = (ushort)vuread_oDIlp1gAWDML;
+                    ushort typeId = (ushort)vuread_idunlzwLJSLx;
             switch (typeId) {
             case 11:
                 {
@@ -267,21 +267,21 @@ namespace Test.Reference {
             }
         }
         public object Energize(byte[] bytes, ref int index) {
-                    ulong vuread_x9009gYT8KlL = 0;
-                    for (int i_va1eK7Sgb1bl = 0; i_va1eK7Sgb1bl < 9; i_va1eK7Sgb1bl++) {
+                    ulong vuread_qlXqxvUXbmEf = 0;
+                    for (int i_v0NT3fD5ybVC = 0; i_v0NT3fD5ybVC < 9; i_v0NT3fD5ybVC++) {
                         byte b = bytes[index++];
-                        if (i_va1eK7Sgb1bl < 8) {
-                            vuread_x9009gYT8KlL += (((ulong)b & (ulong)127) << (7 * i_va1eK7Sgb1bl));
+                        if (i_v0NT3fD5ybVC < 8) {
+                            vuread_qlXqxvUXbmEf += (((ulong)b & (ulong)127) << (7 * i_v0NT3fD5ybVC));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_x9009gYT8KlL += (ulong)b << (7 * i_va1eK7Sgb1bl);
+                            vuread_qlXqxvUXbmEf += (ulong)b << (7 * i_v0NT3fD5ybVC);
                             break;
                         }
                     }
-                    ushort typeId = (ushort)vuread_x9009gYT8KlL;
+                    ushort typeId = (ushort)vuread_qlXqxvUXbmEf;
             switch (typeId) {
             case 11:
                 {

@@ -38,14 +38,14 @@ namespace Test.List {
             if (this.AbstractThingListValue == null && that.AbstractThingListValue != null) { return false; }
             if (that.AbstractThingListValue != null && this.AbstractThingListValue == null) { return false; }
             if (this.AbstractThingListValue.Count != that.AbstractThingListValue.Count) { return false; }
-            List<AbstractThing>.Enumerator enumerator_sDnAjprx0chr = this.AbstractThingListValue.GetEnumerator();
-            List<AbstractThing>.Enumerator enumerator_eCLfHiaOh3yG = that.AbstractThingListValue.GetEnumerator();
+            List<AbstractThing>.Enumerator enumerator_b1AF9MsienMM = this.AbstractThingListValue.GetEnumerator();
+            List<AbstractThing>.Enumerator enumerator_zNC1yy8gPKDn = that.AbstractThingListValue.GetEnumerator();
             while(true) {
-                if ( ! enumerator_sDnAjprx0chr.MoveNext()) { break; }
-                enumerator_eCLfHiaOh3yG.MoveNext();
-            if (enumerator_sDnAjprx0chr.Current == null && enumerator_eCLfHiaOh3yG.Current != null) { return false; }
-            if (enumerator_eCLfHiaOh3yG.Current != null && enumerator_sDnAjprx0chr.Current == null) { return false; }
-            if ( ! enumerator_sDnAjprx0chr.Current.Equals(enumerator_eCLfHiaOh3yG.Current)) { return false; }
+                if ( ! enumerator_b1AF9MsienMM.MoveNext()) { break; }
+                enumerator_zNC1yy8gPKDn.MoveNext();
+            if (enumerator_b1AF9MsienMM.Current == null && enumerator_zNC1yy8gPKDn.Current != null) { return false; }
+            if (enumerator_zNC1yy8gPKDn.Current != null && enumerator_b1AF9MsienMM.Current == null) { return false; }
+            if ( ! enumerator_b1AF9MsienMM.Current.Equals(enumerator_zNC1yy8gPKDn.Current)) { return false; }
             }
             return true;
         }

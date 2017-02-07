@@ -38,12 +38,12 @@ namespace Test.Set {
             if (this.VintSetValue == null && that.VintSetValue != null) { return false; }
             if (that.VintSetValue != null && this.VintSetValue == null) { return false; }
             if (this.VintSetValue.Count != that.VintSetValue.Count) { return false; }
-            HashSet<int>.Enumerator enumerator_h5LBsSce2haU = this.VintSetValue.GetEnumerator();
-            HashSet<int>.Enumerator enumerator_e8bytoPMOgUX = that.VintSetValue.GetEnumerator();
+            HashSet<int>.Enumerator enumerator_jAcod1fn4gHh = this.VintSetValue.GetEnumerator();
+            HashSet<int>.Enumerator enumerator_ztSAgi21ZFFA = that.VintSetValue.GetEnumerator();
             while(true) {
-                if ( ! enumerator_h5LBsSce2haU.MoveNext()) { break; }
-                enumerator_e8bytoPMOgUX.MoveNext();
-            if (enumerator_h5LBsSce2haU.Current != enumerator_e8bytoPMOgUX.Current) { return false; }
+                if ( ! enumerator_jAcod1fn4gHh.MoveNext()) { break; }
+                enumerator_ztSAgi21ZFFA.MoveNext();
+            if (enumerator_jAcod1fn4gHh.Current != enumerator_ztSAgi21ZFFA.Current) { return false; }
             }
             return true;
         }

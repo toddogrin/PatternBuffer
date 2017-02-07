@@ -122,19 +122,19 @@ namespace Test.Enum {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.SomeEnumListValue.Count;
-                int i_yt6IJNt4mFFG;
-                for (i_yt6IJNt4mFFG = 0; i_yt6IJNt4mFFG < 2; i_yt6IJNt4mFFG++) {
-                    if ((ulong)o.SomeEnumListValue.Count < vuBoundaries[i_yt6IJNt4mFFG]) {
-                       byteCount = (int)(i_yt6IJNt4mFFG + 1);
-                       goto guvsgoto_d03IcJdmety7;
+                int i_uruRre2D31ad;
+                for (i_uruRre2D31ad = 0; i_uruRre2D31ad < 2; i_uruRre2D31ad++) {
+                    if ((ulong)o.SomeEnumListValue.Count < vuBoundaries[i_uruRre2D31ad]) {
+                       byteCount = (int)(i_uruRre2D31ad + 1);
+                       goto guvsgoto_sqGipXKibpHd;
                     }
                 }
-                byteCount = (int)i_yt6IJNt4mFFG + 1;
-                guvsgoto_d03IcJdmety7:
-                    for (int i_hqBMBRkcXkxZ = 0; i_hqBMBRkcXkxZ < byteCount; i_hqBMBRkcXkxZ++) {
-                        if (i_hqBMBRkcXkxZ < byteCount - 1) {
+                byteCount = (int)i_uruRre2D31ad + 1;
+                guvsgoto_sqGipXKibpHd:
+                    for (int i_xjTKnp4ifjy4 = 0; i_xjTKnp4ifjy4 < byteCount; i_xjTKnp4ifjy4++) {
+                        if (i_xjTKnp4ifjy4 < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_hqBMBRkcXkxZ < byteCount - 1) {
+                            if (i_xjTKnp4ifjy4 < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -167,19 +167,19 @@ namespace Test.Enum {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.IntSomeEnumMapValue.Keys.Count;
-                int i_sTCzQSgMuxqV;
-                for (i_sTCzQSgMuxqV = 0; i_sTCzQSgMuxqV < 2; i_sTCzQSgMuxqV++) {
-                    if ((ulong)o.IntSomeEnumMapValue.Keys.Count < vuBoundaries[i_sTCzQSgMuxqV]) {
-                       byteCount = (int)(i_sTCzQSgMuxqV + 1);
-                       goto guvsgoto_gV6WJwNbFRIc;
+                int i_zQ3Ny7K0pDof;
+                for (i_zQ3Ny7K0pDof = 0; i_zQ3Ny7K0pDof < 2; i_zQ3Ny7K0pDof++) {
+                    if ((ulong)o.IntSomeEnumMapValue.Keys.Count < vuBoundaries[i_zQ3Ny7K0pDof]) {
+                       byteCount = (int)(i_zQ3Ny7K0pDof + 1);
+                       goto guvsgoto_xXVi9CeLc0oG;
                     }
                 }
-                byteCount = (int)i_sTCzQSgMuxqV + 1;
-                guvsgoto_gV6WJwNbFRIc:
-                    for (int i_dBUwiwjU5gsY = 0; i_dBUwiwjU5gsY < byteCount; i_dBUwiwjU5gsY++) {
-                        if (i_dBUwiwjU5gsY < byteCount - 1) {
+                byteCount = (int)i_zQ3Ny7K0pDof + 1;
+                guvsgoto_xXVi9CeLc0oG:
+                    for (int i_ba4Vuz8O3zYE = 0; i_ba4Vuz8O3zYE < byteCount; i_ba4Vuz8O3zYE++) {
+                        if (i_ba4Vuz8O3zYE < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_dBUwiwjU5gsY < byteCount - 1) {
+                            if (i_ba4Vuz8O3zYE < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -208,19 +208,19 @@ namespace Test.Enum {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.IntSomeEnumMapValue.Values.Count;
-                int i_gVwedVF2EkOi;
-                for (i_gVwedVF2EkOi = 0; i_gVwedVF2EkOi < 2; i_gVwedVF2EkOi++) {
-                    if ((ulong)o.IntSomeEnumMapValue.Values.Count < vuBoundaries[i_gVwedVF2EkOi]) {
-                       byteCount = (int)(i_gVwedVF2EkOi + 1);
-                       goto guvsgoto_sHuZ2EbJSy4S;
+                int i_jrThIHPAJPe9;
+                for (i_jrThIHPAJPe9 = 0; i_jrThIHPAJPe9 < 2; i_jrThIHPAJPe9++) {
+                    if ((ulong)o.IntSomeEnumMapValue.Values.Count < vuBoundaries[i_jrThIHPAJPe9]) {
+                       byteCount = (int)(i_jrThIHPAJPe9 + 1);
+                       goto guvsgoto_hUDAWzad5nKH;
                     }
                 }
-                byteCount = (int)i_gVwedVF2EkOi + 1;
-                guvsgoto_sHuZ2EbJSy4S:
-                    for (int i_pq2jHXhLAORi = 0; i_pq2jHXhLAORi < byteCount; i_pq2jHXhLAORi++) {
-                        if (i_pq2jHXhLAORi < byteCount - 1) {
+                byteCount = (int)i_jrThIHPAJPe9 + 1;
+                guvsgoto_hUDAWzad5nKH:
+                    for (int i_otqN2KMK2zuO = 0; i_otqN2KMK2zuO < byteCount; i_otqN2KMK2zuO++) {
+                        if (i_otqN2KMK2zuO < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_pq2jHXhLAORi < byteCount - 1) {
+                            if (i_otqN2KMK2zuO < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -253,19 +253,19 @@ namespace Test.Enum {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.SomeEnumIntMapValue.Keys.Count;
-                int i_zfRkLAtH2lnM;
-                for (i_zfRkLAtH2lnM = 0; i_zfRkLAtH2lnM < 2; i_zfRkLAtH2lnM++) {
-                    if ((ulong)o.SomeEnumIntMapValue.Keys.Count < vuBoundaries[i_zfRkLAtH2lnM]) {
-                       byteCount = (int)(i_zfRkLAtH2lnM + 1);
-                       goto guvsgoto_krT0wQdTGbhx;
+                int i_r0fvTx4NQE2C;
+                for (i_r0fvTx4NQE2C = 0; i_r0fvTx4NQE2C < 2; i_r0fvTx4NQE2C++) {
+                    if ((ulong)o.SomeEnumIntMapValue.Keys.Count < vuBoundaries[i_r0fvTx4NQE2C]) {
+                       byteCount = (int)(i_r0fvTx4NQE2C + 1);
+                       goto guvsgoto_mjeZCkk1zwzd;
                     }
                 }
-                byteCount = (int)i_zfRkLAtH2lnM + 1;
-                guvsgoto_krT0wQdTGbhx:
-                    for (int i_p2c5rtsKdnQW = 0; i_p2c5rtsKdnQW < byteCount; i_p2c5rtsKdnQW++) {
-                        if (i_p2c5rtsKdnQW < byteCount - 1) {
+                byteCount = (int)i_r0fvTx4NQE2C + 1;
+                guvsgoto_mjeZCkk1zwzd:
+                    for (int i_dwluKaP76eOy = 0; i_dwluKaP76eOy < byteCount; i_dwluKaP76eOy++) {
+                        if (i_dwluKaP76eOy < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_p2c5rtsKdnQW < byteCount - 1) {
+                            if (i_dwluKaP76eOy < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -292,19 +292,19 @@ namespace Test.Enum {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.SomeEnumIntMapValue.Values.Count;
-                int i_c799vjqmdhoE;
-                for (i_c799vjqmdhoE = 0; i_c799vjqmdhoE < 2; i_c799vjqmdhoE++) {
-                    if ((ulong)o.SomeEnumIntMapValue.Values.Count < vuBoundaries[i_c799vjqmdhoE]) {
-                       byteCount = (int)(i_c799vjqmdhoE + 1);
-                       goto guvsgoto_aOGXg4LJiFjC;
+                int i_mr0EER89qLQg;
+                for (i_mr0EER89qLQg = 0; i_mr0EER89qLQg < 2; i_mr0EER89qLQg++) {
+                    if ((ulong)o.SomeEnumIntMapValue.Values.Count < vuBoundaries[i_mr0EER89qLQg]) {
+                       byteCount = (int)(i_mr0EER89qLQg + 1);
+                       goto guvsgoto_mZ8yFmJl4m7b;
                     }
                 }
-                byteCount = (int)i_c799vjqmdhoE + 1;
-                guvsgoto_aOGXg4LJiFjC:
-                    for (int i_rhBnTHtVy4i6 = 0; i_rhBnTHtVy4i6 < byteCount; i_rhBnTHtVy4i6++) {
-                        if (i_rhBnTHtVy4i6 < byteCount - 1) {
+                byteCount = (int)i_mr0EER89qLQg + 1;
+                guvsgoto_mZ8yFmJl4m7b:
+                    for (int i_z0qzRBgKmQ23 = 0; i_z0qzRBgKmQ23 < byteCount; i_z0qzRBgKmQ23++) {
+                        if (i_z0qzRBgKmQ23 < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_rhBnTHtVy4i6 < byteCount - 1) {
+                            if (i_z0qzRBgKmQ23 < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -339,19 +339,19 @@ namespace Test.Enum {
                 else {
                     int byteCount;
                     ulong value = (ulong)o.SomeEnumSetValue.Count;
-                int i_isp47ET4Aci8;
-                for (i_isp47ET4Aci8 = 0; i_isp47ET4Aci8 < 2; i_isp47ET4Aci8++) {
-                    if ((ulong)o.SomeEnumSetValue.Count < vuBoundaries[i_isp47ET4Aci8]) {
-                       byteCount = (int)(i_isp47ET4Aci8 + 1);
-                       goto guvsgoto_xFB7KNDgSJZu;
+                int i_dkCpgPh1j2zP;
+                for (i_dkCpgPh1j2zP = 0; i_dkCpgPh1j2zP < 2; i_dkCpgPh1j2zP++) {
+                    if ((ulong)o.SomeEnumSetValue.Count < vuBoundaries[i_dkCpgPh1j2zP]) {
+                       byteCount = (int)(i_dkCpgPh1j2zP + 1);
+                       goto guvsgoto_kGhD4RI6yjZs;
                     }
                 }
-                byteCount = (int)i_isp47ET4Aci8 + 1;
-                guvsgoto_xFB7KNDgSJZu:
-                    for (int i_mx0LmxelYdgZ = 0; i_mx0LmxelYdgZ < byteCount; i_mx0LmxelYdgZ++) {
-                        if (i_mx0LmxelYdgZ < byteCount - 1) {
+                byteCount = (int)i_dkCpgPh1j2zP + 1;
+                guvsgoto_kGhD4RI6yjZs:
+                    for (int i_yjECgwZYy6f7 = 0; i_yjECgwZYy6f7 < byteCount; i_yjECgwZYy6f7++) {
+                        if (i_yjECgwZYy6f7 < byteCount - 1) {
                             byte b = (byte)(value & 127);
-                            if (i_mx0LmxelYdgZ < byteCount - 1) {
+                            if (i_yjECgwZYy6f7 < byteCount - 1) {
                                 b += 128;
                             }
                             bytes[index++] = b;
@@ -395,29 +395,29 @@ namespace Test.Enum {
 ///////////////////////////////////////
         public object Energize(byte[] bytes) {
             int index = 0;
-                    ulong vuread_ssMzNiVfsh4B = 0;
-                    for (int i_hyY4loF1xCEm = 0; i_hyY4loF1xCEm < 9; i_hyY4loF1xCEm++) {
+                    ulong vuread_oFeJcURZa7qG = 0;
+                    for (int i_z1EHIbUHgCHU = 0; i_z1EHIbUHgCHU < 9; i_z1EHIbUHgCHU++) {
                         byte b = bytes[index++];
-                        if (i_hyY4loF1xCEm < 8) {
-                            vuread_ssMzNiVfsh4B += (((ulong)b & (ulong)127) << (7 * i_hyY4loF1xCEm));
+                        if (i_z1EHIbUHgCHU < 8) {
+                            vuread_oFeJcURZa7qG += (((ulong)b & (ulong)127) << (7 * i_z1EHIbUHgCHU));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_ssMzNiVfsh4B += (ulong)b << (7 * i_hyY4loF1xCEm);
+                            vuread_oFeJcURZa7qG += (ulong)b << (7 * i_z1EHIbUHgCHU);
                             break;
                         }
                     }
-                    ushort typeId = (ushort)vuread_ssMzNiVfsh4B;
+                    ushort typeId = (ushort)vuread_oFeJcURZa7qG;
             switch (typeId) {
             case 11:
                 {
                 EnumObject o = new EnumObject();
                 // REFERENCE: SomeEnumValue
-                byte enumValue_u23uFOFqmAlP;
-                enumValue_u23uFOFqmAlP = bytes[index++];
-                o.SomeEnumValue = (SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][enumValue_u23uFOFqmAlP]);
+                byte enumValue_fg0ctb4meEPL;
+                enumValue_fg0ctb4meEPL = bytes[index++];
+                o.SomeEnumValue = (SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][enumValue_fg0ctb4meEPL]);
                     return o;
                 }
             case 12:
@@ -425,26 +425,26 @@ namespace Test.Enum {
                 EnumListObject o = new EnumListObject();
                 // LIST: SomeEnumListValue
             // Read list item count
-            ushort count_wtrsqcQvDytX;
-                    ulong vuread_oj9KHoBqXzMU = 0;
-                    for (int i_gAKOMNp1nic2 = 0; i_gAKOMNp1nic2 < 9; i_gAKOMNp1nic2++) {
+            ushort count_pIYykKO837Do;
+                    ulong vuread_wspxmI1h7tw6 = 0;
+                    for (int i_xOF9ddBEm26a = 0; i_xOF9ddBEm26a < 9; i_xOF9ddBEm26a++) {
                         byte b = bytes[index++];
-                        if (i_gAKOMNp1nic2 < 8) {
-                            vuread_oj9KHoBqXzMU += (((ulong)b & (ulong)127) << (7 * i_gAKOMNp1nic2));
+                        if (i_xOF9ddBEm26a < 8) {
+                            vuread_wspxmI1h7tw6 += (((ulong)b & (ulong)127) << (7 * i_xOF9ddBEm26a));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_oj9KHoBqXzMU += (ulong)b << (7 * i_gAKOMNp1nic2);
+                            vuread_wspxmI1h7tw6 += (ulong)b << (7 * i_xOF9ddBEm26a);
                             break;
                         }
                     }
-                    count_wtrsqcQvDytX = (ushort)vuread_oj9KHoBqXzMU;
+                    count_pIYykKO837Do = (ushort)vuread_wspxmI1h7tw6;
             // Read list items
-            if (count_wtrsqcQvDytX > 0) {
+            if (count_pIYykKO837Do > 0) {
                 o.SomeEnumListValue = new List<SomeEnum>();
-                for (int i_ynLuWjSzIgVv = 0; i_ynLuWjSzIgVv < count_wtrsqcQvDytX; i_ynLuWjSzIgVv++) {
+                for (int i_fvwGXJ1pNLjb = 0; i_fvwGXJ1pNLjb < count_pIYykKO837Do; i_fvwGXJ1pNLjb++) {
                     o.SomeEnumListValue.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
@@ -457,65 +457,65 @@ namespace Test.Enum {
                 IList<int> intSomeEnumMapValueKeys = new List<int>();
                 IList<SomeEnum> intSomeEnumMapValueValues = new List<SomeEnum>();
             // Read list item count
-            ushort count_r4T7852CQGdZ;
-                    ulong vuread_lcT0iBKAhhNt = 0;
-                    for (int i_qhENQmliPo9R = 0; i_qhENQmliPo9R < 9; i_qhENQmliPo9R++) {
+            ushort count_tGaFNINqm2EG;
+                    ulong vuread_bP4ZF9c9vpk0 = 0;
+                    for (int i_futyCgssFEnG = 0; i_futyCgssFEnG < 9; i_futyCgssFEnG++) {
                         byte b = bytes[index++];
-                        if (i_qhENQmliPo9R < 8) {
-                            vuread_lcT0iBKAhhNt += (((ulong)b & (ulong)127) << (7 * i_qhENQmliPo9R));
+                        if (i_futyCgssFEnG < 8) {
+                            vuread_bP4ZF9c9vpk0 += (((ulong)b & (ulong)127) << (7 * i_futyCgssFEnG));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_lcT0iBKAhhNt += (ulong)b << (7 * i_qhENQmliPo9R);
+                            vuread_bP4ZF9c9vpk0 += (ulong)b << (7 * i_futyCgssFEnG);
                             break;
                         }
                     }
-                    count_r4T7852CQGdZ = (ushort)vuread_lcT0iBKAhhNt;
+                    count_tGaFNINqm2EG = (ushort)vuread_bP4ZF9c9vpk0;
             // Read list items
-            if (count_r4T7852CQGdZ > 0) {
+            if (count_tGaFNINqm2EG > 0) {
                 intSomeEnumMapValueKeys = new List<int>();
-                int listValue_xr3rqJlAkV2U;
-                for (int i_l2qhFvoHrAu0 = 0; i_l2qhFvoHrAu0 < count_r4T7852CQGdZ; i_l2qhFvoHrAu0++) {
+                int listValue_b60NoPYu0ZBi;
+                for (int i_rcUOJjPGwkts = 0; i_rcUOJjPGwkts < count_tGaFNINqm2EG; i_rcUOJjPGwkts++) {
                     // Read Int list item
-                listValue_xr3rqJlAkV2U =
+                listValue_b60NoPYu0ZBi =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    intSomeEnumMapValueKeys.Add(listValue_xr3rqJlAkV2U);
+                    intSomeEnumMapValueKeys.Add(listValue_b60NoPYu0ZBi);
                 }
             }
             // Read list item count
-            ushort count_loVDu5kncb50;
-                    ulong vuread_otjH5mi1pTnX = 0;
-                    for (int i_yeMuaCzE7cZb = 0; i_yeMuaCzE7cZb < 9; i_yeMuaCzE7cZb++) {
+            ushort count_gpYfKmaKBxWJ;
+                    ulong vuread_dyVPB09w3lUA = 0;
+                    for (int i_jNTvYRk3NHz9 = 0; i_jNTvYRk3NHz9 < 9; i_jNTvYRk3NHz9++) {
                         byte b = bytes[index++];
-                        if (i_yeMuaCzE7cZb < 8) {
-                            vuread_otjH5mi1pTnX += (((ulong)b & (ulong)127) << (7 * i_yeMuaCzE7cZb));
+                        if (i_jNTvYRk3NHz9 < 8) {
+                            vuread_dyVPB09w3lUA += (((ulong)b & (ulong)127) << (7 * i_jNTvYRk3NHz9));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_otjH5mi1pTnX += (ulong)b << (7 * i_yeMuaCzE7cZb);
+                            vuread_dyVPB09w3lUA += (ulong)b << (7 * i_jNTvYRk3NHz9);
                             break;
                         }
                     }
-                    count_loVDu5kncb50 = (ushort)vuread_otjH5mi1pTnX;
+                    count_gpYfKmaKBxWJ = (ushort)vuread_dyVPB09w3lUA;
             // Read list items
-            if (count_loVDu5kncb50 > 0) {
+            if (count_gpYfKmaKBxWJ > 0) {
                 intSomeEnumMapValueValues = new List<SomeEnum>();
-                for (int i_vRfpLORy7AJm = 0; i_vRfpLORy7AJm < count_loVDu5kncb50; i_vRfpLORy7AJm++) {
+                for (int i_wSUOZ1QqpkFk = 0; i_wSUOZ1QqpkFk < count_gpYfKmaKBxWJ; i_wSUOZ1QqpkFk++) {
                     intSomeEnumMapValueValues.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
                 o.IntSomeEnumMapValue = new Dictionary<int,SomeEnum>(intSomeEnumMapValueKeys.Count);
-                for (int i_eRLerCLRb7Hq = 0; i_eRLerCLRb7Hq < intSomeEnumMapValueKeys.Count; i_eRLerCLRb7Hq++) {
-                    o.IntSomeEnumMapValue[intSomeEnumMapValueKeys[i_eRLerCLRb7Hq]] = intSomeEnumMapValueValues[i_eRLerCLRb7Hq];
+                for (int i_k9fFk6zdEyT6 = 0; i_k9fFk6zdEyT6 < intSomeEnumMapValueKeys.Count; i_k9fFk6zdEyT6++) {
+                    o.IntSomeEnumMapValue[intSomeEnumMapValueKeys[i_k9fFk6zdEyT6]] = intSomeEnumMapValueValues[i_k9fFk6zdEyT6];
                 }
                     return o;
                 }
@@ -526,65 +526,65 @@ namespace Test.Enum {
                 IList<SomeEnum> someEnumIntMapValueKeys = new List<SomeEnum>();
                 IList<int> someEnumIntMapValueValues = new List<int>();
             // Read list item count
-            ushort count_hZnKMB3FDiSo;
-                    ulong vuread_c3qKcZ0GFzjt = 0;
-                    for (int i_wvnEBha0jZ6V = 0; i_wvnEBha0jZ6V < 9; i_wvnEBha0jZ6V++) {
+            ushort count_mOWUm26L9VYS;
+                    ulong vuread_cvHbEDklhI7Y = 0;
+                    for (int i_qPSQhvED9Xlk = 0; i_qPSQhvED9Xlk < 9; i_qPSQhvED9Xlk++) {
                         byte b = bytes[index++];
-                        if (i_wvnEBha0jZ6V < 8) {
-                            vuread_c3qKcZ0GFzjt += (((ulong)b & (ulong)127) << (7 * i_wvnEBha0jZ6V));
+                        if (i_qPSQhvED9Xlk < 8) {
+                            vuread_cvHbEDklhI7Y += (((ulong)b & (ulong)127) << (7 * i_qPSQhvED9Xlk));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_c3qKcZ0GFzjt += (ulong)b << (7 * i_wvnEBha0jZ6V);
+                            vuread_cvHbEDklhI7Y += (ulong)b << (7 * i_qPSQhvED9Xlk);
                             break;
                         }
                     }
-                    count_hZnKMB3FDiSo = (ushort)vuread_c3qKcZ0GFzjt;
+                    count_mOWUm26L9VYS = (ushort)vuread_cvHbEDklhI7Y;
             // Read list items
-            if (count_hZnKMB3FDiSo > 0) {
+            if (count_mOWUm26L9VYS > 0) {
                 someEnumIntMapValueKeys = new List<SomeEnum>();
-                for (int i_lhWFHdTc8x7x = 0; i_lhWFHdTc8x7x < count_hZnKMB3FDiSo; i_lhWFHdTc8x7x++) {
+                for (int i_c6exo4kNlwzZ = 0; i_c6exo4kNlwzZ < count_mOWUm26L9VYS; i_c6exo4kNlwzZ++) {
                     someEnumIntMapValueKeys.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
             // Read list item count
-            ushort count_faPmgbV3Q3Tq;
-                    ulong vuread_fyevh2er7Fj4 = 0;
-                    for (int i_bv9BPguDy0tA = 0; i_bv9BPguDy0tA < 9; i_bv9BPguDy0tA++) {
+            ushort count_kxJboHY4R7iH;
+                    ulong vuread_epDOqvSskx6I = 0;
+                    for (int i_kX6nxuMpq3sT = 0; i_kX6nxuMpq3sT < 9; i_kX6nxuMpq3sT++) {
                         byte b = bytes[index++];
-                        if (i_bv9BPguDy0tA < 8) {
-                            vuread_fyevh2er7Fj4 += (((ulong)b & (ulong)127) << (7 * i_bv9BPguDy0tA));
+                        if (i_kX6nxuMpq3sT < 8) {
+                            vuread_epDOqvSskx6I += (((ulong)b & (ulong)127) << (7 * i_kX6nxuMpq3sT));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_fyevh2er7Fj4 += (ulong)b << (7 * i_bv9BPguDy0tA);
+                            vuread_epDOqvSskx6I += (ulong)b << (7 * i_kX6nxuMpq3sT);
                             break;
                         }
                     }
-                    count_faPmgbV3Q3Tq = (ushort)vuread_fyevh2er7Fj4;
+                    count_kxJboHY4R7iH = (ushort)vuread_epDOqvSskx6I;
             // Read list items
-            if (count_faPmgbV3Q3Tq > 0) {
+            if (count_kxJboHY4R7iH > 0) {
                 someEnumIntMapValueValues = new List<int>();
-                int listValue_lYTieceHyFri;
-                for (int i_zx5gtPzQ1UjV = 0; i_zx5gtPzQ1UjV < count_faPmgbV3Q3Tq; i_zx5gtPzQ1UjV++) {
+                int listValue_uDoB9qChXGn8;
+                for (int i_lGw0NgObBaMA = 0; i_lGw0NgObBaMA < count_kxJboHY4R7iH; i_lGw0NgObBaMA++) {
                     // Read Int list item
-                listValue_lYTieceHyFri =
+                listValue_uDoB9qChXGn8 =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    someEnumIntMapValueValues.Add(listValue_lYTieceHyFri);
+                    someEnumIntMapValueValues.Add(listValue_uDoB9qChXGn8);
                 }
             }
                 o.SomeEnumIntMapValue = new Dictionary<SomeEnum,int>(someEnumIntMapValueKeys.Count);
-                for (int i_atnKJp2xfO3t = 0; i_atnKJp2xfO3t < someEnumIntMapValueKeys.Count; i_atnKJp2xfO3t++) {
-                    o.SomeEnumIntMapValue[someEnumIntMapValueKeys[i_atnKJp2xfO3t]] = someEnumIntMapValueValues[i_atnKJp2xfO3t];
+                for (int i_pLHxv2rq7T2X = 0; i_pLHxv2rq7T2X < someEnumIntMapValueKeys.Count; i_pLHxv2rq7T2X++) {
+                    o.SomeEnumIntMapValue[someEnumIntMapValueKeys[i_pLHxv2rq7T2X]] = someEnumIntMapValueValues[i_pLHxv2rq7T2X];
                 }
                     return o;
                 }
@@ -593,26 +593,26 @@ namespace Test.Enum {
                 EnumSetObject o = new EnumSetObject();
                 // SET: SomeEnumSetValue
             // Read list item count
-            ushort count_d5n5ALGHd0Br;
-                    ulong vuread_eokSBMISO8gU = 0;
-                    for (int i_vE8iN3dvEL7x = 0; i_vE8iN3dvEL7x < 9; i_vE8iN3dvEL7x++) {
+            ushort count_cqt44ZU2K7V0;
+                    ulong vuread_yWLjoqsV0Y1x = 0;
+                    for (int i_sfW5p6bSOJUw = 0; i_sfW5p6bSOJUw < 9; i_sfW5p6bSOJUw++) {
                         byte b = bytes[index++];
-                        if (i_vE8iN3dvEL7x < 8) {
-                            vuread_eokSBMISO8gU += (((ulong)b & (ulong)127) << (7 * i_vE8iN3dvEL7x));
+                        if (i_sfW5p6bSOJUw < 8) {
+                            vuread_yWLjoqsV0Y1x += (((ulong)b & (ulong)127) << (7 * i_sfW5p6bSOJUw));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_eokSBMISO8gU += (ulong)b << (7 * i_vE8iN3dvEL7x);
+                            vuread_yWLjoqsV0Y1x += (ulong)b << (7 * i_sfW5p6bSOJUw);
                             break;
                         }
                     }
-                    count_d5n5ALGHd0Br = (ushort)vuread_eokSBMISO8gU;
+                    count_cqt44ZU2K7V0 = (ushort)vuread_yWLjoqsV0Y1x;
             // Read list items
-            if (count_d5n5ALGHd0Br > 0) {
+            if (count_cqt44ZU2K7V0 > 0) {
                 o.SomeEnumSetValue = new HashSet<SomeEnum>();
-                for (int i_mDqqnMRl26zu = 0; i_mDqqnMRl26zu < count_d5n5ALGHd0Br; i_mDqqnMRl26zu++) {
+                for (int i_uUhLqU0M0QzI = 0; i_uUhLqU0M0QzI < count_cqt44ZU2K7V0; i_uUhLqU0M0QzI++) {
                     o.SomeEnumSetValue.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
@@ -623,29 +623,29 @@ namespace Test.Enum {
             }
         }
         public object Energize(byte[] bytes, ref int index) {
-                    ulong vuread_ck6CfkPkZCh5 = 0;
-                    for (int i_qy4kWgWJrWp7 = 0; i_qy4kWgWJrWp7 < 9; i_qy4kWgWJrWp7++) {
+                    ulong vuread_hhbQAg6sz5kY = 0;
+                    for (int i_bZNN6cmycoxE = 0; i_bZNN6cmycoxE < 9; i_bZNN6cmycoxE++) {
                         byte b = bytes[index++];
-                        if (i_qy4kWgWJrWp7 < 8) {
-                            vuread_ck6CfkPkZCh5 += (((ulong)b & (ulong)127) << (7 * i_qy4kWgWJrWp7));
+                        if (i_bZNN6cmycoxE < 8) {
+                            vuread_hhbQAg6sz5kY += (((ulong)b & (ulong)127) << (7 * i_bZNN6cmycoxE));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_ck6CfkPkZCh5 += (ulong)b << (7 * i_qy4kWgWJrWp7);
+                            vuread_hhbQAg6sz5kY += (ulong)b << (7 * i_bZNN6cmycoxE);
                             break;
                         }
                     }
-                    ushort typeId = (ushort)vuread_ck6CfkPkZCh5;
+                    ushort typeId = (ushort)vuread_hhbQAg6sz5kY;
             switch (typeId) {
             case 11:
                 {
                 EnumObject o = new EnumObject();
                 // REFERENCE: SomeEnumValue
-                byte enumValue_jsEcq422fNcC;
-                enumValue_jsEcq422fNcC = bytes[index++];
-                o.SomeEnumValue = (SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][enumValue_jsEcq422fNcC]);
+                byte enumValue_dQFg7oHcPnOh;
+                enumValue_dQFg7oHcPnOh = bytes[index++];
+                o.SomeEnumValue = (SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][enumValue_dQFg7oHcPnOh]);
                     return o;
                 }
             case 12:
@@ -653,26 +653,26 @@ namespace Test.Enum {
                 EnumListObject o = new EnumListObject();
                 // LIST: SomeEnumListValue
             // Read list item count
-            ushort count_yLpu6WI9wuMZ;
-                    ulong vuread_sHzWjZdt49gX = 0;
-                    for (int i_rM44Ko0avBnl = 0; i_rM44Ko0avBnl < 9; i_rM44Ko0avBnl++) {
+            ushort count_yusHMB70JsIA;
+                    ulong vuread_cnQXDbGcUHHT = 0;
+                    for (int i_pZvlyijZlFRL = 0; i_pZvlyijZlFRL < 9; i_pZvlyijZlFRL++) {
                         byte b = bytes[index++];
-                        if (i_rM44Ko0avBnl < 8) {
-                            vuread_sHzWjZdt49gX += (((ulong)b & (ulong)127) << (7 * i_rM44Ko0avBnl));
+                        if (i_pZvlyijZlFRL < 8) {
+                            vuread_cnQXDbGcUHHT += (((ulong)b & (ulong)127) << (7 * i_pZvlyijZlFRL));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_sHzWjZdt49gX += (ulong)b << (7 * i_rM44Ko0avBnl);
+                            vuread_cnQXDbGcUHHT += (ulong)b << (7 * i_pZvlyijZlFRL);
                             break;
                         }
                     }
-                    count_yLpu6WI9wuMZ = (ushort)vuread_sHzWjZdt49gX;
+                    count_yusHMB70JsIA = (ushort)vuread_cnQXDbGcUHHT;
             // Read list items
-            if (count_yLpu6WI9wuMZ > 0) {
+            if (count_yusHMB70JsIA > 0) {
                 o.SomeEnumListValue = new List<SomeEnum>();
-                for (int i_vCNEopLaPOuT = 0; i_vCNEopLaPOuT < count_yLpu6WI9wuMZ; i_vCNEopLaPOuT++) {
+                for (int i_tOVKrG40ieaT = 0; i_tOVKrG40ieaT < count_yusHMB70JsIA; i_tOVKrG40ieaT++) {
                     o.SomeEnumListValue.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
@@ -685,65 +685,65 @@ namespace Test.Enum {
                 IList<int> intSomeEnumMapValueKeys = new List<int>();
                 IList<SomeEnum> intSomeEnumMapValueValues = new List<SomeEnum>();
             // Read list item count
-            ushort count_mfTqJTI7ECNt;
-                    ulong vuread_wNzhEMDqto6Q = 0;
-                    for (int i_fIfOyghbskAE = 0; i_fIfOyghbskAE < 9; i_fIfOyghbskAE++) {
+            ushort count_oTINRLwyXI6X;
+                    ulong vuread_cVCBjTpKGfdZ = 0;
+                    for (int i_g6UoMQLGZLOO = 0; i_g6UoMQLGZLOO < 9; i_g6UoMQLGZLOO++) {
                         byte b = bytes[index++];
-                        if (i_fIfOyghbskAE < 8) {
-                            vuread_wNzhEMDqto6Q += (((ulong)b & (ulong)127) << (7 * i_fIfOyghbskAE));
+                        if (i_g6UoMQLGZLOO < 8) {
+                            vuread_cVCBjTpKGfdZ += (((ulong)b & (ulong)127) << (7 * i_g6UoMQLGZLOO));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_wNzhEMDqto6Q += (ulong)b << (7 * i_fIfOyghbskAE);
+                            vuread_cVCBjTpKGfdZ += (ulong)b << (7 * i_g6UoMQLGZLOO);
                             break;
                         }
                     }
-                    count_mfTqJTI7ECNt = (ushort)vuread_wNzhEMDqto6Q;
+                    count_oTINRLwyXI6X = (ushort)vuread_cVCBjTpKGfdZ;
             // Read list items
-            if (count_mfTqJTI7ECNt > 0) {
+            if (count_oTINRLwyXI6X > 0) {
                 intSomeEnumMapValueKeys = new List<int>();
-                int listValue_nJAM3qRxZtMK;
-                for (int i_vDGcldAqjcdb = 0; i_vDGcldAqjcdb < count_mfTqJTI7ECNt; i_vDGcldAqjcdb++) {
+                int listValue_oFiJisXlS8DG;
+                for (int i_bCRyZznCQTxU = 0; i_bCRyZznCQTxU < count_oTINRLwyXI6X; i_bCRyZznCQTxU++) {
                     // Read Int list item
-                listValue_nJAM3qRxZtMK =
+                listValue_oFiJisXlS8DG =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    intSomeEnumMapValueKeys.Add(listValue_nJAM3qRxZtMK);
+                    intSomeEnumMapValueKeys.Add(listValue_oFiJisXlS8DG);
                 }
             }
             // Read list item count
-            ushort count_q3JyuLbRn4M4;
-                    ulong vuread_f0xdHI026EY4 = 0;
-                    for (int i_pe0oUjuCGz89 = 0; i_pe0oUjuCGz89 < 9; i_pe0oUjuCGz89++) {
+            ushort count_wiVg7z7FgX2N;
+                    ulong vuread_pPCnr1hrCokk = 0;
+                    for (int i_zmQAxm7ZhxSa = 0; i_zmQAxm7ZhxSa < 9; i_zmQAxm7ZhxSa++) {
                         byte b = bytes[index++];
-                        if (i_pe0oUjuCGz89 < 8) {
-                            vuread_f0xdHI026EY4 += (((ulong)b & (ulong)127) << (7 * i_pe0oUjuCGz89));
+                        if (i_zmQAxm7ZhxSa < 8) {
+                            vuread_pPCnr1hrCokk += (((ulong)b & (ulong)127) << (7 * i_zmQAxm7ZhxSa));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_f0xdHI026EY4 += (ulong)b << (7 * i_pe0oUjuCGz89);
+                            vuread_pPCnr1hrCokk += (ulong)b << (7 * i_zmQAxm7ZhxSa);
                             break;
                         }
                     }
-                    count_q3JyuLbRn4M4 = (ushort)vuread_f0xdHI026EY4;
+                    count_wiVg7z7FgX2N = (ushort)vuread_pPCnr1hrCokk;
             // Read list items
-            if (count_q3JyuLbRn4M4 > 0) {
+            if (count_wiVg7z7FgX2N > 0) {
                 intSomeEnumMapValueValues = new List<SomeEnum>();
-                for (int i_sscnr4w50L0u = 0; i_sscnr4w50L0u < count_q3JyuLbRn4M4; i_sscnr4w50L0u++) {
+                for (int i_nQosa8zpJeYk = 0; i_nQosa8zpJeYk < count_wiVg7z7FgX2N; i_nQosa8zpJeYk++) {
                     intSomeEnumMapValueValues.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
                 o.IntSomeEnumMapValue = new Dictionary<int,SomeEnum>(intSomeEnumMapValueKeys.Count);
-                for (int i_rwSLlkfjeOYp = 0; i_rwSLlkfjeOYp < intSomeEnumMapValueKeys.Count; i_rwSLlkfjeOYp++) {
-                    o.IntSomeEnumMapValue[intSomeEnumMapValueKeys[i_rwSLlkfjeOYp]] = intSomeEnumMapValueValues[i_rwSLlkfjeOYp];
+                for (int i_yakZMfsN8LhV = 0; i_yakZMfsN8LhV < intSomeEnumMapValueKeys.Count; i_yakZMfsN8LhV++) {
+                    o.IntSomeEnumMapValue[intSomeEnumMapValueKeys[i_yakZMfsN8LhV]] = intSomeEnumMapValueValues[i_yakZMfsN8LhV];
                 }
                     return o;
                 }
@@ -754,65 +754,65 @@ namespace Test.Enum {
                 IList<SomeEnum> someEnumIntMapValueKeys = new List<SomeEnum>();
                 IList<int> someEnumIntMapValueValues = new List<int>();
             // Read list item count
-            ushort count_tX7dJjyX1xwo;
-                    ulong vuread_nNLbh2d8oFHx = 0;
-                    for (int i_lTqvuZ4cEWCE = 0; i_lTqvuZ4cEWCE < 9; i_lTqvuZ4cEWCE++) {
+            ushort count_sGh40dFn7BPK;
+                    ulong vuread_qZqEY4K4yGDx = 0;
+                    for (int i_ahncffc6IDIE = 0; i_ahncffc6IDIE < 9; i_ahncffc6IDIE++) {
                         byte b = bytes[index++];
-                        if (i_lTqvuZ4cEWCE < 8) {
-                            vuread_nNLbh2d8oFHx += (((ulong)b & (ulong)127) << (7 * i_lTqvuZ4cEWCE));
+                        if (i_ahncffc6IDIE < 8) {
+                            vuread_qZqEY4K4yGDx += (((ulong)b & (ulong)127) << (7 * i_ahncffc6IDIE));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_nNLbh2d8oFHx += (ulong)b << (7 * i_lTqvuZ4cEWCE);
+                            vuread_qZqEY4K4yGDx += (ulong)b << (7 * i_ahncffc6IDIE);
                             break;
                         }
                     }
-                    count_tX7dJjyX1xwo = (ushort)vuread_nNLbh2d8oFHx;
+                    count_sGh40dFn7BPK = (ushort)vuread_qZqEY4K4yGDx;
             // Read list items
-            if (count_tX7dJjyX1xwo > 0) {
+            if (count_sGh40dFn7BPK > 0) {
                 someEnumIntMapValueKeys = new List<SomeEnum>();
-                for (int i_ytwQmcDsaEfI = 0; i_ytwQmcDsaEfI < count_tX7dJjyX1xwo; i_ytwQmcDsaEfI++) {
+                for (int i_wEzGILmFuJnX = 0; i_wEzGILmFuJnX < count_sGh40dFn7BPK; i_wEzGILmFuJnX++) {
                     someEnumIntMapValueKeys.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
             // Read list item count
-            ushort count_odbmKZbqpJN0;
-                    ulong vuread_xdDcCtTTlheY = 0;
-                    for (int i_nxWlbpw6ORWq = 0; i_nxWlbpw6ORWq < 9; i_nxWlbpw6ORWq++) {
+            ushort count_vYYdanwmdT3S;
+                    ulong vuread_vDh2zTbjqWNt = 0;
+                    for (int i_mewWt7dC4znr = 0; i_mewWt7dC4znr < 9; i_mewWt7dC4znr++) {
                         byte b = bytes[index++];
-                        if (i_nxWlbpw6ORWq < 8) {
-                            vuread_xdDcCtTTlheY += (((ulong)b & (ulong)127) << (7 * i_nxWlbpw6ORWq));
+                        if (i_mewWt7dC4znr < 8) {
+                            vuread_vDh2zTbjqWNt += (((ulong)b & (ulong)127) << (7 * i_mewWt7dC4znr));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_xdDcCtTTlheY += (ulong)b << (7 * i_nxWlbpw6ORWq);
+                            vuread_vDh2zTbjqWNt += (ulong)b << (7 * i_mewWt7dC4znr);
                             break;
                         }
                     }
-                    count_odbmKZbqpJN0 = (ushort)vuread_xdDcCtTTlheY;
+                    count_vYYdanwmdT3S = (ushort)vuread_vDh2zTbjqWNt;
             // Read list items
-            if (count_odbmKZbqpJN0 > 0) {
+            if (count_vYYdanwmdT3S > 0) {
                 someEnumIntMapValueValues = new List<int>();
-                int listValue_uSCPVloxQFXj;
-                for (int i_oB0RUvxB8mPn = 0; i_oB0RUvxB8mPn < count_odbmKZbqpJN0; i_oB0RUvxB8mPn++) {
+                int listValue_g85vgwAhLRQf;
+                for (int i_mufKHeHblEI6 = 0; i_mufKHeHblEI6 < count_vYYdanwmdT3S; i_mufKHeHblEI6++) {
                     // Read Int list item
-                listValue_uSCPVloxQFXj =
+                listValue_g85vgwAhLRQf =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    someEnumIntMapValueValues.Add(listValue_uSCPVloxQFXj);
+                    someEnumIntMapValueValues.Add(listValue_g85vgwAhLRQf);
                 }
             }
                 o.SomeEnumIntMapValue = new Dictionary<SomeEnum,int>(someEnumIntMapValueKeys.Count);
-                for (int i_bZoanQllrmoT = 0; i_bZoanQllrmoT < someEnumIntMapValueKeys.Count; i_bZoanQllrmoT++) {
-                    o.SomeEnumIntMapValue[someEnumIntMapValueKeys[i_bZoanQllrmoT]] = someEnumIntMapValueValues[i_bZoanQllrmoT];
+                for (int i_wK2fQBXAp0LB = 0; i_wK2fQBXAp0LB < someEnumIntMapValueKeys.Count; i_wK2fQBXAp0LB++) {
+                    o.SomeEnumIntMapValue[someEnumIntMapValueKeys[i_wK2fQBXAp0LB]] = someEnumIntMapValueValues[i_wK2fQBXAp0LB];
                 }
                     return o;
                 }
@@ -821,26 +821,26 @@ namespace Test.Enum {
                 EnumSetObject o = new EnumSetObject();
                 // SET: SomeEnumSetValue
             // Read list item count
-            ushort count_we792RiaJMMK;
-                    ulong vuread_kPlsuusLdpL6 = 0;
-                    for (int i_yok9uL2wng0P = 0; i_yok9uL2wng0P < 9; i_yok9uL2wng0P++) {
+            ushort count_uQc3wFSXxrt8;
+                    ulong vuread_wC402lfVz9FG = 0;
+                    for (int i_muAk3qZMTOW1 = 0; i_muAk3qZMTOW1 < 9; i_muAk3qZMTOW1++) {
                         byte b = bytes[index++];
-                        if (i_yok9uL2wng0P < 8) {
-                            vuread_kPlsuusLdpL6 += (((ulong)b & (ulong)127) << (7 * i_yok9uL2wng0P));
+                        if (i_muAk3qZMTOW1 < 8) {
+                            vuread_wC402lfVz9FG += (((ulong)b & (ulong)127) << (7 * i_muAk3qZMTOW1));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_kPlsuusLdpL6 += (ulong)b << (7 * i_yok9uL2wng0P);
+                            vuread_wC402lfVz9FG += (ulong)b << (7 * i_muAk3qZMTOW1);
                             break;
                         }
                     }
-                    count_we792RiaJMMK = (ushort)vuread_kPlsuusLdpL6;
+                    count_uQc3wFSXxrt8 = (ushort)vuread_wC402lfVz9FG;
             // Read list items
-            if (count_we792RiaJMMK > 0) {
+            if (count_uQc3wFSXxrt8 > 0) {
                 o.SomeEnumSetValue = new HashSet<SomeEnum>();
-                for (int i_kxJreONAmNLH = 0; i_kxJreONAmNLH < count_we792RiaJMMK; i_kxJreONAmNLH++) {
+                for (int i_aNPPWVIJq4nn = 0; i_aNPPWVIJq4nn < count_uQc3wFSXxrt8; i_aNPPWVIJq4nn++) {
                     o.SomeEnumSetValue.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
@@ -856,9 +856,9 @@ namespace Test.Enum {
                 {
                 EnumObject o = new EnumObject();
                 // REFERENCE: SomeEnumValue
-                byte enumValue_m3174NQLCbcO;
-                enumValue_m3174NQLCbcO = bytes[index++];
-                o.SomeEnumValue = (SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][enumValue_m3174NQLCbcO]);
+                byte enumValue_n7IdU0bXkGzb;
+                enumValue_n7IdU0bXkGzb = bytes[index++];
+                o.SomeEnumValue = (SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][enumValue_n7IdU0bXkGzb]);
                     return o;
                 }
             case 12:
@@ -866,26 +866,26 @@ namespace Test.Enum {
                 EnumListObject o = new EnumListObject();
                 // LIST: SomeEnumListValue
             // Read list item count
-            ushort count_ojQ7UpxsYG46;
-                    ulong vuread_taGyLlTtMMEA = 0;
-                    for (int i_t5CJAomwv4T5 = 0; i_t5CJAomwv4T5 < 9; i_t5CJAomwv4T5++) {
+            ushort count_bH4gBRpnPcYo;
+                    ulong vuread_nA9OA5qJhmN5 = 0;
+                    for (int i_sV13N9QFnOKo = 0; i_sV13N9QFnOKo < 9; i_sV13N9QFnOKo++) {
                         byte b = bytes[index++];
-                        if (i_t5CJAomwv4T5 < 8) {
-                            vuread_taGyLlTtMMEA += (((ulong)b & (ulong)127) << (7 * i_t5CJAomwv4T5));
+                        if (i_sV13N9QFnOKo < 8) {
+                            vuread_nA9OA5qJhmN5 += (((ulong)b & (ulong)127) << (7 * i_sV13N9QFnOKo));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_taGyLlTtMMEA += (ulong)b << (7 * i_t5CJAomwv4T5);
+                            vuread_nA9OA5qJhmN5 += (ulong)b << (7 * i_sV13N9QFnOKo);
                             break;
                         }
                     }
-                    count_ojQ7UpxsYG46 = (ushort)vuread_taGyLlTtMMEA;
+                    count_bH4gBRpnPcYo = (ushort)vuread_nA9OA5qJhmN5;
             // Read list items
-            if (count_ojQ7UpxsYG46 > 0) {
+            if (count_bH4gBRpnPcYo > 0) {
                 o.SomeEnumListValue = new List<SomeEnum>();
-                for (int i_zQP7qtS884m3 = 0; i_zQP7qtS884m3 < count_ojQ7UpxsYG46; i_zQP7qtS884m3++) {
+                for (int i_wBhJOaIEitHu = 0; i_wBhJOaIEitHu < count_bH4gBRpnPcYo; i_wBhJOaIEitHu++) {
                     o.SomeEnumListValue.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
@@ -898,65 +898,65 @@ namespace Test.Enum {
                 IList<int> intSomeEnumMapValueKeys = new List<int>();
                 IList<SomeEnum> intSomeEnumMapValueValues = new List<SomeEnum>();
             // Read list item count
-            ushort count_crarsTc5OpmZ;
-                    ulong vuread_uX2KtIL0rLA5 = 0;
-                    for (int i_nWdt3FB0SIDi = 0; i_nWdt3FB0SIDi < 9; i_nWdt3FB0SIDi++) {
+            ushort count_wxwoq04148yP;
+                    ulong vuread_vvKQvta1ZUX9 = 0;
+                    for (int i_uQ4gOjXynGcp = 0; i_uQ4gOjXynGcp < 9; i_uQ4gOjXynGcp++) {
                         byte b = bytes[index++];
-                        if (i_nWdt3FB0SIDi < 8) {
-                            vuread_uX2KtIL0rLA5 += (((ulong)b & (ulong)127) << (7 * i_nWdt3FB0SIDi));
+                        if (i_uQ4gOjXynGcp < 8) {
+                            vuread_vvKQvta1ZUX9 += (((ulong)b & (ulong)127) << (7 * i_uQ4gOjXynGcp));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_uX2KtIL0rLA5 += (ulong)b << (7 * i_nWdt3FB0SIDi);
+                            vuread_vvKQvta1ZUX9 += (ulong)b << (7 * i_uQ4gOjXynGcp);
                             break;
                         }
                     }
-                    count_crarsTc5OpmZ = (ushort)vuread_uX2KtIL0rLA5;
+                    count_wxwoq04148yP = (ushort)vuread_vvKQvta1ZUX9;
             // Read list items
-            if (count_crarsTc5OpmZ > 0) {
+            if (count_wxwoq04148yP > 0) {
                 intSomeEnumMapValueKeys = new List<int>();
-                int listValue_g5dM1YqSDZjC;
-                for (int i_liOAsvMF0eVF = 0; i_liOAsvMF0eVF < count_crarsTc5OpmZ; i_liOAsvMF0eVF++) {
+                int listValue_pBpxTSu2dCTs;
+                for (int i_k2iYtQEgJxBJ = 0; i_k2iYtQEgJxBJ < count_wxwoq04148yP; i_k2iYtQEgJxBJ++) {
                     // Read Int list item
-                listValue_g5dM1YqSDZjC =
+                listValue_pBpxTSu2dCTs =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    intSomeEnumMapValueKeys.Add(listValue_g5dM1YqSDZjC);
+                    intSomeEnumMapValueKeys.Add(listValue_pBpxTSu2dCTs);
                 }
             }
             // Read list item count
-            ushort count_rSbjYwgpuTvy;
-                    ulong vuread_m98CvSBQNK2V = 0;
-                    for (int i_wbHx58rjjI6i = 0; i_wbHx58rjjI6i < 9; i_wbHx58rjjI6i++) {
+            ushort count_yXnUkaCttue3;
+                    ulong vuread_bNhgA56v7LRW = 0;
+                    for (int i_a8fHb5QoaQB6 = 0; i_a8fHb5QoaQB6 < 9; i_a8fHb5QoaQB6++) {
                         byte b = bytes[index++];
-                        if (i_wbHx58rjjI6i < 8) {
-                            vuread_m98CvSBQNK2V += (((ulong)b & (ulong)127) << (7 * i_wbHx58rjjI6i));
+                        if (i_a8fHb5QoaQB6 < 8) {
+                            vuread_bNhgA56v7LRW += (((ulong)b & (ulong)127) << (7 * i_a8fHb5QoaQB6));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_m98CvSBQNK2V += (ulong)b << (7 * i_wbHx58rjjI6i);
+                            vuread_bNhgA56v7LRW += (ulong)b << (7 * i_a8fHb5QoaQB6);
                             break;
                         }
                     }
-                    count_rSbjYwgpuTvy = (ushort)vuread_m98CvSBQNK2V;
+                    count_yXnUkaCttue3 = (ushort)vuread_bNhgA56v7LRW;
             // Read list items
-            if (count_rSbjYwgpuTvy > 0) {
+            if (count_yXnUkaCttue3 > 0) {
                 intSomeEnumMapValueValues = new List<SomeEnum>();
-                for (int i_uh3hS4iQXq6t = 0; i_uh3hS4iQXq6t < count_rSbjYwgpuTvy; i_uh3hS4iQXq6t++) {
+                for (int i_nJRcaA9fXoUQ = 0; i_nJRcaA9fXoUQ < count_yXnUkaCttue3; i_nJRcaA9fXoUQ++) {
                     intSomeEnumMapValueValues.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
                 o.IntSomeEnumMapValue = new Dictionary<int,SomeEnum>(intSomeEnumMapValueKeys.Count);
-                for (int i_jjjiMf2f0psX = 0; i_jjjiMf2f0psX < intSomeEnumMapValueKeys.Count; i_jjjiMf2f0psX++) {
-                    o.IntSomeEnumMapValue[intSomeEnumMapValueKeys[i_jjjiMf2f0psX]] = intSomeEnumMapValueValues[i_jjjiMf2f0psX];
+                for (int i_oyQOBfLugATm = 0; i_oyQOBfLugATm < intSomeEnumMapValueKeys.Count; i_oyQOBfLugATm++) {
+                    o.IntSomeEnumMapValue[intSomeEnumMapValueKeys[i_oyQOBfLugATm]] = intSomeEnumMapValueValues[i_oyQOBfLugATm];
                 }
                     return o;
                 }
@@ -967,65 +967,65 @@ namespace Test.Enum {
                 IList<SomeEnum> someEnumIntMapValueKeys = new List<SomeEnum>();
                 IList<int> someEnumIntMapValueValues = new List<int>();
             // Read list item count
-            ushort count_vTtvClo6dZPo;
-                    ulong vuread_vu7SCl8KeobW = 0;
-                    for (int i_vjGeP0sHZgs9 = 0; i_vjGeP0sHZgs9 < 9; i_vjGeP0sHZgs9++) {
+            ushort count_x4rxO03xllK0;
+                    ulong vuread_f3vHML8Wnz8N = 0;
+                    for (int i_gcW5fh0eZFhf = 0; i_gcW5fh0eZFhf < 9; i_gcW5fh0eZFhf++) {
                         byte b = bytes[index++];
-                        if (i_vjGeP0sHZgs9 < 8) {
-                            vuread_vu7SCl8KeobW += (((ulong)b & (ulong)127) << (7 * i_vjGeP0sHZgs9));
+                        if (i_gcW5fh0eZFhf < 8) {
+                            vuread_f3vHML8Wnz8N += (((ulong)b & (ulong)127) << (7 * i_gcW5fh0eZFhf));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_vu7SCl8KeobW += (ulong)b << (7 * i_vjGeP0sHZgs9);
+                            vuread_f3vHML8Wnz8N += (ulong)b << (7 * i_gcW5fh0eZFhf);
                             break;
                         }
                     }
-                    count_vTtvClo6dZPo = (ushort)vuread_vu7SCl8KeobW;
+                    count_x4rxO03xllK0 = (ushort)vuread_f3vHML8Wnz8N;
             // Read list items
-            if (count_vTtvClo6dZPo > 0) {
+            if (count_x4rxO03xllK0 > 0) {
                 someEnumIntMapValueKeys = new List<SomeEnum>();
-                for (int i_pWoLbaqGE5ts = 0; i_pWoLbaqGE5ts < count_vTtvClo6dZPo; i_pWoLbaqGE5ts++) {
+                for (int i_dLB7vxExXZAI = 0; i_dLB7vxExXZAI < count_x4rxO03xllK0; i_dLB7vxExXZAI++) {
                     someEnumIntMapValueKeys.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }
             // Read list item count
-            ushort count_djNOrRSJRHHs;
-                    ulong vuread_rjqmHhzRc7iP = 0;
-                    for (int i_ywJe8Er20o7F = 0; i_ywJe8Er20o7F < 9; i_ywJe8Er20o7F++) {
+            ushort count_tdREC68F5NiL;
+                    ulong vuread_b7seuGbSVpya = 0;
+                    for (int i_ebB04L0zLolb = 0; i_ebB04L0zLolb < 9; i_ebB04L0zLolb++) {
                         byte b = bytes[index++];
-                        if (i_ywJe8Er20o7F < 8) {
-                            vuread_rjqmHhzRc7iP += (((ulong)b & (ulong)127) << (7 * i_ywJe8Er20o7F));
+                        if (i_ebB04L0zLolb < 8) {
+                            vuread_b7seuGbSVpya += (((ulong)b & (ulong)127) << (7 * i_ebB04L0zLolb));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_rjqmHhzRc7iP += (ulong)b << (7 * i_ywJe8Er20o7F);
+                            vuread_b7seuGbSVpya += (ulong)b << (7 * i_ebB04L0zLolb);
                             break;
                         }
                     }
-                    count_djNOrRSJRHHs = (ushort)vuread_rjqmHhzRc7iP;
+                    count_tdREC68F5NiL = (ushort)vuread_b7seuGbSVpya;
             // Read list items
-            if (count_djNOrRSJRHHs > 0) {
+            if (count_tdREC68F5NiL > 0) {
                 someEnumIntMapValueValues = new List<int>();
-                int listValue_fOphySsdp661;
-                for (int i_td9wGLpkb7R4 = 0; i_td9wGLpkb7R4 < count_djNOrRSJRHHs; i_td9wGLpkb7R4++) {
+                int listValue_kvM2GMkEDZ3x;
+                for (int i_cAcrYSXEOQtA = 0; i_cAcrYSXEOQtA < count_tdREC68F5NiL; i_cAcrYSXEOQtA++) {
                     // Read Int list item
-                listValue_fOphySsdp661 =
+                listValue_kvM2GMkEDZ3x =
                     (int)(
                         ((int)bytes[index++] << 24) |
                         ((int)bytes[index++] << 16) |
                         ((int)bytes[index++] << 8) |
                         (int)bytes[index++]
                     );
-                    someEnumIntMapValueValues.Add(listValue_fOphySsdp661);
+                    someEnumIntMapValueValues.Add(listValue_kvM2GMkEDZ3x);
                 }
             }
                 o.SomeEnumIntMapValue = new Dictionary<SomeEnum,int>(someEnumIntMapValueKeys.Count);
-                for (int i_dOLmpOCAmV82 = 0; i_dOLmpOCAmV82 < someEnumIntMapValueKeys.Count; i_dOLmpOCAmV82++) {
-                    o.SomeEnumIntMapValue[someEnumIntMapValueKeys[i_dOLmpOCAmV82]] = someEnumIntMapValueValues[i_dOLmpOCAmV82];
+                for (int i_niLtXSaZWrO9 = 0; i_niLtXSaZWrO9 < someEnumIntMapValueKeys.Count; i_niLtXSaZWrO9++) {
+                    o.SomeEnumIntMapValue[someEnumIntMapValueKeys[i_niLtXSaZWrO9]] = someEnumIntMapValueValues[i_niLtXSaZWrO9];
                 }
                     return o;
                 }
@@ -1034,26 +1034,26 @@ namespace Test.Enum {
                 EnumSetObject o = new EnumSetObject();
                 // SET: SomeEnumSetValue
             // Read list item count
-            ushort count_wrttPeAaARu4;
-                    ulong vuread_n4wo8WDq7v9T = 0;
-                    for (int i_dfXLEFP7egFp = 0; i_dfXLEFP7egFp < 9; i_dfXLEFP7egFp++) {
+            ushort count_xiljf4HvheVD;
+                    ulong vuread_oIK3BQwScmxy = 0;
+                    for (int i_a0QUZeKXWdxQ = 0; i_a0QUZeKXWdxQ < 9; i_a0QUZeKXWdxQ++) {
                         byte b = bytes[index++];
-                        if (i_dfXLEFP7egFp < 8) {
-                            vuread_n4wo8WDq7v9T += (((ulong)b & (ulong)127) << (7 * i_dfXLEFP7egFp));
+                        if (i_a0QUZeKXWdxQ < 8) {
+                            vuread_oIK3BQwScmxy += (((ulong)b & (ulong)127) << (7 * i_a0QUZeKXWdxQ));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_n4wo8WDq7v9T += (ulong)b << (7 * i_dfXLEFP7egFp);
+                            vuread_oIK3BQwScmxy += (ulong)b << (7 * i_a0QUZeKXWdxQ);
                             break;
                         }
                     }
-                    count_wrttPeAaARu4 = (ushort)vuread_n4wo8WDq7v9T;
+                    count_xiljf4HvheVD = (ushort)vuread_oIK3BQwScmxy;
             // Read list items
-            if (count_wrttPeAaARu4 > 0) {
+            if (count_xiljf4HvheVD > 0) {
                 o.SomeEnumSetValue = new HashSet<SomeEnum>();
-                for (int i_h6E6GQEAtQRv = 0; i_h6E6GQEAtQRv < count_wrttPeAaARu4; i_h6E6GQEAtQRv++) {
+                for (int i_nNyUj8tBwhUp = 0; i_nNyUj8tBwhUp < count_xiljf4HvheVD; i_nNyUj8tBwhUp++) {
                     o.SomeEnumSetValue.Add((SomeEnum)System.Enum.Parse(typeof(SomeEnum), enumIndexValueMap["SomeEnum"][bytes[index++]]));
                 }
             }

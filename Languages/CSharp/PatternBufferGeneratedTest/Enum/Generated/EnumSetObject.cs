@@ -38,12 +38,12 @@ namespace Test.Enum {
             if (this.SomeEnumSetValue == null && that.SomeEnumSetValue != null) { return false; }
             if (that.SomeEnumSetValue != null && this.SomeEnumSetValue == null) { return false; }
             if (this.SomeEnumSetValue.Count != that.SomeEnumSetValue.Count) { return false; }
-            HashSet<SomeEnum>.Enumerator enumerator_bADGQjt8wNIR = this.SomeEnumSetValue.GetEnumerator();
-            HashSet<SomeEnum>.Enumerator enumerator_i3PDvOscd9Ms = that.SomeEnumSetValue.GetEnumerator();
+            HashSet<SomeEnum>.Enumerator enumerator_kFNgkA6a6KKg = this.SomeEnumSetValue.GetEnumerator();
+            HashSet<SomeEnum>.Enumerator enumerator_wK4cXtykRrAD = that.SomeEnumSetValue.GetEnumerator();
             while(true) {
-                if ( ! enumerator_bADGQjt8wNIR.MoveNext()) { break; }
-                enumerator_i3PDvOscd9Ms.MoveNext();
-            if ( enumerator_bADGQjt8wNIR.Current != enumerator_i3PDvOscd9Ms.Current) { return false; }
+                if ( ! enumerator_kFNgkA6a6KKg.MoveNext()) { break; }
+                enumerator_wK4cXtykRrAD.MoveNext();
+            if ( enumerator_kFNgkA6a6KKg.Current != enumerator_wK4cXtykRrAD.Current) { return false; }
             }
             return true;
         }
