@@ -71,7 +71,7 @@ namespace PatternBufferTest.Schema {
             ListTestPatternBuffer patternBuffer = new ListTestPatternBuffer();
             Thing1 t1 = new Thing1(1, 2);
             Thing1 t2 = new Thing1(3, 4);
-            Thing1ListObject o1 = new Thing1ListObject(new List<IThing1>() { t1, t2 });
+            Thing1ListObject o1 = new Thing1ListObject(new List<Thing1>() { t1, t2 });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       Thing1ListObject type ID
             // 1 byte       list count
@@ -90,7 +90,7 @@ namespace PatternBufferTest.Schema {
             ListTestPatternBuffer patternBuffer = new ListTestPatternBuffer();
             AbstractThing t1 = new Thing1(1, 2);
             AbstractThing t2 = new Thing2(3, 4);
-            AbstractThingListObject o1 = new AbstractThingListObject(new List<IAbstractThing>() { t1, t2 });
+            AbstractThingListObject o1 = new AbstractThingListObject(new List<AbstractThing>() { t1, t2 });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       AbstractThingListObject type ID
             // 1 byte       list count
@@ -104,7 +104,7 @@ namespace PatternBufferTest.Schema {
             Assert.IsTrue(p1 is AbstractThingListObject);
             Assert.AreEqual(2, p1.AbstractThingListValue.Count);
             HashSet<int> expected = new HashSet<int>() { 1, 3 };
-            foreach (IAbstractThing t in p1.AbstractThingListValue) {
+            foreach (AbstractThing t in p1.AbstractThingListValue) {
                 Console.WriteLine(t.IntValue1);
                 expected.Remove(t.IntValue1);
             }

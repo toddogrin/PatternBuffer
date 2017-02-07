@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Reference {
-    public class AbstractThing : IEquatable <AbstractThing>, IAbstractThing {
+    public class AbstractThing : IReferenceTestObject, IEquatable<AbstractThing> {
+
+        public const ushort TYPE_ID = 0;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public int IntValue1;
+
         public AbstractThing() {
-            this.intValue1 = default(int);
+            this.IntValue1 = default(int);
         }
 
         public AbstractThing(
             int intValue1
         ) {
-            this.intValue1 = intValue1;
-        }
-
-        internal int intValue1;
-        public int IntValue1 {
-            get { return this.intValue1; }
-            set { this.intValue1 = value; }
+            this.IntValue1 = intValue1;
         }
 
         public bool Equals(AbstractThing other) {
@@ -31,15 +34,15 @@ namespace Test.Reference {
             if ( ! (other is AbstractThing)) { return false; }
             AbstractThing that = (AbstractThing)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // intValue1
-            if (this.intValue1 != that.intValue1) { return false; }
+            // IntValue1
+            if (this.IntValue1 != that.IntValue1) { return false; }
             return true;
         }
 
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + intValue1.GetHashCode();
+                hash = (13*hash) + this.IntValue1.GetHashCode();
                 return hash;
             }
         }

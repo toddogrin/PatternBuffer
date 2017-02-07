@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Set {
-    public class IntSetObject : IEquatable <IntSetObject>, IIntSetObject {
+    public class IntSetObject : ISetTestObject, IEquatable<IntSetObject> {
+
+        public const ushort TYPE_ID = 12;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public HashSet<int> IntSetValue;
+
         public IntSetObject() {
-            this.intSetValue = default(HashSet<int>);
+            this.IntSetValue = default(HashSet<int>);
         }
 
         public IntSetObject(
             HashSet<int> intSetValue
         ) {
-            this.intSetValue = intSetValue;
-        }
-
-        internal HashSet<int> intSetValue;
-        public HashSet<int> IntSetValue {
-            get { return this.intSetValue; }
-            set { this.intSetValue = value; }
+            this.IntSetValue = intSetValue;
         }
 
         public bool Equals(IntSetObject other) {
@@ -31,16 +34,16 @@ namespace Test.Set {
             if ( ! (other is IntSetObject)) { return false; }
             IntSetObject that = (IntSetObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // intSetValue
-            if (this.intSetValue == null && that.intSetValue != null) { return false; }
-            if (that.intSetValue != null && this.intSetValue == null) { return false; }
-            if (this.intSetValue.Count != that.intSetValue.Count) { return false; }
-            HashSet<int>.Enumerator enumerator_c4c91e11eb = this.intSetValue.GetEnumerator();
-            HashSet<int>.Enumerator enumerator_75a4ab73e3 = that.intSetValue.GetEnumerator();
+            // IntSetValue
+            if (this.IntSetValue == null && that.IntSetValue != null) { return false; }
+            if (that.IntSetValue != null && this.IntSetValue == null) { return false; }
+            if (this.IntSetValue.Count != that.IntSetValue.Count) { return false; }
+            HashSet<int>.Enumerator enumerator_w9KC61kJv5sq = this.IntSetValue.GetEnumerator();
+            HashSet<int>.Enumerator enumerator_aqBPP3MhzHpE = that.IntSetValue.GetEnumerator();
             while(true) {
-                if ( ! enumerator_c4c91e11eb.MoveNext()) { break; }
-                enumerator_75a4ab73e3.MoveNext();
-            if (enumerator_c4c91e11eb.Current != enumerator_75a4ab73e3.Current) { return false; }
+                if ( ! enumerator_w9KC61kJv5sq.MoveNext()) { break; }
+                enumerator_aqBPP3MhzHpE.MoveNext();
+            if (enumerator_w9KC61kJv5sq.Current != enumerator_aqBPP3MhzHpE.Current) { return false; }
             }
             return true;
         }
@@ -48,7 +51,7 @@ namespace Test.Set {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (intSetValue == null ? 0 : intSetValue.GetHashCode());
+                hash = (13*hash) + (this.IntSetValue == null ? 0 : this.IntSetValue.GetHashCode());
                 return hash;
             }
         }

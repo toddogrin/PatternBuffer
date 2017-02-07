@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Map {
-    public class VIntVLongMapObject : IEquatable <VIntVLongMapObject>, IVIntVLongMapObject {
+    public class VIntVLongMapObject : IMapTestObject, IEquatable<VIntVLongMapObject> {
+
+        public const ushort TYPE_ID = 16;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public Dictionary<int,long> VintVlongMap;
+
         public VIntVLongMapObject() {
-            this.vintVlongMap = default(Dictionary<int,long>);
+            this.VintVlongMap = default(Dictionary<int,long>);
         }
 
         public VIntVLongMapObject(
             Dictionary<int,long> vintVlongMap
         ) {
-            this.vintVlongMap = vintVlongMap;
-        }
-
-        internal Dictionary<int,long> vintVlongMap;
-        public Dictionary<int,long> VintVlongMap {
-            get { return this.vintVlongMap; }
-            set { this.vintVlongMap = value; }
+            this.VintVlongMap = vintVlongMap;
         }
 
         public bool Equals(VIntVLongMapObject other) {
@@ -31,12 +34,12 @@ namespace Test.Map {
             if ( ! (other is VIntVLongMapObject)) { return false; }
             VIntVLongMapObject that = (VIntVLongMapObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // vintVlongMap
-            if (this.vintVlongMap == null && that.vintVlongMap != null) { return false; }
-            if (that.vintVlongMap != null && this.vintVlongMap == null) { return false; }
-            if (that.vintVlongMap.Count != this.vintVlongMap.Count) { return false; }
-            foreach (int key in this.vintVlongMap.Keys) {
-                if ( ! that.vintVlongMap.ContainsKey(key)) { return false; }
+            // VintVlongMap
+            if (this.VintVlongMap == null && that.VintVlongMap != null) { return false; }
+            if (that.VintVlongMap != null && this.VintVlongMap == null) { return false; }
+            if (that.VintVlongMap.Count != this.VintVlongMap.Count) { return false; }
+            foreach (int key in this.VintVlongMap.Keys) {
+                if ( ! that.VintVlongMap.ContainsKey(key)) { return false; }
             }
             return true;
         }
@@ -44,7 +47,7 @@ namespace Test.Map {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (vintVlongMap == null ? 0 : vintVlongMap.GetHashCode());
+                hash = (13*hash) + (this.VintVlongMap == null ? 0 : this.VintVlongMap.GetHashCode());
                 return hash;
             }
         }

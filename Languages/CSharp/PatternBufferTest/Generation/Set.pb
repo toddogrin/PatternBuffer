@@ -1,5 +1,6 @@
 ﻿name SetTest;
 
+
 type(9) AbstractThing {
 	int intValue1;
 }
@@ -19,6 +20,7 @@ type(12) IntSetObject {
 type(13) StringSetObject {
 	set<string> stringSetValue;
 }
+
 
 type(14) Thing1SetObject {
 	set<Thing1> thingSetValue;

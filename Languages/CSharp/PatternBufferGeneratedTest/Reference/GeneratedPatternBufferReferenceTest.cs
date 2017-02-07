@@ -26,7 +26,7 @@ namespace PatternBufferTest.Schema {
             Assert.IsTrue(t1.Equals(p1.ThingValue));
             Assert.IsFalse(o1 == p1);
         }
-
+        
         [Test()]
         public void TestAbstractObjectSerialization() {
             ReferenceTestPatternBuffer patternBuffer = new ReferenceTestPatternBuffer();

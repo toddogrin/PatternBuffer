@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.List {
-    public class IntListObject : IEquatable <IntListObject>, IIntListObject {
+    public class IntListObject : IListTestObject, IEquatable<IntListObject> {
+
+        public const ushort TYPE_ID = 12;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public List<int> IntListValue;
+
         public IntListObject() {
-            this.intListValue = default(List<int>);
+            this.IntListValue = default(List<int>);
         }
 
         public IntListObject(
             List<int> intListValue
         ) {
-            this.intListValue = intListValue;
-        }
-
-        internal List<int> intListValue;
-        public List<int> IntListValue {
-            get { return this.intListValue; }
-            set { this.intListValue = value; }
+            this.IntListValue = intListValue;
         }
 
         public bool Equals(IntListObject other) {
@@ -31,16 +34,16 @@ namespace Test.List {
             if ( ! (other is IntListObject)) { return false; }
             IntListObject that = (IntListObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // intListValue
-            if (this.intListValue == null && that.intListValue != null) { return false; }
-            if (that.intListValue != null && this.intListValue == null) { return false; }
-            if (this.intListValue.Count != that.intListValue.Count) { return false; }
-            List<int>.Enumerator enumerator_b2c5040eab = this.intListValue.GetEnumerator();
-            List<int>.Enumerator enumerator_22db1cfa96 = that.intListValue.GetEnumerator();
+            // IntListValue
+            if (this.IntListValue == null && that.IntListValue != null) { return false; }
+            if (that.IntListValue != null && this.IntListValue == null) { return false; }
+            if (this.IntListValue.Count != that.IntListValue.Count) { return false; }
+            List<int>.Enumerator enumerator_hnBzsS5GrKlK = this.IntListValue.GetEnumerator();
+            List<int>.Enumerator enumerator_hZG4cwZyzh7c = that.IntListValue.GetEnumerator();
             while(true) {
-                if ( ! enumerator_b2c5040eab.MoveNext()) { break; }
-                enumerator_22db1cfa96.MoveNext();
-            if (enumerator_b2c5040eab.Current != enumerator_22db1cfa96.Current) { return false; }
+                if ( ! enumerator_hnBzsS5GrKlK.MoveNext()) { break; }
+                enumerator_hZG4cwZyzh7c.MoveNext();
+            if (enumerator_hnBzsS5GrKlK.Current != enumerator_hZG4cwZyzh7c.Current) { return false; }
             }
             return true;
         }
@@ -48,7 +51,7 @@ namespace Test.List {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (intListValue == null ? 0 : intListValue.GetHashCode());
+                hash = (13*hash) + (this.IntListValue == null ? 0 : this.IntListValue.GetHashCode());
                 return hash;
             }
         }

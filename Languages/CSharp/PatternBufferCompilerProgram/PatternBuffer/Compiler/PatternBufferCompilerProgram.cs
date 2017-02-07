@@ -94,6 +94,14 @@ namespace PatternBuffer.Compiler {
                 schema.Name;
             PatternBufferCompiler compiler = new PatternBufferCompiler(@namespace);
 
+            // Set the custom boilerplate, if any.
+            if (commandLine.BoilerplateFilePath != null) {
+                compiler.Boilerplate = File.ReadAllText(commandLine.BoilerplateFilePath);
+            }
+
+            // Set the type safety flag.
+            compiler.MakeThreadsafe = commandLine.MakeThreadsafe;
+
             // Compile
             Dictionary<string, string> files = compiler.Compile(schema);
 

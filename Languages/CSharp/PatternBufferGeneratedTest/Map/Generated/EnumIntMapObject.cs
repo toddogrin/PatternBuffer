@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Map {
-    public class EnumIntMapObject : IEquatable <EnumIntMapObject>, IEnumIntMapObject {
+    public class EnumIntMapObject : IMapTestObject, IEquatable<EnumIntMapObject> {
+
+        public const ushort TYPE_ID = 15;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public Dictionary<MyEnum,int> EnumIntMap;
+
         public EnumIntMapObject() {
-            this.enumIntMap = default(Dictionary<MyEnum,int>);
+            this.EnumIntMap = default(Dictionary<MyEnum,int>);
         }
 
         public EnumIntMapObject(
             Dictionary<MyEnum,int> enumIntMap
         ) {
-            this.enumIntMap = enumIntMap;
-        }
-
-        internal Dictionary<MyEnum,int> enumIntMap;
-        public Dictionary<MyEnum,int> EnumIntMap {
-            get { return this.enumIntMap; }
-            set { this.enumIntMap = value; }
+            this.EnumIntMap = enumIntMap;
         }
 
         public bool Equals(EnumIntMapObject other) {
@@ -31,12 +34,12 @@ namespace Test.Map {
             if ( ! (other is EnumIntMapObject)) { return false; }
             EnumIntMapObject that = (EnumIntMapObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // enumIntMap
-            if (this.enumIntMap == null && that.enumIntMap != null) { return false; }
-            if (that.enumIntMap != null && this.enumIntMap == null) { return false; }
-            if (that.enumIntMap.Count != this.enumIntMap.Count) { return false; }
-            foreach (MyEnum key in this.enumIntMap.Keys) {
-                if ( ! that.enumIntMap.ContainsKey(key)) { return false; }
+            // EnumIntMap
+            if (this.EnumIntMap == null && that.EnumIntMap != null) { return false; }
+            if (that.EnumIntMap != null && this.EnumIntMap == null) { return false; }
+            if (that.EnumIntMap.Count != this.EnumIntMap.Count) { return false; }
+            foreach (MyEnum key in this.EnumIntMap.Keys) {
+                if ( ! that.EnumIntMap.ContainsKey(key)) { return false; }
             }
             return true;
         }
@@ -44,7 +47,7 @@ namespace Test.Map {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (enumIntMap == null ? 0 : enumIntMap.GetHashCode());
+                hash = (13*hash) + (this.EnumIntMap == null ? 0 : this.EnumIntMap.GetHashCode());
                 return hash;
             }
         }

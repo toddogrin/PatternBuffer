@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.List {
-    public class VIntListObject : IEquatable <VIntListObject>, IVIntListObject {
+    public class VIntListObject : IListTestObject, IEquatable<VIntListObject> {
+
+        public const ushort TYPE_ID = 16;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public List<int> VintListValue;
+
         public VIntListObject() {
-            this.vintListValue = default(List<int>);
+            this.VintListValue = default(List<int>);
         }
 
         public VIntListObject(
             List<int> vintListValue
         ) {
-            this.vintListValue = vintListValue;
-        }
-
-        internal List<int> vintListValue;
-        public List<int> VintListValue {
-            get { return this.vintListValue; }
-            set { this.vintListValue = value; }
+            this.VintListValue = vintListValue;
         }
 
         public bool Equals(VIntListObject other) {
@@ -31,16 +34,16 @@ namespace Test.List {
             if ( ! (other is VIntListObject)) { return false; }
             VIntListObject that = (VIntListObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // vintListValue
-            if (this.vintListValue == null && that.vintListValue != null) { return false; }
-            if (that.vintListValue != null && this.vintListValue == null) { return false; }
-            if (this.vintListValue.Count != that.vintListValue.Count) { return false; }
-            List<int>.Enumerator enumerator_c09743f3e9 = this.vintListValue.GetEnumerator();
-            List<int>.Enumerator enumerator_3deffbb7cd = that.vintListValue.GetEnumerator();
+            // VintListValue
+            if (this.VintListValue == null && that.VintListValue != null) { return false; }
+            if (that.VintListValue != null && this.VintListValue == null) { return false; }
+            if (this.VintListValue.Count != that.VintListValue.Count) { return false; }
+            List<int>.Enumerator enumerator_ipHaR1l3SLpx = this.VintListValue.GetEnumerator();
+            List<int>.Enumerator enumerator_cFbahT56HxHR = that.VintListValue.GetEnumerator();
             while(true) {
-                if ( ! enumerator_c09743f3e9.MoveNext()) { break; }
-                enumerator_3deffbb7cd.MoveNext();
-            if (enumerator_c09743f3e9.Current != enumerator_3deffbb7cd.Current) { return false; }
+                if ( ! enumerator_ipHaR1l3SLpx.MoveNext()) { break; }
+                enumerator_cFbahT56HxHR.MoveNext();
+            if (enumerator_ipHaR1l3SLpx.Current != enumerator_cFbahT56HxHR.Current) { return false; }
             }
             return true;
         }
@@ -48,7 +51,7 @@ namespace Test.List {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (vintListValue == null ? 0 : vintListValue.GetHashCode());
+                hash = (13*hash) + (this.VintListValue == null ? 0 : this.VintListValue.GetHashCode());
                 return hash;
             }
         }

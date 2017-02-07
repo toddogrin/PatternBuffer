@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.List {
-    public class Thing1ListObject : IEquatable <Thing1ListObject>, IThing1ListObject {
+    public class Thing1ListObject : IListTestObject, IEquatable<Thing1ListObject> {
+
+        public const ushort TYPE_ID = 14;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public List<Thing1> ThingListValue;
+
         public Thing1ListObject() {
-            this.thingListValue = default(List<IThing1>);
+            this.ThingListValue = default(List<Thing1>);
         }
 
         public Thing1ListObject(
-            List<IThing1> thingListValue
+            List<Thing1> thingListValue
         ) {
-            this.thingListValue = thingListValue;
-        }
-
-        internal List<IThing1> thingListValue;
-        public List<IThing1> ThingListValue {
-            get { return this.thingListValue; }
-            set { this.thingListValue = value; }
+            this.ThingListValue = thingListValue;
         }
 
         public bool Equals(Thing1ListObject other) {
@@ -31,18 +34,18 @@ namespace Test.List {
             if ( ! (other is Thing1ListObject)) { return false; }
             Thing1ListObject that = (Thing1ListObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // thingListValue
-            if (this.thingListValue == null && that.thingListValue != null) { return false; }
-            if (that.thingListValue != null && this.thingListValue == null) { return false; }
-            if (this.thingListValue.Count != that.thingListValue.Count) { return false; }
-            List<IThing1>.Enumerator enumerator_ab8a7905aa = this.thingListValue.GetEnumerator();
-            List<IThing1>.Enumerator enumerator_4555d0e966 = that.thingListValue.GetEnumerator();
+            // ThingListValue
+            if (this.ThingListValue == null && that.ThingListValue != null) { return false; }
+            if (that.ThingListValue != null && this.ThingListValue == null) { return false; }
+            if (this.ThingListValue.Count != that.ThingListValue.Count) { return false; }
+            List<Thing1>.Enumerator enumerator_dJy70s5kqzhV = this.ThingListValue.GetEnumerator();
+            List<Thing1>.Enumerator enumerator_zOPSkUmYGq1X = that.ThingListValue.GetEnumerator();
             while(true) {
-                if ( ! enumerator_ab8a7905aa.MoveNext()) { break; }
-                enumerator_4555d0e966.MoveNext();
-            if (enumerator_ab8a7905aa.Current == null && enumerator_4555d0e966.Current != null) { return false; }
-            if (enumerator_4555d0e966.Current != null && enumerator_ab8a7905aa.Current == null) { return false; }
-            if ( ! enumerator_ab8a7905aa.Current.Equals(enumerator_4555d0e966.Current)) { return false; }
+                if ( ! enumerator_dJy70s5kqzhV.MoveNext()) { break; }
+                enumerator_zOPSkUmYGq1X.MoveNext();
+            if (enumerator_dJy70s5kqzhV.Current == null && enumerator_zOPSkUmYGq1X.Current != null) { return false; }
+            if (enumerator_zOPSkUmYGq1X.Current != null && enumerator_dJy70s5kqzhV.Current == null) { return false; }
+            if ( ! enumerator_dJy70s5kqzhV.Current.Equals(enumerator_zOPSkUmYGq1X.Current)) { return false; }
             }
             return true;
         }
@@ -50,7 +53,7 @@ namespace Test.List {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (thingListValue == null ? 0 : thingListValue.GetHashCode());
+                hash = (13*hash) + (this.ThingListValue == null ? 0 : this.ThingListValue.GetHashCode());
                 return hash;
             }
         }

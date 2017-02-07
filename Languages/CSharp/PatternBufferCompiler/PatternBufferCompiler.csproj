@@ -35,6 +35,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PatternBuffer\Compiler\PatternBufferCompiler.cs" />
+    <Compile Include="PatternBuffer\Compiler\PatternBufferCollectionUtil.cs" />
+    <Compile Include="PatternBuffer\Compiler\PatternBufferUtil.cs" />
+    <Compile Include="PatternBuffer\Compiler\PatternBufferPrimitiveUtil.cs" />
+    <Compile Include="PatternBuffer\Compiler\PatternBufferUnsignedVariantUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,287 +5,521 @@ using System.Text;
 using NUnit.Framework;
 using PatternBuffer;
 using NSubstitute;
+using PBUV = PatternBuffer.PatternBufferUnsignedVariantUtil;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace PatternBufferTest.Schema {
-
+    
+    /**
+     * Mainly a bunch of performance tests to compare various approaches to serialization.
+     */
     [TestFixture()]
     public class PatternBufferUtilTest {
 
-        [TestCase(int.MinValue, 5)]
-        [TestCase(-16384, 3)]
-        [TestCase(-128, 2)]
-        [TestCase(-1, 2)]
-        [TestCase(1, 2)]
-        [TestCase(128, 2)]
-        [TestCase(16384, 3)]
-        [TestCase(int.MaxValue, 5)]
-        public void TestWriteReadVInt32(int value, int byteCount) {
-            // Write the integral value into a stream
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
-            writer.WriteVInt32(value);
+        /**
+         * Trying to prove which byte-array copying method is fastest. Candidates:
+         * 1) Array.Copy
+         * 2) Buffer.BlockCopy
+         * 3) Marshal.Copy
+         * 4) Manual byte assignment
+         * 5) (Not here) Unsafe pointer manipulation
+         * 
+         * Buffer.BlockCopy was the winner.
+         */
+        [TestCase(1000, 1000)]
+        public void TestMemCopy(int byteCount, int seconds) {
 
-            // Verify the correct number of bytes are serialized
-            Assert.That(stream.Position, Is.EqualTo(byteCount));
-            stream.Position = 0;
-            byte[] bytes = stream.ToArray();
-            Assert.That(bytes.Length, Is.EqualTo(byteCount));
+            // Test data
+            byte[] src = new byte[byteCount];
+            new Random().NextBytes(src);
 
-            // Verify the value can be read back in
-            BinaryReader reader = new BinaryReader(stream);
-            int integral = reader.ReadVInt32();
-            Assert.That(integral, Is.EqualTo(value));
-        }
+            // Array.Copy
+            {
+                int count = 0;
+                byte[] dst = new byte[byteCount];
+                Stopwatch s = Stopwatch.StartNew();
+                while (s.ElapsedMilliseconds < seconds) {
+                    Array.Copy(src, dst, src.Length);
+                    count++;
+                }
+                s.Stop();
+                Console.WriteLine("Array.Copy:         " + count);
+            }
 
-        [TestCase(long.MinValue, 9)]
-        [TestCase(-3000000, 4)]
-        [TestCase(-16384, 3)]
-        [TestCase(-128, 2)]
-        [TestCase(-1, 2)]
-        [TestCase(0, 2)]
-        [TestCase(1, 2)]
-        [TestCase(128, 2)]
-        [TestCase(3000000, 4)]
-        [TestCase(long.MaxValue, 9)]
-        public void TestWriteReadVInt64(long value, int byteCount) {
-            // Write the integral value into a stream
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
-            writer.WriteVInt64(value);
+            // Buffer.BlockCopy
+            {
+                int count = 0;
+                byte[] dst = new byte[byteCount];
+                Stopwatch s = Stopwatch.StartNew();
+                while (s.ElapsedMilliseconds < seconds) {
+                    Buffer.BlockCopy(src, 0, dst, 0, src.Length);
+                    count++;
+                }
+                s.Stop();
+                Console.WriteLine("Buffer.BlockCopy:   " + count);
+            }
 
-            // Verify the correct number of bytes are serialized
-            Assert.That(stream.Position, Is.EqualTo(byteCount));
-            stream.Position = 0;
-            byte[] bytes = stream.ToArray();
-            Assert.That(bytes.Length, Is.EqualTo(byteCount));
+            // Marshal.Copy
+            {
+                int count = 0;
+                byte[] dst = new byte[byteCount];
+                
+                unsafe {
+                    Stopwatch s = Stopwatch.StartNew();
+                    IntPtr intptr = Marshal.AllocHGlobal(dst.Length);
+                    while (s.ElapsedMilliseconds < seconds) {
+                        Marshal.Copy(src, 0, intptr, src.Length);
+                        count++;
+                    }
+                    s.Stop();
+                    Marshal.FreeHGlobal(intptr);
+                }
+                Console.WriteLine("Marshal.Copy:       " + count);
+            }
 
-            // Verify the value can be read back in
-            BinaryReader reader = new BinaryReader(stream);
-            long integral = reader.ReadVInt64();
-            Assert.That(integral, Is.EqualTo(value));
-        }
 
-
-        [TestCase((ushort)0, 1)]
-        [TestCase((ushort)1, 1)]
-        [TestCase((ushort)127, 1)]
-        [TestCase((ushort)128, 2)]
-        [TestCase((ushort)16383, 2)]
-        [TestCase((ushort)16384, 3)]
-        [TestCase(ushort.MaxValue, 3)]
-        public void TestWriteReadVUInt16(ushort value, int byteCount) {
-
-            // Write the integral value into a stream
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
-            writer.WriteVUInt16(value);
-
-            // Verify the correct number of bytes are serialized
-            Assert.That(stream.Position, Is.EqualTo(byteCount));
-            stream.Position = 0;
-            byte[] bytes = stream.ToArray();
-            Assert.That(bytes.Length, Is.EqualTo(byteCount));
-
-            // Verify the value can be read back in
-            BinaryReader reader = new BinaryReader(stream);
-            ushort integral = reader.ReadVUInt16();
-            Assert.That(integral, Is.EqualTo(value));
-        }
-
-        [TestCase((uint)0, 1)]
-        [TestCase((uint)1, 1)]
-        [TestCase((uint)127, 1)]
-        [TestCase((uint)128, 2)]
-        [TestCase((uint)16383, 2)]
-        [TestCase((uint)16384, 3)]
-        [TestCase((uint)2097151, 3)]
-        [TestCase((uint)2097152, 4)]
-        [TestCase((uint)268435455, 4)]
-        [TestCase((uint)268435456, 5)]
-        [TestCase(uint.MaxValue, 5)]
-        public void TestWriteReadVUInt32(uint value, int byteCount) {
-
-            // Write the integral value into a stream
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
-            writer.WriteVUInt32(value);
-
-            // Verify the integral size computes correctly
-            Assert.That(PatternBufferUtil.GetUnsignedVariantSize(value), Is.EqualTo(byteCount));
-
-            // Verify the correct number of bytes are serialized
-            Assert.That(stream.Position, Is.EqualTo(byteCount));
-            stream.Position = 0;
-            byte[] bytes = stream.ToArray();
-            Assert.That(bytes.Length, Is.EqualTo(byteCount));
-
-            // Verify the value can be read back in
-            BinaryReader reader = new BinaryReader(stream);
-            uint integral = reader.ReadVUInt32();
-            Assert.That(integral, Is.EqualTo(value));
-        }
-
-        [TestCase((ulong)0, 1)]
-        [TestCase((ulong)1, 1)]
-        [TestCase((ulong)127, 1)]
-        [TestCase((ulong)128, 2)]
-        [TestCase((ulong)16383, 2)]
-        [TestCase((ulong)16384, 3)]
-        [TestCase((ulong)2097151, 3)]
-        [TestCase((ulong)2097152, 4)]
-        [TestCase((ulong)268435455, 4)]
-        [TestCase((ulong)268435456, 5)]
-        [TestCase((ulong)34359738367, 5)]
-        [TestCase((ulong)34359738368, 6)]
-        [TestCase((ulong)4398046511103, 6)]
-        [TestCase((ulong)4398046511104, 7)]
-        [TestCase((ulong)562949953421311, 7)]
-        [TestCase((ulong)562949953421312, 8)]
-        //[TestCase(ulong.MaxValue, 9)]
-        public void TestWriteReadVUInt64(ulong value, int byteCount) {
-
-            // Write the integral value into a stream
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
-            writer.WriteVUInt64((ulong)value);
-
-            // Verify the integral size computes correctly
-            Assert.That(PatternBufferUtil.GetUnsignedVariantSize(value), Is.EqualTo(byteCount));
-
-            // Verify the correct number of bytes are serialized
-            Assert.That(stream.Position, Is.EqualTo(byteCount));
-            stream.Position = 0;
-            byte[] bytes = stream.ToArray();
-            Assert.That(bytes.Length, Is.EqualTo(byteCount));
-
-            // Verify the value can be read back in
-            BinaryReader reader = new BinaryReader(stream);
-            ulong integral = reader.ReadVUInt64();
-            Assert.That(integral, Is.EqualTo(value));
+            // Manual
+            {
+                int count = 0;
+                byte[] dst = new byte[byteCount];
+                Stopwatch s = Stopwatch.StartNew();
+                while (s.ElapsedMilliseconds < seconds) {
+                    this.ArrayCopy(src, dst);
+                    count++;
+                }
+                s.Stop();
+                Console.WriteLine("Manual:             " + count);
+            }
         }
 
 
-        [TestCase("00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000", (ulong)0)]
-        [TestCase("00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001", (ulong)1)]
-        [TestCase("00000000 00000000 00000000 00000000 00000000 00000000 00000000 01111111", (ulong)127)]
-        [TestCase("00000000 00000000 00000000 00000000 00000000 00000000 00000001 10000000", (ulong)128)]
-        [TestCase("00000000 00000000 00000000 00000000 00000000 00000000 01111111 11111111", (ulong)16383)]
-        [TestCase("00000000 00000000 00000000 00000000 00000000 00000001 10000000 10000000", (ulong)16384)]
-        [TestCase("00000000 00000000 00000000 00000000 00000000 01111111 11111111 11111111", (ulong)2097151)]
-        [TestCase("00000000 00000000 00000000 00000000 00000001 10000000 10000000 10000000", (ulong)2097152)]
-        [TestCase("00000000 00000000 00000000 00000000 01111111 11111111 11111111 11111111", (ulong)268435455)]
-        [TestCase("00000000 00000000 00000000 00000001 10000000 10000000 10000000 10000000", (ulong)268435456)]
-        [TestCase("00000000 00000000 00000000 01111111 11111111 11111111 11111111 11111111", (ulong)34359738367)]
-        [TestCase("00000000 00000000 00000001 10000000 10000000 10000000 10000000 10000000", (ulong)34359738368)]
-        [TestCase("00000000 00000000 01111111 11111111 11111111 11111111 11111111 11111111", (ulong)4398046511103)]
-        [TestCase("00000000 00000001 10000000 10000000 10000000 10000000 10000000 10000000", (ulong)4398046511104)]
-        [TestCase("00000000 01111111 11111111 11111111 11111111 11111111 11111111 11111111", (ulong)562949953421311)]
-        [TestCase("00000001 10000000 10000000 10000000 10000000 10000000 10000000 10000000", (ulong)562949953421312)]
-        public void TestVUInt64ToString(string expected, ulong value) {
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
-            writer.WriteVUInt64(value);
-            stream.Position = 0;
-            ulong integral = BitConverter.ToUInt64(stream.GetBuffer(), 0);
-            string s = PatternBufferUtil.ToString(integral);
-            Console.WriteLine("(" + PatternBufferUtil.GetUnsignedVariantSize(value) + " bytes) " + s + " = " + value);
-            Assert.That(s, Is.EqualTo(expected));
+        public void ArrayCopy(byte[] src, byte[] dst) {
+            for (int i = 0; i < src.Length; i++) {
+                dst[i] = src[i];
+            }
         }
 
-        [TestCase(int.MinValue, 5)]
-        [TestCase((int)-16385, 3)]
-        [TestCase((int)-16384, 3)]
-        [TestCase((int)-16383, 3)]
-        [TestCase((int)-512, 3)]
-        [TestCase((int)-128, 2)]
-        [TestCase((int)-127, 2)]
-        [TestCase((int)-1, 2)]
-        [TestCase((int)0, 2)]
-        [TestCase((int)1, 2)]
-        [TestCase((int)127, 2)]
-        [TestCase((int)128, 2)]
-        [TestCase((int)512, 3)]
-        [TestCase((int)16383, 3)]
-        [TestCase((int)16384, 3)]
-        [TestCase((int)16385, 3)]
-        [TestCase(int.MaxValue, 5)]
-        public void TestGetVInt32Size(int value, int expected) {
-            Assert.That(PatternBufferUtil.GetSignedVariantSize(value), Is.EqualTo(expected));
+        /**
+         * Testing out the pregeneration of byte arrays for unsigned variants.
+         */
+        [Test()]
+        public void GenerateUVTable2() {
+            ulong[] vuBoundaries = new ulong[] {
+                128,
+                16384,
+                2097152,
+                268435456,
+                34359738368,
+                4398046511104,
+                562949953421312,
+                72057594037927936,
+                9223372036854775808
+            };
+        
+            byte[] precomputedUnsignedVariantBytes;
+            uint precomputedUnsignedVariantCount = 10000;
+            uint vuBoundaryIndex = 0;
+            if (precomputedUnsignedVariantCount > 0) {
+                uint precomputedUnsignedVariantByteCount = 0;
+                uint temp = precomputedUnsignedVariantCount;
+                while (temp > 0) {
+                        ulong bandValueCount = vuBoundaries[vuBoundaryIndex]  - (vuBoundaryIndex > 0 ? vuBoundaries[vuBoundaryIndex-1] : 0);
+                        if (bandValueCount < temp) {
+                            precomputedUnsignedVariantByteCount += 
+                                (uint)(
+                                (vuBoundaryIndex + 1) *         // bytes per value
+                                vuBoundaries[vuBoundaryIndex] - (vuBoundaryIndex > 0 ? vuBoundaries[vuBoundaryIndex] - vuBoundaries[vuBoundaryIndex-1]: 0)   // number of values
+                                );
+                            temp -= (uint)(vuBoundaries[vuBoundaryIndex]);                        
+                            vuBoundaryIndex++;
+                        }
+                        else {
+                            precomputedUnsignedVariantByteCount += (vuBoundaryIndex + 1) * precomputedUnsignedVariantCount;
+                            temp = 0;
+                        }
+                }
+                precomputedUnsignedVariantBytes = new byte[precomputedUnsignedVariantByteCount];
+                int precomputedUnsignedVariantIndex = 0;
+
+                MemoryStream stream = new MemoryStream(8);
+                for (int i = 0; i < precomputedUnsignedVariantCount; i++) {
+                    int size = GetUnsignedVariantSize(i);
+                    stream.Write(BitConverter.GetBytes((ulong)i), 0, 8);
+                    byte[] bytes = new byte[stream.Position];
+                    stream.Position = 0;
+                    stream.Read(bytes, 0, size);
+                    //dict[(ulong)i] = bytes;
+                    //byteCount += size;
+                    for (int j = 0; j < size; j++) {
+                        precomputedUnsignedVariantBytes[precomputedUnsignedVariantIndex++] = bytes[j];
+                    }
+                }
+            }
         }
 
-        [TestCase(long.MinValue, 9)]
-        [TestCase((long)-72057594037927936, 9)]
-        [TestCase((long)-72057594037927935, 8)]
-        [TestCase((long)-562949953421312, 8)]
-        [TestCase((long)-562949953421311, 8)]
-        [TestCase((long)-16385, 3)]
-        [TestCase((long)-16384, 3)]
-        [TestCase((long)-16383, 3)]
-        [TestCase((long)-512, 3)]
-        [TestCase((long)-128, 2)]
-        [TestCase((long)-127, 2)]
-        [TestCase((long)-1, 2)]
-        [TestCase((long)0, 2)]
-        [TestCase((long)1, 2)]
-        [TestCase((long)127, 2)]
-        [TestCase((long)128, 2)]
-        [TestCase((long)512, 3)]
-        [TestCase((long)16383, 3)]
-        [TestCase((long)16384, 3)]
-        [TestCase((long)16385, 3)]
-        [TestCase((long)562949953421311, 8)]
-        [TestCase((long)562949953421312, 8)]
-        [TestCase((long)72057594037927935, 8)]
-        [TestCase((long)72057594037927936, 9)]
-        [TestCase(long.MaxValue, 9)]
-        public void TestGetVInt64Size(long value, int expected) {
-            Assert.That(PatternBufferUtil.GetSignedVariantSize(value), Is.EqualTo(expected));
+        /**
+         * Testing which is faster:
+         * 1) Single += operation
+         * 2) Multiple ++ operations
+         * 
+         * Multiple ++ operations were just as fast, and match what I've done elsewhere in the code.
+         */
+        [Test()]
+        public void ProveUsingIncrementorsIsFaster() {
+            byte[] bytes = new byte[8];
+            int reps = 1000000000;
+
+            Stopwatch s; 
+            {
+                s = Stopwatch.StartNew();
+                int index = 0;
+                long longValue = 38234759238475;
+                for (int i = 0; i < reps; i++) {
+                    index = 0;
+                    bytes[index + 7] = (byte)(longValue & 255);
+                    bytes[index + 6] = (byte)((longValue >> 8) & 255);
+                    bytes[index + 5] = (byte)((longValue >> 16) & 255);
+                    bytes[index + 4] = (byte)((longValue >> 24) & 255);
+                    bytes[index + 3] = (byte)((longValue >> 32) & 255);
+                    bytes[index + 2] = (byte)((longValue >> 40) & 255);
+                    bytes[index + 1] = (byte)((longValue >> 48) & 255);
+                    bytes[index] = (byte)((longValue >> 56) & 255);
+                    index += 8;
+                }
+                s.Stop();
+                Console.WriteLine("single assignment: " + s.ElapsedMilliseconds);
+            }
+
+            {
+                s = Stopwatch.StartNew();
+                int index = 0;
+                long longValue = 38234759238475;
+                for (int i = 0; i < reps; i++) {
+                    index = 0;
+                    bytes[index++] = (byte)((longValue >> 56) & 255);
+                    bytes[index++] = (byte)((longValue >> 48) & 255);
+                    bytes[index++] = (byte)((longValue >> 40) & 255);
+                    bytes[index++] = (byte)((longValue >> 32) & 255);
+                    bytes[index++] = (byte)((longValue >> 24) & 255);
+                    bytes[index++] = (byte)((longValue >> 16) & 255);
+                    bytes[index++] = (byte)((longValue >> 8) & 255);
+                    bytes[index++] = (byte)(longValue & 255);
+                }
+                s.Stop();
+                Console.WriteLine(" multi assignment: " + s.ElapsedMilliseconds);
+            }
+
         }
 
-        [TestCase((ushort)0, 1)]
-        [TestCase((ushort)1, 1)]
-        [TestCase((ushort)127, 1)]
-        [TestCase((ushort)128, 2)]
-        [TestCase((ushort)512, 2)]
-        [TestCase((ushort)16383, 2)]
-        [TestCase((ushort)16384, 3)]
-        [TestCase((ushort)16385, 3)]
-        [TestCase(ushort.MaxValue, 3)]
-        public void TestGetVUInt16Size(ushort value, int expected) {
-            Assert.That(PatternBufferUtil.GetUnsignedVariantSize(value), Is.EqualTo(expected));
+        /**
+         * A performance test comparing:
+         * 1) Computing the bytes of all unsigned variants at run-time
+         * 2) Using pregenerated unsigned byte arrays and indexing.
+         * 
+         * Pregeneration was actually faster, but it produces diminishing returns the higher
+         * the value, because I still have to figure out how many bytes to pull out of the
+         * pregenerated array.
+         * 
+         * The sweet spot is probably to pregenerate up through about 16k, and run-time compute
+         * anything higher. This is purely an internal optimization so I'm leaving it as fully
+         * computed for now.
+         */
+        [Test()]
+        public void TestGenerateUVTable() {
+            //int count = 10000;
+            //int byteCount = 0;
+            //for (int i = 0; i < count; i++) {
+            //    int size = GetUnsignedVariantSize(i);
+            //    MemoryStream stream = new MemoryStream(size);
+            //    BinaryWriter writer = new BinaryWriter(stream);
+            //    WriteVUInt64(writer, (ulong)i);
+            //    Console.WriteLine(i + " " + stream.Position);
+            //    byteCount += (int)stream.Position;
+            //}
+            //Console.WriteLine(byteCount);
+
+            ulong[] vuBoundaries = new ulong[] {
+                128,
+                16384,
+                2097152,
+                268435456,
+                34359738368,
+                4398046511104,
+                562949953421312,
+                72057594037927936,
+                9223372036854775808
+            };
+
+            int count = 10000;
+
+            Dictionary<ulong, byte[]> dict = new Dictionary<ulong, byte[]>();
+
+            byte[] oneBigArray = new byte[30000];
+            int oneBigArrayIndex = 0;
+            int byteCount = 0;
+
+            Stopwatch s;
+
+            s = Stopwatch.StartNew();
+            MemoryStream stream = new MemoryStream(6);
+            for (int i = 0; i < count; i++) {
+                int size = GetUnsignedVariantSize(i);
+                stream.Write(BitConverter.GetBytes((ulong)i), 0, 8);
+                byte[] bytes = new byte[stream.Position];
+                stream.Position = 0;
+                stream.Read(bytes, 0, size);
+                //dict[(ulong)i] = bytes;
+                //byteCount += size;
+                for (int j = 0; j < size; j++) {
+                    oneBigArray[oneBigArrayIndex++] = bytes[j];
+                }
+            }
+            Console.WriteLine("Setup: " + s.ElapsedMilliseconds);
+            
+
+            //Console.WriteLine(byteCount + " " + oneBigArrayIndex);
+            int reps = 100000000;
+
+            {
+                byte[] b = new byte[10];
+                s = Stopwatch.StartNew();
+                for (int i = 0; i < reps; i++) {
+                    // Added this to include time to test if the value is in the pregen table.
+                    if (i < reps) { 
+                        // 1-byte pregens
+                        if (i < 128) {
+                            b[0] = oneBigArray[i];
+                        }
+                        // 2-byte pregens
+                        else {
+                            b[0] = oneBigArray[(i % count) + 127];
+                            b[1] = oneBigArray[(i % count) + 128];
+                        }
+                    }
+                    else {
+                        // Computed code would go here
+                    }
+                }
+                s.Stop();
+                Console.WriteLine("Array: " + s.ElapsedMilliseconds);
+            }
+
+            //{
+            //    byte[] b = null;
+            //    s = Stopwatch.StartNew();
+            //    for (int i = 0; i < reps; i++) {
+            //        b = dict[(ulong)(i % count)];
+            //    }
+            //    s.Stop();
+            //    Console.WriteLine("Dict: " + s.ElapsedMilliseconds);
+            //}
+
+            {
+                byte[] bytes = new byte[1000];
+                int index = 0;
+                s = Stopwatch.StartNew();
+                for (int k = 0; k < reps; k++) {
+                    ulong j = (ulong)(k % count);
+                    index = 0;
+                    uint stringLength_e9iM6PF7xRTY;
+                    int guvsi_rxN4BgotTZDA;
+                    for (guvsi_rxN4BgotTZDA = 0; guvsi_rxN4BgotTZDA < 2; guvsi_rxN4BgotTZDA++) {
+                        if ((ulong)j < vuBoundaries[guvsi_rxN4BgotTZDA]) {
+                            stringLength_e9iM6PF7xRTY = (uint)(guvsi_rxN4BgotTZDA + 1);
+                            goto guvsgoto_rlPron1k73zR;
+                        }
+                    }
+                    stringLength_e9iM6PF7xRTY = (uint)guvsi_rxN4BgotTZDA + 1;
+                guvsgoto_rlPron1k73zR:
+                    if (j == 0) {
+                        bytes[index++] = (byte)0;
+                    }
+                    else {
+                        ulong value = (ulong)j;
+                        for (int i = 0; i < stringLength_e9iM6PF7xRTY; i++) {
+                            if (i < stringLength_e9iM6PF7xRTY - 1) {
+                                byte b1 = (byte)(value & 127);
+                                if (i < stringLength_e9iM6PF7xRTY - 1) {
+                                    b1 += 128;
+                                }
+                                bytes[index++] = b1;
+                                value = value >> 7;
+                            }
+                            else {
+                                bytes[index++] = (byte)value;
+                                value = value >> 8;
+                            }
+                        }
+                    }
+                }
+                s.Stop();
+                Console.WriteLine("Comp: " + s.ElapsedMilliseconds);
+            }
         }
 
-        [TestCase((uint)0, 1)]
-        [TestCase((uint)1, 1)]
-        [TestCase((uint)127, 1)]
-        [TestCase((uint)128, 2)]
-        [TestCase((uint)512, 2)]
-        [TestCase((uint)16383, 2)]
-        [TestCase((uint)16384, 3)]
-        [TestCase((uint)16385, 3)]
-        [TestCase(uint.MaxValue, 5)]
-        public void TestGetVUInt32Size(uint value, int expected) {
-            Assert.That(PatternBufferUtil.GetUnsignedVariantSize(value), Is.EqualTo(expected));
+        //-------------------------------------------------------------------
+        // UNSIGNED VARIANTS
+        //-------------------------------------------------------------------
+
+        /**
+         * Writes an unsigned variant value to the given BinaryWriter. An unsigned variant
+         * is a whole number (int, long, etc.) that is written using the least
+         * possible number of bytes.
+         * 
+         * For example, values less than 128 are written in 1 byte. Values less than 16K
+         * are written in 2 bytes.
+         */
+
+        public static void WriteVUInt16(BinaryWriter writer, ushort value) {
+            WriteVUInt64(writer, (ulong)value);
         }
 
-        [TestCase((ulong)0, 1)]
-        [TestCase((ulong)1, 1)]
-        [TestCase((ulong)127, 1)]
-        [TestCase((ulong)128, 2)]
-        [TestCase((ulong)512, 2)]
-        [TestCase((ulong)16383, 2)]
-        [TestCase((ulong)16384, 3)]
-        [TestCase((ulong)16385, 3)]
-        [TestCase((ulong)562949953421311, 7)]
-        [TestCase((ulong)562949953421312, 8)]
-        [TestCase((ulong)72057594037927935, 8)]
-        [TestCase((ulong)72057594037927936, 9)]
-        [TestCase((ulong)9223372036854775807, 9)]
-        [TestCase(ulong.MaxValue, 9)]
-        public void TestGetVUInt64Size(ulong value, int expected) {
-            Assert.That(PatternBufferUtil.GetUnsignedVariantSize(value), Is.EqualTo(expected));
+        public static void WriteVUInt32(BinaryWriter writer, uint value) {
+            WriteVUInt64(writer, (ulong)value);
         }
 
+        public static void WriteVUInt64(BinaryWriter writer, ulong value) {
+            if (value == 0) {
+                writer.Write((byte)0);
+            }
+            else {
+                int byteCount = GetUnsignedVariantSize(value);
+                for (int i = 0; i < byteCount; i++) {
+                    if (i < byteCount - 1) {
+                        byte b = (byte)(value & 127);
+                        if (i < byteCount - 1) {
+                            b += 128;
+                        }
+                        writer.Write(b);
+                        value = value >> 7;
+                    }
+                    else {
+                        writer.Write((byte)value);
+                        value = value >> 8;
+                    }
+                }
+            }
+        }
+
+        public static ushort ReadVUInt16(BinaryReader reader) {
+            return (ushort)ReadVUInt64(reader);
+        }
+
+        public static uint ReadVUInt32(BinaryReader reader) {
+            return (uint)ReadVUInt64(reader);
+        }
+
+        /**
+         * Reads an unsigned long value from the given BinaryReader.
+         */
+        public static ulong ReadVUInt64(BinaryReader reader) {
+            ulong value = 0;
+            for (int i = 0; i < 9; i++) {
+                byte b = reader.ReadByte();
+                //Console.WriteLine("r, i: " + i + "=" + b);
+                if (i < 8) {
+                    value += (((ulong)b & (ulong)127) << (7 * i));
+                    if ((int)(b & 128) == 0) {
+                        break;
+                    }
+                }
+                else {
+                    value += (ulong)b << (7 * i);
+                    break;
+                }
+            }
+            return value;
+        }
+
+        /**
+         * Defines variant byte size boundaries. Packaged like this, here, to do a binary search.
+         */
+        private static readonly ulong[] boundaries = new ulong[] {
+            (ulong)Math.Pow(2,7),
+            (ulong)Math.Pow(2,14),
+            (ulong)Math.Pow(2,21),
+            (ulong)Math.Pow(2,28),
+            (ulong)Math.Pow(2,35),
+            (ulong)Math.Pow(2,42),
+            (ulong)Math.Pow(2,49),
+            (ulong)Math.Pow(2,56),
+            (ulong)Math.Pow(2,63),
+        };
+
+        /**
+         * Returns the number of bytes the given value would consume when written as an 
+         * unsigned variant value.
+         */
+        public static int GetUnsignedVariantSize(short value) {
+            if (value == short.MaxValue) {
+                value = 0;
+            }
+            else if (value >= 0) {
+                value += 1;
+            }
+            return GetUnsignedVariantSize(
+                (value < 0) ?
+                  (ulong)((~value) << 1) + 1 :
+                  (ulong)((~-value) << 1),
+                3
+            );
+        }
+        public static int GetUnsignedVariantSize(int value) {
+            if (value == int.MaxValue) {
+                value = 0;
+            }
+            else if (value >= 0) {
+                value += 1;
+            }
+            return GetUnsignedVariantSize(
+                (value < 0) ?
+                  (ulong)((~value) << 1) + 1 :
+                  (ulong)((~-value) << 1),
+                5
+            );
+        }
+        public static int GetUnsignedVariantSize(long value) {
+            if (value == long.MaxValue) {
+                value = 0;
+            }
+            else if (value >= 0) {
+                value += 1;
+            }
+            return GetUnsignedVariantSize(
+                (value < 0) ?
+                    (ulong)((~value) << 1) + 1 :
+                    (ulong)((~-value) << 1),
+                9
+            );
+        }
+        public static int GetUnsignedVariantSize(ushort value) {
+            return GetUnsignedVariantSize((ulong)value, 3);
+        }
+        public static int GetUnsignedVariantSize(uint value) {
+            return GetUnsignedVariantSize((ulong)value, 5);
+        }
+        public static int GetUnsignedVariantSize(ulong value) {
+            return GetUnsignedVariantSize(value, 9);
+        }
+        internal static int GetUnsignedVariantSize(ulong value, int maxBytes) {
+            int position = Array.BinarySearch(boundaries, value);
+            return Math.Min(position < 0 ? -position : position + 2, maxBytes);
+        }
+
+        public static string ToString(ulong variant) {
+            string s = "";
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    s = (variant & 1) + s;
+                    variant = variant >> 1;
+                }
+                if (i < 7) {
+                    s = " " + s;
+                }
+            }
+            return s;
+        }
     }
 
 }

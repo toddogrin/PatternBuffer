@@ -35,11 +35,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PatternBuffer\AbstractPatternBuffer.cs" />
-    <Compile Include="PatternBuffer\IPatternBuffer.cs" />
-    <Compile Include="PatternBuffer\IPatternBufferSerializer.cs" />
-    <Compile Include="PatternBuffer\PatternBufferException.cs" />
-    <Compile Include="PatternBuffer\PatternBufferUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

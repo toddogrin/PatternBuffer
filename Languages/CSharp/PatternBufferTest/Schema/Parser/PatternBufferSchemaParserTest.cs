@@ -7,9 +7,15 @@ using PatternBuffer.Schema;
 
 namespace PatternBufferTest.Schema {
 
+    /**
+     * Tests various schemas for validity.
+     */
     [TestFixture()]
     public class PatternBufferSchemaParserTest : BasePatternBufferTest {
 
+        /**
+         * Verifies a simply type in a schema is loaded properly.
+         */
         [Test()]
         public void TestASimpleTypeWorks() {
             string s = @"
@@ -37,6 +43,9 @@ namespace PatternBufferTest.Schema {
             Assert.That(HasHint(t, "foo.bar", "whatever"), Is.True);
         }
         
+        /**
+         * Verifies a badly named type throws an exception when loaded.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestABadTypeNameThrows() {
@@ -50,6 +59,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies valid reference fields can be loaded.
+         */
         [Test()]
         public void TestReferenceFieldWorks() {
 
@@ -78,6 +90,9 @@ namespace PatternBufferTest.Schema {
             Assert.That(HasReferenceField(t, "enumValue", "MyEnum1"), Is.True);
         }
 
+        /**
+         * Verifies an exception is thrown if two enums share the same name.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestDuplicateEnumDefinitionThrows() {
@@ -95,6 +110,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if an enum contains two of the same value.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestDuplicateEnumValueThrows() {
@@ -108,6 +126,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exceptuon is thrown if two types share the same name.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestDuplicateTypeDefinitionThrows() {
@@ -123,6 +144,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a type ID is used more than once.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestDuplicateTypeIdThrows() {
@@ -138,6 +162,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a type and a enum share a name.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestDuplicateTypeAndEnumDefinitionThrows() {
@@ -154,6 +181,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a reference field uses an unknown type name.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestUndefinedReferenceFieldTypeThrows() {
@@ -166,6 +196,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a type ancestry is cyclical.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestCircularTypeAncestryThrows() {
@@ -184,6 +217,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a type is its own parent.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestParentingATypeToItselfThrows() {
@@ -196,6 +232,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies types with no descendants have their "IsFinal" flag set properly.
+         */
         [Test()]
         public void TestFinalFlagIsSetProperly() {
             string s = @"
@@ -216,6 +255,9 @@ namespace PatternBufferTest.Schema {
             Assert.That(schema.GetPatternBufferType("T2").IsFinal, Is.True);
         }
 
+        /**
+         * Verifies an exception is thrown if a type tries to derive from another type that doesn't exist.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestUndefinedAncestorThrows() {
@@ -228,6 +270,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a type contains two fields with the same name.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestDuplicateFieldNameInATypeThrows() {
@@ -241,6 +286,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a derived type and an acestor type define the same field name.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestDuplicateAncestorTypeFieldNameThrows() {
@@ -256,8 +304,10 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies multiple abstract types don't interfere with one another.
+         */
         [Test()]
-        //[ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestMultipleAbstractObjectDontConflict() {
             string s = @"
                 name MySchema;
@@ -277,6 +327,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies a type with no fields (i.e. the "marker interface" scenario) works properly.
+         */
         [Test()]
         public void TestEmptyBaseTypeWorks() {
             string s = @"
@@ -295,6 +348,9 @@ namespace PatternBufferTest.Schema {
             Assert.That(schema.Hints.Count, Is.EqualTo(0));
         }
 
+        /**
+         * Verifies fill-line comments work
+         */
         [Test()]
         public void TestCommentsToEolWork() {
             string s = @"
@@ -320,6 +376,9 @@ namespace PatternBufferTest.Schema {
             Assert.That(schema.Enums[0].Values[1], Is.EqualTo("E1B"));
         }
 
+        /**
+         * Verifies EOL comments work
+         */
         [Test()]
         public void TestCommentsOnTypeFieldToEolWork() {
             string s = @"
@@ -337,6 +396,9 @@ namespace PatternBufferTest.Schema {
             Assert.That(schema.Types[0].Fields.Count, Is.EqualTo(2));
         }
 
+        /**
+         * Verifies an exception is thrown if a list refers to a type that doesn't exist.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestUndefinedListArgThrows() {
@@ -349,6 +411,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a collection tries to contain another collection.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestEmbeddedAggregateValueArgThrows() {
@@ -361,6 +426,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a set argument refers to a type that doesn't exist.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestUndefinedSetArgThrows() {
@@ -373,6 +441,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a map key argument doesn't exist.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestUndefinedMapKeyArgThrows() {
@@ -385,6 +456,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a map value argument doesn't exist.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestUndefinedMapValueArgThrows() {
@@ -397,6 +471,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies an exception is thrown if a hint is missing a quote.
+         */
         [Test()]
         [ExpectedException(typeof(PatternBufferSchemaException))]
         public void TestMissingHintQuoteThrows() {
@@ -411,6 +488,9 @@ namespace PatternBufferTest.Schema {
             PatternBufferSchema schema = this.Parse(s);
         }
 
+        /**
+         * Verifies a complex type is parsed properly.
+         */
         [Test()]
         public void TestAComplexTypeWorks() {
 
@@ -567,6 +647,9 @@ namespace PatternBufferTest.Schema {
             }
         }
 
+        /**
+         * Verifies variant types are loaded properly.
+         */
         [Test()]
         public void TestVariantTypesWork() {
             string s = @"

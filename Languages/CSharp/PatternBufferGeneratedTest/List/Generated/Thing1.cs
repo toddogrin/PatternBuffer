@@ -3,27 +3,30 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.List {
-    public class Thing1 : AbstractThing, IEquatable <Thing1>, IThing1 {
+    public class Thing1 : AbstractThing, IListTestObject, IEquatable<Thing1> {
+
+        public const ushort TYPE_ID = 10;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public int IntValue2;
+
         public Thing1() {
-            this.intValue1 = default(int);
-            this.intValue2 = default(int);
+            this.IntValue1 = default(int);
+            this.IntValue2 = default(int);
         }
 
         public Thing1(
             int intValue1,
             int intValue2
         ) {
-            this.intValue1 = intValue1;
-            this.intValue2 = intValue2;
-        }
-
-        internal int intValue2;
-        public int IntValue2 {
-            get { return this.intValue2; }
-            set { this.intValue2 = value; }
+            this.IntValue1 = intValue1;
+            this.IntValue2 = intValue2;
         }
 
         public bool Equals(Thing1 other) {
@@ -34,16 +37,16 @@ namespace Test.List {
             if ( ! (other is Thing1)) { return false; }
             Thing1 that = (Thing1)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // intValue2
-            if (this.intValue2 != that.intValue2) { return false; }
+            // IntValue2
+            if (this.IntValue2 != that.IntValue2) { return false; }
             return true;
         }
 
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + intValue1.GetHashCode();
-                hash = (13*hash) + intValue2.GetHashCode();
+                hash = (13*hash) + this.IntValue1.GetHashCode();
+                hash = (13*hash) + this.IntValue2.GetHashCode();
                 return hash;
             }
         }

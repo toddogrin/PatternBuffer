@@ -52,34 +52,34 @@ namespace PatternBufferTest.Schema {
             Assert.IsFalse(o1 == p1);
         }
 
-        [Test()]
-        public void VIntVLongMapObjectSerialization() {
-            MapTestPatternBuffer patternBuffer = new MapTestPatternBuffer();
-            VIntVLongMapObject o1 = new VIntVLongMapObject(new Dictionary<int, long> { { 1, 1000000 }, { 2, 2000000 } });
-            byte[] bytes = patternBuffer.Energize(o1);
-            // 1 byte       EnumIntMapObject type ID
-            // 1 byte       key count
-            // 1 byte       value count
-            // 4 bytes      keys (2 variant ints)
-            // 8 bytes      values (2 variant longs)
-            Assert.AreEqual(15, bytes.Length);
-            object o2 = patternBuffer.Energize(bytes);
-            Assert.IsTrue(o2 is VIntVLongMapObject);
-            VIntVLongMapObject p1 = (VIntVLongMapObject)o2;
-            Assert.AreEqual(o1.VintVlongMap.Count, p1.VintVlongMap.Count);
-            Assert.IsTrue(p1.VintVlongMap.ContainsKey(1));
-            Assert.IsTrue(p1.VintVlongMap.ContainsKey(2));
-            Assert.AreEqual(o1.VintVlongMap[1], p1.VintVlongMap[1]);
-            Assert.AreEqual(o1.VintVlongMap[2], p1.VintVlongMap[2]);
-            Assert.IsFalse(o1 == p1);
-        }
+        //[Test()]
+        //public void VIntVLongMapObjectSerialization() {
+        //    MapTestPatternBuffer patternBuffer = new MapTestPatternBuffer();
+        //    VIntVLongMapObject o1 = new VIntVLongMapObject(new Dictionary<int, long> { { 1, 1000000 }, { 2, 2000000 } });
+        //    byte[] bytes = patternBuffer.Energize(o1);
+        //    // 1 byte       EnumIntMapObject type ID
+        //    // 1 byte       key count
+        //    // 1 byte       value count
+        //    // 4 bytes      keys (2 variant ints)
+        //    // 8 bytes      values (2 variant longs)
+        //    Assert.AreEqual(15, bytes.Length);
+        //    object o2 = patternBuffer.Energize(bytes);
+        //    Assert.IsTrue(o2 is VIntVLongMapObject);
+        //    VIntVLongMapObject p1 = (VIntVLongMapObject)o2;
+        //    Assert.AreEqual(o1.VintVlongMap.Count, p1.VintVlongMap.Count);
+        //    Assert.IsTrue(p1.VintVlongMap.ContainsKey(1));
+        //    Assert.IsTrue(p1.VintVlongMap.ContainsKey(2));
+        //    Assert.AreEqual(o1.VintVlongMap[1], p1.VintVlongMap[1]);
+        //    Assert.AreEqual(o1.VintVlongMap[2], p1.VintVlongMap[2]);
+        //    Assert.IsFalse(o1 == p1);
+        //}
 
         [Test()]
         public void IntThingMapObjectSerialization() {
             MapTestPatternBuffer patternBuffer = new MapTestPatternBuffer();
             Thing t1 = new Thing(123);
             Thing t2 = new Thing(456);
-            IntThingMapObject o1 = new IntThingMapObject(new Dictionary<int, IThing> { { 321, t1 }, { 654, t2 } });
+            IntThingMapObject o1 = new IntThingMapObject(new Dictionary<int, Thing> { { 321, t1 }, { 654, t2 } });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       IntThingMapObject type ID
             // 1 byte       key count
@@ -101,9 +101,9 @@ namespace PatternBufferTest.Schema {
         [Test()]
         public void ThingIntMapObjectSerialization() {
             MapTestPatternBuffer patternBuffer = new MapTestPatternBuffer();
-            IThing t1 = new Thing(123);
-            IThing t2 = new Thing(456);
-            ThingIntMapObject o1 = new ThingIntMapObject(new Dictionary<IThing, int> { { t1, 321 }, { t2, 654 } });
+            Thing t1 = new Thing(123);
+            Thing t2 = new Thing(456);
+            ThingIntMapObject o1 = new ThingIntMapObject(new Dictionary<Thing, int> { { t1, 321 }, { t2, 654 } });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       ThingIntMapObject type ID
             // 1 byte       key count
@@ -119,7 +119,7 @@ namespace PatternBufferTest.Schema {
             Assert.IsTrue(p1.ThingIntMap.ContainsValue(654));
             HashSet<int> thingValues = new HashSet<int>() { 123, 456 };
             foreach (Thing thing in p1.ThingIntMap.Keys) {
-                thingValues.Remove(thing.intValue);
+                thingValues.Remove(thing.IntValue);
             }
             Assert.AreEqual(0, thingValues.Count);
             Assert.IsFalse(o1 == p1);
@@ -134,7 +134,7 @@ namespace PatternBufferTest.Schema {
             Thing k2 = new Thing(456);
             Thing v2 = new Thing(457);
 
-            Dictionary<IThing, IThing> d = new Dictionary<IThing, IThing>();
+            Dictionary<Thing, Thing> d = new Dictionary<Thing, Thing>();
             d[k1] = v1;
             d[k2] = v2;
             ThingThingMapObject o1 = new ThingThingMapObject(d);
@@ -155,7 +155,7 @@ namespace PatternBufferTest.Schema {
             HashSet<int> thingKeys = new HashSet<int>() { 123, 456 };
             HashSet<int> thingValues = new HashSet<int>() { 124, 457 };
             foreach (Thing thingKey in p1.ThingThingMap.Keys) {
-                thingKeys.Remove(thingKey.intValue);
+                thingKeys.Remove(thingKey.IntValue);
                 thingValues.Remove(p1.ThingThingMap[thingKey].IntValue);
             }
             Assert.AreEqual(0, thingKeys.Count);

@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Map {
-    public class ThingThingMapObject : IEquatable <ThingThingMapObject>, IThingThingMapObject {
+    public class ThingThingMapObject : IMapTestObject, IEquatable<ThingThingMapObject> {
+
+        public const ushort TYPE_ID = 14;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public Dictionary<Thing,Thing> ThingThingMap;
+
         public ThingThingMapObject() {
-            this.thingThingMap = default(Dictionary<IThing,IThing>);
+            this.ThingThingMap = default(Dictionary<Thing,Thing>);
         }
 
         public ThingThingMapObject(
-            Dictionary<IThing,IThing> thingThingMap
+            Dictionary<Thing,Thing> thingThingMap
         ) {
-            this.thingThingMap = thingThingMap;
-        }
-
-        internal Dictionary<IThing,IThing> thingThingMap;
-        public Dictionary<IThing,IThing> ThingThingMap {
-            get { return this.thingThingMap; }
-            set { this.thingThingMap = value; }
+            this.ThingThingMap = thingThingMap;
         }
 
         public bool Equals(ThingThingMapObject other) {
@@ -31,12 +34,12 @@ namespace Test.Map {
             if ( ! (other is ThingThingMapObject)) { return false; }
             ThingThingMapObject that = (ThingThingMapObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // thingThingMap
-            if (this.thingThingMap == null && that.thingThingMap != null) { return false; }
-            if (that.thingThingMap != null && this.thingThingMap == null) { return false; }
-            if (that.thingThingMap.Count != this.thingThingMap.Count) { return false; }
-            foreach (IThing key in this.thingThingMap.Keys) {
-                if ( ! that.thingThingMap.ContainsKey(key)) { return false; }
+            // ThingThingMap
+            if (this.ThingThingMap == null && that.ThingThingMap != null) { return false; }
+            if (that.ThingThingMap != null && this.ThingThingMap == null) { return false; }
+            if (that.ThingThingMap.Count != this.ThingThingMap.Count) { return false; }
+            foreach (Thing key in this.ThingThingMap.Keys) {
+                if ( ! that.ThingThingMap.ContainsKey(key)) { return false; }
             }
             return true;
         }
@@ -44,7 +47,7 @@ namespace Test.Map {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (thingThingMap == null ? 0 : thingThingMap.GetHashCode());
+                hash = (13*hash) + (this.ThingThingMap == null ? 0 : this.ThingThingMap.GetHashCode());
                 return hash;
             }
         }

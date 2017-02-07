@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Map {
-    public class Thing : IEquatable <Thing>, IThing {
+    public class Thing : IMapTestObject, IEquatable<Thing> {
+
+        public const ushort TYPE_ID = 10;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public int IntValue;
+
         public Thing() {
-            this.intValue = default(int);
+            this.IntValue = default(int);
         }
 
         public Thing(
             int intValue
         ) {
-            this.intValue = intValue;
-        }
-
-        internal int intValue;
-        public int IntValue {
-            get { return this.intValue; }
-            set { this.intValue = value; }
+            this.IntValue = intValue;
         }
 
         public bool Equals(Thing other) {
@@ -31,15 +34,15 @@ namespace Test.Map {
             if ( ! (other is Thing)) { return false; }
             Thing that = (Thing)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // intValue
-            if (this.intValue != that.intValue) { return false; }
+            // IntValue
+            if (this.IntValue != that.IntValue) { return false; }
             return true;
         }
 
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + intValue.GetHashCode();
+                hash = (13*hash) + this.IntValue.GetHashCode();
                 return hash;
             }
         }

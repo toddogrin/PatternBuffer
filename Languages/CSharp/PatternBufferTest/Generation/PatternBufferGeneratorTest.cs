@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using PatternBuffer.Schema;
 using PatternBuffer.Compiler;
 using NUnit.Framework;
 
 namespace PatternBufferTest {
 
+    /**
+     * Tests to generate test code.
+     */
     [TestFixture()]
     public class PatternBufferGeneratorTest {
 
@@ -38,8 +42,8 @@ namespace PatternBufferTest {
         [Test()]
         public void TestGenerateMap() {
             this.Generate("Map");
-
         }
+
         protected void Generate(string name) {
             PatternBufferSchemaParser loader = new PatternBufferSchemaParser(@"..\..\..\..\..\PatternBuffer.cgt");
             string pbFile = @"..\..\Generation\" + name + @".pb";

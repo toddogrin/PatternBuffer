@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Enum {
-    public class EnumObject : IEquatable <EnumObject>, IEnumObject {
+    public class EnumObject : IEnumTestObject, IEquatable<EnumObject> {
+
+        public const ushort TYPE_ID = 11;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public SomeEnum SomeEnumValue;
+
         public EnumObject() {
-            this.someEnumValue = default(SomeEnum);
+            this.SomeEnumValue = default(SomeEnum);
         }
 
         public EnumObject(
             SomeEnum someEnumValue
         ) {
-            this.someEnumValue = someEnumValue;
-        }
-
-        internal SomeEnum someEnumValue;
-        public SomeEnum SomeEnumValue {
-            get { return this.someEnumValue; }
-            set { this.someEnumValue = value; }
+            this.SomeEnumValue = someEnumValue;
         }
 
         public bool Equals(EnumObject other) {
@@ -31,15 +34,15 @@ namespace Test.Enum {
             if ( ! (other is EnumObject)) { return false; }
             EnumObject that = (EnumObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // someEnumValue
-            if ( this.someEnumValue != that.someEnumValue) { return false; }
+            // SomeEnumValue
+            if ( this.SomeEnumValue != that.SomeEnumValue) { return false; }
             return true;
         }
 
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + someEnumValue.GetHashCode();
+                hash = (13*hash) + this.SomeEnumValue.GetHashCode();
                 return hash;
             }
         }

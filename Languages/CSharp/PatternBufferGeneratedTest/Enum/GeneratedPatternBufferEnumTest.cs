@@ -77,7 +77,7 @@ namespace PatternBufferTest.Schema {
         public void TestEnumMap2ObjectSerialization() {
             EnumTestPatternBuffer patternBuffer = new EnumTestPatternBuffer();
             EnumMap2Object u = new EnumMap2Object(new Dictionary<SomeEnum, int>() { { SomeEnum.value1, 1 }, { SomeEnum.value3, 17 }, { SomeEnum.value2, 69 } });
-            byte[] bytes = patternBuffer.Energize(u);            
+            byte[] bytes = patternBuffer.Energize(u);
             // 1 byte       EnumMapObject type ID
             // 1 byte       map key count
             // 3 bytes      map key values (3 enum values)

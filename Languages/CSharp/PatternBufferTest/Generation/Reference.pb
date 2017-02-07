@@ -1,5 +1,6 @@
 ﻿name ReferenceTest;
 
+
 type(11) Thing {
 	int intValue;
 }

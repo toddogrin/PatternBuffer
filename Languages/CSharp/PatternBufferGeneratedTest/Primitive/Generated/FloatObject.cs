@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Primitive {
-    public class FloatObject : IEquatable <FloatObject>, IFloatObject {
+    public class FloatObject : IPrimitiveTestObject, IEquatable<FloatObject> {
+
+        public const ushort TYPE_ID = 19;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public float FloatValue;
+
         public FloatObject() {
-            this.floatValue = default(float);
+            this.FloatValue = default(float);
         }
 
         public FloatObject(
             float floatValue
         ) {
-            this.floatValue = floatValue;
-        }
-
-        internal float floatValue;
-        public float FloatValue {
-            get { return this.floatValue; }
-            set { this.floatValue = value; }
+            this.FloatValue = floatValue;
         }
 
         public bool Equals(FloatObject other) {
@@ -31,15 +34,15 @@ namespace Test.Primitive {
             if ( ! (other is FloatObject)) { return false; }
             FloatObject that = (FloatObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // floatValue
-            if (this.floatValue != that.floatValue) { return false; }
+            // FloatValue
+            if (this.FloatValue != that.FloatValue) { return false; }
             return true;
         }
 
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + floatValue.GetHashCode();
+                hash = (13*hash) + this.FloatValue.GetHashCode();
                 return hash;
             }
         }

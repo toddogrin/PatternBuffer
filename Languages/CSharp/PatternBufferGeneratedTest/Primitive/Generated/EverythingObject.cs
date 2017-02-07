@@ -3,22 +3,41 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Primitive {
-    public class EverythingObject : IEquatable <EverythingObject>, IEverythingObject {
+    public class EverythingObject : IPrimitiveTestObject, IEquatable<EverythingObject> {
+
+        public const ushort TYPE_ID = 22;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public short ShortValue;
+        public int IntValue;
+        public long LongValue;
+        public ushort UshortValue;
+        public uint UintValue;
+        public ulong UlongValue;
+        public string StringValue;
+        public double DoubleValue;
+        public float FloatValue;
+        public bool BoolValue;
+        public byte ByteValue;
+
         public EverythingObject() {
-            this.shortValue = default(short);
-            this.intValue = default(int);
-            this.longValue = default(long);
-            this.ushortValue = default(ushort);
-            this.uintValue = default(uint);
-            this.ulongValue = default(ulong);
-            this.stringValue = default(string);
-            this.doubleValue = default(double);
-            this.floatValue = default(float);
-            this.boolValue = default(bool);
-            this.byteValue = default(byte);
+            this.ShortValue = default(short);
+            this.IntValue = default(int);
+            this.LongValue = default(long);
+            this.UshortValue = default(ushort);
+            this.UintValue = default(uint);
+            this.UlongValue = default(ulong);
+            this.StringValue = default(string);
+            this.DoubleValue = default(double);
+            this.FloatValue = default(float);
+            this.BoolValue = default(bool);
+            this.ByteValue = default(byte);
         }
 
         public EverythingObject(
@@ -34,83 +53,17 @@ namespace Test.Primitive {
             bool boolValue,
             byte byteValue
         ) {
-            this.shortValue = shortValue;
-            this.intValue = intValue;
-            this.longValue = longValue;
-            this.ushortValue = ushortValue;
-            this.uintValue = uintValue;
-            this.ulongValue = ulongValue;
-            this.stringValue = stringValue;
-            this.doubleValue = doubleValue;
-            this.floatValue = floatValue;
-            this.boolValue = boolValue;
-            this.byteValue = byteValue;
-        }
-
-        internal short shortValue;
-        public short ShortValue {
-            get { return this.shortValue; }
-            set { this.shortValue = value; }
-        }
-
-        internal int intValue;
-        public int IntValue {
-            get { return this.intValue; }
-            set { this.intValue = value; }
-        }
-
-        internal long longValue;
-        public long LongValue {
-            get { return this.longValue; }
-            set { this.longValue = value; }
-        }
-
-        internal ushort ushortValue;
-        public ushort UshortValue {
-            get { return this.ushortValue; }
-            set { this.ushortValue = value; }
-        }
-
-        internal uint uintValue;
-        public uint UintValue {
-            get { return this.uintValue; }
-            set { this.uintValue = value; }
-        }
-
-        internal ulong ulongValue;
-        public ulong UlongValue {
-            get { return this.ulongValue; }
-            set { this.ulongValue = value; }
-        }
-
-        internal string stringValue;
-        public string StringValue {
-            get { return this.stringValue; }
-            set { this.stringValue = value; }
-        }
-
-        internal double doubleValue;
-        public double DoubleValue {
-            get { return this.doubleValue; }
-            set { this.doubleValue = value; }
-        }
-
-        internal float floatValue;
-        public float FloatValue {
-            get { return this.floatValue; }
-            set { this.floatValue = value; }
-        }
-
-        internal bool boolValue;
-        public bool BoolValue {
-            get { return this.boolValue; }
-            set { this.boolValue = value; }
-        }
-
-        internal byte byteValue;
-        public byte ByteValue {
-            get { return this.byteValue; }
-            set { this.byteValue = value; }
+            this.ShortValue = shortValue;
+            this.IntValue = intValue;
+            this.LongValue = longValue;
+            this.UshortValue = ushortValue;
+            this.UintValue = uintValue;
+            this.UlongValue = ulongValue;
+            this.StringValue = stringValue;
+            this.DoubleValue = doubleValue;
+            this.FloatValue = floatValue;
+            this.BoolValue = boolValue;
+            this.ByteValue = byteValue;
         }
 
         public bool Equals(EverythingObject other) {
@@ -121,47 +74,47 @@ namespace Test.Primitive {
             if ( ! (other is EverythingObject)) { return false; }
             EverythingObject that = (EverythingObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // shortValue
-            if (this.shortValue != that.shortValue) { return false; }
-            // intValue
-            if (this.intValue != that.intValue) { return false; }
-            // longValue
-            if (this.longValue != that.longValue) { return false; }
-            // ushortValue
-            if (this.ushortValue != that.ushortValue) { return false; }
-            // uintValue
-            if (this.uintValue != that.uintValue) { return false; }
-            // ulongValue
-            if (this.ulongValue != that.ulongValue) { return false; }
-            // stringValue
-            if (this.stringValue == null && this.stringValue != null) { return false; }
-            if (this.stringValue != null && this.stringValue == null) { return false; }
-            if ( ! this.stringValue.Equals(that.stringValue)) { return false; }
-            // doubleValue
-            if (this.doubleValue != that.doubleValue) { return false; }
-            // floatValue
-            if (this.floatValue != that.floatValue) { return false; }
-            // boolValue
-            if (this.boolValue != that.boolValue) { return false; }
-            // byteValue
-            if (this.byteValue != that.byteValue) { return false; }
+            // ShortValue
+            if (this.ShortValue != that.ShortValue) { return false; }
+            // IntValue
+            if (this.IntValue != that.IntValue) { return false; }
+            // LongValue
+            if (this.LongValue != that.LongValue) { return false; }
+            // UshortValue
+            if (this.UshortValue != that.UshortValue) { return false; }
+            // UintValue
+            if (this.UintValue != that.UintValue) { return false; }
+            // UlongValue
+            if (this.UlongValue != that.UlongValue) { return false; }
+            // StringValue
+            if (this.StringValue == null && this.StringValue != null) { return false; }
+            if (this.StringValue != null && this.StringValue == null) { return false; }
+            if ( ! this.StringValue.Equals(that.StringValue)) { return false; }
+            // DoubleValue
+            if (this.DoubleValue != that.DoubleValue) { return false; }
+            // FloatValue
+            if (this.FloatValue != that.FloatValue) { return false; }
+            // BoolValue
+            if (this.BoolValue != that.BoolValue) { return false; }
+            // ByteValue
+            if (this.ByteValue != that.ByteValue) { return false; }
             return true;
         }
 
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + shortValue.GetHashCode();
-                hash = (13*hash) + intValue.GetHashCode();
-                hash = (13*hash) + longValue.GetHashCode();
-                hash = (13*hash) + ushortValue.GetHashCode();
-                hash = (13*hash) + uintValue.GetHashCode();
-                hash = (13*hash) + ulongValue.GetHashCode();
-                hash = (13*hash) + stringValue.GetHashCode();
-                hash = (13*hash) + doubleValue.GetHashCode();
-                hash = (13*hash) + floatValue.GetHashCode();
-                hash = (13*hash) + boolValue.GetHashCode();
-                hash = (13*hash) + byteValue.GetHashCode();
+                hash = (13*hash) + this.ShortValue.GetHashCode();
+                hash = (13*hash) + this.IntValue.GetHashCode();
+                hash = (13*hash) + this.LongValue.GetHashCode();
+                hash = (13*hash) + this.UshortValue.GetHashCode();
+                hash = (13*hash) + this.UintValue.GetHashCode();
+                hash = (13*hash) + this.UlongValue.GetHashCode();
+                hash = (13*hash) + this.StringValue.GetHashCode();
+                hash = (13*hash) + this.DoubleValue.GetHashCode();
+                hash = (13*hash) + this.FloatValue.GetHashCode();
+                hash = (13*hash) + this.BoolValue.GetHashCode();
+                hash = (13*hash) + this.ByteValue.GetHashCode();
                 return hash;
             }
         }

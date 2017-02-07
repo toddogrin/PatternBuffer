@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Set {
-    public class AbstractThingSetObject : IEquatable <AbstractThingSetObject>, IAbstractThingSetObject {
+    public class AbstractThingSetObject : ISetTestObject, IEquatable<AbstractThingSetObject> {
+
+        public const ushort TYPE_ID = 15;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public HashSet<AbstractThing> AbstractThingSetValue;
+
         public AbstractThingSetObject() {
-            this.abstractThingSetValue = default(HashSet<IAbstractThing>);
+            this.AbstractThingSetValue = default(HashSet<AbstractThing>);
         }
 
         public AbstractThingSetObject(
-            HashSet<IAbstractThing> abstractThingSetValue
+            HashSet<AbstractThing> abstractThingSetValue
         ) {
-            this.abstractThingSetValue = abstractThingSetValue;
-        }
-
-        internal HashSet<IAbstractThing> abstractThingSetValue;
-        public HashSet<IAbstractThing> AbstractThingSetValue {
-            get { return this.abstractThingSetValue; }
-            set { this.abstractThingSetValue = value; }
+            this.AbstractThingSetValue = abstractThingSetValue;
         }
 
         public bool Equals(AbstractThingSetObject other) {
@@ -31,18 +34,18 @@ namespace Test.Set {
             if ( ! (other is AbstractThingSetObject)) { return false; }
             AbstractThingSetObject that = (AbstractThingSetObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // abstractThingSetValue
-            if (this.abstractThingSetValue == null && that.abstractThingSetValue != null) { return false; }
-            if (that.abstractThingSetValue != null && this.abstractThingSetValue == null) { return false; }
-            if (this.abstractThingSetValue.Count != that.abstractThingSetValue.Count) { return false; }
-            HashSet<IAbstractThing>.Enumerator enumerator_c11e43ee31 = this.abstractThingSetValue.GetEnumerator();
-            HashSet<IAbstractThing>.Enumerator enumerator_a5a3d09c2e = that.abstractThingSetValue.GetEnumerator();
+            // AbstractThingSetValue
+            if (this.AbstractThingSetValue == null && that.AbstractThingSetValue != null) { return false; }
+            if (that.AbstractThingSetValue != null && this.AbstractThingSetValue == null) { return false; }
+            if (this.AbstractThingSetValue.Count != that.AbstractThingSetValue.Count) { return false; }
+            HashSet<AbstractThing>.Enumerator enumerator_cFRXsvWYL7En = this.AbstractThingSetValue.GetEnumerator();
+            HashSet<AbstractThing>.Enumerator enumerator_pEWf3OqAsFHq = that.AbstractThingSetValue.GetEnumerator();
             while(true) {
-                if ( ! enumerator_c11e43ee31.MoveNext()) { break; }
-                enumerator_a5a3d09c2e.MoveNext();
-            if (enumerator_c11e43ee31.Current == null && enumerator_a5a3d09c2e.Current != null) { return false; }
-            if (enumerator_a5a3d09c2e.Current != null && enumerator_c11e43ee31.Current == null) { return false; }
-            if ( ! enumerator_c11e43ee31.Current.Equals(enumerator_a5a3d09c2e.Current)) { return false; }
+                if ( ! enumerator_cFRXsvWYL7En.MoveNext()) { break; }
+                enumerator_pEWf3OqAsFHq.MoveNext();
+            if (enumerator_cFRXsvWYL7En.Current == null && enumerator_pEWf3OqAsFHq.Current != null) { return false; }
+            if (enumerator_pEWf3OqAsFHq.Current != null && enumerator_cFRXsvWYL7En.Current == null) { return false; }
+            if ( ! enumerator_cFRXsvWYL7En.Current.Equals(enumerator_pEWf3OqAsFHq.Current)) { return false; }
             }
             return true;
         }
@@ -50,7 +53,7 @@ namespace Test.Set {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (abstractThingSetValue == null ? 0 : abstractThingSetValue.GetHashCode());
+                hash = (13*hash) + (this.AbstractThingSetValue == null ? 0 : this.AbstractThingSetValue.GetHashCode());
                 return hash;
             }
         }

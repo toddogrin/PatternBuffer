@@ -31,6 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NSubstitute, Version=2.0.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
@@ -44,10 +45,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compiler\PatternBufferCompilerTest.cs" />
     <Compile Include="BasePatternBufferTest.cs" />
     <Compile Include="PatternBufferUtilTest.cs" />
-    <Compile Include="AbstractPatternBufferTest.cs" />
     <Compile Include="Generation\PatternBufferGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schema\Parser\PatternBufferSchemaParserTest.cs" />
@@ -60,10 +59,6 @@
     <ProjectReference Include="..\PatternBufferSchema\PatternBufferSchema.csproj">
       <Project>{d68b3118-a16c-4f61-93ec-d4e556105478}</Project>
       <Name>PatternBufferSchema</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PatternBuffer\PatternBuffer.csproj">
-      <Project>{bb40692c-3f2e-4dd7-9834-bd7b331e867e}</Project>
-      <Name>PatternBuffer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

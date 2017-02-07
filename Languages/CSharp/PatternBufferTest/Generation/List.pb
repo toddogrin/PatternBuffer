@@ -24,6 +24,7 @@ type(14) Thing1ListObject {
 	list<Thing1> thingListValue;
 }
 
+
 type(15) AbstractThingListObject {
 	list<AbstractThing> abstractThingListValue;
 }

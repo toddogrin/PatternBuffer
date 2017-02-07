@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Map {
-    public class IntStringMapObject : IEquatable <IntStringMapObject>, IIntStringMapObject {
+    public class IntStringMapObject : IMapTestObject, IEquatable<IntStringMapObject> {
+
+        public const ushort TYPE_ID = 13;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public Dictionary<int,string> IntStringMap;
+
         public IntStringMapObject() {
-            this.intStringMap = default(Dictionary<int,string>);
+            this.IntStringMap = default(Dictionary<int,string>);
         }
 
         public IntStringMapObject(
             Dictionary<int,string> intStringMap
         ) {
-            this.intStringMap = intStringMap;
-        }
-
-        internal Dictionary<int,string> intStringMap;
-        public Dictionary<int,string> IntStringMap {
-            get { return this.intStringMap; }
-            set { this.intStringMap = value; }
+            this.IntStringMap = intStringMap;
         }
 
         public bool Equals(IntStringMapObject other) {
@@ -31,12 +34,12 @@ namespace Test.Map {
             if ( ! (other is IntStringMapObject)) { return false; }
             IntStringMapObject that = (IntStringMapObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // intStringMap
-            if (this.intStringMap == null && that.intStringMap != null) { return false; }
-            if (that.intStringMap != null && this.intStringMap == null) { return false; }
-            if (that.intStringMap.Count != this.intStringMap.Count) { return false; }
-            foreach (int key in this.intStringMap.Keys) {
-                if ( ! that.intStringMap.ContainsKey(key)) { return false; }
+            // IntStringMap
+            if (this.IntStringMap == null && that.IntStringMap != null) { return false; }
+            if (that.IntStringMap != null && this.IntStringMap == null) { return false; }
+            if (that.IntStringMap.Count != this.IntStringMap.Count) { return false; }
+            foreach (int key in this.IntStringMap.Keys) {
+                if ( ! that.IntStringMap.ContainsKey(key)) { return false; }
             }
             return true;
         }
@@ -44,7 +47,7 @@ namespace Test.Map {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (intStringMap == null ? 0 : intStringMap.GetHashCode());
+                hash = (13*hash) + (this.IntStringMap == null ? 0 : this.IntStringMap.GetHashCode());
                 return hash;
             }
         }

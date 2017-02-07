@@ -1,11 +1,53 @@
 ﻿using NUnit.Framework;
 using PatternBuffer;
 using Test.Primitive;
+using System.Diagnostics;
+using System.Collections.Generic;
+using System;
 
 namespace PatternBufferTest {
 
     [TestFixture()]
     public class GeneratedPatternBufferPrimitiveTest {
+
+        [Test()]
+        public void TestHighScore() {
+            PrimitiveTestPatternBuffer patternBuffer = new PrimitiveTestPatternBuffer();
+            HighScoreObject hs1 = new HighScoreObject();
+            hs1.Name = "Speed Run";
+            hs1.HighScore = 10000;
+            Stopwatch s = Stopwatch.StartNew();
+            byte[] bytes = default(byte[]);
+            for (int i = 0; i < 1000000; i++) {
+                bytes = patternBuffer.Energize(hs1);
+            }
+            s.Stop();
+            Console.WriteLine("Serialize:    " + s.ElapsedMilliseconds);
+
+            HighScoreObject hs2 = null;
+            s = Stopwatch.StartNew();
+            for (int i = 0; i < 1000000; i++) {
+                hs2 = (HighScoreObject)patternBuffer.Energize(bytes);
+            }
+            s.Stop();
+            Console.WriteLine("Deserialize:  " + s.ElapsedMilliseconds);
+
+            Console.WriteLine("Size:         " + bytes.Length + " bytes");
+        }
+
+        [Test()]
+        public void TestEverythingObjectSerialization() {
+            PrimitiveTestPatternBuffer patternBuffer = new PrimitiveTestPatternBuffer();
+            EverythingObject e1 = new EverythingObject();
+            e1.StringValue = "foo";
+            Stopwatch s = Stopwatch.StartNew();
+            byte[] bytes;
+            for (int i = 0; i < 10000000; i++) {
+                bytes = patternBuffer.Energize(e1);
+            }
+            s.Stop();
+            Console.WriteLine(s.ElapsedMilliseconds);
+        }
 
         [Test()]
         public void TestBoolObjectSerialization() {
@@ -15,7 +57,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(2, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is BoolObject);
-            Assert.AreEqual(b.boolValue, ((BoolObject)o).boolValue);
+            Assert.AreEqual(b.BoolValue, ((BoolObject)o).BoolValue);
             Assert.IsFalse(b == o);
         }
 
@@ -27,7 +69,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(2, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is ByteObject);
-            Assert.AreEqual(b.byteValue, ((ByteObject)o).byteValue);
+            Assert.AreEqual(b.ByteValue, ((ByteObject)o).ByteValue);
             Assert.IsFalse(b == o);
         }
 
@@ -64,26 +106,21 @@ namespace PatternBufferTest {
             PrimitiveTestPatternBuffer patternBuffer = new PrimitiveTestPatternBuffer();
             IntObject intObject = new IntObject(12345);
             byte[] bytes = patternBuffer.Energize(intObject);
-            Assert.AreEqual(5, bytes.Length);
+            Assert.AreEqual(6, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is IntObject);
-            Assert.AreEqual(intObject.intValue, ((IntObject)o).intValue);
+            Assert.AreEqual(intObject.IntValue, ((IntObject)o).IntValue);
             Assert.IsFalse(intObject == o);
         }
 
-        //[TestCase(int.MinValue, 6)]
-        //[TestCase(-16384, 4)]
-        //[TestCase(-128, 3)]
-        //[TestCase(-127, 3)]
-        //[TestCase(-1, 2)]
-        //[TestCase(0, 2)]
-        [TestCase(1, 3)]
-        //[TestCase(127, 3)]
-        //[TestCase(128, 3)]
-        //[TestCase(16384, 4)]
-        //[TestCase(1048544, 4)]
-        //[TestCase(2097088, 5)]
-        //[TestCase(int.MaxValue, 6)]
+        [TestCase(int.MinValue, 6)]
+        [TestCase(-20000000, 6)]
+        [TestCase(-122, 3)]
+        [TestCase(0, 2)]
+        [TestCase(122, 3)]
+        [TestCase(12345, 4)]
+        [TestCase(20000000, 6)]
+        [TestCase(int.MaxValue, 6)]
         public void TestVIntObjectSerialization(int value, int byteCount) {
             PrimitiveTestPatternBuffer patternBuffer = new PrimitiveTestPatternBuffer();
             VIntObject l1 = new VIntObject(value);
@@ -91,7 +128,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is VIntObject);
-            Assert.AreEqual(l1.vintValue, ((VIntObject)o).vintValue);
+            Assert.AreEqual(l1.VintValue, ((VIntObject)o).VintValue);
             Assert.IsFalse(l1 == o);
         }
 
@@ -107,14 +144,19 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is LongObject);
-            Assert.AreEqual(l1.longValue, ((LongObject)o).longValue);
+            Assert.AreEqual(l1.LongValue, ((LongObject)o).LongValue);
             Assert.IsFalse(l1 == o);
         }
 
         [TestCase(long.MinValue, 10)]
+        [TestCase((long)int.MinValue, 6)]
+        [TestCase(-20000000, 6)]
+        [TestCase(-122, 3)]
+        [TestCase(0, 2)]
         [TestCase(122, 3)]
         [TestCase(12345, 4)]
         [TestCase(20000000, 6)]
+        [TestCase((long)int.MaxValue, 6)]
         [TestCase(long.MaxValue, 10)]
         public void TestVLongObjectSerialization(long value, int byteCount) {
             PrimitiveTestPatternBuffer patternBuffer = new PrimitiveTestPatternBuffer();
@@ -123,7 +165,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is VLongObject);
-            Assert.AreEqual(l1.vlongValue, ((VLongObject)o).vlongValue);
+            Assert.AreEqual(l1.VlongValue, ((VLongObject)o).VlongValue);
             Assert.IsFalse(l1 == o);
         }
 
@@ -139,7 +181,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is ShortObject);
-            Assert.AreEqual(s.shortValue, ((ShortObject)o).shortValue);
+            Assert.AreEqual(s.ShortValue, ((ShortObject)o).ShortValue);
             Assert.IsFalse(s == o);
         }
 
@@ -167,7 +209,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is UIntObject);
-            Assert.AreEqual(u.uintValue, ((UIntObject)o).uintValue);
+            Assert.AreEqual(u.UintValue, ((UIntObject)o).UintValue);
             Assert.IsFalse(u == o);
         }
 
@@ -183,7 +225,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is VUIntObject);
-            Assert.AreEqual(u.vuintValue, ((VUIntObject)o).vuintValue);
+            Assert.AreEqual(u.VuintValue, ((VUIntObject)o).VuintValue);
             Assert.IsFalse(u == o);
         }
 
@@ -199,14 +241,14 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is ULongObject);
-            Assert.AreEqual(u.ulongValue, ((ULongObject)o).ulongValue);
+            Assert.AreEqual(u.UlongValue, ((ULongObject)o).UlongValue);
             Assert.IsFalse(u == o);
         }
 
-        //[TestCase(ulong.MinValue, 2)]
-        //[TestCase((ulong)122, 2)]
-        //[TestCase((ulong)12345, 3)]
-        //[TestCase((ulong)20000000, 5)]
+        [TestCase(ulong.MinValue, 2)]
+        [TestCase((ulong)122, 2)]
+        [TestCase((ulong)12345, 3)]
+        [TestCase((ulong)20000000, 5)]
         [TestCase(ulong.MaxValue, 10)]
         public void TestVULongObjectSerialization(ulong value, int byteCount) {
             PrimitiveTestPatternBuffer patternBuffer = new PrimitiveTestPatternBuffer();
@@ -215,7 +257,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is VULongObject);
-            Assert.AreEqual(u.vulongValue, ((VULongObject)o).vulongValue);
+            Assert.AreEqual(u.VulongValue, ((VULongObject)o).VulongValue);
             Assert.IsFalse(u == o);
         }
 
@@ -230,7 +272,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is UShortObject);
-            Assert.AreEqual(u.ushortValue, ((UShortObject)o).ushortValue);
+            Assert.AreEqual(u.UshortValue, ((UShortObject)o).UshortValue);
             Assert.IsFalse(u == o);
         }
 
@@ -245,7 +287,7 @@ namespace PatternBufferTest {
             Assert.AreEqual(byteCount, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is VUShortObject);
-            Assert.AreEqual(u.vushortValue, ((VUShortObject)o).vushortValue);
+            Assert.AreEqual(u.VushortValue, ((VUShortObject)o).VushortValue);
             Assert.IsFalse(u == o);
         }
 
@@ -255,15 +297,6 @@ namespace PatternBufferTest {
             UShortObject u = new UShortObject(12345);
             StringObject s = new StringObject("12345");
             Assert.IsFalse(u.Equals(s));
-        }
-
-        [Test()]
-        [ExpectedException(typeof(PatternBufferException))]
-        public void TestSizeOfBadArgument() {
-            PrimitiveTestPatternBuffer patternBuffer = new PrimitiveTestPatternBuffer();
-            StringObject u = new StringObject("abcde");
-            IPatternBufferSerializer s = new UShortObjectSerializer(patternBuffer);
-            s.SizeOf(u);
         }
 
     }

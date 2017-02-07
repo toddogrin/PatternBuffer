@@ -4,7 +4,7 @@ type(11) ShortObject {
 	short shortValue;
 }
 
-type(12) IntObject {
+type(779) IntObject {
 	int intValue;
 }
 
@@ -56,6 +56,8 @@ type(22) EverythingObject {
 	float floatValue;
 	bool boolValue;
 	byte byteValue;
+	//vint vintValue;
+	//vlong vlongValue;
 }
 
 type(112) VIntObject {
@@ -76,4 +78,9 @@ type(115) VUIntObject {
 
 type(116) VULongObject {
 	vulong vulongValue;
+}
+
+type(117) HighScoreObject {
+	string name;
+	vuint highScore;
 }

@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Enum {
-    public class EnumListObject : IEquatable <EnumListObject>, IEnumListObject {
+    public class EnumListObject : IEnumTestObject, IEquatable<EnumListObject> {
+
+        public const ushort TYPE_ID = 12;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public List<SomeEnum> SomeEnumListValue;
+
         public EnumListObject() {
-            this.someEnumListValue = default(List<SomeEnum>);
+            this.SomeEnumListValue = default(List<SomeEnum>);
         }
 
         public EnumListObject(
             List<SomeEnum> someEnumListValue
         ) {
-            this.someEnumListValue = someEnumListValue;
-        }
-
-        internal List<SomeEnum> someEnumListValue;
-        public List<SomeEnum> SomeEnumListValue {
-            get { return this.someEnumListValue; }
-            set { this.someEnumListValue = value; }
+            this.SomeEnumListValue = someEnumListValue;
         }
 
         public bool Equals(EnumListObject other) {
@@ -31,16 +34,16 @@ namespace Test.Enum {
             if ( ! (other is EnumListObject)) { return false; }
             EnumListObject that = (EnumListObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // someEnumListValue
-            if (this.someEnumListValue == null && that.someEnumListValue != null) { return false; }
-            if (that.someEnumListValue != null && this.someEnumListValue == null) { return false; }
-            if (this.someEnumListValue.Count != that.someEnumListValue.Count) { return false; }
-            List<SomeEnum>.Enumerator enumerator_d15327999b = this.someEnumListValue.GetEnumerator();
-            List<SomeEnum>.Enumerator enumerator_ebf87cf820 = that.someEnumListValue.GetEnumerator();
+            // SomeEnumListValue
+            if (this.SomeEnumListValue == null && that.SomeEnumListValue != null) { return false; }
+            if (that.SomeEnumListValue != null && this.SomeEnumListValue == null) { return false; }
+            if (this.SomeEnumListValue.Count != that.SomeEnumListValue.Count) { return false; }
+            List<SomeEnum>.Enumerator enumerator_yZHBxyZNS3MP = this.SomeEnumListValue.GetEnumerator();
+            List<SomeEnum>.Enumerator enumerator_oUn0A6UXqUUn = that.SomeEnumListValue.GetEnumerator();
             while(true) {
-                if ( ! enumerator_d15327999b.MoveNext()) { break; }
-                enumerator_ebf87cf820.MoveNext();
-            if ( enumerator_d15327999b.Current != enumerator_ebf87cf820.Current) { return false; }
+                if ( ! enumerator_yZHBxyZNS3MP.MoveNext()) { break; }
+                enumerator_oUn0A6UXqUUn.MoveNext();
+            if ( enumerator_yZHBxyZNS3MP.Current != enumerator_oUn0A6UXqUUn.Current) { return false; }
             }
             return true;
         }
@@ -48,7 +51,7 @@ namespace Test.Enum {
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (someEnumListValue == null ? 0 : someEnumListValue.GetHashCode());
+                hash = (13*hash) + (this.SomeEnumListValue == null ? 0 : this.SomeEnumListValue.GetHashCode());
                 return hash;
             }
         }

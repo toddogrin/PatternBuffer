@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Primitive {
-    public class VUShortObject : IEquatable <VUShortObject>, IVUShortObject {
+    public class VUShortObject : IPrimitiveTestObject, IEquatable<VUShortObject> {
+
+        public const ushort TYPE_ID = 114;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public ushort VushortValue;
+
         public VUShortObject() {
-            this.vushortValue = default(ushort);
+            this.VushortValue = default(ushort);
         }
 
         public VUShortObject(
             ushort vushortValue
         ) {
-            this.vushortValue = vushortValue;
-        }
-
-        internal ushort vushortValue;
-        public ushort VushortValue {
-            get { return this.vushortValue; }
-            set { this.vushortValue = value; }
+            this.VushortValue = vushortValue;
         }
 
         public bool Equals(VUShortObject other) {
@@ -31,15 +34,15 @@ namespace Test.Primitive {
             if ( ! (other is VUShortObject)) { return false; }
             VUShortObject that = (VUShortObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // vushortValue
-            if (this.vushortValue != that.vushortValue) { return false; }
+            // VushortValue
+            if (this.VushortValue != that.VushortValue) { return false; }
             return true;
         }
 
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + vushortValue.GetHashCode();
+                hash = (13*hash) + this.VushortValue.GetHashCode();
                 return hash;
             }
         }

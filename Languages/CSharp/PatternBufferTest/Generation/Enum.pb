@@ -6,13 +6,22 @@ enum SomeEnum {
 	value3
 }
 
+enum SomeEnum2 {
+	value4,
+	value5,
+	value6
+}
+
+
 type(11) EnumObject {
 	SomeEnum someEnumValue;
 }
 
+
 type(12) EnumListObject {
 	list<SomeEnum> someEnumListValue;
 }
+
 
 type(13) EnumMapObject {
 	map<int,SomeEnum> intSomeEnumMapValue;

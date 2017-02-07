@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Reference {
-    public class AbstractReferenceObject : IEquatable <AbstractReferenceObject>, IAbstractReferenceObject {
+    public class AbstractReferenceObject : IReferenceTestObject, IEquatable<AbstractReferenceObject> {
+
+        public const ushort TYPE_ID = 24;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public AbstractThing Thing;
+
         public AbstractReferenceObject() {
-            this.thing = default(IAbstractThing);
+            this.Thing = default(AbstractThing);
         }
 
         public AbstractReferenceObject(
-            IAbstractThing thing
+            AbstractThing thing
         ) {
-            this.thing = thing;
-        }
-
-        internal IAbstractThing thing;
-        public IAbstractThing Thing {
-            get { return this.thing; }
-            set { this.thing = value; }
+            this.Thing = thing;
         }
 
         public bool Equals(AbstractReferenceObject other) {
@@ -31,17 +34,17 @@ namespace Test.Reference {
             if ( ! (other is AbstractReferenceObject)) { return false; }
             AbstractReferenceObject that = (AbstractReferenceObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // thing
-            if (this.thing == null && that.thing != null) { return false; }
-            if (that.thing != null && this.thing == null) { return false; }
-            if ( ! this.thing.Equals(that.thing)) { return false; }
+            // Thing
+            if (this.Thing == null && that.Thing != null) { return false; }
+            if (that.Thing != null && this.Thing == null) { return false; }
+            if ( ! this.Thing.Equals(that.Thing)) { return false; }
             return true;
         }
 
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + (thing == null ? 0 : thing.GetHashCode());
+                hash = (13*hash) + (this.Thing == null ? 0 : this.Thing.GetHashCode());
                 return hash;
             }
         }

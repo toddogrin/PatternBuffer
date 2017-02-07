@@ -3,24 +3,27 @@
 // GENERATED CODE -- DO NOT MODIFY //
 /////////////////////////////////////
 
+using PatternBuffer;
 using System;
 using System.Collections.Generic;
 namespace Test.Primitive {
-    public class ULongObject : IEquatable <ULongObject>, IULongObject {
+    public class ULongObject : IPrimitiveTestObject, IEquatable<ULongObject> {
+
+        public const ushort TYPE_ID = 16;
+        public ushort TypeId {
+            get { return TYPE_ID; }
+        }
+
+        public ulong UlongValue;
+
         public ULongObject() {
-            this.ulongValue = default(ulong);
+            this.UlongValue = default(ulong);
         }
 
         public ULongObject(
             ulong ulongValue
         ) {
-            this.ulongValue = ulongValue;
-        }
-
-        internal ulong ulongValue;
-        public ulong UlongValue {
-            get { return this.ulongValue; }
-            set { this.ulongValue = value; }
+            this.UlongValue = ulongValue;
         }
 
         public bool Equals(ULongObject other) {
@@ -31,15 +34,15 @@ namespace Test.Primitive {
             if ( ! (other is ULongObject)) { return false; }
             ULongObject that = (ULongObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // ulongValue
-            if (this.ulongValue != that.ulongValue) { return false; }
+            // UlongValue
+            if (this.UlongValue != that.UlongValue) { return false; }
             return true;
         }
 
         public override int GetHashCode() {
             unchecked {
                 int hash = 27;
-                hash = (13*hash) + ulongValue.GetHashCode();
+                hash = (13*hash) + this.UlongValue.GetHashCode();
                 return hash;
             }
         }

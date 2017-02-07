@@ -22,6 +22,11 @@ namespace PatternBuffer.Compiler {
         [CommandLineOption("Directory location where all generated filed should be saved", true, 'o', "output")]
         public string OutputDirectory { get; protected set; }
 
+        [CommandLineOption("If true, generated code will include lock statements to ensure thread safety", false, 't', "threadsafe", "false")]
+        public bool MakeThreadsafe { get; protected set; }
+
+        [CommandLineOption("Path to a file containing custom boilerplate comment text", true, 'b', "boilerplate", null)]
+        public string BoilerplateFilePath { get; protected set; }
         /**
          * Creates an instance of PatternBufferCompilerCommandLine and parses the given args into the 
          * fields defined above.
