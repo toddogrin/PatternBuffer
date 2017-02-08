@@ -35,3 +35,9 @@ You can see dependencies in the References node of your solution, but here they 
 * PatternBufferCompilerProgram - PatternBufferCompiler, PatternBufferSchema
 * PatternBufferGeneratedTest - None
 * PatternBufferTest - PatternBufferCompiler, PatternBufferSchema
+
+## Thread Safety
+
+The pbc-cs.exe command line application offers an option to generate threadsafe code. Generated PatternBuffer classes rely on a singular internal byte buffer to build up serialized objects. The "MakeThreadsafe" option adds lock() statements in key places to ensure a single generated PatternBuffer class doesn't corrupt data while serializing multiple objects simultaneously. In tests, generating lock()ed code incurred a 25%-30% reduction in performance.
+
+As an alternative, consider generating un-threadsafe code, but instantiating multiple copies of your generated PatternBuffer class. You can then use your preferred object pooling technique to increase throughput. This gives you total control over memory and serialization throughput.
