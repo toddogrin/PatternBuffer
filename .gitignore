@@ -1,0 +1,9 @@
+Languages/CSharp/packages/
+Languages/CSharp/PatternBufferGeneratedTest/bin/Release/nunit.framework.xml
+Languages/CSharp/PatternBufferTest/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+Languages/CSharp/PatternBufferTest/obj/
+Languages/CSharp/PatternBufferTest/bin/
+Languages/CSharp/TestResults/
+*/obj/*
+**/obj/**
+**/bin/**
