@@ -1,0 +1,88 @@
+"Name"    = 'PatternBuffer Schema'
+"Author"  = 'Todd Ogrin'
+"About"   = 'Defines the schema for PatternBuffer definitions'
+
+"Start Symbol" = <Schema>
+
+Comment Line = '//'
+Comment Start = '/*'
+Comment End = '*/'               
+                  
+Name = {Letter}{AlphaNumeric}*
+
+TypeId = {Number}|{Number}{Number}|{Number}{Number}{Number}|{Number}{Number}{Number}{Number}|{Number}{Number}{Number}{Number}{Number}
+
+Primitive = 'byte'|'bool'|'short'|'ushort'|'vushort'|'int'|'vint'|'uint'|'vuint'|'long'|'vlong'|'ulong'|'vulong'|'string'|'float'|'double'
+
+{String Char} = {Printable} - ["\]
+String = '"' ({String Char} | '\'{Printable})* '"'
+
+HintName = {Letter}{AlphaNumeric}* '.' {Letter}{AlphaNumeric}*
+     
+!----------------------------------------------
+! Schema
+!----------------------------------------------
+<Schema>        ::= <SchemaNameElement> <Hint> <SchemaElement>
+<SchemaNameElement>   ::= 'name' <SchemaName> ';' 
+<SchemaName> ::= Name
+<SchemaElement> ::= <Type> <SchemaElement>
+                   | <Enum> <SchemaElement>
+                   | <>
+
+!----------------------------------------------
+! Base Types
+!----------------------------------------------
+<BaseType>      ::= ':' <BaseTypeName>
+                  | <>
+<BaseTypeName>  ::= Name
+                  
+!----------------------------------------------
+! Types
+!----------------------------------------------
+<Type>          ::= 'type' '(' <TypeId> ')' <TypeName> <BaseType> '{' <Hint> <TypeField> '}' 
+<TypeName>      ::= Name
+<TypeId>        ::= TypeId
+                  | <>
+<TypeField>    ::= <PrimitiveField> <TypeField>
+                 | <ReferenceField> <TypeField>
+                 | <ListField> <TypeField>
+                 | <SetField> <TypeField>
+                 | <MapField> <TypeField>
+                 | <>
+
+!----------------------------------------------
+! Fields
+!----------------------------------------------
+<PrimitiveField> ::= <PrimitiveFieldType> <FieldName> ';'
+<PrimitiveFieldType> ::= Primitive
+                 
+<ReferenceField> ::= <ReferenceFieldType> <FieldName> ';'
+<ReferenceFieldType> ::= Name
+                 
+<FieldName> ::= Name
+
+!----------------------------------------------
+! Aggregate Fields
+!----------------------------------------------
+                
+<ListField>     ::= 'list' '<' <AggregateArg> '>' <FieldName> ';'
+<SetField>      ::= 'set' '<' <AggregateArg> '>' <FieldName> ';'
+<MapField>      ::= 'map' '<' <AggregateArg> ',' <AggregateArg> '>' <FieldName> ';'
+<AggregateArg> ::= <PrimitiveFieldType> 
+                 | <ReferenceFieldType>
+
+!----------------------------------------------
+! Enums
+!----------------------------------------------
+<Enum>          ::= 'enum' <EnumName> '{' <Hint> <EnumValue> '}'
+<EnumName>      ::= Name
+<EnumValue>     ::= Name
+                  | Name ',' <EnumValue>
+                  
+!----------------------------------------------
+! Hints
+!----------------------------------------------
+<Hint> ::= '[' <HintName> '=' <HintValue> ']' <Hint>
+         | <>
+<HintName> ::= HintName
+<HintValue> ::= String
