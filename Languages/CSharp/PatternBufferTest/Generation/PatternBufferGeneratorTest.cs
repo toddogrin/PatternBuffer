@@ -15,6 +15,16 @@ namespace PatternBufferTest {
     public class PatternBufferGeneratorTest {
 
         [Test()]
+        public void TestGenerateNullable() {
+            this.Generate("Nullable");
+        }
+
+        [Test()]
+        public void TestGenerateAutonumber() {
+            this.Generate("Autonumber");
+        }
+
+        [Test()]
         public void TestGenerateEnum() {
             this.Generate("Enum");
         }
@@ -45,7 +55,7 @@ namespace PatternBufferTest {
         }
 
         protected void Generate(string name) {
-            PatternBufferSchemaParser loader = new PatternBufferSchemaParser(@"..\..\..\..\..\PatternBuffer.cgt");
+            PatternBufferSchemaParser loader = new PatternBufferSchemaParser();
             string pbFile = @"..\..\Generation\" + name + @".pb";
             string schemaSource = File.ReadAllText(pbFile);
             PatternBufferSchema schema = loader.Parse(schemaSource);

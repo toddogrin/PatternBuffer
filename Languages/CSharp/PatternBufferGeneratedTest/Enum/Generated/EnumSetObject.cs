@@ -14,7 +14,7 @@ namespace Test.Enum {
             get { return TYPE_ID; }
         }
 
-        public HashSet<SomeEnum> SomeEnumSetValue;
+        public HashSet<SomeEnum> SomeEnumSetValue; // (required)
 
         public EnumSetObject() {
             this.SomeEnumSetValue = default(HashSet<SomeEnum>);
@@ -30,20 +30,22 @@ namespace Test.Enum {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is EnumSetObject)) { return false; }
             EnumSetObject that = (EnumSetObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // SomeEnumSetValue
-            if (this.SomeEnumSetValue == null && that.SomeEnumSetValue != null) { return false; }
-            if (that.SomeEnumSetValue != null && this.SomeEnumSetValue == null) { return false; }
-            if (this.SomeEnumSetValue.Count != that.SomeEnumSetValue.Count) { return false; }
-            HashSet<SomeEnum>.Enumerator enumerator_kFNgkA6a6KKg = this.SomeEnumSetValue.GetEnumerator();
-            HashSet<SomeEnum>.Enumerator enumerator_wK4cXtykRrAD = that.SomeEnumSetValue.GetEnumerator();
-            while(true) {
-                if ( ! enumerator_kFNgkA6a6KKg.MoveNext()) { break; }
-                enumerator_wK4cXtykRrAD.MoveNext();
-            if ( enumerator_kFNgkA6a6KKg.Current != enumerator_wK4cXtykRrAD.Current) { return false; }
+            // SomeEnumSetValue (required)
+                if (this.SomeEnumSetValue == null && that.SomeEnumSetValue != null) { return false; }
+                if (that.SomeEnumSetValue != null && this.SomeEnumSetValue == null) { return false; }
+            if (this.SomeEnumSetValue != null && that.SomeEnumSetValue != null) {
+                if (this.SomeEnumSetValue.Count != that.SomeEnumSetValue.Count) { return false; }
+                HashSet<SomeEnum>.Enumerator enumerator_elC3mC5FvPEk = this.SomeEnumSetValue.GetEnumerator();
+                HashSet<SomeEnum>.Enumerator enumerator_xqZBWCZqKGVU = that.SomeEnumSetValue.GetEnumerator();
+                while(true) {
+                     if ( ! enumerator_elC3mC5FvPEk.MoveNext()) { break; }
+                    enumerator_xqZBWCZqKGVU.MoveNext();
+            if ( enumerator_elC3mC5FvPEk.Current != enumerator_xqZBWCZqKGVU.Current) { return false; }
+                }
             }
             return true;
         }

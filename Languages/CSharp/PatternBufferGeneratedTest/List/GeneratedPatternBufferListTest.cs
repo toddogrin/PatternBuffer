@@ -9,14 +9,30 @@ namespace PatternBufferTest.Schema {
     public class GeneratedPatternBufferListTest {
 
         [Test()]
+        public void TestIntListObjectNull() {
+            ListTestPatternBuffer patternBuffer = new ListTestPatternBuffer();
+            IntListObject o1 = new IntListObject(null);
+            byte[] bytes = patternBuffer.Energize(o1);
+            // 1 byte       IntListObject type ID
+            // 1 byte       list count
+            Assert.AreEqual(2, bytes.Length);
+            object o2 = patternBuffer.Energize(bytes);
+            IntListObject p1 = (IntListObject)o2;
+            Assert.IsTrue(p1 is IntListObject);
+            Assert.IsNull(p1.IntListValue);
+            Assert.IsFalse(o1 == p1);
+        }
+
+        [Test()]
         public void TestIntListObjectSerialization() {
             ListTestPatternBuffer patternBuffer = new ListTestPatternBuffer();
             IntListObject o1 = new IntListObject(new List<int>() { 1, 5, 900, 7038 });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       IntListObject type ID
+            // 1 byte       null bits
             // 1 byte       list count
             // 16 bytes     4 invariant ints
-            Assert.AreEqual(18, bytes.Length);
+            Assert.AreEqual(19, bytes.Length);
             object o2 = patternBuffer.Energize(bytes);
             IntListObject p1 = (IntListObject)o2;
             Assert.IsTrue(p1 is IntListObject);
@@ -35,12 +51,13 @@ namespace PatternBufferTest.Schema {
             VIntListObject o1 = new VIntListObject(new List<int>() { 1, 5, 900, 7038 });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       VIntListObject type ID
+            // 1 byte       null bits
             // 1 byte       list count
             // 2 bytes      1
             // 2 bytes      5
             // 3 bytes      900
             // 3 bytes      7038
-            Assert.AreEqual(12, bytes.Length);
+            Assert.AreEqual(13, bytes.Length);
             object o2 = patternBuffer.Energize(bytes);
             VIntListObject p1 = (VIntListObject)o2;
             Assert.IsTrue(p1 is VIntListObject);
@@ -58,7 +75,7 @@ namespace PatternBufferTest.Schema {
             ListTestPatternBuffer patternBuffer = new ListTestPatternBuffer();
             StringListObject o1 = new StringListObject(new List<string>() { "foo", "bar" });
             byte[] bytes = patternBuffer.Energize(o1);
-            Assert.AreEqual(10, bytes.Length);
+            Assert.AreEqual(11, bytes.Length);
             object o2 = patternBuffer.Energize(bytes);
             StringListObject p1 = (StringListObject)o2;
             Assert.IsTrue(p1 is StringListObject);
@@ -74,10 +91,11 @@ namespace PatternBufferTest.Schema {
             Thing1ListObject o1 = new Thing1ListObject(new List<Thing1>() { t1, t2 });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       Thing1ListObject type ID
+            // 1 byte       null bits
             // 1 byte       list count
             // 8 bytes      Thing1 (2 invariant ints)
             // 8 bytes      Thing1 (2 invariant ints)
-            Assert.AreEqual(18, bytes.Length);
+            Assert.AreEqual(19, bytes.Length);
             object o2 = patternBuffer.Energize(bytes);
             Thing1ListObject p1 = (Thing1ListObject)o2;
             Assert.IsTrue(p1 is Thing1ListObject);
@@ -93,12 +111,13 @@ namespace PatternBufferTest.Schema {
             AbstractThingListObject o1 = new AbstractThingListObject(new List<AbstractThing>() { t1, t2 });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       AbstractThingListObject type ID
+            // 1 byte       null bits
             // 1 byte       list count
             // 1 byte       Thing1 type ID
             // 8 bytes      Thing1 2 invariant ints
             // 1 byte       Thing2 type ID
             // 8 bytes      Thing2 2 invariant ints
-            Assert.AreEqual(20, bytes.Length);
+            Assert.AreEqual(21, bytes.Length);
             object o2 = patternBuffer.Energize(bytes);
             AbstractThingListObject p1 = (AbstractThingListObject)o2;
             Assert.IsTrue(p1 is AbstractThingListObject);

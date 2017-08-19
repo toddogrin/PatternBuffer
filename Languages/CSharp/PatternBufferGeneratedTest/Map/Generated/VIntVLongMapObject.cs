@@ -14,7 +14,7 @@ namespace Test.Map {
             get { return TYPE_ID; }
         }
 
-        public Dictionary<int,long> VintVlongMap;
+        public Dictionary<int,long> VintVlongMap; // (required)
 
         public VIntVLongMapObject() {
             this.VintVlongMap = default(Dictionary<int,long>);
@@ -30,13 +30,13 @@ namespace Test.Map {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is VIntVLongMapObject)) { return false; }
             VIntVLongMapObject that = (VIntVLongMapObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // VintVlongMap
-            if (this.VintVlongMap == null && that.VintVlongMap != null) { return false; }
-            if (that.VintVlongMap != null && this.VintVlongMap == null) { return false; }
+            // VintVlongMap (required)
+                if (this.VintVlongMap == null && that.VintVlongMap != null) { return false; }
+                if (that.VintVlongMap != null && this.VintVlongMap == null) { return false; }
             if (that.VintVlongMap.Count != this.VintVlongMap.Count) { return false; }
             foreach (int key in this.VintVlongMap.Keys) {
                 if ( ! that.VintVlongMap.ContainsKey(key)) { return false; }

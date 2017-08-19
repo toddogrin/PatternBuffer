@@ -33,7 +33,7 @@ namespace PatternBuffer {
 
             // Deal with list lengths
             string targetList = "o." + fieldName + subfield;
-            code += "            if (" + targetList + " == null || " + targetList + ".Count == 0) {\r\n";
+            code += "            if (o." + fieldName + " == null || " + targetList + " == null || " + targetList + ".Count == 0) {\r\n";
             PBP.AppendWriteByte(ref code, "0");
             code += "            }\r\n";
             code += "            else { \r\n";
@@ -106,7 +106,8 @@ namespace PatternBuffer {
             // Serialize constant-sized primitives
             if ((elementType is PrimitiveFieldType)) {
                 PrimitiveFieldType primitiveFieldType = (PrimitiveFieldType)elementType;
-                code += "                " + fieldName + " = new " + collectionTypeName + "<" + PB.ToCSharpType(primitiveFieldType) + ">();\r\n";
+                string cappedElementName = PB.ToCapitalizedCSharpType(primitiveFieldType);
+                code += "                " + fieldName + " = this.instantiator.Acquire" + collectionTypeName + "Of" + cappedElementName + "();\r\n";
                 string tempFieldName = PB.CreateRandomFieldName("listValue");
                 code += "                " + PB.ToCSharpType(primitiveFieldType) + " " + tempFieldName + ";\r\n";
                 string i = PB.CreateRandomFieldName("i");
@@ -124,7 +125,8 @@ namespace PatternBuffer {
                 if (referenceFieldType.Referrable is PatternBufferEnum) {
                     PatternBufferEnum e = (PatternBufferEnum)referenceFieldType.Referrable;
                     string enumName = PB.ToCSharpName(e.Name);
-                    code += "                " + fieldName + " = new " + collectionTypeName + "<" + enumName + ">();\r\n";
+                    string cappedElementName = PB.ToCapitalizedCSharpType(referenceFieldType);
+                    code += "                " + fieldName + " = this.instantiator.Acquire" + collectionTypeName + "Of" + cappedElementName + "();\r\n";
                     string i = PB.CreateRandomFieldName("i");
                     code += "                for (int " + i + " = 0; " + i + " < " + countFieldName + "; " + i + "++) {\r\n";
                     code += "                    " + fieldName + ".Add((" + enumName + ")System.Enum.Parse(typeof(" + enumName + "), enumIndexValueMap[\"" + referenceFieldType.ReferrableName + "\"][bytes[index++]]));\r\n";
@@ -134,7 +136,8 @@ namespace PatternBuffer {
                 else if (referenceFieldType.Referrable is PatternBufferType) {
                     PatternBufferType patternBufferType = (PatternBufferType)referenceFieldType.Referrable;
                     string elementTypeName = PB.ToCSharpType(referenceFieldType);
-                    code += "                " + fieldName + " = new " + collectionTypeName + "<" + elementTypeName + ">();\r\n";
+                    string cappedElementName = PB.ToCapitalizedCSharpType(referenceFieldType);
+                    code += "                " + fieldName + " = this.instantiator.Acquire" + collectionTypeName + "Of" + cappedElementName + "();\r\n";
                     string i = PB.CreateRandomFieldName("li");
                     // All objects in the list are the same type
                     if (patternBufferType.IsFinal) {

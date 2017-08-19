@@ -166,6 +166,11 @@ namespace PatternBuffer {
             return "WHATEVS";
         }
 
+        public static string ToCapitalizedCSharpType(IFieldType fieldType) {
+            string s = ToCSharpType(fieldType);
+            return s.Substring(0, 1).ToUpper() + s.Substring(1);
+        }
+
         /**
          * Appends C# code to write a comment into the code.
          */
@@ -202,6 +207,96 @@ namespace PatternBuffer {
                 code += "                Energize((" + schemaObjectTypeName + ")" + varName + ", bytes, ref index, true);\r\n";
             }
         }
+
+        /**
+         * Returns a list of all the fields in a PatterBufferType's type hierarchy. The returned list
+         * will contains the fields of all the given type's ancestors with the eldest (highest) ancestor's
+         * fields first and the given type's fields last, along with all intermediate ancestors in between.
+         * Fields are returned in the order defined in the schema file.
+         */
+        public static List<PatternBufferField> GetAllFields(PatternBufferType type) {
+            // Collect the hierarchy
+            List<PatternBufferType> hierarchy = new List<PatternBufferType>();
+            PatternBufferType current = type;
+            while (current != null) {
+                hierarchy.Insert(0, current);
+                current = current.BaseType;
+            }
+
+            // Collect the fields
+            List<PatternBufferField> fields = new List<PatternBufferField>();
+            foreach (PatternBufferType t in hierarchy) {
+                foreach (PatternBufferField f in t.Fields) {
+                    fields.Add(f);
+                }
+            }
+            return fields;
+        }
+
+        /**
+         * Returns a list of all optional fields on the type, including fields in the type's
+         * ancestors.
+         */
+        public static List<PatternBufferField> GetAllOptionalFields(PatternBufferType type) {
+            List<PatternBufferField> allFields = GetAllFields(type);
+            List<PatternBufferField> optionalFields = new List<PatternBufferField>();
+            foreach (PatternBufferField field in allFields) {
+                if (IsOptional(field.FieldType)) {
+                    optionalFields.Add(field);
+                }
+            }
+            return optionalFields;
+        }
+
+        /**
+         * Returns true if the field type is optional.
+         */
+        public static bool IsOptional(IFieldType fieldType) {
+            bool isOptional = false;
+            if (fieldType != null && fieldType is INullableFieldType) {
+                isOptional = ((INullableFieldType)fieldType).IsNullable;
+            }
+            return isOptional;
+        }
+
+        /**
+         * Appends optiona bit flag bytes into the output.
+         */
+        public static void AppendWriteOptionalFieldFlags(ref string code, PatternBufferType type, string varName) {
+            List<PatternBufferField> optionalFields = GetAllOptionalFields(type);
+            if (optionalFields.Count > 0) {
+                code += "            //\r\n";
+                code += "            //\r\n";
+                code += "            //\r\n";
+                code += "            //\r\n";
+                code += "            //\r\n";
+                code += "            // you know what do this in the main field serialization loop it already checks nulls\r\n";
+                code += "            //\r\n";
+                code += "            //\r\n";
+                code += "            //\r\n";
+                code += "            //\r\n";
+                code += "            \r\n";
+                code += "            // OPTIONAL FIELD FLAGS\r\n";
+                code += "            index--;\r\n";
+                int place = 7;
+                for (int b = 0; b < optionalFields.Count; b++) {
+                    if (b % 8 == 0) {
+                        code += "            bytes[++index] = 0;\r\n";
+                        place = 7;
+                    }
+                    PatternBufferField optionalField = optionalFields[b];
+                    //code += "            if (" + varName + "." + ToCSharpPropertyName(optionalField.Name) + " != null) {\r\n";
+                    //code += "                bytes[index] |= (byte)(1 << " + place + ");\r\n";
+                    //code += "            }\r\n";
+                    code += "            bytes[index] |= (byte)((" + varName + "." + ToCSharpPropertyName(optionalField.Name) + " != null ? 1 : 0) << " + place + ");\r\n";
+                    place--;
+                }
+                code += "            index++;\r\n";
+            }
+        }
+
+
+
 
     }
 }

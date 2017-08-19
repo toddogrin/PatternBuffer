@@ -9,12 +9,12 @@ using System.Collections.Generic;
 namespace Test.List {
     public class Thing2 : AbstractThing, IListTestObject, IEquatable<Thing2> {
 
-        public const ushort TYPE_ID = 11;
-        public ushort TypeId {
+        public new const ushort TYPE_ID = 11;
+        public new ushort TypeId {
             get { return TYPE_ID; }
         }
 
-        public int IntValue3;
+        public int IntValue3; // (required)
 
         public Thing2() {
             this.IntValue1 = default(int);
@@ -33,11 +33,11 @@ namespace Test.List {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is Thing2)) { return false; }
             Thing2 that = (Thing2)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // IntValue3
+            // IntValue3 (required)
             if (this.IntValue3 != that.IntValue3) { return false; }
             return true;
         }

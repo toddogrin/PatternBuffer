@@ -22,6 +22,14 @@ namespace PatternBuffer.Schema {
             this.primitiveType = primitiveType;
         }
 
+        public override int GetHashCode() {
+            unchecked {
+                int hash = 27;
+                hash = (13 * hash) + this.PrimitiveType.GetHashCode();
+                return hash;
+            }
+        }
+
         /**
          * Helper method to convert a PrimitiveType enum to a C# primitive type.
          */

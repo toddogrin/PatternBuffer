@@ -14,7 +14,7 @@ namespace Test.Enum {
             get { return TYPE_ID; }
         }
 
-        public SomeEnum SomeEnumValue;
+        public SomeEnum SomeEnumValue; // (optional)
 
         public EnumObject() {
             this.SomeEnumValue = default(SomeEnum);
@@ -30,11 +30,11 @@ namespace Test.Enum {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is EnumObject)) { return false; }
             EnumObject that = (EnumObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // SomeEnumValue
+            // SomeEnumValue (optional)
             if ( this.SomeEnumValue != that.SomeEnumValue) { return false; }
             return true;
         }

@@ -4,7 +4,6 @@ using System.IO;
 using System.Text;
 using NUnit.Framework;
 using PatternBuffer;
-using NSubstitute;
 using PBUV = PatternBuffer.PatternBufferUnsignedVariantUtil;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -100,63 +99,63 @@ namespace PatternBufferTest.Schema {
             }
         }
 
-        /**
-         * Testing out the pregeneration of byte arrays for unsigned variants.
-         */
-        [Test()]
-        public void GenerateUVTable2() {
-            ulong[] vuBoundaries = new ulong[] {
-                128,
-                16384,
-                2097152,
-                268435456,
-                34359738368,
-                4398046511104,
-                562949953421312,
-                72057594037927936,
-                9223372036854775808
-            };
+        ///**
+        // * Testing out the pregeneration of byte arrays for unsigned variants.
+        // */
+        //[Test()]
+        //public void GenerateUVTable2() {
+        //    ulong[] vuBoundaries = new ulong[] {
+        //        128,
+        //        16384,
+        //        2097152,
+        //        268435456,
+        //        34359738368,
+        //        4398046511104,
+        //        562949953421312,
+        //        72057594037927936,
+        //        9223372036854775808
+        //    };
         
-            byte[] precomputedUnsignedVariantBytes;
-            uint precomputedUnsignedVariantCount = 10000;
-            uint vuBoundaryIndex = 0;
-            if (precomputedUnsignedVariantCount > 0) {
-                uint precomputedUnsignedVariantByteCount = 0;
-                uint temp = precomputedUnsignedVariantCount;
-                while (temp > 0) {
-                        ulong bandValueCount = vuBoundaries[vuBoundaryIndex]  - (vuBoundaryIndex > 0 ? vuBoundaries[vuBoundaryIndex-1] : 0);
-                        if (bandValueCount < temp) {
-                            precomputedUnsignedVariantByteCount += 
-                                (uint)(
-                                (vuBoundaryIndex + 1) *         // bytes per value
-                                vuBoundaries[vuBoundaryIndex] - (vuBoundaryIndex > 0 ? vuBoundaries[vuBoundaryIndex] - vuBoundaries[vuBoundaryIndex-1]: 0)   // number of values
-                                );
-                            temp -= (uint)(vuBoundaries[vuBoundaryIndex]);                        
-                            vuBoundaryIndex++;
-                        }
-                        else {
-                            precomputedUnsignedVariantByteCount += (vuBoundaryIndex + 1) * precomputedUnsignedVariantCount;
-                            temp = 0;
-                        }
-                }
-                precomputedUnsignedVariantBytes = new byte[precomputedUnsignedVariantByteCount];
-                int precomputedUnsignedVariantIndex = 0;
+        //    byte[] precomputedUnsignedVariantBytes;
+        //    uint precomputedUnsignedVariantCount = 10000;
+        //    uint vuBoundaryIndex = 0;
+        //    if (precomputedUnsignedVariantCount > 0) {
+        //        uint precomputedUnsignedVariantByteCount = 0;
+        //        uint temp = precomputedUnsignedVariantCount;
+        //        while (temp > 0) {
+        //                ulong bandValueCount = vuBoundaries[vuBoundaryIndex]  - (vuBoundaryIndex > 0 ? vuBoundaries[vuBoundaryIndex-1] : 0);
+        //                if (bandValueCount < temp) {
+        //                    precomputedUnsignedVariantByteCount += 
+        //                        (uint)(
+        //                        (vuBoundaryIndex + 1) *         // bytes per value
+        //                        vuBoundaries[vuBoundaryIndex] - (vuBoundaryIndex > 0 ? vuBoundaries[vuBoundaryIndex] - vuBoundaries[vuBoundaryIndex-1]: 0)   // number of values
+        //                        );
+        //                    temp -= (uint)(vuBoundaries[vuBoundaryIndex]);                        
+        //                    vuBoundaryIndex++;
+        //                }
+        //                else {
+        //                    precomputedUnsignedVariantByteCount += (vuBoundaryIndex + 1) * precomputedUnsignedVariantCount;
+        //                    temp = 0;
+        //                }
+        //        }
+        //        precomputedUnsignedVariantBytes = new byte[precomputedUnsignedVariantByteCount];
+        //        int precomputedUnsignedVariantIndex = 0;
 
-                MemoryStream stream = new MemoryStream(8);
-                for (int i = 0; i < precomputedUnsignedVariantCount; i++) {
-                    int size = GetUnsignedVariantSize(i);
-                    stream.Write(BitConverter.GetBytes((ulong)i), 0, 8);
-                    byte[] bytes = new byte[stream.Position];
-                    stream.Position = 0;
-                    stream.Read(bytes, 0, size);
-                    //dict[(ulong)i] = bytes;
-                    //byteCount += size;
-                    for (int j = 0; j < size; j++) {
-                        precomputedUnsignedVariantBytes[precomputedUnsignedVariantIndex++] = bytes[j];
-                    }
-                }
-            }
-        }
+        //        MemoryStream stream = new MemoryStream(8);
+        //        for (int i = 0; i < precomputedUnsignedVariantCount; i++) {
+        //            int size = GetUnsignedVariantSize(i);
+        //            stream.Write(BitConverter.GetBytes((ulong)i), 0, 8);
+        //            byte[] bytes = new byte[stream.Position];
+        //            stream.Position = 0;
+        //            stream.Read(bytes, 0, size);
+        //            //dict[(ulong)i] = bytes;
+        //            //byteCount += size;
+        //            for (int j = 0; j < size; j++) {
+        //                precomputedUnsignedVariantBytes[precomputedUnsignedVariantIndex++] = bytes[j];
+        //            }
+        //        }
+        //    }
+        //}
 
         /**
          * Testing which is faster:

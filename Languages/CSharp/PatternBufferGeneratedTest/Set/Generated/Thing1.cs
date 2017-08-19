@@ -9,12 +9,12 @@ using System.Collections.Generic;
 namespace Test.Set {
     public class Thing1 : AbstractThing, ISetTestObject, IEquatable<Thing1> {
 
-        public const ushort TYPE_ID = 10;
-        public ushort TypeId {
+        public new const ushort TYPE_ID = 10;
+        public new ushort TypeId {
             get { return TYPE_ID; }
         }
 
-        public int IntValue2;
+        public int IntValue2; // (required)
 
         public Thing1() {
             this.IntValue1 = default(int);
@@ -33,11 +33,11 @@ namespace Test.Set {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is Thing1)) { return false; }
             Thing1 that = (Thing1)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // IntValue2
+            // IntValue2 (required)
             if (this.IntValue2 != that.IntValue2) { return false; }
             return true;
         }

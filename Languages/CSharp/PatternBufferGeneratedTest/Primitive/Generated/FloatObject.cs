@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public float FloatValue;
+        public float FloatValue; // (required)
 
         public FloatObject() {
             this.FloatValue = default(float);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is FloatObject)) { return false; }
             FloatObject that = (FloatObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // FloatValue
+            // FloatValue (required)
             if (this.FloatValue != that.FloatValue) { return false; }
             return true;
         }

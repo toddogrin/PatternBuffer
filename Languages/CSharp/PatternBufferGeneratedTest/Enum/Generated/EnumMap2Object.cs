@@ -14,7 +14,7 @@ namespace Test.Enum {
             get { return TYPE_ID; }
         }
 
-        public Dictionary<SomeEnum,int> SomeEnumIntMapValue;
+        public Dictionary<SomeEnum,int> SomeEnumIntMapValue; // (required)
 
         public EnumMap2Object() {
             this.SomeEnumIntMapValue = default(Dictionary<SomeEnum,int>);
@@ -30,13 +30,13 @@ namespace Test.Enum {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is EnumMap2Object)) { return false; }
             EnumMap2Object that = (EnumMap2Object)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // SomeEnumIntMapValue
-            if (this.SomeEnumIntMapValue == null && that.SomeEnumIntMapValue != null) { return false; }
-            if (that.SomeEnumIntMapValue != null && this.SomeEnumIntMapValue == null) { return false; }
+            // SomeEnumIntMapValue (required)
+                if (this.SomeEnumIntMapValue == null && that.SomeEnumIntMapValue != null) { return false; }
+                if (that.SomeEnumIntMapValue != null && this.SomeEnumIntMapValue == null) { return false; }
             if (that.SomeEnumIntMapValue.Count != this.SomeEnumIntMapValue.Count) { return false; }
             foreach (SomeEnum key in this.SomeEnumIntMapValue.Keys) {
                 if ( ! that.SomeEnumIntMapValue.ContainsKey(key)) { return false; }

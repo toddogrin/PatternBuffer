@@ -126,8 +126,159 @@ namespace PatternBuffer.Compiler {
             Console.WriteLine("Compiling pattern buffer exception...");
             this.GeneratePatternBufferException(results, schema);
 
+            // Generate Instantiator
+            Console.WriteLine("Compiling pattern buffer instantiator...");
+            this.GeneratePatternBufferInstantiatorInterface(results, schema);
+            this.GeneratePatternBufferDefaultInstantiator(results, schema);
+
             return results;
         }
+
+        public Dictionary<string, IFieldType> GetInstantiableFields(PatternBufferSchema s) {
+            Dictionary<string, IFieldType> instantiableFieldTypes = new Dictionary<string, IFieldType>();
+            foreach (PatternBufferType t in s.Types) {
+                string typeName = PB.ToCSharpName(t.Name);
+                foreach (PatternBufferField f in t.Fields) {
+                    IFieldType fieldType = f.FieldType;
+                    if (fieldType is ListFieldType) {
+                        instantiableFieldTypes[PB.ToCSharpType(fieldType)] = fieldType;
+                        ListFieldType listFieldType = (ListFieldType)fieldType;
+                        instantiableFieldTypes[PB.ToCSharpType(listFieldType.ElementType)] = listFieldType.ElementType;
+                    }
+                    else if (fieldType is SetFieldType) {
+                        instantiableFieldTypes[PB.ToCSharpType(fieldType)] = fieldType;
+                        SetFieldType setFieldType = (SetFieldType)fieldType;
+                        instantiableFieldTypes[PB.ToCSharpType(setFieldType.ElementType)] = setFieldType.ElementType;
+                    }
+                    else if (fieldType is MapFieldType) {
+                        instantiableFieldTypes[PB.ToCSharpType(fieldType)] = fieldType;
+                        MapFieldType mapFieldType = (MapFieldType)fieldType;
+                        instantiableFieldTypes[PB.ToCSharpType(mapFieldType.KeyType)] = mapFieldType.KeyType;
+                        instantiableFieldTypes[PB.ToCSharpType(mapFieldType.ValueType)] = mapFieldType.ValueType;
+                        IFieldType keyListFieldType = new ListFieldType(mapFieldType.KeyType);
+                        IFieldType valueListFieldType = new ListFieldType(mapFieldType.ValueType);
+                        instantiableFieldTypes[PB.ToCSharpType(keyListFieldType)] = keyListFieldType;
+                        instantiableFieldTypes[PB.ToCSharpType(valueListFieldType)] = valueListFieldType;
+                    }
+                }
+            }
+            return instantiableFieldTypes;
+        }
+
+        public void GeneratePatternBufferInstantiatorInterface(Dictionary<string, string> results, PatternBufferSchema s) {
+            string code = this.Boilerplate;
+            string schemaName = PB.ToCSharpName(s.Name);
+            code += "using System.Collections.Generic;\r\n";
+            code += "namespace " + this.generatedNamespace + " {\r\n";
+            code += "    public interface I" + schemaName + "Instantiator {\r\n";
+
+            foreach (PatternBufferType t in s.Types) {
+                string typeName = PB.ToCSharpName(t.Name);
+                code += "        " + typeName + " Acquire" + typeName + "();\r\n";
+                code += "        void Discard" + typeName + "(" + typeName+ " o);\r\n";
+            }
+            code += "\r\n";
+
+            // Add aggregate field types
+            Dictionary<string, IFieldType> instantiableFieldTypes = this.GetInstantiableFields(s);
+            foreach (IFieldType fieldType in instantiableFieldTypes.Values) {
+                if (fieldType is ListFieldType) {
+                    string listTypeName = PB.ToCSharpType(fieldType);
+                    string elementTypeName = PB.ToCapitalizedCSharpType(((ListFieldType)fieldType).ElementType);
+                    code += "        " + listTypeName + " AcquireListOf" + elementTypeName + "();\r\n";
+                    code += "        void DiscardListOf" + elementTypeName + "(" + listTypeName + " o);\r\n";
+                }
+                else if (fieldType is SetFieldType) {
+                    string listTypeName = PB.ToCSharpType(fieldType);
+                    string elementTypeName = PB.ToCapitalizedCSharpType(((SetFieldType)fieldType).ElementType);
+                    code += "        " + listTypeName + " AcquireHashSetOf" + elementTypeName + "();\r\n";
+                    code += "        void DiscardHashSetOf" + elementTypeName + "(" + listTypeName + " o);\r\n";
+                }
+                else if (fieldType is MapFieldType) {
+                    string mapTypeName = PB.ToCSharpType(fieldType);
+                    string keyTypeName = PB.ToCapitalizedCSharpType(((MapFieldType)fieldType).KeyType);
+                    string valueTypeName = PB.ToCapitalizedCSharpType(((MapFieldType)fieldType).ValueType);
+                    code += "        " + mapTypeName + " AcquireDictionaryOf" + keyTypeName + "To" + valueTypeName + "();\r\n";
+                    code += "        void DiscardDictionaryOf" + keyTypeName + "To" + valueTypeName + "(" + mapTypeName + " o);\r\n";
+                }
+            }
+            code += "\r\n";
+
+            code += "        byte[] AcquireByteArray(int size);\r\n";
+            code += "        void DiscardByteArray(byte[] bytes);\r\n";
+            code += "\r\n";
+                        code += "    }\r\n";
+            code += "}\r\n";
+            results["I" + schemaName + "Instantiator.cs"] = code;
+        }
+
+        public void GeneratePatternBufferDefaultInstantiator(Dictionary<string, string> results, PatternBufferSchema s) {
+            string code = this.Boilerplate;
+            string schemaName = PB.ToCSharpName(s.Name);
+            code += "using System.Collections.Generic;\r\n";
+            code += "namespace " + this.generatedNamespace + " {\r\n";
+            code += "    public class Default" + schemaName + "Instantiator : I" + schemaName + "Instantiator {\r\n";
+
+            foreach (PatternBufferType t in s.Types) {
+                string typeName = PB.ToCSharpName(t.Name);
+                code += "        public " + typeName + " Acquire" + typeName + "() {\r\n";
+                code += "            return new " + typeName + "();\r\n";
+                code += "        }\r\n";
+                code += "        public void Discard" + typeName + "(" + typeName + " o) {\r\n";
+                code += "            // Dispose?\r\n";
+                code += "        }\r\n";
+            }
+            code += "\r\n";
+
+            // Add aggregate field types
+            Dictionary<string, IFieldType> instantiableFieldTypes = this.GetInstantiableFields(s);
+            foreach (IFieldType fieldType in instantiableFieldTypes.Values) {
+                if (fieldType is ListFieldType) {
+                    string listTypeName = PB.ToCSharpType(fieldType);
+                    string elementTypeName = PB.ToCapitalizedCSharpType(((ListFieldType)fieldType).ElementType);
+                    code += "        public " + listTypeName + " AcquireListOf" + elementTypeName + "() {\r\n";
+                    code += "            return new " + listTypeName + "();\r\n";
+                    code += "        }\r\n";
+                    code += "        public void DiscardListOf" + elementTypeName + "(" + listTypeName + " o) {\r\n";
+                    code += "            // Dispose?\r\n";
+                    code += "        }\r\n";
+                }
+                else if (fieldType is SetFieldType) {
+                    string listTypeName = PB.ToCSharpType(fieldType);
+                    string elementTypeName = PB.ToCapitalizedCSharpType(((SetFieldType)fieldType).ElementType);
+                    code += "        public " + listTypeName + " AcquireHashSetOf" + elementTypeName + "() {\r\n";
+                    code += "            return new " + listTypeName + "();\r\n";
+                    code += "        }\r\n";
+                    code += "        public void DiscardHashSetOf" + elementTypeName + "(" + listTypeName + " o) {\r\n";
+                    code += "            // Dispose?\r\n";
+                    code += "        }\r\n";
+                }
+                else if (fieldType is MapFieldType) {
+                    string mapTypeName = PB.ToCSharpType(fieldType);
+                    string keyTypeName = PB.ToCapitalizedCSharpType(((MapFieldType)fieldType).KeyType);
+                    string valueTypeName = PB.ToCapitalizedCSharpType(((MapFieldType)fieldType).ValueType);
+                    code += "        public " + mapTypeName + " AcquireDictionaryOf" + keyTypeName + "To" + valueTypeName + "() {\r\n";
+                    code += "            return new " + mapTypeName + "();\r\n";
+                    code += "        }\r\n";
+                    code += "        public void DiscardDictionaryOf" + keyTypeName + "To" + valueTypeName + "(" + mapTypeName + " o) {\r\n";
+                    code += "            // Dispose?\r\n";
+                    code += "        }\r\n";
+                }
+            }
+            code += "\r\n";
+
+            code += "        public byte[] AcquireByteArray(int size) {\r\n";
+            code += "            return new byte[size];\r\n";
+            code += "        }\r\n";
+            code += "        public void DiscardByteArray(byte[] bytes) {\r\n";
+            code += "            // Dispose?\r\n";
+            code += "        }\r\n";
+
+            code += "    }\r\n";
+            code += "}\r\n";
+            results["Default" + schemaName + "Instantiator.cs"] = code;
+        }
+
 
         /**
          * Generates the interface implemented by all domain objects generated from the .pb. This
@@ -190,20 +341,21 @@ namespace PatternBuffer.Compiler {
             code += "namespace "+this.generatedNamespace+" {\r\n";
             code += this.GenerateComment(t);
             code += "    public class " + className + " : ";
-            if (t.BaseType != null) {
+            bool hasBaseType = t.BaseType != null;
+            if (hasBaseType) {
                 code += PB.ToCSharpName(t.BaseType.Name) + ", ";
             }
             code += "I" + schemaName + "Object, ";
             code += "IEquatable<"+ className + ">";
             code += " {\r\n";
             code += "\r\n";
-            code += "        public const ushort TYPE_ID = " + t.TypeId + ";\r\n";
-            code += "        public ushort TypeId {\r\n";
+            code += "        public " + (hasBaseType ? "new " : "") + "const ushort TYPE_ID = " + t.TypeId + ";\r\n";
+            code += "        public " + (hasBaseType ? "new " : "") + "ushort TypeId {\r\n";
             code += "            get { return TYPE_ID; }\r\n";
             code += "        }\r\n";
         
             // Get all the fields in this type's hierarchy
-            List<PatternBufferField> allFields = this.GetAllFields(t);
+            List<PatternBufferField> allFields = PB.GetAllFields(t);
 
             if (allFields.Count > 0) {
                 code += "\r\n";
@@ -212,7 +364,7 @@ namespace PatternBuffer.Compiler {
                     string fieldName = PB.ToCSharpPropertyName(field.Name);
                     string fieldTypeName = PB.ToCSharpType(field.FieldType);
                     string fieldPropertyName = PB.ToCSharpPropertyName(field.Name);
-                    code += "        public " + fieldTypeName + " " + fieldName + ";\r\n";
+                    code += "        public " + fieldTypeName + " " + fieldName + "; // (" + (PB.IsOptional(field.FieldType) ? "optional" : "required") + ")\r\n";
                 }
                 code += "\r\n";
             }
@@ -250,7 +402,8 @@ namespace PatternBuffer.Compiler {
             code += "            return this.Equals((object)other);\r\n";
             code += "        }\r\n";
             code += "        public override bool Equals(object other) {;\r\n";
-            code += "            if (other == null) { return false; }\r\n";
+            //code += "            if (other == null) { return false; }\r\n";
+            code += "            if (Object.ReferenceEquals(this, other)) { return true; }\r\n";
             code += "            if ( ! (other is " + className  + ")) { return false; }\r\n";
             code += "            " + className + " that = (" + className + ")other;\r\n";
             code += "            if (this.GetHashCode() != that.GetHashCode()) return false;\r\n";
@@ -258,7 +411,7 @@ namespace PatternBuffer.Compiler {
                 string fieldName = PB.ToCSharpPropertyName(field.Name);
                 string fieldTypeName = PB.ToCSharpType(field.FieldType);
                 string fieldPropertyName = PB.ToCSharpPropertyName(field.Name);
-                code += "            // "+fieldName+"\r\n";
+                code += "            // " + fieldName + (PB.IsOptional(field.FieldType) ? " (optional)" : " (required)") + "\r\n";
                 if (field.FieldType is PrimitiveFieldType || field.FieldType is ReferenceFieldType) {
                     this.AppendTypeClassEqualsValue(ref code, field.FieldType, "this."+fieldName, "that." + fieldName);
                 }
@@ -311,9 +464,11 @@ namespace PatternBuffer.Compiler {
                     code += "            if ( " + fieldName1 + " != " + fieldName2 + ") { return false; }\r\n";
                 }
                 else if (referenceFieldType.Referrable is PatternBufferType) {
+                    code += "            if ( ! (" + fieldName1 + " == null && " + fieldName2 + " == null)) {\r\n";
                     this.AppendTypeClassEqualsMutualNullCheck(ref code, fieldName1, fieldName2);
                     PatternBufferType patternBufferType = (PatternBufferType)referenceFieldType.Referrable;
                     code += "            if ( ! " + fieldName1 + ".Equals(" + fieldName2 + ")) { return false; }\r\n";
+                    code += "            }\r\n";
                 }
             }
         }
@@ -321,7 +476,8 @@ namespace PatternBuffer.Compiler {
         protected void AppendTypeClassEqualsCollection(ref string code, IFieldType collectionType, string fieldTypeName, string fieldName1, string fieldName2) {
             List<int> x = new List<int>();
             this.AppendTypeClassEqualsMutualNullCheck(ref code, fieldName1, fieldName2);
-            code += "            if (" + fieldName1 + ".Count != " + fieldName2 + ".Count) { return false; }\r\n";
+            code += "            if (" + fieldName1 + " != null && " + fieldName2 + " != null) {\r\n";
+            code += "                if (" + fieldName1 + ".Count != " + fieldName2 + ".Count) { return false; }\r\n";
             string field1EnumeratorName = PB.CreateRandomFieldName("enumerator");
             string collectionTypeName = null;
             IFieldType elementType = null;
@@ -333,13 +489,14 @@ namespace PatternBuffer.Compiler {
                 collectionTypeName = "HashSet";
                 elementType = ((SetFieldType)collectionType).ElementType;
             }
-            code += "            " + collectionTypeName + "<"+ fieldTypeName + ">.Enumerator "+ field1EnumeratorName + " = " + fieldName1 + ".GetEnumerator();\r\n";
+            code += "                " + collectionTypeName + "<"+ fieldTypeName + ">.Enumerator "+ field1EnumeratorName + " = " + fieldName1 + ".GetEnumerator();\r\n";
             string field2EnumeratorName = PB.CreateRandomFieldName("enumerator");
-            code += "            " + collectionTypeName + "<" + fieldTypeName + ">.Enumerator " + field2EnumeratorName + " = " + fieldName2 + ".GetEnumerator();\r\n";
-            code += "            while(true) {\r\n";
-            code += "                if ( ! " + field1EnumeratorName + ".MoveNext()) { break; }\r\n";
-            code += "                " + field2EnumeratorName + ".MoveNext();\r\n";
+            code += "                " + collectionTypeName + "<" + fieldTypeName + ">.Enumerator " + field2EnumeratorName + " = " + fieldName2 + ".GetEnumerator();\r\n";
+            code += "                while(true) {\r\n";
+            code += "                     if ( ! " + field1EnumeratorName + ".MoveNext()) { break; }\r\n";
+            code += "                    " + field2EnumeratorName + ".MoveNext();\r\n";
             this.AppendTypeClassEqualsValue(ref code, elementType, field1EnumeratorName+".Current", field2EnumeratorName + ".Current");
+            code += "                }\r\n";
             code += "            }\r\n";
         }
 
@@ -347,8 +504,8 @@ namespace PatternBuffer.Compiler {
          * Appends a mutual null check into the C# code.
          */
         protected void AppendTypeClassEqualsMutualNullCheck(ref string code, string fieldName1, string fieldName2) {
-            code += "            if (" + fieldName1 + " == null && " + fieldName2 + " != null) { return false; }\r\n";
-            code += "            if (" + fieldName2 + " != null && " + fieldName1 + " == null) { return false; }\r\n";
+            code += "                if (" + fieldName1 + " == null && " + fieldName2 + " != null) { return false; }\r\n";
+            code += "                if (" + fieldName2 + " != null && " + fieldName1 + " == null) { return false; }\r\n";
         }
 
         /**
@@ -358,7 +515,7 @@ namespace PatternBuffer.Compiler {
             code += "        public override int GetHashCode() {\r\n";
             code += "            unchecked {\r\n";
             code += "                int hash = 27;\r\n";
-            List<PatternBufferField> allFields = this.GetAllFields(patternBufferType);
+            List<PatternBufferField> allFields = PB.GetAllFields(patternBufferType);
             foreach (PatternBufferField field in allFields) {
                 IFieldType fieldType = field.FieldType;
                 string fieldName = PB.ToCSharpPropertyName(field.Name);
@@ -387,9 +544,24 @@ namespace PatternBuffer.Compiler {
          * Generates the FromBytes method for a PatternBufferType serializer class.
          */
         protected void AppendSerializerFromBytes(ref string code, string typeClassName, PatternBufferType t) {
-            code += "                "+typeClassName+" o = new "+typeClassName+"();\r\n";
-            List<PatternBufferField> allFields = this.GetAllFields(t);
+
+            if (t.HasNullableFields) {
+                code += "                // NULL FLAGS\r\n";
+                int nullFlagsBytes = (t.NullableFieldCount / 8) + 1;
+                code += "                int nullFlagsIndex = index - 1;\r\n";
+                code += "                index += " + nullFlagsBytes + ";\r\n";
+            }
+            int nullableFieldFlagPlace = -1;
+
+            code += "                "+typeClassName+" o = this.instantiator.Acquire"+typeClassName+"();\r\n";
+            List<PatternBufferField> allFields = PB.GetAllFields(t);
             foreach (PatternBufferField field in allFields) {
+
+                if (t.HasNullableFields && nullableFieldFlagPlace < 0) {
+                    nullableFieldFlagPlace = 7;
+                    code += "                nullFlagsIndex++;\r\n";
+                }
+
                 IFieldType fieldType = field.FieldType;
                 string fieldTypeName = PB.ToCSharpType(field.FieldType);
                 string fieldName = PB.ToCSharpPropertyName(field.Name);
@@ -449,7 +621,9 @@ namespace PatternBuffer.Compiler {
                     code += "                // REFERENCE: " + fieldName+"\r\n";
                     ReferenceFieldType referenceFieldType = (ReferenceFieldType)fieldType;
                     if (referenceFieldType.Referrable is PatternBufferType) {
+                        code += "                if ((bytes[nullFlagsIndex] & (byte)" + (1 << nullableFieldFlagPlace--) + ") > 0) {\r\n";
                         PB.AppendReadReference(ref code, (PatternBufferType)referenceFieldType.Referrable, "o." + fieldName);
+                        code += "                }\r\n";
                     }
                     else {
                         string enumName = PB.ToCSharpName(referenceFieldType.ReferrableName);
@@ -464,32 +638,44 @@ namespace PatternBuffer.Compiler {
                     ListFieldType listFieldType = (ListFieldType)fieldType;
                     IFieldType elementType = listFieldType.ElementType;
                     code += "                // LIST: " + fieldName+"\r\n";
+                    code += "                if ((bytes[nullFlagsIndex] & (byte)" + (1 << nullableFieldFlagPlace--) + ") > 0) {\r\n";
                     PBC.AppendSerializerReadCollection(ref code, "o."+fieldName, elementType, "List");
+                    code += "                }\r\n";
                 }
                 else if (fieldType is MapFieldType) {
                     code += "                // MAP: " + fieldName+"\r\n";
+                    code += "                if ((bytes[nullFlagsIndex] & (byte)" + (1 << nullableFieldFlagPlace--) + ") > 0) {\r\n";
                     MapFieldType mapFieldType = (MapFieldType)fieldType;
                     string keyTypeName = PB.ToCSharpType(mapFieldType.KeyType);
                     string valueTypeName = PB.ToCSharpType(mapFieldType.ValueType);
+                    string cappedKeyTypeName = PB.ToCapitalizedCSharpType(mapFieldType.KeyType);
+                    string cappedValueTypeName = PB.ToCapitalizedCSharpType(mapFieldType.ValueType);
+
                     string mapFieldName = PB.ToCSharpPropertyName(field.Name);
                     string mapKeysFieldName = PB.ToCSharpName(field.Name) + "Keys";
                     string mapValuesFieldName = PB.ToCSharpName(field.Name) + "Values";
-                    //code += "            int count = " + mapFieldName + ".Count;\r\n";
-                    code += "                IList<" + keyTypeName + "> " + mapKeysFieldName + " = new List<" + keyTypeName + ">();\r\n";
-                    code += "                IList<" + valueTypeName + "> " + mapValuesFieldName + " = new List<" + valueTypeName + ">();\r\n";
+                    code += "                    List<" + keyTypeName + "> " + mapKeysFieldName + " = this.instantiator.AcquireListOf" + cappedKeyTypeName + "();\r\n";
+                    code += "                    List<" + valueTypeName + "> " + mapValuesFieldName + " = this.instantiator.AcquireListOf" + cappedValueTypeName + "();\r\n";
                     PBC.AppendSerializerReadCollection(ref code, mapKeysFieldName, mapFieldType.KeyType, "List", "Keys");
                     PBC.AppendSerializerReadCollection(ref code, mapValuesFieldName, mapFieldType.ValueType, "List", "Values");
-                    code += "                o." + mapFieldName + " = new Dictionary<"+keyTypeName+","+valueTypeName+ ">("+mapKeysFieldName+".Count);\r\n";
+                    code += "                    o." + mapFieldName + " = this.instantiator.AcquireDictionaryOf" + PB.ToCapitalizedCSharpType(mapFieldType.KeyType) + "To" + PB.ToCapitalizedCSharpType(mapFieldType.ValueType) + "();\r\n";
                     string i = PB.CreateRandomFieldName("i");
-                    code += "                for (int " + i + " = 0; " + i + " < " + mapKeysFieldName + ".Count; " + i + "++) {\r\n";
-                    code += "                    o." + mapFieldName + "[" + mapKeysFieldName + "[" + i + "]] = " + mapValuesFieldName + "[" + i + "];\r\n";
+                    code += "                    for (int " + i + " = 0; " + i + " < " + mapKeysFieldName + ".Count; " + i + "++) {\r\n";
+                    code += "                        o." + mapFieldName + "[" + mapKeysFieldName + "[" + i + "]] = " + mapValuesFieldName + "[" + i + "];\r\n";
+                    code += "                    }\r\n";
+                    code += "                    this.instantiator.DiscardListOf" + cappedKeyTypeName + "(" + mapKeysFieldName + ");\r\n";
+                    code += "                    this.instantiator.DiscardListOf" + cappedValueTypeName + "(" + mapValuesFieldName + ");\r\n";
+                    code += "                    " + mapKeysFieldName + " = null;\r\n";
+                    code += "                    " + mapValuesFieldName + " = null;\r\n";
                     code += "                }\r\n";
-               }
+                }
                 else if (fieldType is SetFieldType) {
                     SetFieldType setFieldType = (SetFieldType)fieldType;
                     IFieldType elementType = setFieldType.ElementType;
                     code += "                // SET: " + fieldName + "\r\n";
+                    code += "                if ((bytes[nullFlagsIndex] & (byte)" + (1 << nullableFieldFlagPlace--) + ") > 0) {\r\n";
                     PBC.AppendSerializerReadCollection(ref code, "o." + fieldName, elementType, "HashSet");
+                    code += "                }\r\n";
                 }
             }
         }
@@ -498,8 +684,25 @@ namespace PatternBuffer.Compiler {
          * Generates the ToBytes method for a PatternBufferType serializer class.
          */
         protected void AppendSerializerToBytes(ref string code, string typeClassName, PatternBufferType t, string schemaObjectTypeName) {
-            List<PatternBufferField> allFields = this.GetAllFields(t);
+            List<PatternBufferField> allFields = PB.GetAllFields(t);
+
+            if (t.HasNullableFields) {
+                code += "                // NULL FLAGS\r\n";
+                code += "                int nullFlagsIndex = index - 1;\r\n";
+                int nullFlagsBytes = (t.NullableFieldCount / 8) + 1;
+                for (int i = 0; i < nullFlagsBytes; i++) {
+                    code += "                bytes[index++] = 0;\r\n";
+                }
+            }
+            int nullableFieldFlagPlace = -1;
+
             foreach (PatternBufferField field in allFields) {
+
+                if (t.HasNullableFields && nullableFieldFlagPlace < 0) {
+                    nullableFieldFlagPlace = 7;
+                    code += "                nullFlagsIndex++;\r\n";
+                }
+
                 IFieldType fieldType = field.FieldType;
                 string fieldTypeName = PB.ToCSharpType(field.FieldType);
                 string fieldName = PB.ToCSharpPropertyName(field.Name);
@@ -559,7 +762,10 @@ namespace PatternBuffer.Compiler {
                     ReferenceFieldType referenceFieldType = (ReferenceFieldType)fieldType;
                     code += "                // REFERENCE: " + fieldName + "\r\n";
                     if (referenceFieldType.Referrable is PatternBufferType) {
+                        code += "                if (o." + fieldName + " != null) {\r\n";
+                        code += "                    bytes[nullFlagsIndex] |= (byte)("  + (1 << nullableFieldFlagPlace--) + ");\r\n";
                         PB.AppendWriteReference(ref code, (PatternBufferType)referenceFieldType.Referrable, "o." + fieldName, schemaObjectTypeName);
+                        code += "                }\r\n";
                     }
                     else {
                         PBP.AppendWriteByte(ref code, "enumValueIndexMap[\"" + referenceFieldType.ReferrableName + "\"][o." + fieldName + ".ToString()];\r\n");
@@ -569,21 +775,30 @@ namespace PatternBuffer.Compiler {
                     ListFieldType listFieldType = (ListFieldType)fieldType;
                     IFieldType elementType = listFieldType.ElementType;
                     code += "                // LIST: " + fieldName+"\r\n";
+                    code += "                if (o." + fieldName + " != null) {\r\n";
+                    code += "                    bytes[nullFlagsIndex] |= (byte)(" + (1 << nullableFieldFlagPlace--) + ");\r\n";
                     PBC.AppendSerializerWriteCollection(ref code, fieldName, elementType, schemaObjectTypeName);
+                    code += "                }\r\n";
                 }
                 else if (fieldType is MapFieldType) {
                     code += "                // MAP: " + fieldName+"\r\n";
+                    code += "                if (o." + fieldName + " != null) {\r\n";
+                    code += "                    bytes[nullFlagsIndex] |= (byte)(" + (1 << nullableFieldFlagPlace--) + ");\r\n";
                     MapFieldType mapFieldType = (MapFieldType)fieldType;
                     string keyTypeName = PB.ToCSharpType(mapFieldType.KeyType);
                     string valueTypeName = PB.ToCSharpType(mapFieldType.ValueType);
                     PBC.AppendSerializerWriteCollection(ref code, fieldName, mapFieldType.KeyType, "Keys", schemaObjectTypeName);
                     PBC.AppendSerializerWriteCollection(ref code, fieldName, mapFieldType.ValueType, "Values", schemaObjectTypeName);
+                    code += "                }\r\n";
                 }
                 else if (fieldType is SetFieldType) {
                     SetFieldType setFieldType = (SetFieldType)fieldType;
                     IFieldType elementType = setFieldType.ElementType;
                     code += "                // SET: " + fieldName+"\r\n";
+                    code += "                if (o." + fieldName + " != null) {\r\n";
+                    code += "                    bytes[nullFlagsIndex] |= (byte)(" + (1 << nullableFieldFlagPlace--) + ");\r\n";
                     PBC.AppendSerializerWriteCollection(ref code, fieldName, elementType, schemaObjectTypeName);
+                    code += "                }\r\n";
                 }
             }
         }
@@ -654,43 +869,27 @@ namespace PatternBuffer.Compiler {
             // Set up the byte buffer.
             code += "        private byte[] bytes;\r\n";
 
+            // The instantiator
+            code += "        private I" + PB.ToCSharpName(s.Name) + "Instantiator instantiator;\r\n";
+
             // Allow users to configure it.
-            code += "        public " + patternBufferClassName + "() : this(4096) { }\r\n";
-            code += "        public " + patternBufferClassName + "(uint bufferSize) {\r\n";
+            code += "        public " + patternBufferClassName + "() : this(4096, new Default" + PB.ToCSharpName(s.Name) + "Instantiator()) { }\r\n";
+            code += "        public " + patternBufferClassName + "(uint bufferSize) : this (bufferSize, new Default" + PB.ToCSharpName(s.Name) + "Instantiator()) { }\r\n";
+            code += "        public " + patternBufferClassName + "(I" + PB.ToCSharpName(s.Name) + "Instantiator instantiator) : this (4096, instantiator) { }\r\n";
+            code += "        public " + patternBufferClassName + "(uint bufferSize, I" + PB.ToCSharpName(s.Name) + "Instantiator instantiator) {\r\n";
             code += "            this.bytes = new byte[bufferSize];\r\n";
+            code += "            this.instantiator = instantiator;\r\n";
             code += "        }\r\n";
 
             // Append energizers
             this.AppendSerializerEnergizers(ref code, s);
 
+            // Append reclaimers
+            this.AppendSerializerReclaimers(ref code, s);
+
             code += "    }\r\n";
             code += "}\r\n";
             results[patternBufferClassName + ".cs"] = code;
-        }
-
-        /**
-         * Returns a list of all the fields in a PatterBufferType's type hierarchy. The returned list
-         * will contains the fields of all the given type's ancestors with the eldest (highest) ancestor's
-         * fields first and the given type's fields last, along with all intermediate ancestors in between.
-         * Fields are returned in the order defined in the schema file.
-         */
-        protected List<PatternBufferField> GetAllFields(PatternBufferType type) {
-            // Collect the hierarchy
-            List<PatternBufferType> hierarchy = new List<PatternBufferType>();
-            PatternBufferType current = type;
-            while (current != null) {
-                hierarchy.Insert(0, current);
-                current = current.BaseType;
-            }
-
-            // Collect the fields
-            List<PatternBufferField> fields = new List<PatternBufferField>();
-            foreach (PatternBufferType t in hierarchy) {
-                foreach (PatternBufferField f in t.Fields) {
-                    fields.Add(f);
-                }
-            }
-            return fields;
         }
 
         /**
@@ -726,6 +925,141 @@ namespace PatternBuffer.Compiler {
             }
         }
 
+        protected void AppendSerializerReclaimers(ref string code, PatternBufferSchema schema) {
+
+            string schemaObjectTypeName = PB.ToSchemaObjectTypeName(schema);
+            string exceptionTypeName = PB.ToSchemaExceptionName(schema);
+
+            if (schema.Types.Count > 0) {
+                PB.AppendComment(ref code, "RECLAIM", true);
+                for (int i = 0; i < schema.Types.Count; i++) {
+                    PatternBufferType type = schema.Types[i];
+                    string typeName = PB.ToCSharpName(type.Name);
+                    code += "        public void Reclaim(" + typeName + " o) {\r\n";
+                    code += "            if (o != null) {\r\n";
+                    if (schema.DirectDerivatives.ContainsKey(type)) {
+                        bool first = true;
+                        HashSet<PatternBufferType> directDerivatives = schema.DirectDerivatives[type];
+                        foreach (PatternBufferType derivative in directDerivatives) {
+                            string derivativeName = PB.ToCSharpName(derivative.Name);
+                            code += "                " + (first ? "" : "else ") + "if (o is " + derivativeName + ") {\r\n";
+                            code += "                    this.Reclaim((" + derivativeName + ")o);\r\n";
+                            code += "                }\r\n";
+                            first = false;
+                        }
+                    }
+
+                    foreach (PatternBufferField field in type.Fields) {
+                        IFieldType fieldType = field.FieldType;
+                        string fieldTypeName = PB.ToCSharpType(fieldType);
+                        string cappedFieldTypeName = PB.ToCapitalizedCSharpType(fieldType);
+                        string fieldName = PB.ToCSharpPropertyName(field.Name);
+                        if (fieldType is PrimitiveFieldType) {
+                            PrimitiveFieldType primitiveFieldType = (PrimitiveFieldType)fieldType;
+                            code += "                o." + fieldName + " = default(" + PB.ToCSharpType(primitiveFieldType) + ");\r\n";
+                        }
+                        else if (fieldType is ReferenceFieldType) {
+                            ReferenceFieldType referenceFieldType = (ReferenceFieldType)fieldType;
+                            if (referenceFieldType.Referrable is PatternBufferType) {
+                                code += "                if (o." + fieldName + " != null) {\r\n";
+                                code += "                    this.Reclaim(o." + fieldName + ");\r\n";
+                                code += "                }\r\n";
+                            }
+                            code += "                o." + fieldName + " = default(" + PB.ToCSharpName(referenceFieldType.Referrable.Name) + ");\r\n";
+                        }
+                        else if (fieldType is ListFieldType) {
+                            ListFieldType listFieldType = (ListFieldType)fieldType;
+                            IAggregateableFieldType aggType = listFieldType.ElementType;
+                            if (aggType is ReferenceFieldType) {
+                                if (((ReferenceFieldType)aggType).Referrable is PatternBufferType) {
+                                    string elementTypeName = PB.ToCSharpType(listFieldType.ElementType);
+                                    code += "                if (o." + fieldName + " != null) {\r\n";
+                                    code += "                    foreach (" + elementTypeName + " e in o." + fieldName + ") {\r\n";
+                                    code += "                        this.Reclaim(e);\r\n";
+                                    code += "                    }\r\n";
+                                    code += "                    o." + fieldName + ".Clear();\r\n";
+                                    code += "                    this.instantiator.DiscardListOf" + PB.ToCapitalizedCSharpType(aggType) + "((" + PB.ToCSharpType(listFieldType) + ")o." + fieldName + ");\r\n";
+                                    code += "                }\r\n";
+                                }
+                            }
+                        }
+                        else if (fieldType is SetFieldType) {
+                            SetFieldType setFieldType = (SetFieldType)fieldType;
+                            IAggregateableFieldType aggType = setFieldType.ElementType;
+                            if (aggType is ReferenceFieldType) {
+                                if (((ReferenceFieldType)aggType).Referrable is PatternBufferType) {
+                                    string elementTypeName = PB.ToCSharpType(setFieldType.ElementType);
+                                    code += "                if (o." + fieldName + " != null) {\r\n";
+                                    code += "                    foreach (" + elementTypeName + " e in o." + fieldName + ") {\r\n";
+                                    code += "                        this.Reclaim(e);\r\n";
+                                    code += "                    }\r\n";
+                                    code += "                    this.instantiator.DiscardHashSetOf" + PB.ToCapitalizedCSharpType(aggType) + "((" + PB.ToCSharpType(setFieldType) + ")o." + fieldName + ");\r\n";
+                                    code += "                }\r\n";
+                                }
+                            }
+                        }
+                        else if (fieldType is MapFieldType) {
+                            code += "                if (o." + fieldName + " != null) {\r\n";
+                            MapFieldType mapFieldType = (MapFieldType)fieldType;
+                            IAggregateableFieldType keyFieldType = mapFieldType.KeyType;
+                            if (keyFieldType is ReferenceFieldType) {
+                                if (((ReferenceFieldType)keyFieldType).Referrable is PatternBufferType) {
+                                    string keyTypeName = PB.ToCSharpType(mapFieldType.KeyType);
+                                    code += "                    foreach (" + keyTypeName + " k in o." + fieldName + ".Keys) {\r\n";
+                                    code += "                        this.Reclaim(k);\r\n";
+                                    code += "                    }\r\n";
+                                }
+                            }
+                            IAggregateableFieldType valueFieldType = mapFieldType.ValueType;
+                            if (valueFieldType is ReferenceFieldType) {
+                                if (((ReferenceFieldType)valueFieldType).Referrable is PatternBufferType) {
+                                    string valueTypeName = PB.ToCSharpType(mapFieldType.ValueType);
+
+                                    code += "                    foreach (" + valueTypeName + " v in o." + fieldName + ".Values) {\r\n";
+                                    code += "                        this.Reclaim(v);\r\n";
+                                    code += "                    }\r\n";
+                                }
+                            }
+                            code += "                    this.instantiator.DiscardDictionaryOf" + PB.ToCapitalizedCSharpType(keyFieldType) + "To" + PB.ToCapitalizedCSharpType(valueFieldType) + "((" + PB.ToCSharpType(mapFieldType) + ")o." + fieldName + ");\r\n";
+
+                            code += "                }\r\n";
+                        }
+                    }
+                    if (type.IsFinal) {
+                        code += "                this.instantiator.Discard" + typeName + "(o);\r\n";
+                    }
+
+                    code += "            }\r\n";
+
+                    code += "        }\r\n";
+
+                }
+
+            }
+        }
+
+        //protected void AppendSerializerReclaimReferenceField(ref string code, ReferenceFieldType referenceFieldType, string fieldTypeName, string fieldName, PatternBufferSchema schema) {
+        //    //ReferenceFieldType referenceFieldType = (ReferenceFieldType)fieldType;
+        //    if (referenceFieldType.Referrable is PatternBufferType) {
+        //        PatternBufferType referrableType = (PatternBufferType)referenceFieldType.Referrable;
+        //        if (referrableType.IsFinal) {
+        //            code += "                    this.Reclaim((" + fieldTypeName + ")o." + fieldName + ");\r\n";
+        //        }
+        //        else {
+        //            code += "                    switch(o." + fieldName + ".TypeId) {\r\n";
+        //            foreach (PatternBufferType derivative in schema.Derivatives[referrableType]) {
+        //                code += "                        case " + derivative.TypeId + ":\r\n";
+        //                code += "                            this.Reclaim((" + PB.ToCSharpPropertyName(derivative.Name) + ")o." + fieldName + ");\r\n";
+        //                code += "                            break;\r\n";
+        //            }
+        //            code += "                        default:\r\n";
+        //            code += "                            // what?\r\n";
+        //            code += "                            break;\r\n";
+        //            code += "                    }\r\n";
+        //        }
+        //    }
+        //}
+
         protected void AppendSerializerEnergizers(ref string code, PatternBufferSchema schema) {
 
             string schemaObjectTypeName = PB.ToSchemaObjectTypeName(schema);
@@ -735,39 +1069,48 @@ namespace PatternBuffer.Compiler {
                 PB.AppendComment(ref code, "TO BYTES", true);
                 for (int i = 0; i < schema.Types.Count; i++) {
                     PatternBufferType type = schema.Types[i];
-                    string typeName = PB.ToCSharpName(type.Name);
-                    code += "        public byte[] Energize(" + typeName + " o) {\r\n";
-                    this.AppendLockStart(ref code);
-                    code += "            int index = 0;\r\n";
-                    code += "            Energize(o, bytes, ref index, true);\r\n";
-                    code += "            byte[] result = new byte[index];\r\n";
-                    code += "            Buffer.BlockCopy(bytes, 0, result, 0, index);\r\n";
-                    code += "            return result;\r\n";
-                    this.AppendLockEnd(ref code);
-                    code += "        }\r\n";
+                    if (type.TypeId > 0) {
+                        string typeName = PB.ToCSharpName(type.Name);
+                        code += "        public byte[] Energize(" + typeName + " o) {\r\n";
+                        this.AppendLockStart(ref code);
+                        code += "            int index = 0;\r\n";
+                        code += "            Energize(o, bytes, ref index, true);\r\n";
+                        code += "            byte[] result = this.instantiator.AcquireByteArray(index);\r\n";
+                        code += "            Buffer.BlockCopy(bytes, 0, result, 0, index);\r\n";
+                        code += "            return result;\r\n";
+                        this.AppendLockEnd(ref code);
+                        code += "        }\r\n";
+                    }
                 }
 
                 for (int i = 0; i < schema.Types.Count; i++) {
                     PatternBufferType type = schema.Types[i];
-                    string typeName = PB.ToCSharpPropertyName(type.Name);
-                    code += "        public void Energize(" + typeName + " o, byte[] bytes, ref int index, bool writeTypeId) {\r\n";
-                    this.AppendLockStart(ref code);
-                    code += "            if (writeTypeId) {\r\n";
-                    AppendSerializerEnergizerWriteTypeId(ref code, type);
-                    code += "            }\r\n";
-                    this.AppendSerializerToBytes(ref code, type.Name, type, PB.ToSchemaObjectTypeName(schema));
-                    this.AppendLockEnd(ref code);
-                    code += "        }\r\n";
+                    if (type.TypeId > 0) {
+                        string typeName = PB.ToCSharpPropertyName(type.Name);
+                        code += "        public void Energize(" + typeName + " o, byte[] bytes, ref int index, bool writeTypeId) {\r\n";
+                        this.AppendLockStart(ref code);
+                        // Write the type ID.
+                        code += "            if (writeTypeId) {\r\n";
+                        AppendSerializerEnergizerWriteTypeId(ref code, type);
+                        code += "            }\r\n";
+
+                        // Write the serializer methods for the type.
+                        this.AppendSerializerToBytes(ref code, type.Name, type, PB.ToSchemaObjectTypeName(schema));
+                        this.AppendLockEnd(ref code);
+                        code += "        }\r\n";
+                    }
                 }
 
                 // This bit of code is only needed if there are abstract types in the schema.
                 code += "        public void Energize(" + schemaObjectTypeName + " o, byte[] bytes, ref int index, bool writeTypeId) {\r\n";
                 code += "            switch (o.TypeId) {\r\n";
                 foreach (PatternBufferType type in schema.Types) {
-                    code += "                case " + type.TypeId + ":\r\n";
-                    // TODO unspool this into an Append()
-                    code += "                    Energize((" + PB.ToCSharpName(type.Name) + ")o, bytes, ref index, writeTypeId);\r\n";
-                    code += "                    break;\r\n";
+                    if (type.TypeId > 0) {
+                        code += "                case " + type.TypeId + ":\r\n";
+                        // TODO unspool this into an Append()
+                        code += "                    Energize((" + PB.ToCSharpName(type.Name) + ")o, bytes, ref index, writeTypeId);\r\n";
+                        code += "                    break;\r\n";
+                    }
                 }
                 code += "                default:\r\n";
                 code += "                    throw new " + exceptionTypeName + "(\"Unrecognized type ID: \"+o.TypeId+\" \");\r\n";
@@ -805,11 +1148,13 @@ namespace PatternBuffer.Compiler {
             code += "            switch (typeId) {\r\n";
             for (int i = 0; i < schema.Types.Count; i++) {
                 PatternBufferType type = schema.Types[i];
-                code += "            case " + type.TypeId + ":\r\n";
-                code += "                {\r\n";
-                this.AppendSerializerFromBytes(ref code, type.Name, type);
-                code += "                    return o;\r\n";
-                code += "                }\r\n";
+                if (type.TypeId > 0) {
+                    code += "            case " + type.TypeId + ":\r\n";
+                    code += "                {\r\n";
+                    this.AppendSerializerFromBytes(ref code, type.Name, type);
+                    code += "                    return o;\r\n";
+                    code += "                }\r\n";
+                }
             }
             code += "                default:\r\n";
             code += "                    throw new " + exceptionTypeName + "(\"Unrecognized type ID: \"+typeId+\" \");\r\n";
@@ -818,5 +1163,3 @@ namespace PatternBuffer.Compiler {
 
     }
 }
-
-

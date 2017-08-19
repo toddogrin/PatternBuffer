@@ -41,6 +41,12 @@ namespace PatternBuffer.Schema {
          */
         public Dictionary<string, string> Hints { get { return this.hintMap; } }
 
+        public Dictionary<PatternBufferType, HashSet<PatternBufferType>> derivatives;
+        public Dictionary<PatternBufferType, HashSet<PatternBufferType>> Derivatives { get { return this.derivatives; } }
+
+        public Dictionary<PatternBufferType, HashSet<PatternBufferType>> directDerivatives;
+        public Dictionary<PatternBufferType, HashSet<PatternBufferType>> DirectDerivatives { get { return this.directDerivatives; } }
+
         /**
          * Creates a PatternBuffer schema with the given name, types, enums, and hints.
          */
@@ -63,6 +69,42 @@ namespace PatternBuffer.Schema {
             }
 
             this.hintMap = hints;
+
+            this.derivatives = new Dictionary<PatternBufferType, HashSet<PatternBufferType>>();
+            this.directDerivatives = new Dictionary<PatternBufferType, HashSet<PatternBufferType>>();
+            foreach (PatternBufferType type in this.types) {
+                if (!this.derivatives.ContainsKey(type)) {
+                    this.derivatives[type] = new HashSet<PatternBufferType>();
+                } 
+                if (!type.IsFinal) {
+                    foreach (PatternBufferType derivative in this.types) {
+                        if (derivative != type) {
+
+                            // Direct
+                            if (derivative.BaseType == type) {
+                                if (!this.directDerivatives.ContainsKey(type)) {
+                                    this.directDerivatives[type] = new HashSet<PatternBufferType>();
+                                }
+                                this.directDerivatives[type].Add(derivative);
+                            }
+
+                            // Indirect
+                            bool derives = false;
+                            PatternBufferType ancestor = derivative;
+                            while (ancestor != null) {
+                                if (ancestor == type) {
+                                    derives = true;
+                                    break;
+                                }
+                                ancestor = ancestor.BaseType;
+                            }
+                            if (derives) {
+                                this.derivatives[type].Add(derivative);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         /**
@@ -90,6 +132,8 @@ namespace PatternBuffer.Schema {
                 return this.GetPatternBufferEnum(name);
             }
         }
+
+
 
     }
 

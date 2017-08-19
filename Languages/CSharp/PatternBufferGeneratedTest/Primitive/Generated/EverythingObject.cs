@@ -14,17 +14,17 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public short ShortValue;
-        public int IntValue;
-        public long LongValue;
-        public ushort UshortValue;
-        public uint UintValue;
-        public ulong UlongValue;
-        public string StringValue;
-        public double DoubleValue;
-        public float FloatValue;
-        public bool BoolValue;
-        public byte ByteValue;
+        public short ShortValue; // (required)
+        public int IntValue; // (required)
+        public long LongValue; // (required)
+        public ushort UshortValue; // (required)
+        public uint UintValue; // (required)
+        public ulong UlongValue; // (required)
+        public string StringValue; // (required)
+        public double DoubleValue; // (required)
+        public float FloatValue; // (required)
+        public bool BoolValue; // (required)
+        public byte ByteValue; // (required)
 
         public EverythingObject() {
             this.ShortValue = default(short);
@@ -70,33 +70,33 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is EverythingObject)) { return false; }
             EverythingObject that = (EverythingObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // ShortValue
+            // ShortValue (required)
             if (this.ShortValue != that.ShortValue) { return false; }
-            // IntValue
+            // IntValue (required)
             if (this.IntValue != that.IntValue) { return false; }
-            // LongValue
+            // LongValue (required)
             if (this.LongValue != that.LongValue) { return false; }
-            // UshortValue
+            // UshortValue (required)
             if (this.UshortValue != that.UshortValue) { return false; }
-            // UintValue
+            // UintValue (required)
             if (this.UintValue != that.UintValue) { return false; }
-            // UlongValue
+            // UlongValue (required)
             if (this.UlongValue != that.UlongValue) { return false; }
-            // StringValue
-            if (this.StringValue == null && this.StringValue != null) { return false; }
-            if (this.StringValue != null && this.StringValue == null) { return false; }
+            // StringValue (required)
+                if (this.StringValue == null && this.StringValue != null) { return false; }
+                if (this.StringValue != null && this.StringValue == null) { return false; }
             if ( ! this.StringValue.Equals(that.StringValue)) { return false; }
-            // DoubleValue
+            // DoubleValue (required)
             if (this.DoubleValue != that.DoubleValue) { return false; }
-            // FloatValue
+            // FloatValue (required)
             if (this.FloatValue != that.FloatValue) { return false; }
-            // BoolValue
+            // BoolValue (required)
             if (this.BoolValue != that.BoolValue) { return false; }
-            // ByteValue
+            // ByteValue (required)
             if (this.ByteValue != that.ByteValue) { return false; }
             return true;
         }

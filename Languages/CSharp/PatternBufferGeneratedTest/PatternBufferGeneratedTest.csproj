@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,18 +33,33 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NSubstitute, Version=2.0.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
-      <HintPath>..\packages\NSubstitute.2.0.0-rc\lib\net35\NSubstitute.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\..\Libraries\NUnit-2.6.3\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autonumber\GeneratedPatternBufferAutonumberTest.cs" />
+    <Compile Include="Autonumber\Generated\AbstractThingShouldBe0.cs" />
+    <Compile Include="Autonumber\Generated\AutonumberTestPatternBuffer.cs" />
+    <Compile Include="Autonumber\Generated\AutonumberTestPatternBufferException.cs" />
+    <Compile Include="Autonumber\Generated\BaseThingShouldBe17.cs" />
+    <Compile Include="Autonumber\Generated\BaseThingShouldBe5.cs" />
+    <Compile Include="Autonumber\Generated\DefaultAutonumberTestInstantiator.cs" />
+    <Compile Include="Autonumber\Generated\IAutonumberTestInstantiator.cs" />
+    <Compile Include="Autonumber\Generated\IAutonumberTestObject.cs" />
+    <Compile Include="Autonumber\Generated\NewAbstractShouldBe6.cs" />
+    <Compile Include="Autonumber\Generated\NewAbstractShouldBe7.cs" />
+    <Compile Include="Autonumber\Generated\NewAbstractShouldBe8.cs" />
+    <Compile Include="Autonumber\Generated\ShouldBe1.cs" />
+    <Compile Include="Autonumber\Generated\ShouldBe2.cs" />
+    <Compile Include="Autonumber\Generated\ShouldBe3.cs" />
+    <Compile Include="Autonumber\Generated\ShouldBe4.cs" />
+    <Compile Include="Autonumber\Generated\ShouldBe566.cs" />
+    <Compile Include="Autonumber\Generated\ShouldBe57.cs" />
     <Compile Include="Enum\GeneratedPatternBufferEnumTest.cs" />
+    <Compile Include="Enum\Generated\DefaultEnumTestInstantiator.cs" />
     <Compile Include="Enum\Generated\EnumListObject.cs" />
     <Compile Include="Enum\Generated\EnumMap2Object.cs" />
     <Compile Include="Enum\Generated\EnumMapObject.cs" />
@@ -51,12 +67,15 @@
     <Compile Include="Enum\Generated\EnumSetObject.cs" />
     <Compile Include="Enum\Generated\EnumTestPatternBuffer.cs" />
     <Compile Include="Enum\Generated\EnumTestPatternBufferException.cs" />
+    <Compile Include="Enum\Generated\IEnumTestInstantiator.cs" />
     <Compile Include="Enum\Generated\IEnumTestObject.cs" />
     <Compile Include="Enum\Generated\SomeEnum.cs" />
     <Compile Include="Enum\Generated\SomeEnum2.cs" />
     <Compile Include="List\GeneratedPatternBufferListTest.cs" />
     <Compile Include="List\Generated\AbstractThing.cs" />
     <Compile Include="List\Generated\AbstractThingListObject.cs" />
+    <Compile Include="List\Generated\DefaultListTestInstantiator.cs" />
+    <Compile Include="List\Generated\IListTestInstantiator.cs" />
     <Compile Include="List\Generated\IListTestObject.cs" />
     <Compile Include="List\Generated\IntListObject.cs" />
     <Compile Include="List\Generated\ListTestPatternBuffer.cs" />
@@ -67,8 +86,12 @@
     <Compile Include="List\Generated\Thing2.cs" />
     <Compile Include="List\Generated\VIntListObject.cs" />
     <Compile Include="Map\GeneratedPatternBufferMapTest.cs" />
+    <Compile Include="Map\Generated\AbstractThing.cs" />
+    <Compile Include="Map\Generated\DefaultMapTestInstantiator.cs" />
     <Compile Include="Map\Generated\EnumIntMapObject.cs" />
+    <Compile Include="Map\Generated\IMapTestInstantiator.cs" />
     <Compile Include="Map\Generated\IMapTestObject.cs" />
+    <Compile Include="Map\Generated\IntAbstractThingMapObject.cs" />
     <Compile Include="Map\Generated\IntStringMapObject.cs" />
     <Compile Include="Map\Generated\IntThingMapObject.cs" />
     <Compile Include="Map\Generated\MapTestPatternBuffer.cs" />
@@ -78,14 +101,36 @@
     <Compile Include="Map\Generated\ThingIntMapObject.cs" />
     <Compile Include="Map\Generated\ThingThingMapObject.cs" />
     <Compile Include="Map\Generated\VIntVLongMapObject.cs" />
+    <Compile Include="Nullable\GeneratedPatternBufferNullableTest.cs" />
+    <Compile Include="Nullable\Generated\AbstractThingContainer1.cs" />
+    <Compile Include="Nullable\Generated\AbstractThingContainer2.cs" />
+    <Compile Include="Nullable\Generated\AutogenerateTest.cs" />
+    <Compile Include="Nullable\Generated\BaseType.cs" />
+    <Compile Include="Nullable\Generated\BaseTypeContainer.cs" />
+    <Compile Include="Nullable\Generated\DefaultNullableTestInstantiator.cs" />
+    <Compile Include="Nullable\Generated\DerivedType1.cs" />
+    <Compile Include="Nullable\Generated\DerivedType2.cs" />
+    <Compile Include="Nullable\Generated\IntThingContainerMap.cs" />
+    <Compile Include="Nullable\Generated\INullableTestInstantiator.cs" />
+    <Compile Include="Nullable\Generated\INullableTestObject.cs" />
+    <Compile Include="Nullable\Generated\ListContainer.cs" />
+    <Compile Include="Nullable\Generated\MapContainer.cs" />
+    <Compile Include="Nullable\Generated\NullableTestPatternBuffer.cs" />
+    <Compile Include="Nullable\Generated\NullableTestPatternBufferException.cs" />
+    <Compile Include="Nullable\Generated\SetContainer.cs" />
+    <Compile Include="Nullable\Generated\Thing.cs" />
+    <Compile Include="Nullable\Generated\ThingContainer.cs" />
+    <Compile Include="Nullable\Generated\ThingContainer3.cs" />
     <Compile Include="Primitive\GeneratedPatternBufferPrimitiveTest.cs" />
     <Compile Include="Primitive\Generated\BoolObject.cs" />
     <Compile Include="Primitive\Generated\ByteObject.cs" />
+    <Compile Include="Primitive\Generated\DefaultPrimitiveTestInstantiator.cs" />
     <Compile Include="Primitive\Generated\DoubleObject.cs" />
     <Compile Include="Primitive\Generated\EverythingObject.cs" />
     <Compile Include="Primitive\Generated\FloatObject.cs" />
     <Compile Include="Primitive\Generated\HighScoreObject.cs" />
     <Compile Include="Primitive\Generated\IntObject.cs" />
+    <Compile Include="Primitive\Generated\IPrimitiveTestInstantiator.cs" />
     <Compile Include="Primitive\Generated\IPrimitiveTestObject.cs" />
     <Compile Include="Primitive\Generated\LongObject.cs" />
     <Compile Include="Primitive\Generated\PrimitiveTestPatternBuffer.cs" />
@@ -104,9 +149,11 @@
     <Compile Include="Reference\GeneratedPatternBufferReferenceTest.cs" />
     <Compile Include="Reference\Generated\AbstractReferenceObject.cs" />
     <Compile Include="Reference\Generated\AbstractThing.cs" />
+    <Compile Include="Reference\Generated\DefaultReferenceTestInstantiator.cs" />
     <Compile Include="Reference\Generated\FinalObject.cs" />
     <Compile Include="Reference\Generated\FinalThing1.cs" />
     <Compile Include="Reference\Generated\FinalThing2.cs" />
+    <Compile Include="Reference\Generated\IReferenceTestInstantiator.cs" />
     <Compile Include="Reference\Generated\IReferenceTestObject.cs" />
     <Compile Include="Reference\Generated\ReferenceTestPatternBuffer.cs" />
     <Compile Include="Reference\Generated\ReferenceTestPatternBufferException.cs" />
@@ -114,7 +161,9 @@
     <Compile Include="Set\GeneratedPatternBufferSetTest.cs" />
     <Compile Include="Set\Generated\AbstractThing.cs" />
     <Compile Include="Set\Generated\AbstractThingSetObject.cs" />
+    <Compile Include="Set\Generated\DefaultSetTestInstantiator.cs" />
     <Compile Include="Set\Generated\IntSetObject.cs" />
+    <Compile Include="Set\Generated\ISetTestInstantiator.cs" />
     <Compile Include="Set\Generated\ISetTestObject.cs" />
     <Compile Include="Set\Generated\SetTestPatternBuffer.cs" />
     <Compile Include="Set\Generated\SetTestPatternBufferException.cs" />

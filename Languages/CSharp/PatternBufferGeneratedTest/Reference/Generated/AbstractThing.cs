@@ -14,7 +14,7 @@ namespace Test.Reference {
             get { return TYPE_ID; }
         }
 
-        public int IntValue1;
+        public int IntValue1; // (required)
 
         public AbstractThing() {
             this.IntValue1 = default(int);
@@ -30,11 +30,11 @@ namespace Test.Reference {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is AbstractThing)) { return false; }
             AbstractThing that = (AbstractThing)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // IntValue1
+            // IntValue1 (required)
             if (this.IntValue1 != that.IntValue1) { return false; }
             return true;
         }

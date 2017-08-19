@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public bool BoolValue;
+        public bool BoolValue; // (required)
 
         public BoolObject() {
             this.BoolValue = default(bool);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is BoolObject)) { return false; }
             BoolObject that = (BoolObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // BoolValue
+            // BoolValue (required)
             if (this.BoolValue != that.BoolValue) { return false; }
             return true;
         }

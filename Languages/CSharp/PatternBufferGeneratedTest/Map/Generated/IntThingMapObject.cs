@@ -14,7 +14,7 @@ namespace Test.Map {
             get { return TYPE_ID; }
         }
 
-        public Dictionary<int,Thing> IntThingMap;
+        public Dictionary<int,Thing> IntThingMap; // (required)
 
         public IntThingMapObject() {
             this.IntThingMap = default(Dictionary<int,Thing>);
@@ -30,13 +30,13 @@ namespace Test.Map {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is IntThingMapObject)) { return false; }
             IntThingMapObject that = (IntThingMapObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // IntThingMap
-            if (this.IntThingMap == null && that.IntThingMap != null) { return false; }
-            if (that.IntThingMap != null && this.IntThingMap == null) { return false; }
+            // IntThingMap (required)
+                if (this.IntThingMap == null && that.IntThingMap != null) { return false; }
+                if (that.IntThingMap != null && this.IntThingMap == null) { return false; }
             if (that.IntThingMap.Count != this.IntThingMap.Count) { return false; }
             foreach (int key in this.IntThingMap.Keys) {
                 if ( ! that.IntThingMap.ContainsKey(key)) { return false; }

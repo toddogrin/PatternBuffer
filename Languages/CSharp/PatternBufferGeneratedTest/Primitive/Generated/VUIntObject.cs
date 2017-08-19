@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public uint VuintValue;
+        public uint VuintValue; // (required)
 
         public VUIntObject() {
             this.VuintValue = default(uint);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is VUIntObject)) { return false; }
             VUIntObject that = (VUIntObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // VuintValue
+            // VuintValue (required)
             if (this.VuintValue != that.VuintValue) { return false; }
             return true;
         }

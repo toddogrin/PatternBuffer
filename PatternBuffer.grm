@@ -10,7 +10,7 @@ Comment End = '*/'
                   
 Name = {Letter}{AlphaNumeric}*
 
-TypeId = {Number}|{Number}{Number}|{Number}{Number}{Number}|{Number}{Number}{Number}{Number}|{Number}{Number}{Number}{Number}{Number}
+TypeId = {Number}|{Number}{Number}|{Number}{Number}{Number}|{Number}{Number}{Number}{Number}|{Number}{Number}{Number}{Number}{Number}|'#'
 
 Primitive = 'byte'|'bool'|'short'|'ushort'|'vushort'|'int'|'vint'|'uint'|'vuint'|'long'|'vlong'|'ulong'|'vulong'|'string'|'float'|'double'
 

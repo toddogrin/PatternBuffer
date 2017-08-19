@@ -15,9 +15,10 @@ namespace PotionTest.Schema {
             IntSetObject o1 = new IntSetObject(new HashSet<int>() { 1, 5, 900, 7038 });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte     IntSetObject type ID
+            // 1 byte     null bits
             // 1 byte     set count
             // 4*4 bytes  4 invariant ints
-            Assert.AreEqual(18, bytes.Length);
+            Assert.AreEqual(19, bytes.Length);
             object o2 = patternBuffer.Energize(bytes);
             IntSetObject p1 = (IntSetObject)o2;
             Assert.That(p1 is IntSetObject, Is.True);
@@ -67,7 +68,7 @@ namespace PotionTest.Schema {
             SetTestPatternBuffer patternBuffer = new SetTestPatternBuffer();
             StringSetObject o1 = new StringSetObject(new HashSet<string>() { "foo", "bar" });
             byte[] bytes = patternBuffer.Energize(o1);
-            Assert.That(bytes.Length, Is.EqualTo(10));
+            Assert.That(bytes.Length, Is.EqualTo(11));
             object o2 = patternBuffer.Energize(bytes);
             StringSetObject p1 = (StringSetObject)o2;
             Assert.That(p1 is StringSetObject, Is.True);
@@ -86,7 +87,7 @@ namespace PotionTest.Schema {
             // 1 byte   - set count
             // 8 bytes  - 2 invariant ints
             // 8 bytes  - 2 invariant ints
-            Assert.That(bytes.Length, Is.EqualTo(18));
+            Assert.That(bytes.Length, Is.EqualTo(19));
             object o2 = patternBuffer.Energize(bytes);
             Thing1SetObject p1 = (Thing1SetObject)o2;
             Assert.That(p1 is Thing1SetObject, Is.True);
@@ -102,12 +103,13 @@ namespace PotionTest.Schema {
             AbstractThingSetObject o1 = new AbstractThingSetObject(new HashSet<AbstractThing>() { t1, t2 });
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       AbstractThingSetObject type ID
+            // 1 byte       null bits
             // 1 byte       set count
             // 1 byte       Thing1 type ID
             // 8 bytes      Thing1 2 invariant ints
             // 1 byte       Thing2 type ID
             // 8 bytes      Thing2 2 invariant ints
-            Assert.That(bytes.Length, Is.EqualTo(20));
+            Assert.That(bytes.Length, Is.EqualTo(21));
             object o2 = patternBuffer.Energize(bytes);
             AbstractThingSetObject p1 = (AbstractThingSetObject)o2;
             Assert.That(p1 is AbstractThingSetObject, Is.True);

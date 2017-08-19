@@ -14,7 +14,7 @@ namespace Test.List {
             get { return TYPE_ID; }
         }
 
-        public List<int> IntListValue;
+        public List<int> IntListValue; // (required)
 
         public IntListObject() {
             this.IntListValue = default(List<int>);
@@ -30,20 +30,22 @@ namespace Test.List {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is IntListObject)) { return false; }
             IntListObject that = (IntListObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // IntListValue
-            if (this.IntListValue == null && that.IntListValue != null) { return false; }
-            if (that.IntListValue != null && this.IntListValue == null) { return false; }
-            if (this.IntListValue.Count != that.IntListValue.Count) { return false; }
-            List<int>.Enumerator enumerator_dgxg457RVWip = this.IntListValue.GetEnumerator();
-            List<int>.Enumerator enumerator_fXGcE7RGl4wX = that.IntListValue.GetEnumerator();
-            while(true) {
-                if ( ! enumerator_dgxg457RVWip.MoveNext()) { break; }
-                enumerator_fXGcE7RGl4wX.MoveNext();
-            if (enumerator_dgxg457RVWip.Current != enumerator_fXGcE7RGl4wX.Current) { return false; }
+            // IntListValue (required)
+                if (this.IntListValue == null && that.IntListValue != null) { return false; }
+                if (that.IntListValue != null && this.IntListValue == null) { return false; }
+            if (this.IntListValue != null && that.IntListValue != null) {
+                if (this.IntListValue.Count != that.IntListValue.Count) { return false; }
+                List<int>.Enumerator enumerator_qy2m9hpziQbS = this.IntListValue.GetEnumerator();
+                List<int>.Enumerator enumerator_u2tJadGnSVUo = that.IntListValue.GetEnumerator();
+                while(true) {
+                     if ( ! enumerator_qy2m9hpziQbS.MoveNext()) { break; }
+                    enumerator_u2tJadGnSVUo.MoveNext();
+            if (enumerator_qy2m9hpziQbS.Current != enumerator_u2tJadGnSVUo.Current) { return false; }
+                }
             }
             return true;
         }

@@ -22,9 +22,13 @@ namespace Test.Reference {
             9223372036854775808
         };
         private byte[] bytes;
-        public ReferenceTestPatternBuffer() : this(4096) { }
-        public ReferenceTestPatternBuffer(uint bufferSize) {
+        private IReferenceTestInstantiator instantiator;
+        public ReferenceTestPatternBuffer() : this(4096, new DefaultReferenceTestInstantiator()) { }
+        public ReferenceTestPatternBuffer(uint bufferSize) : this (bufferSize, new DefaultReferenceTestInstantiator()) { }
+        public ReferenceTestPatternBuffer(IReferenceTestInstantiator instantiator) : this (4096, instantiator) { }
+        public ReferenceTestPatternBuffer(uint bufferSize, IReferenceTestInstantiator instantiator) {
             this.bytes = new byte[bufferSize];
+            this.instantiator = instantiator;
         }
 ///////////////////////////////////////
 // TO BYTES
@@ -32,42 +36,35 @@ namespace Test.Reference {
         public byte[] Energize(Thing o) {
             int index = 0;
             Energize(o, bytes, ref index, true);
-            byte[] result = new byte[index];
+            byte[] result = this.instantiator.AcquireByteArray(index);
             Buffer.BlockCopy(bytes, 0, result, 0, index);
             return result;
         }
         public byte[] Energize(FinalObject o) {
             int index = 0;
             Energize(o, bytes, ref index, true);
-            byte[] result = new byte[index];
-            Buffer.BlockCopy(bytes, 0, result, 0, index);
-            return result;
-        }
-        public byte[] Energize(AbstractThing o) {
-            int index = 0;
-            Energize(o, bytes, ref index, true);
-            byte[] result = new byte[index];
+            byte[] result = this.instantiator.AcquireByteArray(index);
             Buffer.BlockCopy(bytes, 0, result, 0, index);
             return result;
         }
         public byte[] Energize(FinalThing1 o) {
             int index = 0;
             Energize(o, bytes, ref index, true);
-            byte[] result = new byte[index];
+            byte[] result = this.instantiator.AcquireByteArray(index);
             Buffer.BlockCopy(bytes, 0, result, 0, index);
             return result;
         }
         public byte[] Energize(FinalThing2 o) {
             int index = 0;
             Energize(o, bytes, ref index, true);
-            byte[] result = new byte[index];
+            byte[] result = this.instantiator.AcquireByteArray(index);
             Buffer.BlockCopy(bytes, 0, result, 0, index);
             return result;
         }
         public byte[] Energize(AbstractReferenceObject o) {
             int index = 0;
             Energize(o, bytes, ref index, true);
-            byte[] result = new byte[index];
+            byte[] result = this.instantiator.AcquireByteArray(index);
             Buffer.BlockCopy(bytes, 0, result, 0, index);
             return result;
         }
@@ -85,18 +82,15 @@ namespace Test.Reference {
             if (writeTypeId) {
             bytes[index++] = 12;
             }
+                // NULL FLAGS
+                int nullFlagsIndex = index - 1;
+                bytes[index++] = 0;
+                nullFlagsIndex++;
                 // REFERENCE: ThingValue
+                if (o.ThingValue != null) {
+                    bytes[nullFlagsIndex] |= (byte)(128);
                 Energize(o.ThingValue, bytes, ref index, false);
-        }
-        public void Energize(AbstractThing o, byte[] bytes, ref int index, bool writeTypeId) {
-            if (writeTypeId) {
-            bytes[index++] = 0;
-            }
-                // PRIMITIVE: IntValue1
-                bytes[index++] = (byte)((o.IntValue1 >> 24) & 255);
-                bytes[index++] = (byte)((o.IntValue1 >> 16) & 255);
-                bytes[index++] = (byte)((o.IntValue1 >> 8) & 255);
-                bytes[index++] = (byte)(o.IntValue1 & 255);
+                }
         }
         public void Energize(FinalThing1 o, byte[] bytes, ref int index, bool writeTypeId) {
             if (writeTypeId) {
@@ -132,8 +126,15 @@ namespace Test.Reference {
             if (writeTypeId) {
             bytes[index++] = 24;
             }
+                // NULL FLAGS
+                int nullFlagsIndex = index - 1;
+                bytes[index++] = 0;
+                nullFlagsIndex++;
                 // REFERENCE: Thing
+                if (o.Thing != null) {
+                    bytes[nullFlagsIndex] |= (byte)(128);
                 Energize((IReferenceTestObject)o.Thing, bytes, ref index, true);
+                }
         }
         public void Energize(IReferenceTestObject o, byte[] bytes, ref int index, bool writeTypeId) {
             switch (o.TypeId) {
@@ -142,9 +143,6 @@ namespace Test.Reference {
                     break;
                 case 12:
                     Energize((FinalObject)o, bytes, ref index, writeTypeId);
-                    break;
-                case 0:
-                    Energize((AbstractThing)o, bytes, ref index, writeTypeId);
                     break;
                 case 22:
                     Energize((FinalThing1)o, bytes, ref index, writeTypeId);
@@ -164,25 +162,25 @@ namespace Test.Reference {
 ///////////////////////////////////////
         public object Energize(byte[] bytes) {
             int index = 0;
-                    ulong vuread_idunlzwLJSLx = 0;
-                    for (int i_qDLOjm1DkPXU = 0; i_qDLOjm1DkPXU < 9; i_qDLOjm1DkPXU++) {
+                    ulong vuread_yWDHDgqsgOrV = 0;
+                    for (int i_x7T9ggssolTP = 0; i_x7T9ggssolTP < 9; i_x7T9ggssolTP++) {
                         byte b = bytes[index++];
-                        if (i_qDLOjm1DkPXU < 8) {
-                            vuread_idunlzwLJSLx += (((ulong)b & (ulong)127) << (7 * i_qDLOjm1DkPXU));
+                        if (i_x7T9ggssolTP < 8) {
+                            vuread_yWDHDgqsgOrV += (((ulong)b & (ulong)127) << (7 * i_x7T9ggssolTP));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_idunlzwLJSLx += (ulong)b << (7 * i_qDLOjm1DkPXU);
+                            vuread_yWDHDgqsgOrV += (ulong)b << (7 * i_x7T9ggssolTP);
                             break;
                         }
                     }
-                    ushort typeId = (ushort)vuread_idunlzwLJSLx;
+                    ushort typeId = (ushort)vuread_yWDHDgqsgOrV;
             switch (typeId) {
             case 11:
                 {
-                Thing o = new Thing();
+                Thing o = this.instantiator.AcquireThing();
                 // PRIMITIVE: IntValue
                 o.IntValue =
                     (int)(
@@ -195,27 +193,20 @@ namespace Test.Reference {
                 }
             case 12:
                 {
-                FinalObject o = new FinalObject();
+                // NULL FLAGS
+                int nullFlagsIndex = index - 1;
+                index += 1;
+                FinalObject o = this.instantiator.AcquireFinalObject();
+                nullFlagsIndex++;
                 // REFERENCE: ThingValue
+                if ((bytes[nullFlagsIndex] & (byte)128) > 0) {
                 o.ThingValue = (Thing)Energize(bytes, ref index, 11);
-                    return o;
                 }
-            case 0:
-                {
-                AbstractThing o = new AbstractThing();
-                // PRIMITIVE: IntValue1
-                o.IntValue1 =
-                    (int)(
-                        ((int)bytes[index++] << 24) |
-                        ((int)bytes[index++] << 16) |
-                        ((int)bytes[index++] << 8) |
-                        (int)bytes[index++]
-                    );
                     return o;
                 }
             case 22:
                 {
-                FinalThing1 o = new FinalThing1();
+                FinalThing1 o = this.instantiator.AcquireFinalThing1();
                 // PRIMITIVE: IntValue1
                 o.IntValue1 =
                     (int)(
@@ -236,7 +227,7 @@ namespace Test.Reference {
                 }
             case 23:
                 {
-                FinalThing2 o = new FinalThing2();
+                FinalThing2 o = this.instantiator.AcquireFinalThing2();
                 // PRIMITIVE: IntValue1
                 o.IntValue1 =
                     (int)(
@@ -257,9 +248,15 @@ namespace Test.Reference {
                 }
             case 24:
                 {
-                AbstractReferenceObject o = new AbstractReferenceObject();
+                // NULL FLAGS
+                int nullFlagsIndex = index - 1;
+                index += 1;
+                AbstractReferenceObject o = this.instantiator.AcquireAbstractReferenceObject();
+                nullFlagsIndex++;
                 // REFERENCE: Thing
+                if ((bytes[nullFlagsIndex] & (byte)128) > 0) {
                 o.Thing = (AbstractThing)Energize(bytes, ref index);
+                }
                     return o;
                 }
                 default:
@@ -267,25 +264,25 @@ namespace Test.Reference {
             }
         }
         public object Energize(byte[] bytes, ref int index) {
-                    ulong vuread_qlXqxvUXbmEf = 0;
-                    for (int i_v0NT3fD5ybVC = 0; i_v0NT3fD5ybVC < 9; i_v0NT3fD5ybVC++) {
+                    ulong vuread_e2gF4LLKmgmj = 0;
+                    for (int i_bUcUI05wA86c = 0; i_bUcUI05wA86c < 9; i_bUcUI05wA86c++) {
                         byte b = bytes[index++];
-                        if (i_v0NT3fD5ybVC < 8) {
-                            vuread_qlXqxvUXbmEf += (((ulong)b & (ulong)127) << (7 * i_v0NT3fD5ybVC));
+                        if (i_bUcUI05wA86c < 8) {
+                            vuread_e2gF4LLKmgmj += (((ulong)b & (ulong)127) << (7 * i_bUcUI05wA86c));
                             if ((int)(b & 128) == 0) {
                                 break;
                             }
                         }
                         else {
-                            vuread_qlXqxvUXbmEf += (ulong)b << (7 * i_v0NT3fD5ybVC);
+                            vuread_e2gF4LLKmgmj += (ulong)b << (7 * i_bUcUI05wA86c);
                             break;
                         }
                     }
-                    ushort typeId = (ushort)vuread_qlXqxvUXbmEf;
+                    ushort typeId = (ushort)vuread_e2gF4LLKmgmj;
             switch (typeId) {
             case 11:
                 {
-                Thing o = new Thing();
+                Thing o = this.instantiator.AcquireThing();
                 // PRIMITIVE: IntValue
                 o.IntValue =
                     (int)(
@@ -298,27 +295,20 @@ namespace Test.Reference {
                 }
             case 12:
                 {
-                FinalObject o = new FinalObject();
+                // NULL FLAGS
+                int nullFlagsIndex = index - 1;
+                index += 1;
+                FinalObject o = this.instantiator.AcquireFinalObject();
+                nullFlagsIndex++;
                 // REFERENCE: ThingValue
+                if ((bytes[nullFlagsIndex] & (byte)128) > 0) {
                 o.ThingValue = (Thing)Energize(bytes, ref index, 11);
-                    return o;
                 }
-            case 0:
-                {
-                AbstractThing o = new AbstractThing();
-                // PRIMITIVE: IntValue1
-                o.IntValue1 =
-                    (int)(
-                        ((int)bytes[index++] << 24) |
-                        ((int)bytes[index++] << 16) |
-                        ((int)bytes[index++] << 8) |
-                        (int)bytes[index++]
-                    );
                     return o;
                 }
             case 22:
                 {
-                FinalThing1 o = new FinalThing1();
+                FinalThing1 o = this.instantiator.AcquireFinalThing1();
                 // PRIMITIVE: IntValue1
                 o.IntValue1 =
                     (int)(
@@ -339,7 +329,7 @@ namespace Test.Reference {
                 }
             case 23:
                 {
-                FinalThing2 o = new FinalThing2();
+                FinalThing2 o = this.instantiator.AcquireFinalThing2();
                 // PRIMITIVE: IntValue1
                 o.IntValue1 =
                     (int)(
@@ -360,9 +350,15 @@ namespace Test.Reference {
                 }
             case 24:
                 {
-                AbstractReferenceObject o = new AbstractReferenceObject();
+                // NULL FLAGS
+                int nullFlagsIndex = index - 1;
+                index += 1;
+                AbstractReferenceObject o = this.instantiator.AcquireAbstractReferenceObject();
+                nullFlagsIndex++;
                 // REFERENCE: Thing
+                if ((bytes[nullFlagsIndex] & (byte)128) > 0) {
                 o.Thing = (AbstractThing)Energize(bytes, ref index);
+                }
                     return o;
                 }
                 default:
@@ -373,7 +369,7 @@ namespace Test.Reference {
             switch (typeId) {
             case 11:
                 {
-                Thing o = new Thing();
+                Thing o = this.instantiator.AcquireThing();
                 // PRIMITIVE: IntValue
                 o.IntValue =
                     (int)(
@@ -386,27 +382,20 @@ namespace Test.Reference {
                 }
             case 12:
                 {
-                FinalObject o = new FinalObject();
+                // NULL FLAGS
+                int nullFlagsIndex = index - 1;
+                index += 1;
+                FinalObject o = this.instantiator.AcquireFinalObject();
+                nullFlagsIndex++;
                 // REFERENCE: ThingValue
+                if ((bytes[nullFlagsIndex] & (byte)128) > 0) {
                 o.ThingValue = (Thing)Energize(bytes, ref index, 11);
-                    return o;
                 }
-            case 0:
-                {
-                AbstractThing o = new AbstractThing();
-                // PRIMITIVE: IntValue1
-                o.IntValue1 =
-                    (int)(
-                        ((int)bytes[index++] << 24) |
-                        ((int)bytes[index++] << 16) |
-                        ((int)bytes[index++] << 8) |
-                        (int)bytes[index++]
-                    );
                     return o;
                 }
             case 22:
                 {
-                FinalThing1 o = new FinalThing1();
+                FinalThing1 o = this.instantiator.AcquireFinalThing1();
                 // PRIMITIVE: IntValue1
                 o.IntValue1 =
                     (int)(
@@ -427,7 +416,7 @@ namespace Test.Reference {
                 }
             case 23:
                 {
-                FinalThing2 o = new FinalThing2();
+                FinalThing2 o = this.instantiator.AcquireFinalThing2();
                 // PRIMITIVE: IntValue1
                 o.IntValue1 =
                     (int)(
@@ -448,9 +437,15 @@ namespace Test.Reference {
                 }
             case 24:
                 {
-                AbstractReferenceObject o = new AbstractReferenceObject();
+                // NULL FLAGS
+                int nullFlagsIndex = index - 1;
+                index += 1;
+                AbstractReferenceObject o = this.instantiator.AcquireAbstractReferenceObject();
+                nullFlagsIndex++;
                 // REFERENCE: Thing
+                if ((bytes[nullFlagsIndex] & (byte)128) > 0) {
                 o.Thing = (AbstractThing)Energize(bytes, ref index);
+                }
                     return o;
                 }
                 default:
@@ -466,6 +461,56 @@ namespace Test.Reference {
                 throw new ReferenceTestPatternBufferException("Deserialized type (" + o.GetType().Name + ") does not match expected type (" + typeof(TYPE).Name + ").");
             }
             return (TYPE)o;
+        }
+///////////////////////////////////////
+// RECLAIM
+///////////////////////////////////////
+        public void Reclaim(Thing o) {
+            if (o != null) {
+                o.IntValue = default(int);
+                this.instantiator.DiscardThing(o);
+            }
+        }
+        public void Reclaim(FinalObject o) {
+            if (o != null) {
+                if (o.ThingValue != null) {
+                    this.Reclaim(o.ThingValue);
+                }
+                o.ThingValue = default(Thing);
+                this.instantiator.DiscardFinalObject(o);
+            }
+        }
+        public void Reclaim(AbstractThing o) {
+            if (o != null) {
+                if (o is FinalThing1) {
+                    this.Reclaim((FinalThing1)o);
+                }
+                else if (o is FinalThing2) {
+                    this.Reclaim((FinalThing2)o);
+                }
+                o.IntValue1 = default(int);
+            }
+        }
+        public void Reclaim(FinalThing1 o) {
+            if (o != null) {
+                o.IntValue2a = default(int);
+                this.instantiator.DiscardFinalThing1(o);
+            }
+        }
+        public void Reclaim(FinalThing2 o) {
+            if (o != null) {
+                o.IntValue2a = default(int);
+                this.instantiator.DiscardFinalThing2(o);
+            }
+        }
+        public void Reclaim(AbstractReferenceObject o) {
+            if (o != null) {
+                if (o.Thing != null) {
+                    this.Reclaim(o.Thing);
+                }
+                o.Thing = default(AbstractThing);
+                this.instantiator.DiscardAbstractReferenceObject(o);
+            }
         }
     }
 }

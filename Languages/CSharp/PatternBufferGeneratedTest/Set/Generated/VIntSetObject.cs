@@ -14,7 +14,7 @@ namespace Test.Set {
             get { return TYPE_ID; }
         }
 
-        public HashSet<int> VintSetValue;
+        public HashSet<int> VintSetValue; // (required)
 
         public VIntSetObject() {
             this.VintSetValue = default(HashSet<int>);
@@ -30,20 +30,22 @@ namespace Test.Set {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is VIntSetObject)) { return false; }
             VIntSetObject that = (VIntSetObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // VintSetValue
-            if (this.VintSetValue == null && that.VintSetValue != null) { return false; }
-            if (that.VintSetValue != null && this.VintSetValue == null) { return false; }
-            if (this.VintSetValue.Count != that.VintSetValue.Count) { return false; }
-            HashSet<int>.Enumerator enumerator_jAcod1fn4gHh = this.VintSetValue.GetEnumerator();
-            HashSet<int>.Enumerator enumerator_ztSAgi21ZFFA = that.VintSetValue.GetEnumerator();
-            while(true) {
-                if ( ! enumerator_jAcod1fn4gHh.MoveNext()) { break; }
-                enumerator_ztSAgi21ZFFA.MoveNext();
-            if (enumerator_jAcod1fn4gHh.Current != enumerator_ztSAgi21ZFFA.Current) { return false; }
+            // VintSetValue (required)
+                if (this.VintSetValue == null && that.VintSetValue != null) { return false; }
+                if (that.VintSetValue != null && this.VintSetValue == null) { return false; }
+            if (this.VintSetValue != null && that.VintSetValue != null) {
+                if (this.VintSetValue.Count != that.VintSetValue.Count) { return false; }
+                HashSet<int>.Enumerator enumerator_yAQmTYqHKpb4 = this.VintSetValue.GetEnumerator();
+                HashSet<int>.Enumerator enumerator_w9oZM4oBrPMd = that.VintSetValue.GetEnumerator();
+                while(true) {
+                     if ( ! enumerator_yAQmTYqHKpb4.MoveNext()) { break; }
+                    enumerator_w9oZM4oBrPMd.MoveNext();
+            if (enumerator_yAQmTYqHKpb4.Current != enumerator_w9oZM4oBrPMd.Current) { return false; }
+                }
             }
             return true;
         }

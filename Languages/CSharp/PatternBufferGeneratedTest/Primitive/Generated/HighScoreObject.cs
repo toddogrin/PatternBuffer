@@ -14,8 +14,8 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public string Name;
-        public uint HighScore;
+        public string Name; // (required)
+        public uint HighScore; // (required)
 
         public HighScoreObject() {
             this.Name = default(string);
@@ -34,15 +34,15 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is HighScoreObject)) { return false; }
             HighScoreObject that = (HighScoreObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // Name
-            if (this.Name == null && this.Name != null) { return false; }
-            if (this.Name != null && this.Name == null) { return false; }
+            // Name (required)
+                if (this.Name == null && this.Name != null) { return false; }
+                if (this.Name != null && this.Name == null) { return false; }
             if ( ! this.Name.Equals(that.Name)) { return false; }
-            // HighScore
+            // HighScore (required)
             if (this.HighScore != that.HighScore) { return false; }
             return true;
         }

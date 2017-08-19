@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public ushort VushortValue;
+        public ushort VushortValue; // (required)
 
         public VUShortObject() {
             this.VushortValue = default(ushort);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is VUShortObject)) { return false; }
             VUShortObject that = (VUShortObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // VushortValue
+            // VushortValue (required)
             if (this.VushortValue != that.VushortValue) { return false; }
             return true;
         }

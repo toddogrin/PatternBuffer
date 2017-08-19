@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public byte ByteValue;
+        public byte ByteValue; // (required)
 
         public ByteObject() {
             this.ByteValue = default(byte);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is ByteObject)) { return false; }
             ByteObject that = (ByteObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // ByteValue
+            // ByteValue (required)
             if (this.ByteValue != that.ByteValue) { return false; }
             return true;
         }

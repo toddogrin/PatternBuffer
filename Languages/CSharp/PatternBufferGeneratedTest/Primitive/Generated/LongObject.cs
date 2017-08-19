@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public long LongValue;
+        public long LongValue; // (required)
 
         public LongObject() {
             this.LongValue = default(long);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is LongObject)) { return false; }
             LongObject that = (LongObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // LongValue
+            // LongValue (required)
             if (this.LongValue != that.LongValue) { return false; }
             return true;
         }

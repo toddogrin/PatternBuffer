@@ -14,7 +14,7 @@ namespace Test.Enum {
             get { return TYPE_ID; }
         }
 
-        public List<SomeEnum> SomeEnumListValue;
+        public List<SomeEnum> SomeEnumListValue; // (required)
 
         public EnumListObject() {
             this.SomeEnumListValue = default(List<SomeEnum>);
@@ -30,20 +30,22 @@ namespace Test.Enum {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is EnumListObject)) { return false; }
             EnumListObject that = (EnumListObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // SomeEnumListValue
-            if (this.SomeEnumListValue == null && that.SomeEnumListValue != null) { return false; }
-            if (that.SomeEnumListValue != null && this.SomeEnumListValue == null) { return false; }
-            if (this.SomeEnumListValue.Count != that.SomeEnumListValue.Count) { return false; }
-            List<SomeEnum>.Enumerator enumerator_tC27JAyEinfZ = this.SomeEnumListValue.GetEnumerator();
-            List<SomeEnum>.Enumerator enumerator_bE71NYlH3LAM = that.SomeEnumListValue.GetEnumerator();
-            while(true) {
-                if ( ! enumerator_tC27JAyEinfZ.MoveNext()) { break; }
-                enumerator_bE71NYlH3LAM.MoveNext();
-            if ( enumerator_tC27JAyEinfZ.Current != enumerator_bE71NYlH3LAM.Current) { return false; }
+            // SomeEnumListValue (required)
+                if (this.SomeEnumListValue == null && that.SomeEnumListValue != null) { return false; }
+                if (that.SomeEnumListValue != null && this.SomeEnumListValue == null) { return false; }
+            if (this.SomeEnumListValue != null && that.SomeEnumListValue != null) {
+                if (this.SomeEnumListValue.Count != that.SomeEnumListValue.Count) { return false; }
+                List<SomeEnum>.Enumerator enumerator_m1SQ2sqCnH1J = this.SomeEnumListValue.GetEnumerator();
+                List<SomeEnum>.Enumerator enumerator_xcVJa5Gu9sYh = that.SomeEnumListValue.GetEnumerator();
+                while(true) {
+                     if ( ! enumerator_m1SQ2sqCnH1J.MoveNext()) { break; }
+                    enumerator_xcVJa5Gu9sYh.MoveNext();
+            if ( enumerator_m1SQ2sqCnH1J.Current != enumerator_xcVJa5Gu9sYh.Current) { return false; }
+                }
             }
             return true;
         }

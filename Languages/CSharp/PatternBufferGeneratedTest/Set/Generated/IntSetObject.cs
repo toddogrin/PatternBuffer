@@ -14,7 +14,7 @@ namespace Test.Set {
             get { return TYPE_ID; }
         }
 
-        public HashSet<int> IntSetValue;
+        public HashSet<int> IntSetValue; // (required)
 
         public IntSetObject() {
             this.IntSetValue = default(HashSet<int>);
@@ -30,20 +30,22 @@ namespace Test.Set {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is IntSetObject)) { return false; }
             IntSetObject that = (IntSetObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // IntSetValue
-            if (this.IntSetValue == null && that.IntSetValue != null) { return false; }
-            if (that.IntSetValue != null && this.IntSetValue == null) { return false; }
-            if (this.IntSetValue.Count != that.IntSetValue.Count) { return false; }
-            HashSet<int>.Enumerator enumerator_xXBNamjOqJL9 = this.IntSetValue.GetEnumerator();
-            HashSet<int>.Enumerator enumerator_pfoo8Ywz9FYs = that.IntSetValue.GetEnumerator();
-            while(true) {
-                if ( ! enumerator_xXBNamjOqJL9.MoveNext()) { break; }
-                enumerator_pfoo8Ywz9FYs.MoveNext();
-            if (enumerator_xXBNamjOqJL9.Current != enumerator_pfoo8Ywz9FYs.Current) { return false; }
+            // IntSetValue (required)
+                if (this.IntSetValue == null && that.IntSetValue != null) { return false; }
+                if (that.IntSetValue != null && this.IntSetValue == null) { return false; }
+            if (this.IntSetValue != null && that.IntSetValue != null) {
+                if (this.IntSetValue.Count != that.IntSetValue.Count) { return false; }
+                HashSet<int>.Enumerator enumerator_hA6MLhLUcXxL = this.IntSetValue.GetEnumerator();
+                HashSet<int>.Enumerator enumerator_zUyEcRJWUK5v = that.IntSetValue.GetEnumerator();
+                while(true) {
+                     if ( ! enumerator_hA6MLhLUcXxL.MoveNext()) { break; }
+                    enumerator_zUyEcRJWUK5v.MoveNext();
+            if (enumerator_hA6MLhLUcXxL.Current != enumerator_zUyEcRJWUK5v.Current) { return false; }
+                }
             }
             return true;
         }

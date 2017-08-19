@@ -149,6 +149,7 @@ namespace PatternBuffer.Schema {
     public class PatternBufferSchemaParser {
         private LALRParser parser;
         private List<string> lowerCasePrimitiveTypeEnumValues;
+        private List<PatternBufferType> autonumberedTypes;
         private string error;
 
         public PatternBufferSchemaParser(string filename) {
@@ -180,6 +181,7 @@ namespace PatternBuffer.Schema {
             parser.OnParseError += new LALRParser.ParseErrorHandler(ParseErrorEvent);
 
             this.lowerCasePrimitiveTypeEnumValues = new List<string>();
+            this.autonumberedTypes = new List<PatternBufferType>();
             foreach (PrimitiveType pt in Enum.GetValues(typeof(PrimitiveType))) {
                 lowerCasePrimitiveTypeEnumValues.Add(pt.ToString().ToLower());
             }
@@ -330,9 +332,17 @@ namespace PatternBuffer.Schema {
 
                 case (int)SymbolConstants.SYMBOL_TYPEID:
                     //TypeId
-                    return token.Text != null ?
-                        ushort.Parse(token.Text) :
-                        (ushort)0;
+                    int newTypeId;
+                    if (token.Text == null) {
+                        newTypeId = 0;
+                    }
+                    else if (token.Text.Equals("#")) {
+                        newTypeId = -1;
+                    }
+                    else {
+                        newTypeId = int.Parse(token.Text);
+                    }
+                    return newTypeId;                        
 
                 case (int)SymbolConstants.SYMBOL_AGGREGATEARG:
                     //<AggregateArg>
@@ -501,6 +511,20 @@ namespace PatternBuffer.Schema {
                         }
                     }
 
+                    // Autonumber types, if necessary
+                    if (this.autonumberedTypes.Count > 0) {
+                        ushort autonumberedTypeId = 1;
+                        foreach (PatternBufferType autonumberedType in this.autonumberedTypes) {
+                            while (typeIds.Contains(autonumberedTypeId)) {
+                                autonumberedTypeId++;
+                            }
+                            autonumberedType.TypeId = autonumberedTypeId;
+                            typeIds.Add(autonumberedTypeId);
+                            Console.WriteLine("Autonumbering type \"" + autonumberedType.Name + "\" as type ID " + autonumberedType.TypeId + ".");
+
+                        }
+                    }
+
                     // Bundle up all referrables
                     Dictionary<string, IPatternBufferReferrable> nameReferrableMap = new Dictionary<string, IPatternBufferReferrable>();
                     foreach (PatternBufferEnum allEnum in enums) {
@@ -589,18 +613,26 @@ namespace PatternBuffer.Schema {
 
                 case (int)RuleConstants.RULE_TYPE_TYPE_LPAREN_RPAREN_LBRACE_RBRACE:
                     //<Type> ::= type '(' <TypeId> ')' <TypeName> <BaseType> '{' <Hint> <TypeField> '}'
-                    ushort typeId = token.GetUserObjectForSubToken<ushort>((int)SymbolConstants.SYMBOL_TYPEID2);
+                    int typeIdInt = token.GetUserObjectForSubToken<int>((int)SymbolConstants.SYMBOL_TYPEID2);
+                    ushort typeId = (ushort)0;
+                    if (typeIdInt >= 0) {
+                        typeId = (ushort)typeIdInt;
+                    }
                     string typeName = token.GetUserObjectForSubToken<string>((int)SymbolConstants.SYMBOL_TYPENAME);
                     string baseTypeName = token.GetUserObjectForSubToken<string>((int)SymbolConstants.SYMBOL_BASETYPE);
                     Dictionary<string, string> typeHints = token.GetUserObjectForSubToken<Dictionary<string,string>>((int)SymbolConstants.SYMBOL_HINT);;
                     IList<PatternBufferField> typeFields = token.GetUserObjectForSubToken<IList<PatternBufferField>>((int)SymbolConstants.SYMBOL_TYPEFIELD);
-                    return new PatternBufferType(
+                    PatternBufferType newType = new PatternBufferType(
                         typeName,
                         typeId,
                         typeFields,
                         typeHints,
                         baseTypeName
                     );
+                    if (typeIdInt < 0) {
+                        this.autonumberedTypes.Add(newType);
+                    }
+                    return newType;
 
                 case (int)RuleConstants.RULE_TYPENAME_NAME:
                     //<TypeName> ::= Name
@@ -608,11 +640,11 @@ namespace PatternBuffer.Schema {
 
                 case (int)RuleConstants.RULE_TYPEID_TYPEID:
                     //<TypeId> ::= TypeId
-                    return token.GetUserObjectForSubToken<ushort>((int)SymbolConstants.SYMBOL_TYPEID);
+                    return token.GetUserObjectForSubToken<int>((int)SymbolConstants.SYMBOL_TYPEID);
 
                 case (int)RuleConstants.RULE_TYPEID:
                     //<TypeId> ::= 
-                    return (ushort)0;
+                    return 0;
 
                 case (int)RuleConstants.RULE_TYPEFIELD:
                     //<TypeField> ::= <PrimitiveField> <TypeField>

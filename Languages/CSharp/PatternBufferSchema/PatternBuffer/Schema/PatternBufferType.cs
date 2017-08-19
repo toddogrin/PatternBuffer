@@ -19,7 +19,10 @@ namespace PatternBuffer.Schema {
         /**
          * The unique type ID of this type
          */
-        public ushort TypeId { get { return this.typeId; } }
+        public ushort TypeId { 
+            get { return this.typeId; } 
+            internal set { this.typeId = value; } 
+        }
 
         /**
          * The referrable name of this type's base type, if any.
@@ -52,6 +55,14 @@ namespace PatternBuffer.Schema {
             set { this.isFinal = value; }
         }
 
+        internal int nullableFieldCount;
+        public int NullableFieldCount {
+            get { return this.nullableFieldCount; }
+        }
+        public bool HasNullableFields {
+            get { return this.nullableFieldCount > 0; }
+        }
+
         /**
          * Creates a PatternBuffer type object with no base type.
          */
@@ -66,6 +77,12 @@ namespace PatternBuffer.Schema {
             this.fields = fields;
             this.baseTypeName = baseTypeName;
             this.hints = hints;
+            this.nullableFieldCount = 0;
+            foreach (PatternBufferField field in fields) {
+                if (field.FieldType is IOptionalFieldType) {
+                    this.nullableFieldCount++;
+                }
+            }
         }
     }
 }

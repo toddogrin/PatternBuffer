@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public double DoubleValue;
+        public double DoubleValue; // (required)
 
         public DoubleObject() {
             this.DoubleValue = default(double);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is DoubleObject)) { return false; }
             DoubleObject that = (DoubleObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // DoubleValue
+            // DoubleValue (required)
             if (this.DoubleValue != that.DoubleValue) { return false; }
             return true;
         }

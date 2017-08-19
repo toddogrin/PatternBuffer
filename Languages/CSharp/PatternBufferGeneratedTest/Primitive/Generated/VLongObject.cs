@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public long VlongValue;
+        public long VlongValue; // (required)
 
         public VLongObject() {
             this.VlongValue = default(long);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is VLongObject)) { return false; }
             VLongObject that = (VLongObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // VlongValue
+            // VlongValue (required)
             if (this.VlongValue != that.VlongValue) { return false; }
             return true;
         }

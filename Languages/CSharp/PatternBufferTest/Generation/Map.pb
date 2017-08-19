@@ -6,7 +6,11 @@ enum MyEnum {
 	value3
 }
 
-type(10) Thing {
+type() AbstractThing {
+	bool isSomething;
+}
+
+type(10) Thing : AbstractThing {
 	int intValue;
 }
 
@@ -32,4 +36,8 @@ type(15) EnumIntMapObject {
 
 type(16) VIntVLongMapObject {
 	map<vint,vlong> vintVlongMap;
+}
+
+type(17) IntAbstractThingMapObject {
+	map<int, AbstractThing> intAbstractThingMap;
 }

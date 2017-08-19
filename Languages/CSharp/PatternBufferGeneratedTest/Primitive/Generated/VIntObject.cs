@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public int VintValue;
+        public int VintValue; // (required)
 
         public VIntObject() {
             this.VintValue = default(int);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is VIntObject)) { return false; }
             VIntObject that = (VIntObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // VintValue
+            // VintValue (required)
             if (this.VintValue != that.VintValue) { return false; }
             return true;
         }

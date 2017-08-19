@@ -18,8 +18,9 @@ namespace PatternBufferTest.Schema {
             FinalObject o1 = new FinalObject(t1);
             byte[] bytes = patternBuffer.Energize(o1);
             // 1 byte       FinalObject type ID
+            // 1 byte       null fields
             // 4 bytes      Thing invariant int
-            Assert.AreEqual(5, bytes.Length);
+            Assert.AreEqual(6, bytes.Length);
             object o2 = patternBuffer.Energize(bytes);
             FinalObject p1 = (FinalObject)o2;
             Assert.IsTrue(p1 is FinalObject);
@@ -34,9 +35,10 @@ namespace PatternBufferTest.Schema {
             AbstractReferenceObject aro1 = new AbstractReferenceObject(t1);
             byte[] bytes = patternBuffer.Energize(aro1);
             // 1 byte       AbstractReferenceObject type ID
+            // 1 byte       null fields
             // 1 byte       abstract reference type ID
             // 8 bytes      FinalThing1's 2 invariant ints
-            Assert.AreEqual(10, bytes.Length);
+            Assert.AreEqual(11, bytes.Length);
             object o2 = patternBuffer.Energize(bytes);
             Assert.IsTrue(o2 is AbstractReferenceObject);
             AbstractReferenceObject aro2 = (AbstractReferenceObject)o2;

@@ -12,7 +12,7 @@ namespace PatternBufferTest.Schema {
             EnumTestPatternBuffer patternBuffer = new EnumTestPatternBuffer();
             EnumObject u = new EnumObject(SomeEnum.value1);
             byte[] bytes = patternBuffer.Energize(u);
-            Assert.AreEqual(2, bytes.Length);
+            Assert.AreEqual(3, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is EnumObject);
             Assert.AreEqual(u.SomeEnumValue, ((EnumObject)o).SomeEnumValue);
@@ -24,7 +24,7 @@ namespace PatternBufferTest.Schema {
             EnumTestPatternBuffer patternBuffer = new EnumTestPatternBuffer();
             EnumListObject u = new EnumListObject(new List<SomeEnum>() { SomeEnum.value1, SomeEnum.value3, SomeEnum.value2 });
             byte[] bytes = patternBuffer.Energize(u);
-            Assert.AreEqual(5, bytes.Length);
+            Assert.AreEqual(6, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is EnumListObject);
             EnumListObject p = (EnumListObject)o;
@@ -40,7 +40,7 @@ namespace PatternBufferTest.Schema {
             EnumTestPatternBuffer patternBuffer = new EnumTestPatternBuffer();
             EnumSetObject u = new EnumSetObject(new HashSet<SomeEnum>() { SomeEnum.value1, SomeEnum.value3 });
             byte[] bytes = patternBuffer.Energize(u);
-            Assert.AreEqual(4, bytes.Length);
+            Assert.AreEqual(5, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is EnumSetObject);
             EnumSetObject p = (EnumSetObject)o;
@@ -62,7 +62,7 @@ namespace PatternBufferTest.Schema {
             // 12 bytes     map key values (3 invariant ints)
             // 1 byte       map value count
             // 3 bytes      map values (3 enum values)
-            Assert.AreEqual(18, bytes.Length);
+            Assert.AreEqual(19, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is EnumMapObject);
             EnumMapObject p = (EnumMapObject)o;
@@ -83,7 +83,7 @@ namespace PatternBufferTest.Schema {
             // 3 bytes      map key values (3 enum values)
             // 1 byte       map value count
             // 12 bytes     map values (3 invariant ints)
-            Assert.AreEqual(18, bytes.Length);
+            Assert.AreEqual(19, bytes.Length);
             object o = patternBuffer.Energize(bytes);
             Assert.IsTrue(o is EnumMap2Object);
             EnumMap2Object p = (EnumMap2Object)o;

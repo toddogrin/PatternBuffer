@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public ulong UlongValue;
+        public ulong UlongValue; // (required)
 
         public ULongObject() {
             this.UlongValue = default(ulong);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is ULongObject)) { return false; }
             ULongObject that = (ULongObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // UlongValue
+            // UlongValue (required)
             if (this.UlongValue != that.UlongValue) { return false; }
             return true;
         }

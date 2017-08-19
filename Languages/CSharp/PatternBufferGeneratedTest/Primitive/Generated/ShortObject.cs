@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public short ShortValue;
+        public short ShortValue; // (required)
 
         public ShortObject() {
             this.ShortValue = default(short);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is ShortObject)) { return false; }
             ShortObject that = (ShortObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // ShortValue
+            // ShortValue (required)
             if (this.ShortValue != that.ShortValue) { return false; }
             return true;
         }

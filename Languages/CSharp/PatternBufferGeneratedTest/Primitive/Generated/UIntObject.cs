@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public uint UintValue;
+        public uint UintValue; // (required)
 
         public UIntObject() {
             this.UintValue = default(uint);
@@ -30,11 +30,11 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is UIntObject)) { return false; }
             UIntObject that = (UIntObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // UintValue
+            // UintValue (required)
             if (this.UintValue != that.UintValue) { return false; }
             return true;
         }

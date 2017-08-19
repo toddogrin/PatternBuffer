@@ -14,7 +14,7 @@ namespace Test.Primitive {
             get { return TYPE_ID; }
         }
 
-        public string StringValue;
+        public string StringValue; // (required)
 
         public StringObject() {
             this.StringValue = default(string);
@@ -30,13 +30,13 @@ namespace Test.Primitive {
             return this.Equals((object)other);
         }
         public override bool Equals(object other) {;
-            if (other == null) { return false; }
+            if (Object.ReferenceEquals(this, other)) { return true; }
             if ( ! (other is StringObject)) { return false; }
             StringObject that = (StringObject)other;
             if (this.GetHashCode() != that.GetHashCode()) return false;
-            // StringValue
-            if (this.StringValue == null && this.StringValue != null) { return false; }
-            if (this.StringValue != null && this.StringValue == null) { return false; }
+            // StringValue (required)
+                if (this.StringValue == null && this.StringValue != null) { return false; }
+                if (this.StringValue != null && this.StringValue == null) { return false; }
             if ( ! this.StringValue.Equals(that.StringValue)) { return false; }
             return true;
         }
