@@ -41,3 +41,14 @@ You can see dependencies in the References node of your solution, but here they 
 The pbc-cs.exe command line application offers an option to generate threadsafe code. Generated PatternBuffer classes rely on a singular internal byte buffer to build up serialized objects. The "MakeThreadsafe" option adds lock() statements in key places to ensure a single generated PatternBuffer class doesn't corrupt data while serializing multiple objects simultaneously. In tests, generating lock()ed code incurred a 25%-30% reduction in performance.
 
 As an alternative, consider generating un-threadsafe code, but instantiating multiple copies of your generated PatternBuffer class. You can then use your preferred object pooling technique to increase throughput. This gives you total control over memory and serialization throughput.
+
+## Instantiators
+
+C# executes in a managed run-time with a garbage collector, which can cause memory management headaches. This is especially true on platforms like Unity, which uses an out-dated garbage collector. To help address this, the generated C# PatternBuffer code relies on an *instantiator* class. The instantiator class is responsible for two things:
+
+* Issuing fresh instances of defined types
+* Reclaiming old instances of defined types
+
+A default instantiator is generated automatically. When issuing new instances (the "Acquire" methods), it simply uses the C# "new" operator. When reclaiming old instances (the "Reclaim" methods), it does nothing. The object simply falls out of scope and is collected by the garbage collector as usual. This is not very exciting as described because, well, why bother? 
+
+The instantiator gives developers a chance to implement their own, more controlled management of objects. The best example is object pooling. By combining a custom instantiator with a pooling library, your generated PatternBuffer code can reuse objects without incurring garbage collector overhead. Of course, fully realizing this benefit demands that you manually return to PatternBuffers any objects that it deserializes for you. This takes some discipline, but it may be worth it to avoid GC spikes.
