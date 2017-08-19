@@ -40,7 +40,7 @@ Here is how to use PatternBuffers, in a nutshell:
 
 More specifically, PatternBuffer offers these features:
 
-* A schema language for defining your objects
+* A schema language for defining your types
 * 16 primitive types, in addition to lists, sets, maps, and enums
 * Strict typing to ensure clarity, and to integrate with IDE code completion features
 * Object inheritance and polymorphism for maximum expressiveness
